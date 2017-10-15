@@ -53,25 +53,15 @@ function changeOfResolution() {
   }
 }
 
-function removeProfileButtons() {
+function setProfile(radiob) {
   var loop = document.getElementsByClassName("button").length - 1;
   for (var i = 0; i < loop; i++) {
     var btn = document.getElementById(i)
     if(btn)
       adaptive.removeChild(btn);
   }
-}
-
-function setProfile() {
-  removeProfileButtons();
-  var profile;
-  var profiles = document.getElementsByName("profile");
-  for(var i = 0; i < profiles.length; i++){
-    if(profiles[i].checked){
-        profile = profiles[i].value;
-    }
-  }
-  demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile } });
+  
+  demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: radiob.value } });
 }
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
