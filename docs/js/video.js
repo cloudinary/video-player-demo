@@ -129,7 +129,6 @@ eventTypes.forEach(function(eventType) {
   
  function playMe(btn) {
   var val = parseInt(btn.value);
-  console.log("playMe", val);
   plistplayer.playlist().playAtIndex(val);
 }
 
@@ -160,7 +159,7 @@ plistplayer.playlist(
  plistplayer.source('game2',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
 
-var recplayer = cld.videoPlayer('demo-rec-player');
+var recplayer = cld.videoPlayer('demo-recommendation-player');
 
 recplayer.source('Homepage_2',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
