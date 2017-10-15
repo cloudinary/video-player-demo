@@ -128,7 +128,7 @@ eventTypes.forEach(function(eventType) {
                               transformation: {streaming_profile: 'hd' } });
   
  function playMe() {
-  var val = parseInt(this.val());
+  var val = parseInt(this.value);
   plistplayer.playlist().playAtIndex(val);
 }
 
