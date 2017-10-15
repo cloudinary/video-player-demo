@@ -127,8 +127,8 @@ eventTypes.forEach(function(eventType) {
  eventplayer.source('hd_trim2',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
   
- function playMe() {
-  var val = parseInt(this.value);
+ function playMe(btn) {
+  var val = parseInt(btn.value);
   plistplayer.playlist().playAtIndex(val);
 }
 
