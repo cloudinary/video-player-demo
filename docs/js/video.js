@@ -159,3 +159,8 @@ plistplayer.playlist(
   
  plistplayer.source('game2',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
+
+var recplayer = cld.videoPlayer('demo-rec-player');
+
+recplayer.source('Homepage_2',{ sourceTypes: ['hls'], 
+                              transformation: {streaming_profile: 'hd' } });
