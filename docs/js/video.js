@@ -129,6 +129,7 @@ eventTypes.forEach(function(eventType) {
   
  function playMe(btn) {
   var val = parseInt(btn.value);
+  console.log("playMe", val);
   plistplayer.playlist().playAtIndex(val);
 }
 
@@ -150,10 +151,10 @@ function updateOnSrc() {
 var plistplayer = cld.videoPlayer('demo-playlist-player');
 plistplayer.on('sourcechanged', updateOnSrc);
 plistplayer.playlist(
-  [{ publicId: 'game2', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'hls_30s_test', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'hd_trim2', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'Homepage_2', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }}], 
+  [{ publicId: 'game2', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }},
+   { publicId: 'hls_30s_test', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }},
+   { publicId: 'hd_trim2', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }},
+   { publicId: 'Homepage_2', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }}], 
    { autoAdvance: 0, repeat: true });
   
  plistplayer.source('game2',{ sourceTypes: ['hls'], 
