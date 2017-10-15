@@ -1,0 +1,67 @@
+header {
+  text-align: center;
+}
+
+body {
+  text-align: center;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px;
+}
+
+.active {
+    background-color: #008CBA; /* Blue */
+}
+
+.requested {
+    background-color: #2E8B57;
+}
+
+.topimg {
+    background-image: url('https://res.cloudinary.com/cld-demo/image/upload/w_1366,h_500,c_crop,g_north,y_100/e_sharpen:80/demo-Desktop.jpg');
+height: 500px;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative; 
+}
+
+.grey {
+  background-color: #E2EAF0;
+}
+
+.events {
+  overflow: scroll; 
+  width: 800px;
+  height: 90px; 
+  text-align: left; 
+  background-color: none
+}
+
+.thumbnail {
+  display: inline-block;
+  border: 1px solid white;
+}
+
+.thumbnail:focus {
+    outline:0;
+}
+
+.playing {
+    border: 1px solid orange;
+}
