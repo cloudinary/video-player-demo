@@ -46,6 +46,7 @@
 <script type="text/javascript" src="https://unpkg.com/cloudinary-video-player@edge/dist/cld-video-player.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
 <script type="text/javascript">
+  var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
   var recplayer = cld.videoPlayer('demo-rec-player',{ autoShowRecommendations: true });
   var source1 = { publicId: 'Homepage_2', info: { title: 'Kid Play', subtitle: 'A preview' } };
   var source2 = { publicId: 'game2', info: { title: 'Game', subtitle: 'A game ad' } };
