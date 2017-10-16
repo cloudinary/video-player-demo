@@ -116,40 +116,4 @@ eventTypes.forEach(function(eventType) {
   
  eventplayer.source('hd_trim2',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
-  
- function playMe(btn) {
-  var val = parseInt(btn.value);
-  plistplayer.playlist().playAtIndex(val);
-}
 
-function updateOnSrc() {
-  var plist = plistplayer.playlist();
-  var playing = plist.currentIndex();
-  var loop = plist.length();
-  for(var i=0; i<loop; i++) {
-    var label = "list"+i;
-    var btn = document.getElementById(label);
-    if(i == playing)
-      btn.setAttribute("class", "thumbnail playing");
-    else
-      btn.setAttribute("class", "thumbnail ");
-  }
-  console.log("updateOnSrc", playing, loop);
-}
-
-var plistplayer = cld.videoPlayer('demo-playlist-player');
-plistplayer.on('sourcechanged', updateOnSrc);
-plistplayer.playlist(
-  [{ publicId: 'game2', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'hls_30s_test', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'hd_trim2', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'Homepage_2', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }}], 
-   { autoAdvance: 0, repeat: true });
-  
- plistplayer.source('game2',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'hd' } });
-
-var recplayer = cld.videoPlayer('demo-recommendation-player');
-
-recplayer.source('Homepage_2',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'hd' } });
