@@ -64,7 +64,7 @@ function setProfile(radiob) {
   demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: radiob.value } });
 }
 
-var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
+var cld = cloudinary.Cloudinary.new({ cloud_name: 'cld-demo' });
   
 var adaptive = document.getElementById("adaptive");
 document.getElementById("demo-adaptive-player").addEventListener('resize',updateOnResize, false);
