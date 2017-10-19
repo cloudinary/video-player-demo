@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CloudinaryVideoPlayer</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
+	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
+	<link media="all" rel="stylesheet" href="css/ui.css">
+</head>
+<body>
+	<div id="wrapper">
+		<div class="top-section">
+			<header id="header">
+				<div class="container">
+					<div class="header-holder">
+						<strong class="topbar-logo"><a href="#"><img src="images/img.svg" alt="Cloudinary"></a></strong>
+						<a href="#" class="btn">Sign up for free</a>
+					</div>
+				</div>
+			</header>
+			<div class="banner-area">
+				<div class="container">
+					<div class="banner-holder">
+						<h1 class="logo"><a href="#"><img src="images/logo.png" alt="Video Player"></a></h1>
+						<strong class="m-logo"><a href="#"><img src="images/logo-m.png" alt="Video Player"></a></strong>
+						<p>one liner text thatmakes me get started…</p>
+						<span class="text">Features:</span>
+						<span class="signup"><a href="#">Sign up for free</a></span>
+					</div>
+				</div>
+				<div class="theme-area">
+					<a href="#" class="theme-opener"><i class="icon"></i></a>
+					<form action="#" class="theme-slide">
+						<strong class="title">Player Theme</strong>
+						<ul class="theme-list">
+							<li>
+								<input type="radio" id="theme1" name="radio" checked>
+								<label for="theme1">
+									<span class="text"><i class="radio-icon"></i>Dark</span>
+									<span class="video-palyer">
+										<img src="images/video8.jpg" alt="video">
+									</span>
+								</label>
+							</li>
+							<li>
+								<input type="radio" id="theme2" name="radio">
+								<label for="theme2">
+									<span class="text"><i class="radio-icon"></i>Light</span>
+									<span class="video-palyer">
+										<img src="images/video9.jpg" alt="video">
+									</span>
+								</label>
+							</li>
+						</ul>
+						<div class="wrap">
+							<p>Want even more options?</p>
+							<p>Create your own theme with ease … txet</p>
+							<a href="#" class="more">Learn More…</a>
+						</div>
+					</form>
+				</div>
+			</div>
+			<nav id="nav">
+				<div class="container">
+					<ul class="menu">
+						<li>
+							<a href="#section01">
+								<img src="images/img2.png" alt="image-description">
+								<strong class="image-text">
+									<span class="text">adaptive<br> streaming</span>
+								</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#section03">
+								<img src="images/img3.png" alt="image-description">
+								<strong class="image-text">
+									<span class="text">Video Playlist</span>
+								</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#section02">
+								<img src="images/img4.png" alt="image-description">
+								<strong class="image-text">
+									<span class="text">events &amp; <br> analytics</span>
+								</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#section04">
+								<img src="images/img5.png" alt="image-description">
+								<strong class="image-text">
+									<span class="text">recommended content</span>
+								</strong>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<main id="main">
+			<section class="content-block style01" id="section01">
+				<div class="container">
+					<header class="heading-area">
+						<h2>Adaptive Video Streaming</h2>
+						<p>Actual quality (resolution) will be chosen based on the actual dimensions <br>(larger player presentation will require higher resolution), <br>Streaming Profile (max resolution) and actual network quality (available bandwidth).</p>
+					</header>
+					<div class="block-area">
+						<div class="video-block">
+							<div class="video-area">
+						        	<video
+                                                                	id="demo-adaptive-player"
+								        width=660
+                                                                	controls
+								        muted
+                                                                	class="cld-video-player cld-video-player-skin-dark">
+                                                          	</video>
+							</div>
+							<div class="video-detail">
+								<div class="video-info">
+									<div class="size-area">
+										<strong class="title">Player size</strong>
+										<div class="size-bar">
+											<span class="bar"></span>
+											<span class="handle"></span>
+										</div>
+									</div>
+									<form action="#" class="streaming-area">
+										<strong class="title">Streaming Profile:</strong>
+										<ul class="streaming-list">
+											<li>
+												<input type="radio" id="streaming1" name="radio1" checked>
+												<label for="streaming1"><i class="radio-icon"></i>4K</label>
+											</li>
+											<li>
+												<input type="radio" id="streaming2" name="radio1">
+												<label for="streaming2"><i class="radio-icon"></i>Full HD</label>
+											</li>
+											<li>
+												<input type="radio" id="streaming3" name="radio1">
+												<label for="streaming3"><i class="radio-icon"></i>HD</label>
+											</li>
+											<li>
+												<input type="radio" id="streaming4" name="radio1">
+												<label for="streaming4"><i class="radio-icon"></i>SD</label>
+											</li>
+										</ul>
+									</form>
+								</div>
+								<form action="#" class="display-info">
+									<div class="wrap">
+										<div class="holder">
+											<strong class="title">Displayed Resolution:</strong>
+											<div class="switcher-area">
+												<input type="checkbox" id="checkbox" checked>
+												<label for="checkbox" class="switcher"></label>
+												<label class="text" for="checkbox">Auto</label>
+											</div>
+										</div>
+										<p> ‘Auto’ will stream based on dimensions, profile and network:</p>
+									</div>
+									<div id="adaptive" class="display-resolation">
+										<img src="images/range.png" alt="resolation">
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="editing-area">
+							<div class="codepen-placeholder">
+								<img src="images/placeholder.png" alt="codepin">
+							</div>
+							<div class="codepen-info">
+								<div class="wrap">
+									<span class="text">Main API calls in this demo:</span>
+									<span class="link"><a href="#">Constructor  play()</a></span>
+									<span class="reference"><a href="#">Full API Reference</a></span>
+								</div>
+								<a href="#" class="btn"><i class="icon"></i>Edit in codepen</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="content-block" id="section02">
+				<div class="container">
+					<header class="heading-area">
+						<h2>Events and analytics</h2>
+						<p>ou can register to video player events and then use these events to create custom video player controls or to trigger other custom behaviors in your application. In addition, the Video Player supports tracking of different events to different analytics platforms, such as Google Analytics.Supported events include, for example: play, pause, time played, percentage played and volume change.</p>
+					</header>
+					<div class="block-area">
+						<div class="video-block">
+							<div class="video-area">
+								<video
+                                                                	id="demo-events-player"
+								        width=660
+                                                                	controls
+								        muted
+                                                                	class="cld-video-player cld-video-player-skin-dark">
+                                                          	</video>
+							</div>
+							<div class="video-detail">
+								<div class="events-area">
+									<h3>Triggered events:</h3>
+									<ul class="events-list">
+										<li>
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- Start</span>
+										</li>
+										<li class="orange">
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- Time played: 3 seconds</span>
+										</li>
+										<li class="orange">
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- Time played: 3 seconds</span>
+										</li>
+										<li>
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- User Pressedause</span>
+										</li>
+										<li>
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- User Pressed Play</span>
+										</li>
+										<li class="orange">
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- Percentage played: 50%</span>
+										</li>
+										<li class="orange">
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- Time played: 3 seconds</span>
+										</li>
+										<li>
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- User Pressedause</span>
+										</li>
+										<li>
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- User Pressed Play</span>
+										</li>
+										<li class="orange">
+											<time datetime="2017-02-14 13:12">13:12:01</time>
+											<span class="text">- Percentage played: 50%</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="editing-area">
+							<div class="codepen-placeholder">
+								<img src="images/placeholder.png" alt="codepin">
+							</div>
+							<div class="codepen-info">
+								<div class="wrap">
+									<span class="text">Main API calls in this demo:</span>
+									<span class="link"><a href="#">Constructor Events</a></span>
+									<span class="reference"><a href="#">Full API Reference</a></span>
+								</div>
+								<a href="#" class="btn"><i class="icon"></i>Edit in codepen</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="content-block style01" id="section03">
+				<div class="container">
+					<header class="heading-area">
+						<h2>Video Playlists</h2>
+						<p>You can create a playlist for your player based on a list of public IDs or for all videos with a specified tag. After you have defined a playlist, you can use playlist methods to control the list. For example, you can jump to the next or previous video, jump to a specific video in the playlist by index, determine whether to auto-advance to the next video when the previous one ends and more. </p>
+					</header>
+					<div class="block-area">
+						<div class="video-block">
+							<div class="video-area">
+								<video
+                                                                	id="demo-playlist-player"
+								        width=660
+                                                                	controls
+								        muted
+                                                                	class="cld-video-player cld-video-player-skin-dark">
+                                                          	</video>
+							</div>
+							<div class="video-detail">
+								<ul class="video-pagination">
+									<li>
+										<a href="#">
+											<img src="images/img6.jpg" alt="image-description">
+											<div class="video-caption">
+												<div class="wrap">
+													<span class="text">reservoir dogs</span>
+													<time datetime="2017-02-14 01:23">1:23:28</time>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/img7.jpg" alt="image-description">
+											<div class="video-caption">
+												<div class="wrap">
+													<span class="text">inglourious basterds</span>
+													<time datetime="2017-02-14 01:23">1:23:28</time>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="active">
+										<a href="#">
+											<img src="images/img8.jpg" alt="image-description">
+											<div class="video-caption">
+												<div class="wrap">
+													<span class="text">Now Playing: Kill bill</span>
+													<time datetime="2017-02-14 01:23">1:23:28</time>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/img9.jpg" alt="image-description">
+											<div class="video-caption">
+												<div class="wrap">
+													<span class="text">hateful eight</span>
+													<time datetime="2017-02-14 01:23">1:23:28</time>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="editing-area">
+							<div class="codepen-placeholder">
+								<img src="images/placeholder.png" alt="codepin">
+							</div>
+							<div class="codepen-info">
+								<div class="wrap">
+									<span class="text">Main API calls in this demo:</span>
+									<span class="link"><a href="#">Playlist operation</a></span>
+									<span class="reference"><a href="#">Full API Reference</a></span>
+								</div>
+								<a href="#" class="btn"><i class="icon"></i>Edit in codepen</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="content-block" id="section04">
+				<div class="container">
+					<header class="heading-area">
+						<h2>recommended content</h2>
+						<p>Recommended videos can be defined when setting a player's video source. The recommendations will be shown in the recommendation overlay when a video ends. Please note that in order to fully leverage the recommendations overlay, it is recommended that you set the title, subtitle and description when creating source objects (using the info param).</p>
+					</header>
+					<div class="block-area">
+						<div class="video-block">
+							<div class="video-area">
+								<video
+                                                                	id="demo-recommendation-player"
+								        width=660
+                                                                	controls
+								        muted
+                                                                	class="cld-video-player cld-video-player-skin-dark">
+                                                          	</video>
+							</div>
+						</div>
+						<div class="editing-area">
+							<div class="codepen-placeholder">
+								<img src="images/placeholder.png" alt="codepin">
+							</div>
+							<div class="codepen-info">
+								<div class="wrap">
+									<span class="text">Main API calls in this demo:</span>
+									<span class="link"><a href="#">Playlist operations</a></span>
+									<span class="reference"><a href="#">Full API Reference</a></span>
+								</div>
+								<a href="#" class="btn"><i class="icon"></i>Edit in codepen</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer id="footer">
+			<div class="container">
+				<div class="footer-holder">
+					<div class="wrap">
+						<span class="copyright">&copy; 2017 <a href="#">Cloudinary</a>. All rights reserved</span>
+						<ul class="list">
+							<li><a href="#">Terms of use</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+						</ul>
+					</div>
+					<strong class="f-logo"><a href="#"><img src="images/img1.svg" alt="Cloudinary"></a></strong>
+				</div>
+			</div>
+		</footer>
+	</div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
+  <script type="text/javascript" src="js/video.js"></script>
+</body>
+</html>
