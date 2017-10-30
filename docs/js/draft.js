@@ -92,6 +92,8 @@ demoplayer.source('hd_trim2',{ sourceTypes: ['hls'],
 function updateOnEvent(eventStr) {
   var list = document.getElementById('events-list');
   var entry = document.createElement('li');
+  if (eventStr.includes("timeplayed"))
+      entry.className = "orange";
   entry.appendChild(document.createTextNode(eventStr));
   list.appendChild(entry);
   list.scrollTop = list.scrollHeight;
