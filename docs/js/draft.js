@@ -134,5 +134,16 @@ eventTypes.forEach(function(eventType) {
 
 var recplayer = cld.videoPlayer('demo-recommendation-player');
 
-recplayer.source('Homepage_2',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'hd' } });
+var source1 = { publicId: 'Homepage_2', info: { title: 'Kid Play', subtitle: 'A preview' } };
+var source2 = { publicId: 'game2', info: { title: 'Game', subtitle: 'A game ad' } };
+var source3 = { publicId: 'hd_trim2', info: { title: 'Race', subtitle: 'Volve Ocean Race' } };
+var source4 = { publicId: 'hls_30s_test', info: { title: 'NBA', subtitle: 'A game' } };
+var source5 = { publicId: 'oceans', info: { title: 'Oceans', subtitle: 'A movie about oceans' } };
+source1.recommendations = [source2, source3, source4, source5];
+source2.recommendations = [source3];
+source3.recommendations = [source4];
+source4.recommendations = [source5];
+source5.recommendations = [source2, source3, source4, source1];
+recplayer.source(source1);
+
+
