@@ -90,12 +90,15 @@ demoplayer.source('hd_trim2',{ sourceTypes: ['hls'],
                               transformation: {streaming_profile: 'hd' } });
 
 function updateOnEvent(eventStr) {
-  var eventsDiv = document.querySelector('#events-area');
-  var text = document.createTextNode(eventStr);
+  var list = document.getElementById('events-list');
+  var entry = document.createElement('li');
+  entry.appendChild(document.createTextNode(eventStr));
+  list.appendChild(entry);
+/*  var text = document.createTextNode(eventStr);
   var textDiv = document.createElement('div');
   textDiv.appendChild(text);
   eventsDiv.appendChild(textDiv);
-  eventsDiv.scrollTop = eventsDiv.scrollHeight;
+  eventsDiv.scrollTop = eventsDiv.scrollHeight;*/
 }
 
 function checkTime(i) {
