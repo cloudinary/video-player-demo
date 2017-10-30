@@ -94,6 +94,7 @@ function updateOnEvent(eventStr) {
   var entry = document.createElement('li');
   entry.appendChild(document.createTextNode(eventStr));
   list.appendChild(entry);
+  list.scrollTop = list.scrollHeight;
 /*  var text = document.createTextNode(eventStr);
   var textDiv = document.createElement('div');
   textDiv.appendChild(text);
