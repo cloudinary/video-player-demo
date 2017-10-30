@@ -88,9 +88,9 @@ qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityL
 */  
 demoplayer.source('hd_trim2',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
-/*
+
 function updateOnEvent(eventStr) {
-  var eventsDiv = document.querySelector('#vid-events');
+  var eventsDiv = document.querySelector('#events-area');
   var text = document.createTextNode(eventStr);
   var textDiv = document.createElement('div');
   textDiv.appendChild(text);
@@ -109,9 +109,9 @@ function startTime() {
             s = checkTime(today.getSeconds());
         return (h + ":" + m + ":" + s);
 }
-*/
+
 var eventplayer = cld.videoPlayer('demo-events-player', { playedEventTimes: [3, 10] });
-/*
+
 var eventTypes = ['play', 'pause', 'volumechange', 'mute', 'unmute', 'fullscreenchange',
       'seek', 'sourcechanged', 'timeplayed', 'percentsplayed', 'ended'];
 
@@ -124,7 +124,7 @@ eventTypes.forEach(function(eventType) {
         updateOnEvent(eventStr);
       })
     });
- */ 
+  
  eventplayer.source('hls_30s_test',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
   
