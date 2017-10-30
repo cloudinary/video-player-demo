@@ -134,6 +134,11 @@ eventTypes.forEach(function(eventType) {
  eventplayer.source('hls_30s_test',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
 
+function playMe(btn) {
+    var val = parseInt(btn.value);
+    plistplayer.playlist().playAtIndex(val);
+  }
+
   function updateOnSrc() {
     var plist = plistplayer.playlist();
     var playing = plist.currentIndex();
