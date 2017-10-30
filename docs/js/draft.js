@@ -1,3 +1,4 @@
+/*
 function updateOnResize() {
   var desc = demoplayer.videojs.videoWidth() + 
              "x" + 
@@ -73,18 +74,18 @@ function setProfile() {
   }
   demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile } });
 }
-
+*/
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
-  
+/*  
 var adaptive = document.getElementById("adaptive");
 document.getElementById("demo-adaptive-player").addEventListener('resize',updateOnResize, false);
-  
+*/  
 var demoplayer = cld.videoPlayer('demo-adaptive-player');
-  
+ /* 
 var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
 qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
-  
+*/  
 demoplayer.source('hd_trim2',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
 
