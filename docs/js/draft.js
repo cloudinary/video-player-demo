@@ -50,7 +50,7 @@ function changeOfResolution() {
   }
 }
 function removeProfileButtons() {
-  var loop = document.getElementsByClassName("button").length - 1;
+  var loop = document.getElementsByClassName("button").length;
   for (var i = 0; i < loop; i++) {
     var btn = document.getElementById(i)
     if(btn)
@@ -60,7 +60,7 @@ function removeProfileButtons() {
 function setProfile() {
   removeProfileButtons();
   var profile;
-  var profiles = document.getElementsByName("profile");
+  var profiles = document.getElementsByName("radio1");
   for(var i = 0; i < profiles.length; i++){
     if(profiles[i].checked){
         profile = profiles[i].value;
