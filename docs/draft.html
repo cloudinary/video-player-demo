@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +20,8 @@
 	<link href="//cloudinary.com/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
 	<link href="https://unpkg.com/cloudinary-video-player@edge/dist/cld-video-player.min.css" rel="stylesheet">
-	<link media="all" rel="stylesheet" href="css/ui.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
+	<link media="all" rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	<div id="wrapper">
@@ -38,13 +38,12 @@
 				<div class="container">
 					<div class="banner-holder">
 						<h1 class="logo">
-							<a href="#">
-								<video autoplay loop muted>
+							<img src="images/video-mask.png">
+								<video autoplay loop muted >
 									<source src="https://res.cloudinary.com/hadar/video/upload/w_538,h_217,c_crop/717956081.webm" type="video/webm">
 									<source src="https://res.cloudinary.com/hadar/video/upload/w_538,h_217,c_crop/717956081.ogv" type="video/ogg">
 									<source src="https://res.cloudinary.com/hadar/video/upload/w_538,h_217,c_crop/717956081.mp4" type="video/mp4">
-								</video>
-							</a>
+								</video> 
 						</h1>
 						<strong class="m-logo"><a href="#"><img src="images/logo-m.png" alt="Video Player"></a></strong>
 						<p>one liner text thatmakes me get started…</p>
@@ -138,7 +137,7 @@
 									controls 
 									muted 
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
-                                                            	</video>
+                                </video>
 							</div>
 							<div class="video-detail">
 								<div class="video-info">
@@ -184,7 +183,136 @@
 										<p> ‘Auto’ will stream based on dimensions, profile and network:</p>
 									</div>
 									<div class="display-resolation">
-										<img src="images/range.png" alt="resolation">
+										<div class="resolation-range">
+											<div class="range-info">
+												<span class="text">3840x2160</span>
+												<ul class="bar-list">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li class="long"></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+											<div class="range-info">
+												<span class="text">2560x1440</span>
+												<ul class="bar-list">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li class="long"></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+											<div class="range-info">
+												<span class="text">3840x2160</span>
+												<ul class="bar-list">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li class="long"></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+											<div class="range-info">
+												<span class="text">1280x720</span>
+												<ul class="bar-list">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li class="long"></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+											<div class="range-info active">
+												<span class="text">960x540</span>
+												<ul class="bar-list">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li class="long"></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+											<div class="range-info second-hover">
+												<span class="text">640x360</span>
+												<ul class="bar-list">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li class="long"></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+											<div class="range-info">
+												<span class="text">480x270</span>
+												<ul class="bar-list">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li class="long"></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+											<div class="range-info">
+												<span class="text">320x240</span>
+												<ul class="bar-list">
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li class="long"></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+													<li></li>
+												</ul>
+											</div>
+										</div>
 									</div>
 								</form>
 							</div>
@@ -219,7 +347,7 @@
 									controls 
 									muted 
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
-                                                            	</video>
+                                </video>
 							</div>
 							<div class="video-detail">
 								<div class="events-area">
@@ -258,45 +386,53 @@
 									controls 
 									muted 
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
-                                                            	</video>
+                                </video>
 							</div>
-							<div class="video-detail">
+							<div class="video-detail style01">
 								<ul class="video-pagination">
-									<li value="0" onclick="playMe(this)">
-										<img src="images/img6.jpg" alt="image-description">
-										<div class="video-caption">
-											<div class="wrap">
-												<span class="text">reservoir dogs</span>
-												<time datetime="2017-02-14 01:23">1:23:28</time>
+									<li id="plist0" value="0" onclick="playMe(this)">
+										<a>
+											<img src="images/img6.jpg" alt="image-description">
+											<div class="video-caption">
+												<div class="wrap">
+													<span class="text">reservoir dogs</span>
+													<time datetime="2017-02-14 01:23">1:23:28</time>
+												</div>
 											</div>
-										</div>
+										</a>
 									</li>
-									<li value="1" onclick="playMe(this)">
-										<img src="images/img7.jpg" alt="image-description">
-										<div class="video-caption">
-											<div class="wrap">
-												<span class="text">inglourious basterds</span>
-												<time datetime="2017-02-14 01:23">1:23:28</time>
+									<li id="plist1" value="1" onclick="playMe(this)">
+										<a>
+											<img src="images/img7.jpg" alt="image-description">
+											<div class="video-caption">
+												<div class="wrap">
+													<span class="text">inglourious basterds</span>
+													<time datetime="2017-02-14 01:23">1:23:28</time>
+												</div>
 											</div>
-										</div>
+										</a>
 									</li>
-									<li value="2" onclick="playMe(this)" class="active">
-										<img src="images/img8.jpg" alt="image-description">
-										<div class="video-caption">
-											<div class="wrap">
-												<span class="text">Now Playing: Kill bill</span>
-												<time datetime="2017-02-14 01:23">1:23:28</time>
+									<li id="plist2" class="active" value="2" onclick="playMe(this)">
+										<a>
+											<img src="images/img8.jpg" alt="image-description">
+											<div class="video-caption">
+												<div class="wrap">
+													<span class="text">Now Playing: Kill bill</span>
+													<time datetime="2017-02-14 01:23">1:23:28</time>
+												</div>
 											</div>
-										</div>
+										</a>
 									</li>
-									<li value "3" onclick="playMe(this)">
-										<img src="images/img9.jpg" alt="image-description">
-										<div class="video-caption">
-											<div class="wrap">
-												<span class="text">hateful eight</span>
-												<time datetime="2017-02-14 01:23">1:23:28</time>
+									<li id="plist3" value="3" onclick="playMe(this)">
+										<a>
+											<img src="images/img9.jpg" alt="image-description">
+											<div class="video-caption">
+												<div class="wrap">
+													<span class="text">hateful eight</span>
+													<time datetime="2017-02-14 01:23">1:23:28</time>
+												</div>
 											</div>
-										</div>
+										</a>
 									</li>
 								</ul>
 							</div>
@@ -330,9 +466,9 @@
 									id="demo-recommendation-player" 
 									controls 
 									muted 
-								        data-cld-autoplay-mode="on-scroll"
+								    data-cld-autoplay-mode="on-scroll"
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
-                                                            	</video>
+                                </video>
 							</div>
 						</div>
 						<div class="editing-area">
@@ -368,9 +504,8 @@
 		</footer>
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
-<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player@edge/dist/cld-video-player.js"></script>
-<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
-<script type="text/javascript" src="js/draft.js"></script>
-
+	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player@edge/dist/cld-video-player.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
+	<script type="text/javascript" src="js/draft.js"></script>
 </body>
 </html>
