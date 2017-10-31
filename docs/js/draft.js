@@ -38,9 +38,9 @@ function changeOfResolution() {
     var btn = document.getElementById(i);
     var qlevel = qualityLevels[i];
     var desc = qlevel.width + "x" + qlevel.height;
-    var css = "button";
+    var css = "range-info";
     if (i == qualityLevels.selectedIndex)
-        css = "requested button";
+        css = "range-info active";
     if(btn) {
       if(btn.getAttribute("class") != "active button")
         btn.setAttribute("class",css);
