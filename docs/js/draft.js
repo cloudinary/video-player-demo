@@ -71,7 +71,7 @@ function setProfile() {
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
 
-var adaptive = document.getElementById("resolation-range");
+var adaptive = document.getElementById("adaptive");
 document.getElementById("demo-adaptive-player").addEventListener('resize',updateOnResize, false);
  
 var demoplayer = cld.videoPlayer('demo-adaptive-player');
