@@ -3,14 +3,14 @@ function updateOnResize() {
   var desc = demoplayer.videojs.videoWidth() + 
              "x" + 
              demoplayer.videojs.videoHeight();
-  var current = document.getElementsByClassName("active button");
+  var current = document.getElementsByClassName("active range-info");
   for (var i = 0; i < current.length; i++) {
     if(current[i].id != "auto")
-      current[i].setAttribute("class","button");
+      current[i].setAttribute("class","range-info");
   }
   var newactive = document.getElementsByName(desc);
   for (var j = 0; j < newactive.length; j++)
-    newactive[j].setAttribute("class","active button");
+    newactive[j].setAttribute("class","active range-info");
 }
 function requestResolution() {
   document.getElementById("checkbox").checked = false;
@@ -38,11 +38,11 @@ function changeOfResolution() {
     var btn = document.getElementById(i);
     var qlevel = qualityLevels[i];
     var desc = qlevel.width + "x" + qlevel.height;
-    var css = "range-info text";
+    var css = "range-info";
     if (i == qualityLevels.selectedIndex)
-        css = "range-info text active";
+        css = "active range-info";
     if(btn) {
-      if(btn.getAttribute("class") != "active button")
+      if(btn.getAttribute("class") != "active range-info")
         btn.setAttribute("class",css);
     }
     else 
@@ -50,7 +50,7 @@ function changeOfResolution() {
   }
 }
 function removeProfileButtons() {
-  var loop = document.getElementsByClassName("button").length;
+  var loop = document.getElementsByClassName("range-info").length;
   for (var i = 0; i < loop; i++) {
     var btn = document.getElementById(i)
     if(btn)
