@@ -12,21 +12,18 @@ function updateOnResize() {
   for (var j = 0; j < newactive.length; j++)
     newactive[j].setAttribute("class","active button");
 }
-
 function requestResolution() {
   document.getElementById("auto").setAttribute("class","button");
   for (var i = 0; i < qualityLevels.length; i++) {
       qualityLevels[i].enabled = (this.id == i);
   }
 }
-
 function requestAuto() {
   for (var i = 0; i < qualityLevels.length; i++) {
       qualityLevels[i].enabled = true;
   }
   document.getElementById("auto").setAttribute("class","active button");
 }
-
 function addButton(bid,qlevel,desc,css) {
       var btn = document.createElement("BUTTON");
       adaptive.appendChild(btn);
@@ -36,7 +33,6 @@ function addButton(bid,qlevel,desc,css) {
       btn.setAttribute("class",css);
       btn.setAttribute("name",desc);
 }
-
 function changeOfResolution() {
   for (var i = 0; i < qualityLevels.length; i++) {
     var btn = document.getElementById(i);
@@ -53,7 +49,6 @@ function changeOfResolution() {
       addButton(i,qlevel,desc,css);
   }
 }
-
 function removeProfileButtons() {
   var loop = document.getElementsByClassName("button").length - 1;
   for (var i = 0; i < loop; i++) {
@@ -62,7 +57,6 @@ function removeProfileButtons() {
       adaptive.removeChild(btn);
   }
 }
-
 function setProfile() {
   removeProfileButtons();
   var profile;
@@ -95,13 +89,8 @@ function updateOnEvent(eventStr) {
   if (eventStr.includes("timeplayed"))
       entry.className = "orange";
   entry.appendChild(document.createTextNode(eventStr));
-  list.appendChild(entry);
+  list.insertBefore(entry,list.firstChild);
   list.scrollTop = list.scrollHeight;
-/*  var text = document.createTextNode(eventStr);
-  var textDiv = document.createElement('div');
-  textDiv.appendChild(text);
-  eventsDiv.appendChild(textDiv);
-  eventsDiv.scrollTop = eventsDiv.scrollHeight;*/
 }
 
 function checkTime(i) {
@@ -131,8 +120,8 @@ eventTypes.forEach(function(eventType) {
       })
     });
   
- eventplayer.source('hls_30s_test',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'hd' } });
+ eventplayer.source('hls_30s_test',{ transformation: {crop: 'limit', width: 600} });
+ //                             transformation: {streaming_profile: 'hd' } });
 
 function playMe(btn) {
     var val = parseInt(btn.value);
@@ -144,26 +133,26 @@ function playMe(btn) {
     var playing = plist.currentIndex();
     var loop = plist.length();
     for(var i=0; i<loop; i++) {
-      var label = "list"+i;
+      var label = "plist"+i;
       var btn = document.getElementById(label);
       if(i == playing)
-        btn.setAttribute("class", "thumbnail playing");
+        btn.setAttribute("class", "active");
       else
-        btn.setAttribute("class", "thumbnail ");
+        btn.setAttribute("class", " ");
   }
   console.log("updateOnSrc", playing, loop);
 }
 var plistplayer = cld.videoPlayer('demo-playlist-player');
-//plistplayer.on('sourcechanged', updateOnSrc);
+plistplayer.on('sourcechanged', updateOnSrc);
 plistplayer.playlist(
-  [{ publicId: 'game2', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'hls_30s_test', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'hd_trim2', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'Homepage_2', sourceTypes: ['hls'], transformation: {streaming_profile: 'hd' }}], 
+  [{ publicId: 'game2', transformation: {crop: 'limit', width: 600}},//sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
+   { publicId: 'hls_30s_test', transformation: {crop: 'limit', width: 600}},
+   { publicId: 'hd_trim2', transformation: {crop: 'limit', width: 600}},
+   { publicId: 'Homepage_2', transformation: {crop: 'limit', width: 600}}], 
    { autoAdvance: 0, repeat: true });
   
- plistplayer.source('game2',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'hd' } });
+ plistplayer.source('game2',{ transformation: {crop: 'limit', width: 600} });
+ //{ sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' } });
 
 var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
 
@@ -178,5 +167,4 @@ source3.recommendations = [source4];
 source4.recommendations = [source5];
 source5.recommendations = [source2, source3, source4, source1];
 recplayer.source(source1);
-
 
