@@ -13,7 +13,7 @@ function updateOnResize() {
     newactive[j].setAttribute("class","active button");
 }
 function requestResolution() {
-  document.getElementById("auto").setAttribute("class","button");
+  document.getElementById("checkbox").checked = false;
   for (var i = 0; i < qualityLevels.length; i++) {
       qualityLevels[i].enabled = (this.id == i);
   }
@@ -22,7 +22,7 @@ function requestAuto() {
   for (var i = 0; i < qualityLevels.length; i++) {
       qualityLevels[i].enabled = true;
   }
-  document.getElementById("auto").setAttribute("class","active button");
+  document.getElementById("checkbox").checked = true;
 }
 function addButton(bid,qlevel,desc,css) {
       var btn = document.createElement("BUTTON");
