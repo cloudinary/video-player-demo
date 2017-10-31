@@ -773,11 +773,11 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .banner-area {
-	background: url(http://res.cloudinary.com/hadar/video-big-mask.svg) no-repeat;
+	background: url(http://res.cloudinary.com/hadar/video-big-mask.png) no-repeat;
 	background-size: cover;
 	position: relative;
 	overflow: hidden;
-	z-index:3;
+	z-index:3000;
 }
 
 .banner-holder {
