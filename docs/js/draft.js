@@ -51,8 +51,8 @@ function changeOfResolution() {
 }
 function removeProfileButtons() {
   var loop = document.getElementsByClassName("range-info").length;
-  for (var i = 0; i < loop; i++) {
-    var btn = document.getElementById(i)
+  for (var i = 1; i < loop; i++) {
+    var btn = document.getElementById("res"+i)
     if(btn)
       adaptive.removeChild(btn);
   }
