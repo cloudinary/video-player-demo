@@ -5,12 +5,11 @@ function updateOnResize() {
              demoplayer.videojs.videoHeight();
   var current = document.getElementsByClassName("range-info active");
   for (var i = 0; i < current.length; i++) {
-    if(current[i].id != "auto")
       current[i].setAttribute("class","range-info");
   }
   var newactive = document.getElementsByName(desc);
   for (var j = 0; j < newactive.length; j++)
-    newactive[j].setAttribute("class","active range-info");
+    newactive[j].setAttribute("class","range-info active");
 }
 function requestResolution() {
   document.getElementById("checkbox").checked = false;
@@ -28,6 +27,7 @@ function addResolution(rangeInfo,bid,desc,css) {
       var clone = rangeInfo.cloneNode(true);
       clone.setAttribute("id", "res"+bid);
       clone.setAttribute("css", css);
+      clone.setAttribute("name", desc);
       var span = clone.getElementsByTagName("span");
       span[0].textContent = desc;
       rangeInfo.parentNode.appendChild(clone);
@@ -42,8 +42,10 @@ function changeOfResolution() {
     var css = "range-info";
     if (i == qualityLevels.selectedIndex)
         css = "range-info active";
-    if (i == 0)
+    if (i == 0) {
       initial[0].textContent = desc;
+      rangeInfo.setAttribute("name", desc);
+    }
     if(res) 
         res.setAttribute("class",css);
     else 
