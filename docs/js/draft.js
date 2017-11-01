@@ -151,14 +151,13 @@ function playMe(btn) {
 var plistplayer = cld.videoPlayer('demo-playlist-player');
 plistplayer.on('sourcechanged', updateOnSrc);
 plistplayer.playlist(
-  [{ publicId: 'game2', transformation: {crop: 'limit', width: 600}},//sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'hls_30s_test', transformation: {crop: 'limit', width: 600}},
-   { publicId: 'hd_trim2', transformation: {crop: 'limit', width: 600}},
-   { publicId: 'Homepage_2', transformation: {crop: 'limit', width: 600}}], 
+  [{ publicId: 'game2', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
+   { publicId: 'hls_30s_test', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
+   { publicId: 'hd_trim2', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
+   { publicId: 'Homepage_2', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }}], 
    { autoAdvance: 0, repeat: true });
   
- plistplayer.source('game2',{ transformation: {crop: 'limit', width: 600} });
- //{ sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' } });
+ plistplayer.source('game2',{ sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' } });
 
 var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
 
