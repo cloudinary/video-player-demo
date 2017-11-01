@@ -47,7 +47,7 @@ function changeOfResolution() {
     }
     else 
     {
-      if(bid == 0) {
+      if(i == 0) {
         var initial = rangeInfo.getElementsByTagName("span");
         initial[0].textContent = desc;
       }
