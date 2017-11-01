@@ -41,7 +41,7 @@ function changeOfResolution() {
     var desc = qlevel.width + "x" + qlevel.height;
     var css = "range-info";
     if (i == qualityLevels.selectedIndex)
-        css = "range-info active";
+        css = "range-info second-hover";
     if (i == 0) {
       initial[0].textContent = desc;
       rangeInfo.setAttribute("name", desc);
