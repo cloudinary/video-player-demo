@@ -3,7 +3,7 @@ function updateOnResize() {
   var desc = demoplayer.videojs.videoWidth() + 
              "x" + 
              demoplayer.videojs.videoHeight();
-  var current = document.getElementsByClassName("active range-info");
+  var current = document.getElementsByClassName("range-info active");
   for (var i = 0; i < current.length; i++) {
     if(current[i].id != "auto")
       current[i].setAttribute("class","range-info");
@@ -24,29 +24,29 @@ function requestAuto() {
   }
   document.getElementById("checkbox").checked = true;
 }
-function addButton(bid,qlevel,desc,css) {
-      var btn = document.createElement("BUTTON");
-      adaptive.appendChild(btn);
-      btn.addEventListener("click", requestResolution);
-      btn.innerHTML = desc;
-      btn.setAttribute("id",bid);
-      btn.setAttribute("class",css);
-      btn.setAttribute("name",desc);
+function addResolution(rangeInfo,bid,desc,css) {
+      var clone = rangeInfo.cloneNode(true);
+      clone.setAttribute("id", "res"+bid);
+      clone.setAttribute("css", css);
+      var span = clone.getElementsByTagName("span");
+      span[0].textContent = desc;
+      rangeInfo.parentNode.appendChild(clone);
 }
 function changeOfResolution() {
+  var rangeInfo = document.getElementById("res0");
   for (var i = 0; i < qualityLevels.length; i++) {
-    var btn = document.getElementById(i);
+    var res = document.getElementById("res"+i);
     var qlevel = qualityLevels[i];
     var desc = qlevel.width + "x" + qlevel.height;
     var css = "range-info";
     if (i == qualityLevels.selectedIndex)
-        css = "active range-info";
-    if(btn) {
-      if(btn.getAttribute("class") != "active range-info")
+        css = "range-info active";
+    if(res) {
+      if(res.getAttribute("class") != "range-info active")
         btn.setAttribute("class",css);
     }
     else 
-      addButton(i,qlevel,desc,css);
+      addResolution(rangeInfo,i,qlevel,desc,css);
   }
 }
 function removeProfileButtons() {
