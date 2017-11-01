@@ -12,6 +12,7 @@ function updateOnResize() {
     newactive[j].setAttribute("class","range-info active");
 }
 function requestResolution() {
+  console.log("requestResolution() ",this.id);
   document.getElementById("checkbox").checked = false;
   for (var i = 0; i < qualityLevels.length; i++) {
       qualityLevels[i].enabled = (this.id == i);
