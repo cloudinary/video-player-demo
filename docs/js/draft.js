@@ -11,11 +11,11 @@ function updateOnResize() {
   for (var j = 0; j < newactive.length; j++)
     newactive[j].setAttribute("class","range-info active");
 }
-function requestResolution() {
-  console.log("requestResolution() ",this.id);
+function requestResolution(btn) {
+  console.log("requestResolution() ",btn.id);
   document.getElementById("checkbox").checked = false;
   for (var i = 0; i < qualityLevels.length; i++) {
-      qualityLevels[i].enabled = (this.id == i);
+      qualityLevels[i].enabled = (btn.id == i);
   }
 }
 function requestAuto() {
