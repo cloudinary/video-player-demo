@@ -33,7 +33,7 @@ function addResolution(rangeInfo,bid,desc,css) {
       rangeInfo.parentNode.appendChild(clone);
 }
 function changeOfResolution() {
-  var rangeInfo = document.getElementById("res0");
+  var rangeInfo = document.getElementById("0");
   var initial = rangeInfo.getElementsByTagName("span");
   for (var i = 0; i < qualityLevels.length; i++) {
     var res = document.getElementById(i);
