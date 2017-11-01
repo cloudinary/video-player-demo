@@ -19,12 +19,14 @@ function requestResolution(btn) {
   }
 }
 function requestAuto(auto) {
-  if(auto.checked) {
+  if(auto.checked)
+    auto.checked = false;
+  else {
+    auto.checked = true;
     for (var i = 0; i < qualityLevels.length; i++) {
         qualityLevels[i].enabled = true;
     }
   }
-  document.getElementById("checkbox").checked = true;
 }
 function addResolution(rangeInfo,bid,desc,css) {
       var clone = rangeInfo.cloneNode(true);
