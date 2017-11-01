@@ -1289,6 +1289,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	font-size: 14px;
 	line-height: 17px;
 	font-weight: 700;
+	color: #0078ff;
 }
 
 .switcher-area .switcher {
@@ -1299,7 +1300,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	-webkit-transition: all .4s ease;
 	transition: all .4s ease;
 	position: relative;
-	background: #0078ff;
+	background: #D3D3D3;
 	border-radius: 12px;
 	margin: 0 1px 0 0;
 }
