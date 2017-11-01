@@ -46,7 +46,7 @@ function changeOfResolution() {
         res.setAttribute("class",css);
     }
     else 
-      addResolution(rangeInfo,i,qlevel,desc,css);
+      addResolution(rangeInfo,i,desc,css);
   }
 }
 function removeProfileButtons() {
