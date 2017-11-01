@@ -1289,7 +1289,6 @@ input[type="radio"]:checked + label .radio-icon:before {
 	font-size: 14px;
 	line-height: 17px;
 	font-weight: 700;
-	color: #0078ff;
 }
 
 .switcher-area .switcher {
@@ -1328,6 +1327,10 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 .switcher-area input[type="checkbox"]:checked + .switcher:before {
 	right: 0;
+}
+
+.switcher-area input[type="checkbox"]:checked + .switcher{
+  background-color: #0078ff;
 }
 
 .display-resolation {
