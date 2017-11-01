@@ -18,9 +18,11 @@ function requestResolution(btn) {
       qualityLevels[i].enabled = (btn.id == i);
   }
 }
-function requestAuto() {
-  for (var i = 0; i < qualityLevels.length; i++) {
-      qualityLevels[i].enabled = true;
+function requestAuto(auto) {
+  if(auto.checked) {
+    for (var i = 0; i < qualityLevels.length; i++) {
+        qualityLevels[i].enabled = true;
+    }
   }
   document.getElementById("checkbox").checked = true;
 }
