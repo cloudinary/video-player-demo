@@ -19,10 +19,7 @@ function requestResolution(btn) {
   }
 }
 function requestAuto(auto) {
-  if(auto.checked)
-    auto.checked = false;
-  else {
-    auto.checked = true;
+  if(auto.checked) {
     for (var i = 0; i < qualityLevels.length; i++) {
         qualityLevels[i].enabled = true;
     }
