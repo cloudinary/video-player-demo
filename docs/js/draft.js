@@ -34,6 +34,7 @@ function addResolution(rangeInfo,bid,desc,css) {
 }
 function changeOfResolution() {
   var rangeInfo = document.getElementById("res0");
+  var initial = rangeInfo.getElementsByTagName("span");
   for (var i = 0; i < qualityLevels.length; i++) {
     var res = document.getElementById("res"+i);
     var qlevel = qualityLevels[i];
@@ -41,19 +42,12 @@ function changeOfResolution() {
     var css = "range-info";
     if (i == qualityLevels.selectedIndex)
         css = "range-info active";
-    if(res) {
-      if(res.getAttribute("class") != "range-info active")
+    if (i == 0)
+      initial[0].textContent = desc;
+    if(res) 
         res.setAttribute("class",css);
-    }
     else 
-    {
-      if(i == 0) {
-        var initial = rangeInfo.getElementsByTagName("span");
-        initial[0].textContent = desc;
-      }
-      else
         addResolution(rangeInfo,i,desc,css);
-    }
   }
 }
 function removeProfileButtons() {
