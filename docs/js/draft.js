@@ -25,7 +25,7 @@ function requestAuto() {
 }
 function addResolution(rangeInfo,bid,desc,css) {
       var clone = rangeInfo.cloneNode(true);
-      clone.setAttribute("id", "res"+bid);
+      clone.setAttribute("id", bid);
       clone.setAttribute("css", css);
       clone.setAttribute("name", desc);
       var span = clone.getElementsByTagName("span");
@@ -36,7 +36,7 @@ function changeOfResolution() {
   var rangeInfo = document.getElementById("res0");
   var initial = rangeInfo.getElementsByTagName("span");
   for (var i = 0; i < qualityLevels.length; i++) {
-    var res = document.getElementById("res"+i);
+    var res = document.getElementById(i);
     var qlevel = qualityLevels[i];
     var desc = qlevel.width + "x" + qlevel.height;
     var css = "range-info";
@@ -55,7 +55,7 @@ function changeOfResolution() {
 function removeProfileButtons() {
   var loop = document.getElementsByClassName("range-info").length;
   for (var i = 1; i < loop; i++) {
-    var btn = document.getElementById("res"+i)
+    var btn = document.getElementById(i)
     if(btn)
       adaptive.removeChild(btn);
   }
