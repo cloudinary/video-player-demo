@@ -126,8 +126,8 @@ eventTypes.forEach(function(eventType) {
       })
     });
   
- eventplayer.source('hls_30s_test',{ transformation: {crop: 'limit', width: 600} });
- //                             transformation: {streaming_profile: 'hd' } });
+ eventplayer.source('hls_30s_test',{ sourceTypes: ['hls'], 
+                              transformation: {streaming_profile: 'hd' } });
 
 function playMe(btn) {
     var val = parseInt(btn.value);
