@@ -43,7 +43,7 @@ function changeOfResolution() {
         css = "range-info active";
     if(res) {
       if(res.getAttribute("class") != "range-info active")
-        btn.setAttribute("class",css);
+        res.setAttribute("class",css);
     }
     else 
       addResolution(rangeInfo,i,qlevel,desc,css);
