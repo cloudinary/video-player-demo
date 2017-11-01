@@ -46,7 +46,14 @@ function changeOfResolution() {
         res.setAttribute("class",css);
     }
     else 
-      addResolution(rangeInfo,i,desc,css);
+    {
+      if(bid == 0) {
+        var initial = rangeInfo.getElementsByTagName("span");
+        initial[0].textContent = desc;
+      }
+      else
+        addResolution(rangeInfo,i,desc,css);
+    }
   }
 }
 function removeProfileButtons() {
