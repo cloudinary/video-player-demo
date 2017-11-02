@@ -15,7 +15,7 @@ function requestResolution(btn) {
   console.log("requestResolution() ",btn.id);
   document.getElementById("checkbox").checked = false;
   for (var i = 0; i < qualityLevels.length; i++) {
-      qualityLevels[i].enabled = (btn.id == i);
+      qualityLevels[i].enabled = (Number(btn.id) == qualityLevels[i].width);
   }
 }
 function requestAuto(auto) {
@@ -26,53 +26,30 @@ function requestAuto(auto) {
     }
   }
 }
-function addResolution(rangeInfo,bid,desc,css) {
-      var clone = rangeInfo.cloneNode(true);
-      clone.setAttribute("id", bid);
-      clone.setAttribute("css", css);
-      clone.setAttribute("name", desc);
-      var span = clone.getElementsByTagName("span");
-      span[0].textContent = desc;
-      rangeInfo.parentNode.appendChild(clone);
-}
+
 function changeOfResolution() {
-  var rangeInfo = document.getElementById("0");
-  var initial = rangeInfo.getElementsByTagName("span");
   for (var i = 0; i < qualityLevels.length; i++) {
-    var res = document.getElementById(i);
-    var qlevel = qualityLevels[i];
-    var desc = qlevel.width + "x" + qlevel.height;
-    var css = "range-info";
+    var res = document.getElementById(qualityLevels[i].width);
     if (i == qualityLevels.selectedIndex)
-        css = "range-info second-hover";
-    if (i == 0) {
-      initial[0].textContent = desc;
-      rangeInfo.setAttribute("name", desc);
-    }
-    if(res) 
-        res.setAttribute("class",css);
-    else 
-        addResolution(rangeInfo,i,desc,css);
+        res.setAttribute("class","range-info second-hover");
+    else
+        res.setAttribute("class","range-info");
   }
 }
-function removeProfileButtons() {
-  var loop = document.getElementsByClassName("range-info").length;
-  for (var i = 1; i < loop; i++) {
-    var btn = document.getElementById(i)
-    if(btn)
-      adaptive.removeChild(btn);
-  }
-}
-function setProfile() {
-  removeProfileButtons();
-  var profile;
-  var profiles = document.getElementsByName("radio1");
-  for(var i = 0; i < profiles.length; i++){
-    if(profiles[i].checked){
-        profile = profiles[i].value;
+
+function setProfile(profile) {
+  var elements = document.getElementsByClassName('range-info');
+  var i = elements.length;
+
+    while(i--) {
+      console.log(elements[i].getElementsByClassName(profile.value).length);
+        if(elements[i].getElementsByClassName(profile.value).length > 0)
+          elements[i].setAttribute("class","range-info");
+        else
+          elements[i].setAttribute("class","range-info out-of-range");
+          
     }
-  }
-  demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile } });
+  demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } });
 }
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
