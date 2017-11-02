@@ -156,11 +156,11 @@
 												<label for="streaming1"><i class="radio-icon"></i>4K</label>
 											</li>
 											<li>
-												<input type="radio" id="streaming2" name="radio1" onclick="setProfile(this)" value="full_hd">
+												<input type="radio" id="streaming2" name="radio1" onclick="setProfile(this)" value="full_hd" checked>
 												<label for="streaming2"><i class="radio-icon"></i>Full HD</label>
 											</li>
 											<li>
-												<input type="radio" id="streaming3" name="radio1" onclick="setProfile(this)" value="hd" checked>
+												<input type="radio" id="streaming3" name="radio1" onclick="setProfile(this)" value="hd">
 												<label for="streaming3"><i class="radio-icon"></i>HD</label>
 											</li>
 											<li>
@@ -184,7 +184,7 @@
 									</div>
 									<div class="display-resolation">
 										<div id="adaptive" class="resolation-range">
-											<div id="3840" class="range-info" onclick="requestResolution(this)">
+											<div id="3840" class="range-info out-of-range" onclick="requestResolution(this)">
 												<span class="text">3840x2160</span>
 												<ul class="bar-list 4k">
 													<li></li>
@@ -200,7 +200,7 @@
 													<li></li>
 												</ul>
 											</div>
-											<div id="2560" class="range-info" onclick="requestResolution(this)">
+											<div id="2560" class="range-info out-of-range" onclick="requestResolution(this)">
 												<span class="text">2560x1440</span>
 												<ul class="bar-list 4k">
 													<li></li>
