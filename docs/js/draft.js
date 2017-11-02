@@ -25,13 +25,9 @@ function requestAuto(auto) {
 }
 
 function changeOfResolution() {
-  for (var i = 0; i < qualityLevels.length; i++) {
-    var res = document.getElementById(qualityLevels[i].width);
-    if (i == qualityLevels.selectedIndex)
-        res.setAttribute("class","range-info second-hover");
-    else
-        res.setAttribute("class","range-info");
-  }
+  var index = qualityLevels.selectedIndex;
+  var res = document.getElementById(qualityLevels[index].width);
+  res.setAttribute("class","range-info second-hover");
 }
 
 function setProfile(profile) {
