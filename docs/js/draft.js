@@ -1,15 +1,12 @@
 
 function updateOnResize() {
-  var desc = demoplayer.videojs.videoWidth() + 
-             "x" + 
-             demoplayer.videojs.videoHeight();
-  var current = document.getElementsByClassName("range-info");
-  for (var i = 0; i < current.length; i++) {
-      current[i].setAttribute("class","range-info");
+  var width = demoplayer.videojs.videoWidth();
+  var current = document.getElementById(width);
+  var oldactive = document.getElementsByClass("range-info active");
+  for (var i = 0; i < oldactive.length; i++) {
+    oldactive[i].setAttribute("class","range-info");
   }
-  var newactive = document.getElementsByName(desc);
-  for (var j = 0; j < newactive.length; j++)
-    newactive[j].setAttribute("class","range-info active");
+  current.setAttribute("class","range-info active");
 }
 function requestResolution(btn) {
   console.log("requestResolution() ",btn.id);
