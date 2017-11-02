@@ -27,10 +27,9 @@ function requestAuto(auto) {
 function changeOfResolution() {
   var index = qualityLevels.selectedIndex;
   var res = document.getElementById(qualityLevels[index].width);
-  console.log("changeOfResolution() ",qualityLevels[index].width);
   var old = document.getElementsByClassName("range-info second-hover");
   for (var i = 0; i < old.length; i++) {
-    oldactive[i].setAttribute("class","range-info");
+    old[i].setAttribute("class","range-info");
   }
   res.setAttribute("class","range-info second-hover");
 }
