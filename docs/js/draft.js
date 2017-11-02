@@ -2,7 +2,7 @@
 function updateOnResize() {
   var width = demoplayer.videojs.videoWidth();
   var current = document.getElementById(width);
-  var oldactive = document.getElementsByClass("range-info active");
+  var oldactive = document.getElementsByClassName("range-info active");
   for (var i = 0; i < oldactive.length; i++) {
     oldactive[i].setAttribute("class","range-info");
   }
