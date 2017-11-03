@@ -57,7 +57,7 @@
 						<strong class="title">Player Theme</strong>
 						<ul class="theme-list">
 							<li>
-								<input type="radio" id="theme1" name="radio" checked>
+								<input type="radio" id="theme1" name="radio" onclick="setTheme(this)" value="dark" checked>
 								<label for="theme1">
 									<span class="text"><i class="radio-icon"></i>Dark</span>
 									<span class="video-palyer">
@@ -66,7 +66,7 @@
 								</label>
 							</li>
 							<li>
-								<input type="radio" id="theme2" name="radio">
+								<input type="radio" id="theme2" name="radio" onclick="setTheme(this)" value="light">
 								<label for="theme2">
 									<span class="text"><i class="radio-icon"></i>Light</span>
 									<span class="video-palyer">
