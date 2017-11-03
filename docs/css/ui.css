@@ -1550,7 +1550,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	position: relative;
 	overflow: hidden;
 }
-
+/*
 .events-area:before {
 	content: "";
 	position: absolute;
@@ -1561,7 +1561,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
 	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
 	z-index: 5;
-}
+}*/
 
 .events-area h3 {
 	letter-spacing: .09px;
