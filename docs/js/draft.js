@@ -9,7 +9,7 @@ function updateOnResize() {
   current.setAttribute("class","range-info active");
 }
 function requestResolution(btn) {
-  console.log("requestResolution() ",btn.id, manual_quality);
+  console.log("requestResolution() ",btn.id, safari);
   if(!safari)
   {
     document.getElementById("checkbox").checked = false;
