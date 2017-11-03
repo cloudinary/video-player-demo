@@ -1,6 +1,13 @@
 function toggleClass(theme) {
     theme.classList.toggle("active");
 }
+function setTheme(btn) {
+    var css = "cld-video-player vjs-fluid cld-video-player-skin-" + btn.value;
+    var vplayers = getElementsByClassName("cld-video-player");
+    for(var i = 0; i < vplayers.length; i++) {
+        vplayers[i].setAttribute("class",css);
+    }      
+}
 function updateOnResize() {
   var width = demoplayer.videojs.videoWidth();
   var current = document.getElementById(width);
