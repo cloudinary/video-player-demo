@@ -1,4 +1,6 @@
-
+function toggleClass(theme) {
+    theme.classList.toggle("active");
+}
 function updateOnResize() {
   var width = demoplayer.videojs.videoWidth();
   var current = document.getElementById(width);
