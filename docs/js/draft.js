@@ -3,7 +3,7 @@ function toggleClass(theme) {
 }
 function setTheme(btn) {
     var css = "cld-video-player vjs-fluid cld-video-player-skin-" + btn.value;
-    var vplayers = getElementsByClassName("cld-video-player");
+    var vplayers = document.getElementsByClassName("cld-video-player");
     for(var i = 0; i < vplayers.length; i++) {
         vplayers[i].setAttribute("class",css);
     }      
