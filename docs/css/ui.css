@@ -786,6 +786,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	overflow: hidden;
 	text-align: center;
 	color: #fff;
+	background: #0E2F5A;
 }
 
 .banner-holder p {
@@ -820,6 +821,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	display: block;
 	width: 537px;
 	margin: 0 auto 20px;
+	background: #0E2F5A;
 }
 
 .logo a {
