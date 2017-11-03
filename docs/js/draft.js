@@ -9,10 +9,13 @@ function updateOnResize() {
   current.setAttribute("class","range-info active");
 }
 function requestResolution(btn) {
-  console.log("requestResolution() ",btn.id);
-  document.getElementById("checkbox").checked = false;
-  for (var i = 0; i < qualityLevels.length; i++) {
+  console.log("requestResolution() ",btn.id, manual_quality);
+  if(!safari)
+  {
+    document.getElementById("checkbox").checked = false;
+    for (var i = 0; i < qualityLevels.length; i++) {
       qualityLevels[i].enabled = (Number(btn.id) == qualityLevels[i].width);
+    }
   }
 }
 function requestAuto(auto) {
@@ -48,6 +51,10 @@ function setProfile(profile) {
     }
   demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
 }
+
+var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
+var safari   = navigator.userAgent.indexOf("Safari") > -1;
+if ((chrome) && (safari)) safari = false;
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
 
