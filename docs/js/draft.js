@@ -69,7 +69,7 @@ function updateOnEvent(eventStr) {
   if (eventStr.includes("timeplayed"))
       entry.className = "orange";
   entry.appendChild(document.createTextNode(eventStr));
-  list.insertBefore(entry,list.firstChild);
+  list.appendChild(entry);
   list.scrollTop = list.scrollHeight;
 }
 
