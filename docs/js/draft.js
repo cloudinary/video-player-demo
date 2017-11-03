@@ -46,7 +46,7 @@ function setProfile(profile) {
           elements[i].setAttribute("class","range-info out-of-range");
           
     }
-  demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } });
+  demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
 }
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
