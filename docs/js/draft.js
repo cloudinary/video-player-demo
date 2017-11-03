@@ -56,6 +56,9 @@ var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
 var safari   = navigator.userAgent.indexOf("Safari") > -1;
 if ((chrome) && (safari)) safari = false;
 
+if(safari)
+  document.getElementById("checkbox").disabled = true;
+
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
 
 var adaptive = document.getElementById("adaptive");
