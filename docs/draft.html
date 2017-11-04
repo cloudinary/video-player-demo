@@ -320,9 +320,11 @@
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* To use adaptive streaming formats such as HLS and MPEG-DASH, 
-simply define 'sourceTypes' to the desired format ('dash' or 'hls'). 
-You can define a desired profile using the 'transformation' param. Sample code: */
+<pre class="language-javascript"><code>/* To use adaptive streaming formats such as HLS 
+and MPEG-DASH, simply define 'sourceTypes' to 
+the desired format ('dash' or 'hls'). You can 
+define a desired profile using the 'transformation' param. 
+Sample code: */
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'cloud' })
 
@@ -370,9 +372,11 @@ player.source('oceans', { sourceTypes: ['hls'], transformation: { streaming_prof
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* The Video Player supports tracking of different events to the application 
-and to different analytics platforms, such as Google Analytics. 
-Supported events include, for example: play, pause, time played, percentage played and volume change. Sample code: */
+<pre class="language-javascript"><code>/* The Video Player supports tracking of different events 
+to the application and to different analytics platforms, 
+such as Google Analytics. Supported events include, 
+for example: play, pause, time played, percentage played 
+and volume change. Sample code: */
 // Initialize player
 var player = cld.videoPlayer('example-player', {
   analytics: { // Enable player analytics
@@ -465,21 +469,15 @@ player.source('oceans').play()</code></pre>
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* The Video Player supports tracking of different events to the application 
-and to different analytics platforms, such as Google Analytics.
-Supported events include, for example: play, pause, time played, percentage played and volume change. Sample code: */
+<pre class="language-javascript"><code>// Define Playlist Sources
+var source1 = { publicId: 'oceans', transformation: { angle: 1 }, info: { subtitle: 'My Oceans Movie' } }
+var source2 = { publicId: 'book', info: { title: 'My wonderful Book', subtitle: 'Wonderful book movie', description: 'A movie about a wonderful book' } }
 // Initialize player
-var player = cld.videoPlayer('example-player', {
-  analytics: { // Enable player analytics
-    events: ['play',
-   	     'Pause',
-   	     {type: 'percentsplayed', percents: [10, 50,
-      75, 100] }, // Some events may have 
-      additionals settings
-      'Start',
-      'Ended'] } })
-// Modify player source
-player.source('oceans').play()</code></pre>
+      var player = cld.videoPlayer('example-player');
+
+      // Auto advance to next video after 0 seconds, repeat the playlist when final video ends, and present upcoming video 5 seconds before the current video ends.
+      player.playlist([source1, source2], { autoAdvance: true, repeat: true, presentUpcoming: 8 });
+</code></pre>
 							</div>
 							<div class="codepen-info">
 								<div class="wrap">
@@ -513,21 +511,25 @@ player.source('oceans').play()</code></pre>
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* The Video Player supports tracking of different events to the application 
-and to different analytics platforms, such as Google Analytics.
-Supported events include, for example: play, pause, time played, percentage played and volume change. Sample code: */
-// Initialize player
-var player = cld.videoPlayer('example-player', {
-  analytics: { // Enable player analytics
-    events: ['play',
-   	     'Pause',
-   	     {type: 'percentsplayed', percents: [10, 50,
-      75, 100] }, // Some events may have 
-      additionals settings
-      'Start',
-      'Ended'] } })
-// Modify player source
-player.source('oceans').play()</code></pre>
+<pre class="language-javascript"><code>// Define Playlist Sources
+var source1 = { publicId: 'oceans', transformation: { angle: 1 }, info: { subtitle: 'My Oceans Movie' } }
+var source2 = { publicId: 'book', info: { title: 'My wonderful Book', subtitle: 'Wonderful book movie', description: 'A movie about a wonderful book' } }
+// Recommendations can be as simple as an array of other video source objects
+      source1.recommendations = [source2]
+
+      // For async fetching of recommendations (e.g. fetching from database), promises can be used
+      source2.recommendations = new Promise((resolve, _) => {
+        console.log('Going to database...');
+        setTimeout(() => {
+          console.log('Fetched source from database.', source1)
+          resolve([source1]);
+        }, 3000);
+      })
+
+      // Initialize player
+      var player = cld.videoPlayer('example-player', { autoShowRecommendations: true });
+
+      player.source(source1);</code></pre>
 							</div>
 							<div class="codepen-info">
 								<div class="wrap">
@@ -552,7 +554,7 @@ player.source('oceans').play()</code></pre>
 							<li><a href="https://cloudinary.com/privacy">Privacy Policy</a></li>
 						</ul>
 					</div>
-					<strong class="f-logo"><a href="#"><img src="images/img1.svg" alt="Cloudinary"></a></strong>
+					<strong class="f-logo"><a href="https://cloudinary.com/"><img src="images/img1.svg" alt="Cloudinary"></a></strong>
 				</div>
 			</div>
 		</footer>
