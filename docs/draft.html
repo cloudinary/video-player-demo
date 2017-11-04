@@ -21,7 +21,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
 	<link href="https://unpkg.com/cloudinary-video-player@edge/dist/cld-video-player.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
-	<link media="all" rel="stylesheet" href="css/ui.css">
+	<link href="css/prism.css" rel="stylesheet" />
+	<link href="css/main.css" media="all" rel="stylesheet" >
 </head>
 <body>
 	<div id="wrapper">
@@ -319,7 +320,12 @@
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-								<img src="images/placeholder.png" alt="codepin">
+								<pre class="language-javascript"><code>To use adaptive streaming formats such as HLS and MPEG-DASH, simply define 'sourceTypes' to the desired format ('dash' or 'hls'). You can define a desired profile using the 'transformation' param. Sample code:
+var cld = cloudinary.Cloudinary.new({ cloud_name: 'cloud' })
+// Initialize player
+var player = cld.videoPlayer('example-player')
+// Modify player source and play.
+player.source('oceans', { sourceTypes: ['hls'], transformation: { streaming_profile: 'hd' } }).play()</code></pre>
 							</div>
 							<div class="codepen-info">
 								<div class="wrap">
@@ -357,8 +363,21 @@
 							</div>
 						</div>
 						<div class="editing-area">
-							<div class="codepen-placeholder">
-								<img src="images/placeholder.png" alt="codepin">
+							<div class="codepen-placeholder"><pre class="language-javascript"><code>The Video Player supports tracking of different events to the application and to different analytics platforms, such as Google Analytics.
+Supported events include, for example: play, pause, time played, percentage played and volume change.
+Sample code:
+// Initialize player
+var player = cld.videoPlayer('example-player', {
+  analytics: { // Enable player analytics
+    events: ['play',
+   	     'Pause',
+   	     {type: 'percentsplayed', percents: [10, 50,
+      75, 100] }, // Some events may have 
+      additionals settings
+      'Start',
+      'Ended'] } })
+// Modify player source
+player.source('oceans').play()</code></pre>
 							</div>
 							<div class="codepen-info">
 								<div class="wrap">
@@ -506,6 +525,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player@edge/dist/cld-video-player.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
+	<script type="text/javascript" src="js/prism.js"></script>
 	<script type="text/javascript" src="js/draft.js"></script>
 </body>
 </html>
