@@ -1478,7 +1478,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 .codepen-placeholder {
 	position: relative;
 	overflow: hidden;
-	margin: 0;
+	font-size: 64%;
 }
 
 .codepen-placeholder img {
