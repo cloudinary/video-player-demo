@@ -333,7 +333,7 @@ var player = cld.videoPlayer('example-player')
 
 // Modify player source and play.
 player.source('oceans', { sourceTypes: ['hls'], 
-transformation: { streaming_profile: 'hd' } }).play()
+transformation: { streaming_profile: 'hd' } }).play();
 </code></pre>
 							</div>
 							<div class="codepen-info">
@@ -389,7 +389,7 @@ var player = cld.videoPlayer('example-player', {
             'Start',
       	    'Ended'] } })
 // Modify player source
-player.source('oceans').play()
+player.source('oceans').play();
 </code></pre>
 							</div>
 							<div class="codepen-info">
@@ -472,12 +472,10 @@ player.source('oceans').play()
 						<div class="editing-area">
 							<div class="codepen-placeholder">
 <pre class="language-javascript"><code>// Define Playlist Sources
-var source1 = { publicId: 'oceans', 
-info: { title: 'Oceans', 
+var source1 = { publicId: 'oceans', info: { title: 'Oceans', 
 subtitle: 'My Oceans Movie' } };
 
-var source2 = { publicId: 'book', 
-info: { title: 'My wonderful Book', 
+var source2 = { publicId: 'book', info: { title: 'My Book', 
 subtitle: 'Wonderful book movie' } };
 
 // Initialize player
@@ -524,14 +522,11 @@ player.playlist([source1, source2],
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>
-// Define Playlist Sources
-var source1 = { publicId: 'oceans', 
-info: { title: 'Oceans', 
+<pre class="language-javascript"><code>// Define Playlist Sources
+var source1 = { publicId: 'oceans', info: { title: 'Oceans', 
 subtitle: 'My Oceans Movie' } };
 
-var source2 = { publicId: 'book', 
-info: { title: 'My wonderful Book', 
+var source2 = { publicId: 'book', info: { title: 'My  Book', 
 subtitle: 'Wonderful book movie' } };
 
 // Recommendations can be as simple as an array of other 
@@ -552,8 +547,7 @@ source2.recommendations = new Promise((resolve, _) => {
 var player = cld.videoPlayer('example-player', 
 { autoShowRecommendations: true });
 
-player.source(source1);
-</code></pre>
+player.source(source1);</code></pre>
 							</div>
 							<div class="codepen-info">
 								<div class="wrap">
