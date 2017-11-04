@@ -320,10 +320,14 @@
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-								<pre class="language-javascript"><code>To use adaptive streaming formats such as HLS and MPEG-DASH, simply define 'sourceTypes' to the desired format ('dash' or 'hls'). You can define a desired profile using the 'transformation' param. Sample code:
+								<pre class="language-javascript"><code>/* To use adaptive streaming formats such as HLS and MPEG-DASH, 
+								simply define 'sourceTypes' to the desired format ('dash' or 'hls'). 
+								You can define a desired profile using the 'transformation' param. Sample code: */
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'cloud' })
+
 // Initialize player
 var player = cld.videoPlayer('example-player')
+
 // Modify player source and play.
 player.source('oceans', { sourceTypes: ['hls'], transformation: { streaming_profile: 'hd' } }).play()</code></pre>
 							</div>
@@ -458,7 +462,21 @@ player.source('oceans').play()</code></pre>
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-								<img src="images/placeholder.png" alt="codepin">
+								<pre class="language-javascript"><code>The Video Player supports tracking of different events to the application and to different analytics platforms, such as Google Analytics.
+Supported events include, for example: play, pause, time played, percentage played and volume change.
+Sample code:
+// Initialize player
+var player = cld.videoPlayer('example-player', {
+  analytics: { // Enable player analytics
+    events: ['play',
+   	     'Pause',
+   	     {type: 'percentsplayed', percents: [10, 50,
+      75, 100] }, // Some events may have 
+      additionals settings
+      'Start',
+      'Ended'] } })
+// Modify player source
+player.source('oceans').play()</code></pre>
 							</div>
 							<div class="codepen-info">
 								<div class="wrap">
@@ -492,7 +510,21 @@ player.source('oceans').play()</code></pre>
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-								<img src="images/placeholder.png" alt="codepin">
+								<pre class="language-javascript"><code>The Video Player supports tracking of different events to the application and to different analytics platforms, such as Google Analytics.
+Supported events include, for example: play, pause, time played, percentage played and volume change.
+Sample code:
+// Initialize player
+var player = cld.videoPlayer('example-player', {
+  analytics: { // Enable player analytics
+    events: ['play',
+   	     'Pause',
+   	     {type: 'percentsplayed', percents: [10, 50,
+      75, 100] }, // Some events may have 
+      additionals settings
+      'Start',
+      'Ended'] } })
+// Modify player source
+player.source('oceans').play()</code></pre>
 							</div>
 							<div class="codepen-info">
 								<div class="wrap">
