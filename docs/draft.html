@@ -127,7 +127,7 @@
 				<div class="container">
 					<header class="heading-area">
 						<h2>Adaptive Video Streaming</h2>
-						<p>Actual quality (resolution) will be chosen based on the actual dimensions <br>(larger player presentation will require higher resolution), <br>Streaming Profile (max resolution) and actual network quality (available bandwidth).</p>
+						<p>Take advantage of Cloudinary's automatic generation of adaptive bitrate streaming files to automatically adjust the resolution of your video in in real time to best match the player dimensions, available bandwidth and CPU capacity of each viewer.</p>
 					</header>
 					<div class="block-area">
 						<div class="video-block">
@@ -173,7 +173,7 @@
 								<div class="display-info">
 									<div class="wrap">
 										<div class="holder">
-											<strong class="title">Displayed Resolution:</strong>
+											<strong class="title">Stream adaptively</strong>
 											<div class="switcher-area">
 												<input type="checkbox" id="checkbox" onchange="requestAuto(this)" checked>
 												<label for="checkbox" class="switcher"></label>
@@ -407,7 +407,7 @@ player.source('oceans').play();
 				<div class="container">
 					<header class="heading-area">
 						<h2>Video Playlists</h2>
-						<p>You can create a playlist for your player based on a list of public IDs or for all videos with a specified tag. After you have defined a playlist, you can use playlist methods to control the list. For example, you can jump to the next or previous video, jump to a specific video in the playlist by index, determine whether to auto-advance to the next video when the previous one ends and more. </p>
+						<p>You can create a playlist based on a list of public IDs or for all videos in your Cloudinary account with a specified tag. After you have defined a playlist, you can use playlist methods to control the list. For example, you can jump to the next or previous video, jump to a specific video in the playlist by index, determine whether to to show of preview of the upcoming video, whether to auto-advance to the next video when the previous one ends, and more.</p>
 					</header>
 					<div class="block-area">
 						<div class="video-block">
@@ -505,7 +505,7 @@ player.playlist([source1, source2],
 				<div class="container">
 					<header class="heading-area">
 						<h2>recommended content</h2>
-						<p>Recommended videos can be defined when setting a player's video source. The recommendations will be shown in the recommendation overlay when a video ends. Please note that in order to fully leverage the recommendations overlay, it is recommended that you set the title, subtitle and description when creating source objects (using the info param).</p>
+						<p>You can define recommended videos when setting a player's video source. The recommendations are shown as thumbnails in a recommendation overlay when the video ends. The primary recommendation includes the title, subtitle, and description of the recommended video (if defined).</p>
 					</header>
 					<div class="block-area">
 						<div class="video-block">
