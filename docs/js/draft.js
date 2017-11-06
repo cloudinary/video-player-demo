@@ -88,10 +88,11 @@ qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityL
 demoplayer.source('hd_trim2',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'hd' } });
 
-function updateOnEvent(eventStr) {
+function updateOnEvent(eventStr,automatic) {
   var list = document.getElementById('events-list');
   var entry = document.createElement('li');
-  entry.className = "orange";
+  if(automatic) 
+      entry.className = "orange";
   entry.appendChild(document.createTextNode(eventStr));
   list.appendChild(entry);
   list.scrollTop = list.scrollHeight;
@@ -111,16 +112,28 @@ function startTime() {
 
 var eventplayer = cld.videoPlayer('demo-events-player', { playedEventTimes: [3, 10] });
 
-var eventTypes = ['play', 'pause', 'volumechange', 'mute', 'unmute', 'fullscreenchange',
-      'seek', 'sourcechanged', 'timeplayed', 'percentsplayed', 'ended'];
+var autoEventTypes = ['sourcechanged', 'timeplayed', 'percentsplayed', 'ended'];
 
-eventTypes.forEach(function(eventType) {
+var manualEventTypes = ['play', 'pause', 'volumechange', 'mute', 'unmute', 'fullscreenchange',
+      'seek'];
+
+autoEventTypes.forEach(function(eventType) {
       eventplayer.on(eventType, function(event) {
         var eventStr = startTime() + " " + eventType;
         if (event.eventData) {
           eventStr = eventStr + ": " + JSON.stringify(event.eventData)
         }
-        updateOnEvent(eventStr);
+        updateOnEvent(eventStr,true);
+      })
+    });
+
+manualEventTypes.forEach(function(eventType) {
+      eventplayer.on(eventType, function(event) {
+        var eventStr = startTime() + " " + eventType;
+        if (event.eventData) {
+          eventStr = eventStr + ": " + JSON.stringify(event.eventData)
+        }
+        updateOnEvent(eventStr,false);
       })
     });
   
