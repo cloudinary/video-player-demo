@@ -73,7 +73,7 @@ pre[class*="language-"] {
 
 .token.boolean,
 .token.number {
-	color: #ae81ff;
+	color: cornflowerblue;
 }
 
 .token.selector,
@@ -82,7 +82,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: #a6e22e;
+	color: orange;
 }
 
 .token.operator,
