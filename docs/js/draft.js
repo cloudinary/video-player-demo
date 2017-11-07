@@ -39,6 +39,7 @@ function requestAuto(auto) {
     for (var i = 0; i < qualityLevels.length; i++) {
         qualityLevels[i].enabled = true;
     }
+    document.getElementById("checkboxLabel").classList.toggle("disabled");
   }
 }
 
