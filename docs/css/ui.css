@@ -1292,7 +1292,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	color: #0078ff;
 }
 
-.switcher-area .text .disabled {
+.switcher-area .text.disabled {
 	color: gray;
 }
 
