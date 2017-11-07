@@ -1292,6 +1292,10 @@ input[type="radio"]:checked + label .radio-icon:before {
 	color: #0078ff;
 }
 
+.switcher-area .text .disabled {
+	color: #D3D3D3;
+}
+
 .switcher-area .switcher {
 	display: inline-block;
 	vertical-align: top;
