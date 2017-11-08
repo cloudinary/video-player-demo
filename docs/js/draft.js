@@ -14,6 +14,10 @@ function setTheme(btn) {
         vplayers[i].classList.add(newTheme);
     }      
 }
+function playerSizeChange(input) {
+  var area = document.getElementById("adaptive-video-area");
+  area.style.width = input.value + "%";
+}
 function updateOnResize() {
   var width = demoplayer.videojs.videoWidth();
   var current = document.getElementById(width);
