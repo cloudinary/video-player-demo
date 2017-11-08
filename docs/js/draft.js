@@ -67,7 +67,7 @@ function setProfile(profile) {
           
     }
   document.getElementById("checkbox").checked = true;
-  document.getElementById("checkboxLabel").classList.reomve("disabled");
+  document.getElementById("checkboxLabel").classList.remove("disabled");
   demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
 }
 
