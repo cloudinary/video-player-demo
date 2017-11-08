@@ -1274,7 +1274,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	display: inline-block;
 	vertical-align: top;
 	margin: 0;
-	line-height: 17px;
+	line-height: 19px;
 }
 
 .switcher-area {
