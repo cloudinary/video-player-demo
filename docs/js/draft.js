@@ -28,6 +28,7 @@ function requestResolution(btn) {
   if(!safari)
   {
     document.getElementById("checkbox").checked = false;
+    document.getElementById("checkboxLabel").classList.add("disabled");
     for (var i = 0; i < qualityLevels.length; i++) {
       qualityLevels[i].enabled = (Number(btn.id) == qualityLevels[i].width);
     }
@@ -65,6 +66,8 @@ function setProfile(profile) {
           elements[i].setAttribute("class","range-info out-of-range");
           
     }
+  document.getElementById("checkbox").checked = true;
+  document.getElementById("checkboxLabel").classList.reomve("disabled");
   demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
 }
 
