@@ -66,8 +66,6 @@ function setProfile(profile) {
           elements[i].setAttribute("class","range-info out-of-range");
           
     }
-  document.getElementById("checkbox").checked = true;
-  document.getElementById("checkboxLabel").classList.remove("disabled");
   demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
 }
 
