@@ -109,7 +109,7 @@ qualityLevels.on('change', changeOfResolution);
 qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
 
 demoplayer.source('hd_trim2',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'hd' } });
+                              transformation: {streaming_profile: 'full_hd' } });
 
 function updateOnEvent(eventStr,automatic) {
   var list = document.getElementById('events-list');
