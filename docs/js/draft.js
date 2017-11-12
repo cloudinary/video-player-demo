@@ -1,4 +1,5 @@
-function toggleClass(theme) {
+function toggleClass() {
+    var theme = document.getElementById("theme-area");
     theme.classList.toggle("active");
 }
 function setTheme(btn) {
@@ -12,7 +13,8 @@ function setTheme(btn) {
     for(var i = 0; i < vplayers.length; i++) {
         vplayers[i].classList.remove(oldTheme);
         vplayers[i].classList.add(newTheme);
-    }      
+    }
+    toggleClass();
 }
 
 window.addEventListener('scroll',checkPosition,false);
