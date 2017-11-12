@@ -14,6 +14,19 @@ function setTheme(btn) {
         vplayers[i].classList.add(newTheme);
     }      
 }
+
+window.addEventListener('scroll',checkPosition,false);
+function checkPosition()
+{
+    var themeArea = document.getElementById("theme-area");
+    if(window.scrollY > 50)
+    {
+        themeArea.classList.add("scrolling");
+    } else {
+        themeArea.classList.remove("scrolling");
+    }
+}
+
 function playerSizeChange(input) {
   var area = document.getElementById("adaptive-video-area");
   area.style.width = input.value + "%";
