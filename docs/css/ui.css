@@ -781,7 +781,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 .banner-holder {
 	font-size: 22px;
-	padding: 89px 0 114px;
+	padding: 89px 0 50px;
 	position: relative;
 	overflow: hidden;
 	text-align: center;
