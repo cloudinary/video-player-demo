@@ -30,7 +30,7 @@ function checkPosition()
 }
 
 function playerSizeChange(input) {
-  var area = document.getElementById("adaptive-video-area");
+  var area = document.getElementById("video-block");
   area.style.width = input.value + "%";
 }
 function updateOnResize() {
