@@ -1861,6 +1861,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .video-block.adaptive {
+	width: 70%;
 	margin: auto;
 }
 
