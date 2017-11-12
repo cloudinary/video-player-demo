@@ -32,6 +32,8 @@ function checkPosition()
 function playerSizeChange(input) {
   var area = document.getElementById("video-area-adaptive");
   area.style.width = input.value + "%";
+  var pwidth = document.getElementById("player-width");
+  pwidth.innerHTML = demoplayer.videojs.videoWidth();
 }
 function updateOnResize() {
   var width = demoplayer.videojs.videoWidth();
