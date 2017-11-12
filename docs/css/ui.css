@@ -1827,6 +1827,74 @@ input[type="radio"]:checked + label .radio-icon:before {
 	height: auto;
 }
 
+.container.adaptive {
+	max-width: 1950px;
+}
+
+.header-holder.adaptive {
+	padding: 0 67px 0 80px;
+}
+
+.menu.adaptive {
+	margin: 0 -15px;
+}
+
+.menu.adaptive li {
+	padding: 0 15px;
+}
+
+.content-block.adaptive {
+	padding: 52px 0 69px;
+}
+
+.heading-area.adaptive {
+	max-width: 782px;
+	margin: 0 auto 40px;
+}
+
+.heading-area.adaptive h2 {
+	margin: 0 0 31px;
+}
+
+.block-area.adaptive {
+	display: block;
+}
+
+.video-block.adaptive {
+	width: 100%;
+}
+
+.video-detail.adaptive {
+	max-width: 660px;
+	margin: 0 auto;
+}
+
+.video-detail.adaptive.style01 {
+	max-width: inherit;
+}
+
+.video-info.adaptive {
+	padding: 25px 0 19px;
+}
+
+.editing-area.adaptive {
+	width: 100%;
+	max-width: 780px;
+	margin: 0 auto;
+}
+
+.codepen-info.adaptive .btn {
+	font-size: 14px;
+}
+
+.footer-holder.adaptive {
+	padding: 0 65px 0 67px;
+}
+
+.footer-holder.adaptive .list li {
+	font-size: 15px;
+}
+
 @media (max-width: 1199px) {
 	.container {
 		max-width: 972px;
