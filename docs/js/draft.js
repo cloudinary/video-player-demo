@@ -99,7 +99,7 @@ if ((chrome) && (safari)) safari = false;
 if(safari)
   document.getElementById("checkbox").disabled = true;
 
-playerSizeChange(document.getElementById("myRange"));
+playerSizeChange(document.getElementById("player-range"));
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
 
