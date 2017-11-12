@@ -135,14 +135,14 @@
 		</div>
 		<main id="main">
 			<section class="content-block style01" id="section01">
-				<div class="container">
-					<header class="heading-area">
+				<div class="container adaptive">
+					<header class="heading-area adaptive">
 						<h2>Adaptive Video Streaming</h2>
 						<p>Take advantage of Cloudinary's automatic generation of adaptive bitrate streaming files to automatically adjust the resolution of your video in in real time to best match the player dimensions, available bandwidth and CPU capacity of each viewer.</p>
 					</header>
-					<div class="block-area">
-						<div class="video-block">
-							<div id="adaptive-video-area" class="video-area">
+					<div class="block-area adaptive">
+						<div class="video-block adaptive">
+							<div id="adaptive-video-area" class="video-area adaptive">
 								<video
 									id="demo-adaptive-player" 
 									controls 
@@ -150,8 +150,8 @@
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
                                 				</video>
 							</div>
-							<div class="video-detail">
-								<div class="video-info">
+							<div class="video-detail adaptive">
+								<div class="video-info adaptive">
 									<div class="size-area">
 										<strong class="title">Player size</strong>
 										<input type="range" min="60" max="120" value="80" class="slider" oninput="playerSizeChange(this)">
@@ -324,13 +324,10 @@
 								</div>
 							</div>
 						</div>
-						<div class="editing-area">
+						<div class="editing-area adaptive">
 							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* To use adaptive streaming formats such as HLS 
-and MPEG-DASH, simply define 'sourceTypes' to 
-the desired format ('dash' or 'hls'). You can 
-define a desired profile using the 'transformation' param. 
-Sample code: */
+<pre class="language-javascript"><code>/* To use adaptive streaming formats such as HLS and MPEG-DASH, simply define 'sourceTypes' to 
+the desired format ('dash' or 'hls'). You can  define a desired profile using the 'transformation' param. Sample code: */
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'cloud' })
 
@@ -342,7 +339,7 @@ player.source('oceans', { sourceTypes: ['hls'],
 transformation: { streaming_profile: 'hd' } }).play();
 </code></pre>
 							</div>
-							<div class="codepen-info">
+							<div class="codepen-info adaptive">
 								<div class="wrap">
 									<span class="text">Main API calls in this demo:</span>
 									<span class="link"><a href="https://cloudinary.com/documentation/video_player_api_reference#cloudinary_videoplayer_constructor_params" target="_blank">Constructor  play()</a></span>
