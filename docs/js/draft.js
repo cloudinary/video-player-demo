@@ -36,7 +36,10 @@ function checkPosition()
 
 function playerSizeChange(input) {
   var area = document.getElementById("video-area-adaptive");
-  area.style.width = input.value + "%";
+  var border = document.getElementById("player-border");
+  var val = input.value + "%";
+  area.style.width = val;
+  border.style.width = val;
   var pwidth = document.getElementById("player-width");
   pwidth.innerHTML = area.clientWidth;
 }
