@@ -849,8 +849,13 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 .m-logo img {
 	display: block;
-	width: 100%;
+	position: absolute;
 	height: auto;
+}
+
+.m-logo video {
+	z-index: -1;
+	overflow: hidden;
 }
 
 #nav {
