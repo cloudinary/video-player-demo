@@ -1862,7 +1862,9 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 .video-block.adaptive {
 	width: 80%;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 35px;
 }
 
 .video-area.adaptive {
