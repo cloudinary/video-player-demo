@@ -1174,6 +1174,11 @@ input[type="radio"]:checked + label .radio-icon:before {
 	margin: 0 1px 0 0;
 }
 
+.player-border {
+	margin: auto;
+	border-bottom: 2px solid #bbc5d1;
+}
+
 .size-area {
 	position: relative;
 }
