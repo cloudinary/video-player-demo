@@ -1155,7 +1155,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	padding: 26px 0 19px;
 	position: relative;
 	overflow: hidden;
-	border-bottom: 2px solid #bbc5d1;
+	border-bottom: 1px solid #bbc5d1;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -1176,7 +1176,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 .player-border {
 	margin: auto;
-	border-bottom: 2px solid #bbc5d1;
+	border-bottom: 2px solid black;
 }
 
 .size-area {
@@ -1250,7 +1250,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .display-info {
-	padding: 24px 0 20px;
+	padding: 10px 0;
 	position: relative;
 }
 
@@ -1891,7 +1891,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .video-info.adaptive {
-	padding: 25px 0 19px;
+	padding: 10px 0;
 }
 
 .editing-area.adaptive {
