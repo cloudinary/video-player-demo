@@ -1392,7 +1392,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .range-info .text {
-	font-size: 10px;
+	font-size: 11px;
 	line-height: 14px;
 	font-weight: 700;
 	text-align: center;
