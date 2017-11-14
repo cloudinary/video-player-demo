@@ -109,7 +109,7 @@ if(safari)
 
 playerSizeChange(document.getElementById("player-slider"));
 
-var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
+var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
 var adaptive = document.getElementById("adaptive");
 document.getElementById("demo-adaptive-player").addEventListener('resize',updateOnResize, false);
@@ -120,8 +120,8 @@ var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
 qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
 
-demoplayer.source('hd_trim2',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'full_hd' } });
+demoplayer.source('kayak',{ sourceTypes: ['hls'], 
+                              transformation: {streaming_profile: '4k' } });
 
 function updateOnEvent(eventStr,automatic) {
   var list = document.getElementById('events-list');
@@ -172,8 +172,8 @@ manualEventTypes.forEach(function(eventType) {
       })
     });
   
- eventplayer.source('hls_30s_test',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'hd' } });
+ eventplayer.source('forset_bike',{ sourceTypes: ['hls'], 
+                              transformation: {streaming_profile: 'full_hd' } });
 
 function playMe(btn) {
     var val = parseInt(btn.value);
@@ -197,21 +197,21 @@ function playMe(btn) {
 var plistplayer = cld.videoPlayer('demo-playlist-player');
 plistplayer.on('sourcechanged', updateOnSrc);
 plistplayer.playlist(
-  [{ publicId: 'game2', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'hls_30s_test', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'hd_trim2', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }},
-   { publicId: 'Homepage_2', sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' }}], 
+  [{ publicId: 'snow_deer', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' }},
+   { publicId: 'sea_turtle', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' }},
+   { publicId: 'elephants', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' }},
+   { publicId: 'marmots', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' }}], 
    { autoAdvance: 0, repeat: true });
   
- plistplayer.source('game2',{ sourceTypes: ['dash'], transformation: {streaming_profile: 'hd' } });
+ plistplayer.source('snow_horses',{ sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' } });
 
 var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
 
-var source1 = { publicId: 'Homepage_2', info: { title: 'Kid Play', subtitle: 'A preview' } };
-var source2 = { publicId: 'game2', info: { title: 'Game', subtitle: 'A game ad' } };
-var source3 = { publicId: 'hd_trim2', info: { title: 'Race', subtitle: 'Volve Ocean Race' } };
-var source4 = { publicId: 'hls_30s_test', info: { title: 'NBA', subtitle: 'A game' } };
-var source5 = { publicId: 'oceans', info: { title: 'Oceans', subtitle: 'A movie about oceans' } };
+var source1 = { publicId: 'snow_deer_short', info: { title: 'Snow Deer', subtitle: 'Snow Deer Movie' } };
+var source2 = { publicId: 'snow_horses', info: { title: 'Snow Horses', subtitle: 'Snow Horses Movie' } };
+var source3 = { publicId: 'sea_turtle', info: { title: 'Sea Turtle', subtitle: 'Sea Turtle Movie' } };
+var source4 = { publicId: 'elephants', info: { title: 'Elephants', subtitle: 'Elephants' } };
+var source5 = { publicId: 'marmots', info: { title: 'Marmots', subtitle: 'Marmots' } };
 source1.recommendations = [source2, source3, source4, source5];
 source2.recommendations = [source3];
 source3.recommendations = [source4];
