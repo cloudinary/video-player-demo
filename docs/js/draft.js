@@ -197,10 +197,10 @@ function playMe(btn) {
 var plistplayer = cld.videoPlayer('demo-playlist-player');
 plistplayer.on('sourcechanged', updateOnSrc);
 plistplayer.playlist(
-  [{ publicId: 'snow_deer', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' }},
-   { publicId: 'sea_turtle', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' }},
-   { publicId: 'elephants', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' }},
-   { publicId: 'marmots', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' }}], 
+  [{ publicId: 'snow_horses', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd'}},
+   { publicId: 'snow_deer', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd'}},
+   { publicId: 'sea_turtle', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd'}},
+   { publicId: 'elephants', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd'}}], 
    { autoAdvance: 0, repeat: true });
   
  plistplayer.source('snow_horses',{ sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' } });
