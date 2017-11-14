@@ -97,7 +97,7 @@ function setProfile(profile) {
     }
   document.getElementById("checkbox").checked = true;
   document.getElementById("checkboxLabel").classList.remove("disabled");
-  demoplayer.source("kayak", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
+  demoplayer.source("forest_bike", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
 }
 
 var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
@@ -120,7 +120,7 @@ var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
 qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
 
-demoplayer.source('kayak',{ sourceTypes: ['hls'], 
+demoplayer.source('forest_bike',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'full_hd' } });
 
 function updateOnEvent(eventStr,automatic) {
