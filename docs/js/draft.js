@@ -97,7 +97,7 @@ function setProfile(profile) {
     }
   document.getElementById("checkbox").checked = true;
   document.getElementById("checkboxLabel").classList.remove("disabled");
-  demoplayer.source("hd_trim2", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
+  demoplayer.source("kayak", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
 }
 
 var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
@@ -121,7 +121,7 @@ qualityLevels.on('change', changeOfResolution);
 qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
 
 demoplayer.source('kayak',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: '4k' } });
+                              transformation: {streaming_profile: 'full_hd' } });
 
 function updateOnEvent(eventStr,automatic) {
   var list = document.getElementById('events-list');
@@ -172,7 +172,7 @@ manualEventTypes.forEach(function(eventType) {
       })
     });
   
- eventplayer.source('forset_bike',{ sourceTypes: ['hls'], 
+ eventplayer.source('forest_bike',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'full_hd' } });
 
 function playMe(btn) {
