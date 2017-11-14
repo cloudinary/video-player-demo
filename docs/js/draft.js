@@ -120,7 +120,7 @@ var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
 qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
 
-demoplayer.source('forest_bike',{ sourceTypes: ['hls'], 
+demoplayer.source('kayak',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'full_hd' } });
 
 function updateOnEvent(eventStr,automatic) {
