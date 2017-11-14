@@ -1394,7 +1394,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 .range-info .text {
 	font-size: 11px;
 	line-height: 14px;
-	font-weight: 700;
+	font-weight: 900;
 	text-align: center;
 	display: block;
 }
