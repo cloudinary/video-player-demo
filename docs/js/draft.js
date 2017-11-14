@@ -207,7 +207,7 @@ plistplayer.playlist(
 
 var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
 
-var source1 = { publicId: 'snow_deer_short', info: { title: 'Snow Deer', subtitle: 'Snow Deer Movie' } };
+var source1 = { publicId: 'kayak', info: { title: 'Snow Deer', subtitle: 'Snow Deer Movie' } };
 var source2 = { publicId: 'snow_horses', info: { title: 'Snow Horses', subtitle: 'Snow Horses Movie' } };
 var source3 = { publicId: 'sea_turtle', info: { title: 'Sea Turtle', subtitle: 'Sea Turtle Movie' } };
 var source4 = { publicId: 'elephants', info: { title: 'Elephants', subtitle: 'Elephants' } };
