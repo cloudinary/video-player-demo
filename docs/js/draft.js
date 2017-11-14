@@ -97,7 +97,7 @@ function setProfile(profile) {
     }
   document.getElementById("checkbox").checked = true;
   document.getElementById("checkboxLabel").classList.remove("disabled");
-  demoplayer.source("forest_bike", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
+  demoplayer.source("kayak", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
 }
 
 var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
