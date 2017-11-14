@@ -1870,14 +1870,14 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .video-block.adaptive {
-	width: 80%;
+	width: 95%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 35px;
 }
 
 .video-area.adaptive {
-	width: 65%;
+	width: 75%;
 	margin: auto;
 }
 
