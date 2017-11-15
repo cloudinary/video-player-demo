@@ -65,7 +65,7 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
 			setTimeout(checkTranscript, 10000);
 		}
 	}
-  var url = "http://res.cloudinary.com/hadar/raw/upload/v";
+  var url = "https://res.cloudinary.com/hadar/raw/upload/v";
   var publicId = "sample";
   var transcript = "sample.transcript"
   var version = 0;
