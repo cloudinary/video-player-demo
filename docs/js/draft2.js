@@ -73,9 +73,6 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
   var player = cld.videoPlayer('demo-transcript-player');
   player.source('Homepage_2',{ transformation: {crop: 'limit', width: 600} });
 
-var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
-
-player.source('test-12s',{ transformation: { width: 400, crop: 'limit' } });
 
 var eventplayer = cld.videoPlayer('demo-events-player', { playedEventTimes: [3, 10] });
   
