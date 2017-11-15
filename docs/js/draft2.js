@@ -45,16 +45,19 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
 	var checkUrl = url + version + "/" + transcript;
     http.open('HEAD', checkUrl);
 	http.send();
-}
-  function processTranscript(error, result) {
-	  console.log(error, result);
-	  publicId = result[0].public_id;
-	  transcript = publicId + ".transcript";
-	  console.log("waiting for ", transcript);
-	  player.posterOptions({ transformation: { overlay: "text:arial_60_stroke:Waiting%20for%20transcription...,co_white,bo_2px_solid_black", gravity: "north", y: 90 } });
-	  player.source(publicId,{ transformation: {crop: 'limit', width: 600 } });
-	  setTimeout(checkTranscript, 30000);
   }
+  function processTranscript(error, result) {
+	  if (result)
+	  {
+	  	publicId = result[0].public_id;
+	  	transcript = publicId + ".transcript";
+	  	console.log("waiting for ", transcript);
+	  	player.posterOptions({ transformation: { overlay: "text:arial_60_stroke:Waiting%20for%20transcription...,co_white,bo_2px_solid_black", gravity: "north", y: 90 } });
+	  	player.source(publicId,{ transformation: {crop: 'limit', width: 600 } });
+	  	setTimeout(checkTranscript, 30000);
+	  }
+  }
+
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
 		console.log("onreadystatechange", this.readyState, this.status);
@@ -65,6 +68,7 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
 			setTimeout(checkTranscript, 10000);
 		}
 	}
+  
   var url = "https://res.cloudinary.com/hadar/raw/upload/v";
   var publicId = "sample";
   var transcript = "sample.transcript"
@@ -74,17 +78,16 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
   player.source('Homepage_2',{ transformation: {crop: 'limit', width: 600} });
 
 
-var eventplayer = cld.videoPlayer('demo-events-player', { playedEventTimes: [3, 10] });
+  var eventplayer = cld.videoPlayer('demo-events-player', { playedEventTimes: [3, 10] });
   
- eventplayer.source('test-12s',{ transformation: { width: 400, crop: 'limit' } });
+  eventplayer.source('test-12s',{ transformation: { width: 400, crop: 'limit' } });
   
-var plistplayer = cld.videoPlayer('demo-playlist-player');
+  var plistplayer = cld.videoPlayer('demo-playlist-player');
 
-  
- plistplayer.source('test-12s',{ transformation: { width: 400, crop: 'limit' }  });
+  plistplayer.source('test-12s',{ transformation: { width: 400, crop: 'limit' }  });
 
-var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
+  var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
 
-var source1 = { publicId: 'test-12s', info: { title: 'Basketball', subtitle: 'Basketball' } };
-recplayer.source(source1);
+  var source1 = { publicId: 'test-12s', info: { title: 'Basketball', subtitle: 'Basketball' } };
+  recplayer.source(source1);
 
