@@ -41,11 +41,16 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
 
   function checkTranscript() {
 	version++;
-	console.log("checkTranscript", transcript, version);
-	var checkUrl = url + version + "/" + transcript;
-    http.open('HEAD', checkUrl);
-	http.send();
+	if (version < 100) {
+		console.log("checkTranscript", transcript, version);
+		var checkUrl = url + version + "/" + transcript;
+    		http.open('HEAD', checkUrl);
+		http.send();
+	}
+	else
+		console.log("checkTranscript abort, exceeded maximum retries", transcript, version);
   }
+
   function processTranscript(error, result) {
 	  if (result)
 	  {
