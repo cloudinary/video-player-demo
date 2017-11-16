@@ -974,7 +974,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 .theme-opener .icon {
 	width: 24px;
 	height: 24px;
-	background: url(../images/icon1.svg) no-repeat;
+	background: url(https://res.cloudinary.com/hadar/image/upload/w_48/icon1.svg) no-repeat;
 	position: relative;
 	margin: 0 auto;
 	display: block;
