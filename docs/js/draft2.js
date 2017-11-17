@@ -39,46 +39,94 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
 	  function(error, result) { processTranscript(error, result) });
   }, false);
 
-  function checkTranscript() {
+function getTranscript() {
 	version++;
-	if (version < 100) {
-		console.log("checkTranscript", transcript, version);
-		var checkUrl = url + version + "/" + transcript;
-    		http.open('HEAD', checkUrl);
-		http.send();
-	}
-	else
-		console.log("checkTranscript abort, exceeded maximum retries", transcript, version);
-  }
-
-  function processTranscript(error, result) {
-	  if (result)
-	  {
-	  	publicId = result[0].public_id;
-	  	transcript = publicId + ".transcript";
-	  	console.log("waiting for ", transcript);
-	  	player.posterOptions({ transformation: { overlay: "text:arial_60_stroke:Waiting%20for%20transcription...,co_white,bo_2px_solid_black", gravity: "north", y: 90 } });
-	  	player.source(publicId,{ transformation: {crop: 'limit', width: 600 } });
-	  	setTimeout(checkTranscript, 30000);
-	  }
+	console.log("checkTranscript", transcript, version);
+	var checkUrl = url + version + "/" + transcript;
+    	http.open('GET', checkUrl);
+	http.send();
+}
+function processTranscript(error, result) {
+	console.log(error, result);
+	publicId = result[0].public_id;
+	pubnub.subscribe({channels: [publicId]});
+	transcript = publicId + ".transcript";
+	console.log("waiting for ", transcript);
+	player.posterOptions({ transformation: { overlay: "text:arial_60_stroke:Waiting%20for%20transcription...,co_white,bo_2px_solid_black", gravity: "north", y: 90 } });
+	player.source(publicId,{ transformation: {crop: 'limit', width: 600 } });
+	updateProgress();
   }
 
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
 		console.log("onreadystatechange", this.readyState, this.status);
 		if (this.readyState == 4 && this.status == 200) {
-	  		player.source(publicId,{ transformation: {crop: 'limit', width: 600, overlay: "subtitles:"+transcript} }).play();
+            document.getElementById("transcript").innerHTML = http.responseText;
 		}
-		else if(this.readyState == 4 && this.status == 404) {
-			setTimeout(checkTranscript, 10000);
-		}
-	}
-  
-  var url = "https://res.cloudinary.com/hadar/raw/upload/v";
+        else 
+            console.log("Get transcript failed");
+        
+    }
+ 
+function updateProgress() {
+    progress++;
+    console.log("updateProgress", progress);
+    var elem = document.getElementById("myBar");
+    elem.style.width = progress + '%'; 
+    if (progress < 100)
+        setTimeout(updateProgress,1000);
+}
+
+var pubnub = new PubNub({
+    subscribeKey: "sub-c-5d3119e4-cac9-11e7-afbf-0e89c33d81b5",
+    publishKey: "pub-c-7cfafc5b-b1dc-4b7d-94f4-5f0223738947",
+    uuid: PubNub.generateUUID(),
+    ssl: true
+});
+
+pubnub.time(function(status, response) {
+    if (status.error) {
+        console.log("pubnub error", status);
+    } else {
+        console.log("pubnub connected");
+    }
+});
+
+pubnub.addListener({
+    status: function(statusEvent) {
+        if (statusEvent.category === "PNConnectedCategory") {
+            console.log("PNConnectedCategory");
+        } else if (statusEvent.category === "PNUnknownCategory") {
+            var newState = {
+                new: 'error'
+            };
+            pubnub.setState(
+                {
+                    state: newState 
+                },
+                function (status) {
+                    console.log(statusEvent.errorData.message)
+                }
+            );
+        } 
+    },
+    message: function(message) {
+        console.log(message,message.channel);
+        var notify = JSON.parse(message.message);
+        console.log(notify.public_id);
+        if(notify.info_status == "complete")
+        {
+            progress = 99;
+            player.source(publicId,{ transformation: {crop: 'limit', width: 600, overlay: "subtitles:"+transcript} }).play();
+            getTranscript();
+        }
+    }
+})
+  var url = "https://res.cloudinary.com/demo/raw/upload/v";
   var publicId = "sample";
   var transcript = "sample.transcript"
   var version = 0;
-  var cld = cloudinary.Cloudinary.new({ cloud_name: 'hadar' });
+  var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
   var player = cld.videoPlayer('demo-transcript-player');
   player.source('Homepage_2',{ transformation: {crop: 'limit', width: 600} });
 
