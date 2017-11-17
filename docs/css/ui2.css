@@ -1844,6 +1844,17 @@ input[type="radio"]:checked + label .radio-icon:before {
 	margin: auto;
 }
 
+.myProgress {
+	width: 100%;
+	background-color: #ddd;
+  }
+  
+.myBar {
+	width: 0%;
+	height: 30px;
+	background-color: #4CAF50;
+  }
+
 @media (max-width: 1199px) {
 	.container {
 		max-width: 972px;
