@@ -35,7 +35,7 @@ function checkPosition()
 }
 
 document.getElementById("upload_widget_opener").addEventListener("click", function() {
-	cloudinary.openUploadWidget({ cloud_name: 'hadar', upload_preset: 'transcript', resource_type: 'video'}, 
+	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'transcript', resource_type: 'video'}, 
 	  function(error, result) { processTranscript(error, result) });
   }, false);
 
