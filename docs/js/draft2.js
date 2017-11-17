@@ -126,6 +126,7 @@ pubnub.addListener({
   var publicId = "sample";
   var transcript = "sample.transcript"
   var version = 0;
+  var progress = 0;
   var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
   var player = cld.videoPlayer('demo-transcript-player');
   player.source('Homepage_2',{ transformation: {crop: 'limit', width: 600} });
