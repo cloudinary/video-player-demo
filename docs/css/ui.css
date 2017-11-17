@@ -925,6 +925,8 @@ input[type="radio"]:checked + label .radio-icon:before {
 	text-align: center;
 	text-shadow: 0 0 4px rgba(0, 0, 0, .6);
 	padding: 0 3px;
+	background: rgba(0,0,0,0.45);
+	border-radius: 5px;
 }
 
 .menu img {
