@@ -118,7 +118,9 @@ var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
 
 demoplayer.source('kayak',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'full_hd' } });
+                            transformation: {streaming_profile: 'full_hd' },
+                            poster: { transformation: { width: 1920, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
+                          });
 
 function updateOnEvent(eventStr,automatic) {
   var list = document.getElementById('events-list');
@@ -170,7 +172,9 @@ manualEventTypes.forEach(function(eventType) {
     });
   
  eventplayer.source('forest_bike',{ sourceTypes: ['hls'], 
-                              transformation: {streaming_profile: 'full_hd' } });
+                                    transformation: {streaming_profile: 'full_hd' },
+                                    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
+                                  });
 
 function playMe(btn) {
     var val = parseInt(btn.value);
@@ -199,7 +203,10 @@ plistplayer.playlist(
    { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}}], 
    { autoAdvance: 0, repeat: true });
   
- plistplayer.source('snow_horses',{ sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd' } });
+ plistplayer.source('snow_horses',{ sourceTypes: ['hls'], 
+                                   transformation: {streaming_profile: 'full_hd' },
+                                   poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
+                                  });
 
 var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
 
