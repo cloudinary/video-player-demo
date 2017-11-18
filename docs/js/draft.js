@@ -118,7 +118,6 @@ var demoplayer = cld.videoPlayer('demo-adaptive-player');
  
 var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
-qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
 
 demoplayer.source('kayak',{ sourceTypes: ['hls'], 
                               transformation: {streaming_profile: 'full_hd' } });
