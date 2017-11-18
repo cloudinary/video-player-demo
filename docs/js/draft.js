@@ -197,21 +197,21 @@ function playMe(btn) {
 var plistplayer = cld.videoPlayer('demo-playlist-player');
 plistplayer.on('sourcechanged', updateOnSrc);
 plistplayer.playlist(
-  [{ publicId: 'snow_horses', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd'}},
-   { publicId: 'snow_deer', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd'}},
-   { publicId: 'sea_turtle', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd'}},
-   { publicId: 'elephants', sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd'}}], 
+  [{ publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}},
+   { publicId: 'snow_deer', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}},
+   { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}},
+   { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}}], 
    { autoAdvance: 0, repeat: true });
   
- plistplayer.source('snow_horses',{ sourceTypes: ['dash'], transformation: {streaming_profile: 'full_hd' } });
+ plistplayer.source('snow_horses',{ sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd' } });
 
 var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
 
-var source1 = { publicId: 'snow_deer_short', info: { title: 'Snow Deer', subtitle: 'Snow Deer Movie' } };
-var source2 = { publicId: 'snow_horses', info: { title: 'Snow Horses', subtitle: 'Snow Horses Movie' } };
-var source3 = { publicId: 'sea_turtle', info: { title: 'Sea Turtle', subtitle: 'Sea Turtle Movie' } };
-var source4 = { publicId: 'elephants', info: { title: 'Elephants', subtitle: 'Elephants' } };
-var source5 = { publicId: 'marmots', info: { title: 'Marmots', subtitle: 'Marmots' } };
+var source1 = { publicId: 'snow_deer_short', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}, info: { title: 'Snow Deer', subtitle: 'Snow Deer Movie' } };
+var source2 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}, info: { title: 'Snow Horses', subtitle: 'Snow Horses Movie' } };
+var source3 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}, info: { title: 'Sea Turtle', subtitle: 'Sea Turtle Movie' } };
+var source4 = { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}, info: { title: 'Elephants', subtitle: 'Elephants' } };
+var source5 = { publicId: 'marmots', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}, info: { title: 'Marmots', subtitle: 'Marmots' } };
 source1.recommendations = [source2, source3, source4, source5];
 source2.recommendations = [source3];
 source3.recommendations = [source4];
