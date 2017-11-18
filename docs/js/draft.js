@@ -53,7 +53,6 @@ function updateOnResize() {
   current.setAttribute("class","range-info active");
 }
 function requestResolution(btn) {
-  console.log("requestResolution() ",btn.id, safari);
   if(!safari)
   {
     document.getElementById("checkbox").checked = false;
@@ -88,7 +87,6 @@ function setProfile(profile) {
   var i = elements.length;
 
     while(i--) {
-      console.log(elements[i].getElementsByClassName(profile.value).length);
         if(elements[i].getElementsByClassName(profile.value).length > 0)
           elements[i].setAttribute("class","range-info");
         else
