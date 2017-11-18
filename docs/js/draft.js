@@ -191,7 +191,6 @@ function playMe(btn) {
       else
         btn.setAttribute("class", " ");
   }
-  console.log("updateOnSrc", playing, loop);
 }
 var plistplayer = cld.videoPlayer('demo-playlist-player');
 plistplayer.on('sourcechanged', updateOnSrc);
