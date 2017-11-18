@@ -197,10 +197,14 @@ function playMe(btn) {
 var plistplayer = cld.videoPlayer('demo-playlist-player');
 plistplayer.on('sourcechanged', updateOnSrc);
 plistplayer.playlist(
-  [{ publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}},
-   { publicId: 'snow_deer', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}},
-   { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}},
-   { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}}], 
+  [{ publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
+   poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}},
+   { publicId: 'snow_deer', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
+   poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}},
+   { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
+   poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}},
+   { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
+   poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}}], 
    { autoAdvance: 0, repeat: true });
   
  plistplayer.source('snow_horses',{ sourceTypes: ['hls'], 
