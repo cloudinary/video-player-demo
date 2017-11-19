@@ -1,9 +1,30 @@
-function animateImg(element) {
-    console.log("animateImg");
+function motion(element) {
+    var base = "https://res.cloudinary.com/demo/video/upload/so_0,du_3/vs_30,e_loop/w_260,h_105,c_fill/q_50,r_5,b_white/fl_lossy.animated,f_auto/";
+    var suffix = ".gif";
+    switchImage(element.getElementsByTagName('img')[0],element.id,base,suffix);
 }
-
-function stillImg(element) {
-    console.log("stillImg");
+function switchImage(elm,id,base,suffix) { 
+    switch (id) {
+		case "sec01":
+			elm.setAttribute('src', base+"rafting_short"+suffix);
+			break;
+		case "sec02":
+			elm.setAttribute('src', base+"forest_bike"+suffix);
+			break;
+		case "sec03":
+			elm.setAttribute('src', base+"snow_horses"+suffix);
+			break;
+		case "sec04":
+			elm.setAttribute('src', base+"snow_deer"+suffix);
+			break;
+		default:
+			console.log("switchImage id=",id);
+		}
+}
+function still(element) {
+	var base = "https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/";
+	var suffix = ".jpg";
+	switchImage(element.getElementsByTagName('img')[0],element.id,base,suffix);
 }
 
 function toggleClass() {
