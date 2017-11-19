@@ -31,7 +31,7 @@ function still(element) {
             element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/snow_deer.jpg');
             break;
         default:
-            console.log("motion default id=",element.id);
+            console.log("still default id=",element.id);
     }
 }
 function toggleClass() {
