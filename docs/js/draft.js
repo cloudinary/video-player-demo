@@ -3,6 +3,11 @@ function motion(element) {
     var suffix = ".gif";
     switchImage(element.getElementsByTagName('img')[0],element.id,base,suffix);
 }
+function still(element) {
+	var base = "https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/";
+	var suffix = ".jpg";
+	switchImage(element.getElementsByTagName('img')[0],element.id,base,suffix);
+}
 function switchImage(elm,id,base,suffix) { 
     switch (id) {
 		case "sec01":
@@ -21,12 +26,6 @@ function switchImage(elm,id,base,suffix) {
 			console.log("switchImage id=",id);
 		}
 }
-function still(element) {
-	var base = "https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/";
-	var suffix = ".jpg";
-	switchImage(element.getElementsByTagName('img')[0],element.id,base,suffix);
-}
-
 function toggleClass() {
     var theme = document.getElementById("theme-area");
     theme.classList.toggle("active");
