@@ -1,3 +1,11 @@
+function animateImg(element) {
+    console.log("animateImg");
+}
+
+function stillImg(element) {
+    console.log("stillImg");
+}
+
 function toggleClass() {
     var theme = document.getElementById("theme-area");
     theme.classList.toggle("active");
