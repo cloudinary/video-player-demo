@@ -271,5 +271,7 @@ source2.recommendations = [source3];
 source3.recommendations = [source4];
 source4.recommendations = [source5];
 source5.recommendations = [source2, source3, source4, source1];
+var first = true;
+recplayer.on('sourcechanged', function(event) {if (first) {first = false;} else {recplayer.play();}});
 recplayer.source(source1);
 
