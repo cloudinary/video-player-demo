@@ -941,7 +941,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	width: 100%;
 	height: auto;
 	border-radius: 5px;
-	background-image: url("https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/rafting_short.jpg");
+	background: url("https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/rafting_short.jpg");
 }
 
 .theme-area {
