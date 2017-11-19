@@ -1,4 +1,5 @@
 function motion(element) {
+    console.log("motion id=",element.id);
     switch (element.id) {
         case "section01":
             element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0s,du_3s/vs_30,e_loop/w_260,h_105,c_fill/r_5,b_white/fl_lossy.animated,f_auto/rafting_short.gif');
@@ -17,6 +18,7 @@ function motion(element) {
     }
 }
 function still(element) {
+    console.log("still id=",element.id);
     switch (element.id) {
         case "section01":
             element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/rafting_short.jpg');
