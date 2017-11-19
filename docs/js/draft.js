@@ -1,3 +1,39 @@
+function motion(element) {
+    switch (element.id) {
+        case "section01":
+            element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0s,du_3s/vs_30,e_loop/w_260,h_105,c_fill/r_5,b_white/fl_lossy.animated,f_auto/rafting_short.gif');
+            break;
+        case "section02":
+            element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/w_260,h_105,c_fill/so_0s,du_2.5s/r_5,b_white/q_20,fl_lossy.animated,f_auto/forest_bike.gif');
+            break;
+        case "section03":
+            element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0s,du_2.5s/e_loop/w_260,h_105,c_fill/r_5,b_white/q_30,fl_lossy.animated,f_auto/snow_horses.gif');
+            break;
+        case "section04":
+            element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0s,du_3s/vs_20,dl_100,h_200,e_loop/w_260,h_105,c_fill/r_5,b_white/q_60,fl_lossy.animated,f_auto/snow_deer.gif');
+            break;
+        default:
+            console.log("motion default id=",element.id);
+    }
+}
+function still(element) {
+    switch (element.id) {
+        case "section01":
+            element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/rafting_short.jpg');
+            break;
+        case "section02":
+            element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/forest_bike.jpg');
+            break;
+        case "section03":
+            element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/snow_horses.jpg');
+            break;
+        case "section04":
+            element.setAttribute('src', 'https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/snow_deer.jpg');
+            break;
+        default:
+            console.log("motion default id=",element.id);
+    }
+}
 function toggleClass() {
     var theme = document.getElementById("theme-area");
     theme.classList.toggle("active");
