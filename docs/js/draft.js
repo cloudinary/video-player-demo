@@ -173,7 +173,16 @@ function startTime() {
 }
 
 var eventplayer = cld.videoPlayer('demo-events-player', 
-				  { playedEventTimes: [3, 10] });
+  { playedEventTimes: [3, 10],
+    analytics: { // Enable player analytics
+    events: [
+    'play',
+    'pause',
+    'percentsplayed',
+    'playedEventTimes', 
+    'start',
+    'ended',
+    'fullscreenchange']}});
 
 var autoEventTypes = ['sourcechanged', 'timeplayed', 'percentsplayed', 'ended'];
 
