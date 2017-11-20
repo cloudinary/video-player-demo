@@ -80,7 +80,7 @@ function processAutoTag(error, result) {
 function updateProgress() {
     progress++;
     console.log("updateProgress", progress);
-    var elem = document.getElementById("myAutoTagBar");
+    var elem = document.getElementById("autoTagBar");
     elem.style.width = progress + '%'; 
     if (progress < 100)
         setTimeout(updateProgress,1000);
