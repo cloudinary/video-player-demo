@@ -1,4 +1,4 @@
-/* http://prismjs.com/download.html?themes=prism-okaidia&languages=clike+javascript */
+/* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+css+clike+javascript+json */
 /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
@@ -12,11 +12,17 @@ pre[class*="language-"] {
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	text-align: left;
-	white-space: pre;
+/*	white-space: pre;*/
 	word-spacing: normal;
 	word-break: normal;
-	word-wrap: normal;
+/*	word-wrap: normal;*/
 	line-height: 1.5;
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+	max-height: 500px;
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -30,8 +36,8 @@ pre[class*="language-"] {
 
 /* Code blocks */
 pre[class*="language-"] {
-	padding: 25px;
-	margin: 0 0;
+	padding: 1em;
+	margin: .5em 0;
 	overflow: auto;
 	border-radius: 0.3em;
 }
