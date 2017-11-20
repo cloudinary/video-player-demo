@@ -179,7 +179,6 @@ var eventplayer = cld.videoPlayer('demo-events-player',
     'play',
     'pause',
     'percentsplayed',
-    { type: 'playedEventTimes', times: [3, 10] }, 
     'start',
     'ended',
     'fullscreenchange']}});
@@ -243,7 +242,7 @@ plistplayer.playlist(
    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}},
    { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}}], 
-   { autoAdvance: 0, repeat: true });
+   { autoAdvance: 0, repeat: true, presentUpcoming: 5 });
   
  plistplayer.source('snow_horses',{ sourceTypes: ['hls'], 
                                    transformation: {streaming_profile: 'full_hd' },
