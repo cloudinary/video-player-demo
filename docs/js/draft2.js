@@ -35,8 +35,8 @@ function checkPosition()
 }
 
 document.getElementById("upload_widget_opener").addEventListener("click", function() {
-	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'transcript', resource_type: 'video'}, 
-	  function(error, result) { processTranscript(error, result) });
+	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag', resource_type: 'video'}, 
+	  function(error, result) { processAutoTag(error, result) });
   }, false);
 
 function getTranscript() {
@@ -57,6 +57,15 @@ function processTranscript(error, result) {
 	updateProgress();
   }
 
+function processAutoTag(error, result) {
+	console.log(error, result);
+	publicId = result[0].public_id;
+	pubnub.subscribe({channels: [publicId]});
+	autoTagplayer.posterOptions({ transformation: { overlay: "text:arial_60_stroke:Waiting%20for%20autotagging...,co_white,bo_2px_solid_black", gravity: "north", y: 90 } });
+	autoTagplayer.source(publicId,{ transformation: {crop: 'limit', width: 600 } });
+	updateProgress();
+  }
+
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
 		console.log("onreadystatechange", this.readyState, this.status);
@@ -71,7 +80,7 @@ function processTranscript(error, result) {
 function updateProgress() {
     progress++;
     console.log("updateProgress", progress);
-    var elem = document.getElementById("myBar");
+    var elem = document.getElementById("myAutoTagBar");
     elem.style.width = progress + '%'; 
     if (progress < 100)
         setTimeout(updateProgress,1000);
@@ -117,8 +126,9 @@ pubnub.addListener({
         if(notify.info_status == "complete")
         {
             progress = 99;
-            player.source(publicId,{ transformation: {crop: 'limit', width: 600, overlay: "subtitles:"+transcript} }).play();
-            getTranscript();
+//            player.source(publicId,{ transformation: {crop: 'limit', width: 600, overlay: "subtitles:"+transcript} }).play();
+//            getTranscript();
+	    autoTagplayer.play();
         }
     }
 })
@@ -132,9 +142,9 @@ pubnub.addListener({
   player.source('Homepage_2',{ transformation: {crop: 'limit', width: 600} });
 
 
-  var eventplayer = cld.videoPlayer('demo-events-player', { playedEventTimes: [3, 10] });
+  var autoTagplayer = cld.videoPlayer('demo-autotag-player');
   
-  eventplayer.source('test-12s',{ transformation: { width: 400, crop: 'limit' } });
+  autoTagplayer.source('test-12s',{ transformation: {crop: 'limit', width: 600} });
   
   var plistplayer = cld.videoPlayer('demo-playlist-player');
 
