@@ -487,16 +487,14 @@ player.source('forest_bike').play();
 						<div class="editing-area">
 							<div class="codepen-placeholder">
 <pre class="language-javascript"><code>// Define Playlist Sources
-var source1 = { publicId: 'oceans', info: { title: 'Oceans', 
-subtitle: 'My Oceans Movie' } };
-
-var source2 = { publicId: 'book', info: { title: 'My Book', 
-subtitle: 'Wonderful book movie' } };
+var source1 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}};
+var source2 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}};
+// ...   until the last source in the playlist
 
 // Initialize player
 var player = cld.videoPlayer('example-player');
 
-/* Auto advance to next video after 0 seconds, 
+/* Auto advance to next video, 
 repeat the playlist when final video ends, 
 and present upcoming video 5 seconds 
 before the current video ends. */
