@@ -173,7 +173,7 @@
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-<pre class="language-markup"><code id="transcript">Transcript in process...</code></pre>
+<pre class="json"><code id="transcript">Transcript in process...</code></pre>
 							</div>
 							<div class="codepen-info">
 								<div class="wrap">
@@ -189,46 +189,30 @@
 			<section class="content-block" id="section02">
 				<div class="container">
 					<header class="heading-area">
-						<h2>Overlay</h2>
-						<p>You can overlay videos, images and text</p>
+						<h2>Auto Tagging</h2>
+						<p>You can auto tag videos</p>
 					</header>
 					<div class="block-area">
 						<div class="video-block">
 							<div class="video-area">
 								<video
-									id="demo-events-player" 
+									id="demo-autotag-player" 
 									controls 
 									muted 
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
-                                </video>
-							</div>
-							<div class="video-detail">
-								<div class="events-area">
-									<h3>Triggered events:</h3>
-									<ul id="events-list" class="events-list"></ul>
+                                				</video>
+								<div class="video-detail">
+									<div class="video-info">
+										<div class="myProgress">
+											<div id="autoTagBar" class="myBar"></div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="editing-area">
 							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* The Video Player supports tracking of different events 
-to the application and to different analytics platforms, 
-such as Google Analytics. Supported events include, 
-for example: play, pause, time played, percentage played 
-and volume change. 
-Sample code: */
-// Initialize player
-var player = cld.videoPlayer('example-player', {
-  analytics: { // Enable player analytics
-    events: ['play',
-   	     'Pause',
-   	     {type: 'percentsplayed', percents: [10, 50,75, 100] }, 
-	     // Some events may have additionals settings
-            'Start',
-      	    'Ended'] } })
-// Modify player source
-player.source('oceans').play();
-</code></pre>
+<pre class="language-json"><code>Autotagging...</code></pre>
 							</div>
 							<div class="codepen-info">
 								<div class="wrap">
@@ -236,7 +220,6 @@ player.source('oceans').play();
 									<span class="link"><a href="https://cloudinary.com/documentation/video_player_api_reference#cloudinary_videoplayer_constructor_params" target="_blank">Constructor Events</a></span>
 									<span class="reference"><a href="https://cloudinary.com/documentation/video_player_api_reference" target="_blank">Full API Reference</a></span>
 								</div>
-								<a href="#" class="btn"><i class="icon"></i>Edit in codepen</a>
 							</div>
 						</div>
 					</div>
