@@ -535,8 +535,6 @@ player.playlist([source1, source2],
 						<div class="editing-area">
 							<div class="codepen-placeholder">
 <pre class="language-javascript"><code>// Define Playlist Sources
-var source1 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}};
-// ...   until the last source required
 
 // Recommendations can be as simple as an array of other 
 // video source objects
@@ -545,9 +543,7 @@ source1.recommendations = [source2,source3,source4,source5];
 // For async fetching of recommendations 
 // (e.g. fetching from database), promises can be used
 source2.recommendations = new Promise((resolve, _) => {
-        console.log('Going to database...');
         setTimeout(() => {
-          console.log('Fetched source from database.', source1)
           resolve([source1]);
         }, 3000);
       })
