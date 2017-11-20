@@ -261,8 +261,7 @@ var source2 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {
 var source3 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
                poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
                info: { title: 'Sea Turtle', subtitle: 'Sea Turtle Movie' } };
-var source4 = { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}, 
-               info: { title: 'Elephants', subtitle: 'Elephants' } };
+var source4 = { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}};
 var source5 = { publicId: 'marmots', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}, 
                poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
                info: { title: 'Marmots', subtitle: 'Marmots' } };
