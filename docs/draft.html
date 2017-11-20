@@ -545,8 +545,7 @@ source1.recommendations = [source2,source3,source4,source5];
 source2.recommendations = new Promise((resolve, _) => {
         setTimeout(() => {
           resolve([source1]);
-        }, 3000);
-      })
+        }, 3000); })
 
 // Initialize player
 var player = cld.videoPlayer('example-player', 
