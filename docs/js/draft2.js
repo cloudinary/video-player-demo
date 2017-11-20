@@ -86,13 +86,13 @@ function updateProgress() {
 function updateAutoTagProgress() {
     autoTagProgress++;
     var autoTaggingBar = document.getElementById("autoTaggingBar");
-    autoTaggingBar.style.width = progress + '%'; 
+    autoTaggingBar.style.width = autoTagProgress + '%'; 
 }
 
 function updateTranscriptProgress() {
     transcriptProgress++;
     var transcriptBar = document.getElementById("transcriptBar");
-    transcriptBar.style.width = progress + '%'; 
+    transcriptBar.style.width = transcriptProgress + '%'; 
 }
 
 function showNotification(notification) {
