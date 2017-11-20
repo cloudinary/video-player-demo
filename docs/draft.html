@@ -487,8 +487,10 @@ player.source('forest_bike').play();
 						<div class="editing-area">
 							<div class="codepen-placeholder">
 <pre class="language-javascript"><code>// Define Playlist Sources
-var source1 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}};
-var source2 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}};
+var source1 = { publicId: 'snow_horses', sourceTypes: ['hls'], 
+transformation: {streaming_profile: 'full_hd'}};
+var source2 = { publicId: 'sea_turtle', sourceTypes: ['hls'], 
+transformation: {streaming_profile: 'full_hd'}};
 // ...   until the last source in the playlist
 
 // Initialize player
@@ -535,15 +537,15 @@ player.playlist([source1, source2],
 						<div class="editing-area">
 							<div class="codepen-placeholder">
 <pre class="language-javascript"><code>// Define Playlist Sources
-var source1 = { publicId: 'oceans', info: { title: 'Oceans', 
-subtitle: 'My Oceans Movie' } };
-
-var source2 = { publicId: 'book', info: { title: 'My  Book', 
-subtitle: 'Wonderful book movie' } };
+var source1 = { publicId: 'snow_horses', sourceTypes: ['hls'], 
+transformation: {streaming_profile: 'full_hd'}};
+var source2 = { publicId: 'sea_turtle', sourceTypes: ['hls'], 
+transformation: {streaming_profile: 'full_hd'}};
+// ...   until the last source required
 
 // Recommendations can be as simple as an array of other 
 // video source objects
-source1.recommendations = [source2]
+source1.recommendations = [source2,source3,source4,source5];
 
 // For async fetching of recommendations 
 // (e.g. fetching from database), promises can be used
