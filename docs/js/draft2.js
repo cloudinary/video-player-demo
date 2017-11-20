@@ -164,7 +164,7 @@ pubnub.addListener({
 
  
 
-  var url = "http://res.cloudinary.com/demo/raw/upload/v";
+  var url = "https://res.cloudinary.com/demo/raw/upload/v";
   var publicId = "sample";
   var transcript = "sample.transcript"
   var version = 0;
