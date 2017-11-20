@@ -35,42 +35,37 @@ function checkPosition()
 }
 
 document.getElementById("upload_widget_opener").addEventListener("click", function() {
-	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag', resource_type: 'video'}, 
-	  function(error, result) { processAutoTag(error, result) });
+	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_transcript', resource_type: 'video'}, 
+	  function(error, result) { processResponse(error, result) });
   }, false);
 
-function getTranscript() {
+  function processResponse(error, result) {
+    console.log(error, result);
+    publicId = result[0].public_id;
+    pubnub.subscribe({channels: [publicId]});
+    transcript = publicId + ".transcript";
+    autoTagPlayer.posterOptions({ transformation: { overlay: "text:arial_60_stroke:Waiting%20for%20automatic%20tagging...,co_white,bo_2px_solid_black", gravity: "north", y: 90 } });
+    autoTagPlayer.source(publicId,{ transformation: {crop: 'limit', width: 600 } });
+    transcriptPlayer.posterOptions({ transformation: { overlay: "text:arial_60_stroke:Waiting%20for%20transcription...,co_white,bo_2px_solid_black", gravity: "north", y: 90 } });
+    transcriptPlayer.source(publicId,{ transformation: {crop: 'limit', width: 600 } });
+    updateProgress();
+}
+
+  function getTranscript() {
 	version++;
 	console.log("checkTranscript", transcript, version);
 	var checkUrl = url + version + "/" + transcript;
-    	http.open('GET', checkUrl);
+    http.open('GET', checkUrl);
 	http.send();
 }
-function processTranscript(error, result) {
-	console.log(error, result);
-	publicId = result[0].public_id;
-	pubnub.subscribe({channels: [publicId]});
-	transcript = publicId + ".transcript";
-	console.log("waiting for ", transcript);
-	player.posterOptions({ transformation: { overlay: "text:arial_60_stroke:Waiting%20for%20transcription...,co_white,bo_2px_solid_black", gravity: "north", y: 90 } });
-	player.source(publicId,{ transformation: {crop: 'limit', width: 600 } });
-	updateProgress();
-  }
-
-function processAutoTag(error, result) {
-	console.log(error, result);
-	publicId = result[0].public_id;
-	pubnub.subscribe({channels: [publicId]});
-	autoTagplayer.posterOptions({ transformation: { overlay: "text:arial_60_stroke:Waiting%20for%20autotagging...,co_white,bo_2px_solid_black", gravity: "north", y: 90 } });
-	autoTagplayer.source(publicId,{ transformation: {crop: 'limit', width: 600 } });
-	updateProgress();
-  }
 
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
 		console.log("onreadystatechange", this.readyState, this.status);
 		if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("transcript").innerHTML = http.responseText;
+            var content = document.getElementById("transcript");
+            content.innerText = http.responseText;  
+            Prism.highlightElement(content);
 		}
         else 
             console.log("Get transcript failed");
@@ -80,10 +75,49 @@ function processAutoTag(error, result) {
 function updateProgress() {
     progress++;
     console.log("updateProgress", progress);
-    var elem = document.getElementById("autoTagBar");
-    elem.style.width = progress + '%'; 
+    if(autoTagProgress < 100)
+        updateAutoTagProgress()
+    if(transcriptProgress < 100)
+        updateTranscriptProgress()
     if (progress < 100)
         setTimeout(updateProgress,1000);
+}
+
+function updateAutoTagProgress() {
+    autoTagProgress++;
+    var autoTaggingBar = document.getElementById("autoTaggingBar");
+    autoTaggingBar.style.width = progress + '%'; 
+}
+
+function updateTranscriptProgress() {
+    transcriptProgress++;
+    var transcriptBar = document.getElementById("transcriptBar");
+    transcriptBar.style.width = progress + '%'; 
+}
+
+function showNotification(notification) {
+    if(notification.info_kind == "google_video_tagging") {
+        autoTagProgress = 99;
+        showAutoTagging(notification.info_data);
+    }
+    else if (notification.info_kind == "google_speech"){
+        transcriptProgress = 99;
+        showTranscript();
+    }
+    else
+        console.log("showNotification",notification.info_kind);
+}
+
+function showAutoTagging(notification) {
+    var content = document.getElementById("autotag");
+    var autoTaggingData = JSON.stringify(notification);
+    content.innerText = autoTaggingData; 
+    Prism.highlightElement(content);
+}
+
+function showTranscript() {
+    transcriptPlayer.source(publicId,{ transformation: {crop: 'limit', width: 600, overlay: "subtitles:"+transcript} }).play();
+    getTranscript();
 }
 
 var pubnub = new PubNub({
@@ -124,34 +158,41 @@ pubnub.addListener({
         var notify = JSON.parse(message.message);
         console.log(notify.public_id);
         if(notify.info_status == "complete")
-        {
-            progress = 99;
-//            player.source(publicId,{ transformation: {crop: 'limit', width: 600, overlay: "subtitles:"+transcript} }).play();
-//            getTranscript();
-	    autoTagplayer.play();
-        }
+            showNotification(notify);
     }
 })
-  var url = "https://res.cloudinary.com/demo/raw/upload/v";
+
+ 
+
+  var url = "http://res.cloudinary.com/demo/raw/upload/v";
   var publicId = "sample";
   var transcript = "sample.transcript"
   var version = 0;
   var progress = 0;
-  var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
-  var player = cld.videoPlayer('demo-transcript-player');
-  player.source('Homepage_2',{ transformation: {crop: 'limit', width: 600} });
+  var autoTagProgress = 0;
+  var transcriptProgress = 0;
 
-
-  var autoTagplayer = cld.videoPlayer('demo-autotag-player');
   
-  autoTagplayer.source('test-12s',{ transformation: {crop: 'limit', width: 600} });
-  
-  var plistplayer = cld.videoPlayer('demo-playlist-player');
+var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
-  plistplayer.source('test-12s',{ transformation: { width: 400, crop: 'limit' }  });
+var resizePlayer = cld.videoPlayer('demo-resize-player');
 
-  var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
+resizePlayer.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
 
-  var source1 = { publicId: 'test-12s', info: { title: 'Basketball', subtitle: 'Basketball' } };
-  recplayer.source(source1);
+var manipulationPlayer = cld.videoPlayer('demo-manipulation-player');
+
+manipulationPlayer.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
+
+transcriptPlayer.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
+
+autoTagPlayer.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+
+
+
+
 
