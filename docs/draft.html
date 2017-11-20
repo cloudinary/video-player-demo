@@ -394,16 +394,19 @@ for example: play, pause, time played, percentage played
 and volume change. 
 Sample code: */
 // Initialize player
-var player = cld.videoPlayer('example-player', {
-  analytics: { // Enable player analytics
-    events: ['play',
-   	     'Pause',
-   	     {type: 'percentsplayed', percents: [10, 50,75, 100] }, 
-	     // Some events may have additionals settings
-            'Start',
-      	    'Ended'] } })
+var player = cld.videoPlayer('demo-events-player', 
+  { playedEventTimes: [3, 10],
+    analytics: { // Enable player analytics
+    events: [
+    'play',
+    'pause',
+    'percentsplayed',
+    { type: 'playedEventTimes', times: [3, 10] }, 
+    'start',
+    'ended',
+    'fullscreenchange']}});
 // Modify player source
-player.source('oceans').play();
+player.source('forest_bike').play();
 </code></pre>
 							</div>
 							<div class="codepen-info">
