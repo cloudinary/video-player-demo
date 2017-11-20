@@ -179,7 +179,7 @@ var eventplayer = cld.videoPlayer('demo-events-player',
     'play',
     'pause',
     'percentsplayed',
-    'playedEventTimes', 
+    { type: 'playedEventTimes', times: [3, 10] }, 
     'start',
     'ended',
     'fullscreenchange']}});
