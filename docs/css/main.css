@@ -2087,9 +2087,18 @@ input[type="radio"]:checked + label .radio-icon:before {
 	}
 
 	.theme-area {
+		-webkit-transform: translateX(0px);
+		-ms-transform: translateX(0px);
+		transform: translateX(0px);
 		top: 30px;
 	}
-
+	
+	.theme-area.active {
+		-webkit-transform: translateX(220px);
+		-ms-transform: translateX(220px);
+		transform: translateX(220px);
+	}
+	
 	.content-block {
 		padding: 28px 0 8px;
 	}
