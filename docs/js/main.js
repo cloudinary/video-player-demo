@@ -258,7 +258,24 @@ function playMe(btn) {
 var plistplayer = cld.videoPlayer('demo-playlist-player');
 plistplayer.on('sourcechanged', updateOnSrc);
 
-var source1 = { publicId: 'snow_deer', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
+var psource1 = { publicId: 'snow_deer', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
+               poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
+               info: { title: 'Snow Deer', subtitle: 'Snow Deer Movie' } };
+var psource2 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
+               poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
+               info: { title: 'Snow Horses', subtitle: 'Snow Horses Movie' } };
+var psource3 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
+               poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
+               info: { title: 'Sea Turtle', subtitle: 'Sea Turtle Movie' } };
+var psource4 = { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
+	       poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
+               info: { title: 'Elephants', subtitle: 'Elephants' } };
+
+plistplayer.playlist([psource1, psource2, psource3, psourc4], { autoAdvance: 0, repeat: true, presentUpcoming: 5 });
+
+var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
+
+var source1 = { publicId: 'snow_deer_short', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
                poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
                info: { title: 'Snow Deer', subtitle: 'Snow Deer Movie' } };
 var source2 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
@@ -270,14 +287,6 @@ var source3 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {s
 var source4 = { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
 	       poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
                info: { title: 'Elephants', subtitle: 'Elephants' } };
-
-plistplayer.playlist([source1, source2, source3, sourc4], { autoAdvance: 0, repeat: true, presentUpcoming: 5 });
-
-var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
-
-source1 = { publicId: 'snow_deer_short', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
-               poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
-               info: { title: 'Snow Deer', subtitle: 'Snow Deer Movie' } };
 var source5 = { publicId: 'marmots', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}, 
                poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
                info: { title: 'Marmots', subtitle: 'Marmots' } };
