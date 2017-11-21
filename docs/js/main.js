@@ -101,6 +101,11 @@ function requestAuto() {
   document.getElementById("checkboxLabel").classList.toggle("disabled");
 }
 
+function reportQuality() {
+	for (var i = 0; i < qualityLevels.length; i++) 
+        	console.log("reportQuality",i,qualityLevels[i].width,qualityLevels[i].enabled);
+}
+
 function changeOfResolution() {
   var index = qualityLevels.selectedIndex;
   var res = document.getElementById(qualityLevels[index].width);
@@ -109,6 +114,7 @@ function changeOfResolution() {
     old[i].setAttribute("class","range-info");
   }
   res.setAttribute("class","range-info second-hover");
+  reportQuality();
 }
 
 function setProfile(profile) {
