@@ -271,7 +271,7 @@ var psource4 = { publicId: 'elephants', sourceTypes: ['hls'], transformation: {s
 	       poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
                info: { title: 'Elephants', subtitle: 'Elephants' } };
 
-plistplayer.playlist([psource1, psource2, psource3, psourc4], { autoAdvance: 0, repeat: true, presentUpcoming: 5 });
+plistplayer.playlist([psource1, psource2, psource3, psource4], { autoAdvance: 0, repeat: true, presentUpcoming: 5 });
 
 var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
 
