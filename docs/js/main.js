@@ -87,6 +87,7 @@ function requestResolution(btn) {
     document.getElementById("checkboxLabel").classList.add("disabled");
     for (var i = 0; i < qualityLevels.length; i++) {
       qualityLevels[i].enabled = (Number(btn.id) == qualityLevels[i].width);
+      console.log("requestResolution",i,qualityLevels[i].width,qualityLevels[i].enabled);
     }
   }
 }
