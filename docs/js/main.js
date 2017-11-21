@@ -148,14 +148,12 @@ var demoplayer = cld.videoPlayer('demo-adaptive-player');
  
 var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
-
-var area = document.getElementById("video-area-adaptive");
 	
-if(area.clientWidth < 640) {
+if(window.innerWidth < 960) {
 	updateResolutionRange("sd");
 	demoplayer.source("kayak", { sourceTypes: ['hls'], 
 				    transformation: {streaming_profile: 'sd' },
-			  poster: { transformation: { width: 1920, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
+			  poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
                           });
 }
 else {
