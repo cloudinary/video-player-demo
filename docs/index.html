@@ -396,11 +396,13 @@ for example: play, pause, time played, percentage played
 and volume change. 
 Sample code: */
 // Initialize player
-var player = cld.videoPlayer('demo-events-player', 
+var player = cld.videoPlayer('demo-events-player',
+// In this section we define the list of events that will be triggered to the page, in addition to a predefined list of events
   { playedEventTimes: [3, 10],
+// In this section we define the (complete) list of events that will be sent to analytics
     analytics: { // Enable player analytics
-    events: [
-    'play',
+    events: [ 
+    'play',   
     'pause',
     'percentsplayed',
     'start',
