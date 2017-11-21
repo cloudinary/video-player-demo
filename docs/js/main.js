@@ -150,6 +150,7 @@ var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
 	
 if(window.innerWidth < 960) {
+	document.getElementById('streaming4').checked = true;
 	updateResolutionRange("sd");
 	demoplayer.source("kayak", { sourceTypes: ['hls'], 
 				    transformation: {streaming_profile: 'sd' },
