@@ -111,11 +111,16 @@ function changeOfResolution() {
 }
 
 function setProfile(profile) {
+  updateResolutionRange(profile.value);
+  demoplayer.source("kayak", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
+}
+
+function updateResolutionRange(profileVal) {
   var elements = document.getElementsByClassName('range-info');
   var i = elements.length;
 
     while(i--) {
-        if(elements[i].getElementsByClassName(profile.value).length > 0)
+        if(elements[i].getElementsByClassName(profileVal).length > 0)
           elements[i].setAttribute("class","range-info");
         else
           elements[i].setAttribute("class","range-info out-of-range");
@@ -123,7 +128,6 @@ function setProfile(profile) {
     }
   document.getElementById("checkbox").checked = true;
   document.getElementById("checkboxLabel").classList.remove("disabled");
-  demoplayer.source("kayak", { sourceTypes: ['hls'], transformation: {streaming_profile: profile.value } }).play();
 }
 
 var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
@@ -145,10 +149,21 @@ var demoplayer = cld.videoPlayer('demo-adaptive-player');
 var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
 
-demoplayer.source('kayak',{ sourceTypes: ['hls'], 
+var area = document.getElementById("video-area-adaptive");
+	
+if(area.clientWidth < 640) {
+	updateResolutionRange("sd");
+	demoplayer.source("kayak", { sourceTypes: ['hls'], 
+				    transformation: {streaming_profile: 'sd' },
+			  poster: { transformation: { width: 1920, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
+                          });
+}
+else {
+	demoplayer.source('kayak',{ sourceTypes: ['hls'], 
                             transformation: {streaming_profile: 'full_hd' },
                             poster: { transformation: { width: 1920, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
                           });
+}
 
 function updateOnEvent(eventStr,automatic) {
   var list = document.getElementById('events-list');
