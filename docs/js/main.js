@@ -90,7 +90,8 @@ function requestResolution(btn) {
     }
   }
 }
-function requestAuto(auto) {
+function requestAuto() {
+  var auto = document.getElementById("checkbox");
   console.log("requestAuto() ",auto.checked);
   if(auto.checked) {
     for (var i = 0; i < qualityLevels.length; i++) {
