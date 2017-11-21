@@ -243,11 +243,11 @@ plistplayer.playlist([{ publicId: 'snow_horses', sourceTypes: ['hls'], transform
  { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
  poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}}], 
  { autoAdvance: 0, repeat: true, presentUpcoming: 5 });
-  
+ /* 
  plistplayer.source('snow_horses',{ sourceTypes: ['hls'], 
                                    transformation: {streaming_profile: 'full_hd' },
                                    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
-                                  });
+                                  });*/
 
 var recplayer = cld.videoPlayer('demo-recommendation-player',{ autoShowRecommendations: true });
 
