@@ -154,7 +154,7 @@ var demoplayer = cld.videoPlayer('demo-adaptive-player');
  
 var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
-qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
+// qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
 	
 if(window.innerWidth < 960) {
 	document.getElementById('streaming4').checked = true;
