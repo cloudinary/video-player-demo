@@ -679,6 +679,20 @@ ul {
 	background: #bf4300;
 }
 
+.btn.widget {
+	background: #0071B9;
+}
+.btn.widget.large {	
+	height: 60px;	
+	width: 237px;
+	margin: auto;
+	font-size: 18px;	
+	font-weight: bold;	
+	line-height: 22px;	
+	text-align: center;
+	padding: 19px 5px;
+}
+
 .radio-icon {
 	width: 16px;
 	height: 16px;
@@ -786,6 +800,15 @@ input[type="radio"]:checked + label .radio-icon:before {
 	overflow: hidden;
 	text-align: center;
 	color: #fff;
+}
+
+.banner-holder.first {
+	padding-top: 40px;
+	padding-bottom: 30px;
+}
+
+.banner-holder.second {
+	padding: 10px 0 10px;
 }
 
 .banner-holder p {
@@ -925,6 +948,8 @@ input[type="radio"]:checked + label .radio-icon:before {
 	text-align: center;
 	text-shadow: 0 0 4px rgba(0, 0, 0, .6);
 	padding: 0 3px;
+	background: rgba(0,0,0,0.45);
+	border-radius: 5px;
 }
 
 .menu img {
@@ -932,6 +957,18 @@ input[type="radio"]:checked + label .radio-icon:before {
 	width: 100%;
 	height: auto;
 	border-radius: 5px;
+}
+
+.menu.videos img {
+	padding-bottom: 20px;
+}
+
+.menu .sec01 {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+	background: url("https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/rafting_short.jpg");
 }
 
 .theme-area {
@@ -1559,7 +1596,6 @@ input[type="radio"]:checked + label .radio-icon:before {
 .codepen-info .btn .icon {
 	width: 24px;
 	height: 24px;
-	background: url(../images/icon.svg) no-repeat;
 	position: absolute;
 	left: 12px;
 	top: 8px;
@@ -1836,24 +1872,85 @@ input[type="radio"]:checked + label .radio-icon:before {
 	height: auto;
 }
 
-.header-holder.widget {
-	padding: 0 67px 26px 80px;
+.container.adaptive {
+	max-width: 1950px;
 }
 
-.btn.widget {
+.header-holder.adaptive {
+	padding: 0 67px 0 80px;
+}
+
+.menu.adaptive {
+	margin: 0 -15px;
+}
+
+.menu.adaptive li {
+	padding: 0 15px;
+}
+
+.content-block.adaptive {
+	padding: 52px 0 69px;
+}
+
+.heading-area.adaptive {
+	max-width: 782px;
+	margin: 0 auto 40px;
+}
+
+.heading-area.adaptive h2 {
+	margin: 0 0 31px;
+}
+
+.block-area.adaptive {
+	display: block;
+}
+
+.video-block.adaptive {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 35px;
+}
+
+.video-area.adaptive {
+	width: 75%;
 	margin: auto;
 }
 
-.myProgress {
+.video-area.manipulation {
+	margin: auto;
+}
+
+.video-detail.adaptive {
+	max-width: 660px;
+	margin: 0 auto;
+}
+
+.video-detail.adaptive.style01 {
+	max-width: inherit;
+}
+
+.video-info.adaptive {
+	padding: 10px 0;
+}
+
+.editing-area.adaptive {
 	width: 100%;
-	background-color: #ddd;
-  }
-  
-.myBar {
-	width: 0%;
-	height: 30px;
-	background-color: #4CAF50;
-  }
+	max-width: 780px;
+	margin: 0 auto;
+}
+
+.codepen-info.adaptive .btn {
+	font-size: 14px;
+}
+
+.footer-holder.adaptive {
+	padding: 0 65px 0 67px;
+}
+
+.footer-holder.adaptive .list li {
+	font-size: 15px;
+}
 
 @media (max-width: 1199px) {
 	.container {
@@ -1925,6 +2022,17 @@ input[type="radio"]:checked + label .radio-icon:before {
 		font-size: 15px;
 	}
 }
+
+.myProgress {
+	width: 100%;
+	background-color: #ddd;
+  }
+  
+.myBar {
+	width: 0%;
+	height: 30px;
+	background-color: #4CAF50;
+  }
 
 @media (max-width: 991px) {
 	.header-holder {
@@ -2194,4 +2302,3 @@ input[type="radio"]:checked + label .radio-icon:before {
 		height: 91px;
 	}
 }
-
