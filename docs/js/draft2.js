@@ -24,10 +24,8 @@ function setTheme(btn) {
 
 function playerSizeChange(width) {
     var area = document.getElementById("video-area-adaptive");
-    var border = document.getElementById("player-border");
     var val = width + "px";
     area.style.width = val;
-    border.style.width = val;
   }
 
 function requestResolution(btn) {
