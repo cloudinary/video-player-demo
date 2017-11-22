@@ -905,6 +905,10 @@ input[type="radio"]:checked + label .radio-icon:before {
 	width: 25%;
 }
 
+.menu.videos li{
+	padding-top: 10px;
+}
+
 .menu a {
 	background-color: #000;
 	background-color: rgba(0, 0, 0, .45);
@@ -950,6 +954,10 @@ input[type="radio"]:checked + label .radio-icon:before {
 	padding: 0 3px;
 	background: rgba(0,0,0,0.45);
 	border-radius: 5px;
+}
+
+.menu .text.manipulation {
+	height: 20px;
 }
 
 .menu img {
