@@ -35,7 +35,7 @@
 	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
 	<link href="css/prism2.css" rel="stylesheet" />
-	<link href="css/ui2.css" media="all" rel="stylesheet" >
+	<link href="css/ui.css" media="all" rel="stylesheet" >
 </head>
 <body>
 	<div id="wrapper">
@@ -136,11 +136,11 @@
 							<div class="video-block adaptive">
 								<div class="video-detail adaptive">
 									<div class="display-info">
-										<div class="display-resolation adaptive">
-											<div class="resolation-range adaptive">
-												<div class="range-info adaptive">
-													<span class="text">instagrem</span>
-													<ul class="bar-list">
+										<div class="display-resolation">
+											<div id="adaptive" class="resolation-range">
+												<div id="1920" class="range-info" onclick="requestResolution(this)">
+													<span class="text">1920x1080</span>
+													<ul class="bar-list 4k full_hd">
 														<li></li>
 														<li></li>
 														<li></li>
@@ -154,41 +154,9 @@
 														<li></li>
 													</ul>
 												</div>
-												<div class="range-info">
-													<span class="text">facebook post</span>
-													<ul class="bar-list">
-														<li></li>
-														<li></li>
-														<li></li>
-														<li></li>
-														<li></li>
-														<li class="long"></li>
-														<li></li>
-														<li></li>
-														<li></li>
-														<li></li>
-														<li></li>
-													</ul>
-												</div>
-												<div class="range-info">
-													<span class="text">option</span>
-													<ul class="bar-list">
-														<li></li>
-														<li></li>
-														<li></li>
-														<li></li>
-														<li></li>
-														<li class="long"></li>
-														<li></li>
-														<li></li>
-														<li></li>
-														<li></li>
-														<li></li>
-													</ul>
-												</div>
-												<div class="range-info">
+												<div id="1280" class="range-info" onclick="requestResolution(this)">
 													<span class="text">1280x720</span>
-													<ul class="bar-list">
+													<ul class="bar-list 4k full_hd hd">
 														<li></li>
 														<li></li>
 														<li></li>
@@ -202,9 +170,9 @@
 														<li></li>
 													</ul>
 												</div>
-												<div class="range-info active">
-													<span class="text">option</span>
-													<ul class="bar-list">
+												<div id="960" class="range-info" onclick="requestResolution(this)">
+													<span class="text">960x540</span>
+													<ul class="bar-list 4k full_hd hd">
 														<li></li>
 														<li></li>
 														<li></li>
@@ -218,9 +186,9 @@
 														<li></li>
 													</ul>
 												</div>
-												<div class="range-info second-hover">
-													<span class="text">vertical</span>
-													<ul class="bar-list">
+												<div id="640" class="range-info" onclick="requestResolution(this)">
+													<span class="text">640x360</span>
+													<ul class="bar-list 4k full_hd hd sd">
 														<li></li>
 														<li></li>
 														<li></li>
@@ -234,9 +202,25 @@
 														<li></li>
 													</ul>
 												</div>
-												<div class="range-info">
-													<span class="text">small</span>
-													<ul class="bar-list">
+												<div id="480" class="range-info" onclick="requestResolution(this)">
+													<span class="text">480x270</span>
+													<ul class="bar-list 4k full_hd hd sd">
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li class="long"></li>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+													</ul>
+												</div>
+												<div id="320" class="range-info" onclick="requestResolution(this)">
+													<span class="text">320x240</span>
+													<ul class="bar-list 4k full_hd hd sd">
 														<li></li>
 														<li></li>
 														<li></li>
@@ -253,7 +237,8 @@
 											</div>
 										</div>
 									</div>
-									<div id="video-area-adaptive" div class="video-area adaptive">
+								</div>
+								<div id="video-area-adaptive" div class="video-area adaptive">
 									<video
 										id="demo-resize-player" 
 										controls 
@@ -279,6 +264,7 @@
 												id="demo-manipulation1-player" 
 												data-cld-public-id="rafting_short"
 												data-cld-transformation= '[{"width":300, "crop":"limit"},{"effect":"vignette:50"}]'
+												data-cld-poster-options= '{ "transformation": {"effect": "vignette:50" } }'
 												controls
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
