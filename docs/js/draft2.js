@@ -22,6 +22,23 @@ function setTheme(btn) {
     toggleClass();
 }
 
+function playerSizeChange(width) {
+    var area = document.getElementById("video-area-adaptive");
+    var border = document.getElementById("player-border");
+    var val = width + "px";
+    area.style.width = val;
+    border.style.width = val;
+  }
+
+function requestResolution(btn) {
+    var oldactive = document.getElementsByClassName("range-info active");
+    for (var i = 0; i < oldactive.length; i++) {
+      oldactive[i].setAttribute("class","range-info");
+    }
+    btn.setAttribute("class","range-info active");
+    playerSizeChange(btn.id);
+  }
+
 window.addEventListener('scroll',checkPosition,false);
 function checkPosition()
 {
