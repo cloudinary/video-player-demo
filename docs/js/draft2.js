@@ -184,39 +184,9 @@ var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
 var resizePlayer = cld.videoPlayer('demo-resize-player');
 
-resizePlayer.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+resizePlayer.source('test-12s',{ transformation:{overlay: "cloudinary_icon", width:200 } });
 
-var manipulationPlayer1 = cld.videoPlayer('demo-manipulation1-player');
-
-manipulationPlayer1.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
-
-var manipulationPlayer2 = cld.videoPlayer('demo-manipulation2-player');
-
-manipulationPlayer2.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
-
-var manipulationPlayer3 = cld.videoPlayer('demo-manipulation3-player');
-
-manipulationPlayer3.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
-
-var manipulationPlayer4 = cld.videoPlayer('demo-manipulation4-player');
-
-manipulationPlayer4.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
-
-var manipulationPlayer5 = cld.videoPlayer('demo-manipulation5-player');
-
-manipulationPlayer5.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
-
-var manipulationPlayer6 = cld.videoPlayer('demo-manipulation6-player');
-
-manipulationPlayer6.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
-
-var manipulationPlayer7 = cld.videoPlayer('demo-manipulation7-player');
-
-manipulationPlayer7.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
-
-var manipulationPlayer8 = cld.videoPlayer('demo-manipulation8-player');
-
-manipulationPlayer8.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+var players = cld.videoPlayers('.demo-manipulation', {videojs: { bigPlayButton: false, controlBar: false } });
 
 var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 
@@ -225,6 +195,13 @@ transcriptPlayer.source('test-12s',{ transformation: { width: 1000, crop: 'limit
 var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
 
 autoTagPlayer.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+
+
+
+
+
+
 
 
 
