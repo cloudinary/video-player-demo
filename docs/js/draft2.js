@@ -34,7 +34,12 @@ function checkPosition()
     }
 }
 
-document.getElementById("upload_widget_opener").addEventListener("click", function() {
+document.getElementById("upload_widget_opener_small").addEventListener("click", function() {
+	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_transcript', resource_type: 'video'}, 
+	  function(error, result) { processResponse(error, result) });
+  }, false);
+
+  document.getElementById("upload_widget_opener_large").addEventListener("click", function() {
 	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_transcript', resource_type: 'video'}, 
 	  function(error, result) { processResponse(error, result) });
   }, false);
@@ -74,7 +79,7 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
  
 function updateProgress() {
     progress++;
-    console.log("updateProgress", progress);
+    console.log("updateProgress", progress,autoTagProgress,transcriptProgress);
     if(autoTagProgress < 100)
         updateAutoTagProgress()
     if(transcriptProgress < 100)
@@ -85,12 +90,14 @@ function updateProgress() {
 
 function updateAutoTagProgress() {
     autoTagProgress++;
+    console.log("updateAutoTagProgress", progress,autoTagProgress);
     var autoTaggingBar = document.getElementById("autoTaggingBar");
     autoTaggingBar.style.width = autoTagProgress + '%'; 
 }
 
 function updateTranscriptProgress() {
     transcriptProgress++;
+    console.log("updateTranscriptProgress", progress,transcriptProgress);
     var transcriptBar = document.getElementById("transcriptBar");
     transcriptBar.style.width = transcriptProgress + '%'; 
 }
@@ -164,7 +171,7 @@ pubnub.addListener({
 
  
 
-  var url = "https://res.cloudinary.com/demo/raw/upload/v";
+  var url = "http://res.cloudinary.com/demo/raw/upload/v";
   var publicId = "sample";
   var transcript = "sample.transcript"
   var version = 0;
@@ -179,9 +186,37 @@ var resizePlayer = cld.videoPlayer('demo-resize-player');
 
 resizePlayer.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
 
-var manipulationPlayer = cld.videoPlayer('demo-manipulation-player');
+var manipulationPlayer1 = cld.videoPlayer('demo-manipulation1-player');
 
-manipulationPlayer.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+manipulationPlayer1.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+var manipulationPlayer2 = cld.videoPlayer('demo-manipulation2-player');
+
+manipulationPlayer2.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+var manipulationPlayer3 = cld.videoPlayer('demo-manipulation3-player');
+
+manipulationPlayer3.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+var manipulationPlayer4 = cld.videoPlayer('demo-manipulation4-player');
+
+manipulationPlayer4.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+var manipulationPlayer5 = cld.videoPlayer('demo-manipulation5-player');
+
+manipulationPlayer5.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+var manipulationPlayer6 = cld.videoPlayer('demo-manipulation6-player');
+
+manipulationPlayer6.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+var manipulationPlayer7 = cld.videoPlayer('demo-manipulation7-player');
+
+manipulationPlayer7.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+
+var manipulationPlayer8 = cld.videoPlayer('demo-manipulation8-player');
+
+manipulationPlayer8.source('test-12s',{ transformation: { width: 1000, crop: 'limit' }, poster: { transformation: { width: 1000, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
 
 var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 
