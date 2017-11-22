@@ -34,8 +34,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
 	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
-	<link href="css/prism.css" rel="stylesheet" />
-	<link href="css/ui2.css" media="all" rel="stylesheet" >
+	<link href="css/prism2.css" rel="stylesheet" />
+	<link href="css/ui.css" media="all" rel="stylesheet" >
 </head>
 <body>
 	<div id="wrapper">
@@ -277,66 +277,90 @@
 										<li>
 											<video
 												id="demo-manipulation1-player" 
-												data-cld-public-id="rafting_short" 
+												data-cld-public-id="rafting_short"
+												data-cld-transformation= '[{"width":300, "crop":"limit"},{"effect":"vignette:50"}]'
+												controls
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
+											<span class="text manipulation">Black and White</span>
 										</li>
 										<li>
 											<video
 												id="demo-manipulation2-player" 
-												data-cld-public-id="rafting_short"  
+												data-cld-public-id="rafting_short"
+												data-cld-transformation='[{"width":300, "crop":"limit"},{"overlay":"lut:iwltbap_aspen.3dl"}]' 
+												controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
+											<span class="text manipulation">2 colors</span>
 										</li>
 										<li>
 											<video
 												id="demo-manipulation3-player" 
-												data-cld-public-id="rafting_short"  
+												data-cld-public-id="rafting_short"
+												data-cld-transformation='[{"width":300, "crop":"limit"},{"overlay":"cloudinary_icon","width":"100"}]' 
+												controls
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
+											<span class="text manipulation">Overlay</span>
 											</li>
 										<li>
 											<video
 												id="demo-manipulation4-player" 
-												data-cld-public-id="rafting_short"  
+												data-cld-public-id="rafting_short"
+												data-cld-transformation='[{"width":300, "crop":"limit"},{"effect":"vignette:50"}]'
+												controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
+											<span class="text manipulation">Preroll</span>
 										</li>
 										<li>
 											<video
 												id="demo-manipulation5-player" 
-												data-cld-public-id="rafting_short"  
+												data-cld-public-id="rafting_short"
+												data-cld-transformation='[{"width":300, "crop":"limit"},{"radius":"20"}]' 
+												controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
+											<span class="text manipulation">Round corners</span>
 										</li>
 										<li>
 											<video
 												id="demo-manipulation6-player" 
-												data-cld-public-id="rafting_short"  
+												data-cld-public-id="rafting_short"
+												data-cld-transformation='[{"width":300, "crop":"limit"},{"effect":"accelerate:100"}]'
+												controls  
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
+											<span class="text manipulation">PB Speed</span>
 										</li>
 										<li>
 											<video
 												id="demo-manipulation7-player" 
-												data-cld-public-id="rafting_short"  
+												data-cld-public-id="rafting_short"
+												data-cld-transformation='[{"width":300, "crop":"limit"},{"angle":"180"}]' 
+												controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
+											<span class="text manipulation">Rotate 180</span>
 											</li>
 										<li>
 											<video
 												id="demo-manipulation8-player" 
-												data-cld-public-id="rafting_short"  
+												data-cld-public-id="rafting_short"
+												data-cld-transformation='[{"width":300, "crop":"limit"},{"effect":"blur:300"}]' 
+												controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
+											<span class="text manipulation">Blur</span>
 										</li>
 										<li>
 									</ul>
@@ -441,7 +465,7 @@
 	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
 	<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.17.0.js"></script>
-	<script type="text/javascript" src="js/prism.js"></script>
+	<script type="text/javascript" src="js/prism2.js"></script>
 	<script type="text/javascript" src="js/draft2.js"></script>
 	
 	<script>
