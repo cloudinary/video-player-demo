@@ -34,8 +34,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
 	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
-	<link href="css/prism.css" rel="stylesheet" />
-	<link href="css/transcode.css" media="all" rel="stylesheet" >
+	<link href="css/prism2.css" rel="stylesheet" />
+	<link href="css/ui.css" media="all" rel="stylesheet" >
 </head>
 <body>
 	<div id="wrapper">
@@ -68,26 +68,38 @@
 								<source src="https://res.cloudinary.com/hadar/video/upload/w_234,h_240,c_crop/717956081.mp4" type="video/mp4">
 							</video>
 						</strong>
-						<p>The developer-friendly video player that packs everything you need into one easy-to-integrate,<br>comprehensive open-source package.</p>
+						<p>The developer-friendly video solution that packs everything you need into one easy-to-integrate,<br>comprehensive open-source package.</p>
 						<span class="text"></span>
 						<span class="signup"></span>
 						<a id="upload_widget_opener_large" class="btn widget large" onclick="uploadVideo()">Upload your video</a>
 					</div>
 					<p class="banner-holder second">Or select one of the videos below</p>
-					<ul class="menu videos">
-						<li>
-							<img src="https://res.cloudinary.com/demo/video/upload/so_0/w_258,h_104,c_fill,g_auto/test-12s.jpg" alt="image-description">
-						</li>
-						<li>
-							<img src="https://res.cloudinary.com/demo/video/upload/w_258,h_104,c_fill,g_auto/what_is_cloudinary.jpg" alt="image-description">
-						</li>
-						<li>
-							<img src="https://res.cloudinary.com/demo/video/upload/w_258,h_104,c_fill,g_auto/imagecon_grigsby_intro.jpg" alt="image-description">
-						</li>
-						<li>
-							<img src="https://res.cloudinary.com/demo/video/upload/w_258,h_104,c_fill,g_auto/Anyclip_oren.jpg" alt="image-description">
-						</li>
-					</ul>
+					<nav id="nav">
+                        <div class="container">
+                            <ul class="menu">
+                                <li>
+                                    <a href="#section01" title="rafting" onclick="useVideo(this)">
+                                        <img src="https://res.cloudinary.com/demo/video/upload/w_260,h_105,dpr_2.0,c_fill,so_0,r_5,b_white,q_auto,f_auto/rafting_sd.jpg" alt="rafting">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#section01" title="what_is_cloudinary" onclick="useVideo(this)">
+                                        <img src="https://res.cloudinary.com/demo/video/upload/w_260,h_105,dpr_2.0,c_fill,r_5,b_white,q_auto,f_auto/what_is_cloudinary.jpg" alt="forest bike">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#section01" title="imagecon_grigsby_intro" onclick="useVideo(this)">
+                                        <img src="https://res.cloudinary.com/demo/video/upload/w_260,h_105,dpr_2.0,c_fill,r_5,b_white,q_auto,f_auto,g_auto/imagecon_grigsby_intro.jpg" alt="snow horses">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#section01" title="snow_deer" onclick="useVideo(this)">
+                                        <img src="https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,dpr_2.0,c_fill,r_5,b_white,q_auto,f_auto/snow_deer.jpg" alt="snow deer">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                     </nav>
 				</div>
 				<div id="theme-area" class="theme-area" onclick="toggleClass()">
 					<div class="theme-opener"><i class="icon"></i></div>
@@ -126,7 +138,7 @@
 			</div>
 		</div>
 		<main id="main"></main>
-			<section class="content-block" id="section01">
+			<section class="content-block hidden" id="section01">
 				<div class="container">
 					<header class="heading-area">
 						<h2>Advanced Manipulation</h2>
@@ -135,23 +147,23 @@
 						<div class="video-block adaptive">
 								<ul class="menu videos">
 										<li>
-											<video
-												id="demo-manipulation1-player" 
-												data-cld-public-id="rafting_short"
-												data-cld-transformation= '[{"width":300, "crop":"limit"},{"effect":"saturation:-200"}]'
-												data-cld-poster-options= '{ "transformation": {"width":300, "effect": "grayscale" } }'
-												controls
-												muted 
-												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
-											</video>
-											<span class="text manipulation">Black and White</span>
-										</li>
+                                             <video
+                                                id="demo-manipulation1-player" 
+                                                data-cld-public-id="rafting_sd"
+                                                data-cld-transformation='{"effect": "saturation:-200"}' 
+                                                data-cld-poster-options= '{ "transformation": {"effect": "grayscale" } }'
+                                                controls
+                                                muted 
+                                                class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+                                            </video>
+                                            <span class="text manipulation">Black and White</span>	
+                                        </li>
 										<li>
 											<video
 												id="demo-manipulation2-player" 
-												data-cld-public-id="rafting_short"
-												data-cld-transformation='[{"width":300, "crop":"limit"}, {"effect": "vignette:50"}]' 
-                                                data-cld-poster-options= '{ "transformation": {"width":300, "effect": "vignette:50" } }'
+												data-cld-public-id="rafting_sd"
+												data-cld-transformation='{"effect": "vignette:50"}' 
+                                                data-cld-poster-options= '{ "transformation": {"effect": "vignette:50" } }'
                                                 controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
@@ -161,10 +173,10 @@
 										<li>
 											<video
 												id="demo-manipulation3-player" 
-												data-cld-public-id="rafting_short"
-												data-cld-transformation='[{"width":300, "crop":"limit"},{"overlay":"cloudinary_icon","gravity":"south_east","width":"50"}]' 
-                                                						data-cld-poster-options= '{ "transformation": [{"width":300, "crop":"limit"},{"overlay":"cloudinary_icon","gravity":"south_east","width":"50"}] }'
-                                                						controls
+												data-cld-public-id="rafting_sd"
+												data-cld-transformation='{"overlay":"cloudinary_icon","gravity":"south_east","width":"50"}' 
+                                                data-cld-poster-options= '{ "transformation": {"overlay":"cloudinary_icon","gravity":"south_east","width":"100"} }'
+                                                controls
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
@@ -173,10 +185,10 @@
 										<li>
 											<video
 												id="demo-manipulation4-player" 
-												data-cld-public-id="rafting_short"
-                                                						data-cld-transformation='[{"width":300, "crop":"limit"},{"effect":"vignette:50"}]'
-												data-cld-poster-options= '{ "transformation": {"width":300 } }'
-											        controls 
+												data-cld-public-id="rafting_sd"
+                                                data-cld-transformation='{"effect":"vignette:50"}'
+                                                data-cld-poster-options= '{ "transformation": {"overlay":"cloudinary_icon","gravity":"south_east","width":"100"} }'
+												controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
@@ -185,9 +197,9 @@
 										<li>
 											<video
 												id="demo-manipulation5-player" 
-												data-cld-public-id="rafting_short"
-                                                						data-cld-transformation='[{"width":300, "crop":"limit"},{"radius":"50","background":"white"}]' 
-                                                						data-cld-poster-options= '{ "transformation": [{"width":300, "crop":"limit"},{"radius":"50","background":"white"}] }'
+												data-cld-public-id="rafting_sd"
+                                                data-cld-transformation='{"radius":"50","background":"white"}' 
+                                                data-cld-poster-options= '{ "transformation": {"radius":"50","background":"white"} }'
 												controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
@@ -198,8 +210,7 @@
 											<video
 												id="demo-manipulation6-player" 
 												data-cld-public-id="rafting_short"
-                                                						data-cld-transformation='[{"width":300, "crop":"limit"},{"effect":"accelerate:100"}]'
-                                                						data-cld-poster-options= '{ "transformation": {"width":300 } }'
+                                                data-cld-transformation='{"effect":"accelerate:100"}'
 												controls  
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
@@ -210,20 +221,20 @@
 											<video
 												id="demo-manipulation7-player" 
 												data-cld-public-id="rafting_short"
-                                                data-cld-transformation='[{"width":300, "crop":"limit"},{"angle":"180"}]' 
-                                                data-cld-poster-options= '{ "transformation": {"width":300, "angle":"180" } }'
+                                                data-cld-transformation='{"angle":"180"}' 
+                                                data-cld-poster-options= '{ "transformation": {"angle":"180" } }'
 												controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
 											<span class="text manipulation">Rotate 180</span>
 											</li>
-										<li>
+										    <li>
 											<video
 												id="demo-manipulation8-player" 
 												data-cld-public-id="rafting_short"
-                                                data-cld-transformation='[{"width":300, "crop":"limit"},{"effect":"blur:300"}]' 
-                                                data-cld-poster-options= '{ "transformation":[{"width":300, "crop":"limit"},{"effect":"blur:300"}] }'
+                                                data-cld-transformation='{"effect":"blur:300"}' 
+                                                data-cld-poster-options= '{ "transformation": {"effect":"blur:300"} }'
 												controls 
 												muted 
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
@@ -238,7 +249,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="content-block style01" id="section02">
+			<section class="content-block hidden style01" id="section02">
 				<div class="container">
 					<header class="heading-area">
 						<h2>Video Auto Tagging</h2>
@@ -269,7 +280,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="content-block" id="section03">
+			<section class="content-block hidden" id="section03">
 				<div class="container">
 					<header class="heading-area">
 						<h2>Auto transcript</h2>
@@ -320,8 +331,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
-	<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.17.0.js"></script>
-	<script type="text/javascript" src="js/prism.js"></script>
+	<script type="text/javascript" src="js/prism2.js"></script>
 	<script type="text/javascript" src="js/transcode.js"></script>
 	
 	<script>
