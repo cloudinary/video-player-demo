@@ -39,6 +39,17 @@ function showContentBlocks() {
     }
 }
 
+function initScreen() {
+    getTranscriptFile = true;
+    transcriptComplete = false;
+    progress = 0;
+    autoTagProgress = 0;
+    transcriptProgress = 0;
+    showJSON("transcript","Waiting for automatic transcript...");
+    showJSON("autotag","Waiting for automatic tagging...");
+    showContentBlocks();
+}
+
 function uploadVideo(){
 	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_transcript_lambda', resource_type: 'video'}, 
       function(error, result) { processResponse(error, result); }, false);
@@ -46,7 +57,7 @@ function uploadVideo(){
 
 function useVideo(vid) {
     console.log("useVideo",vid.title);
-    showContentBlocks();
+    initScreen();
     publicId = vid.title + "_autotag";
     transcript = publicId + ".transcript";
     updatePlayers(vid.title + "_sd");
@@ -63,7 +74,7 @@ function updateAutoPlayers() {
 
 function processResponse(error, result) {
     console.log(error, result);
-    showContentBlocks();
+    initScreen();
     publicId = result[0].public_id;
     transcript = publicId + ".transcript";
     updatePlayers(publicId);
