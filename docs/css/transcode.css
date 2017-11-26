@@ -1166,6 +1166,13 @@ input[type="radio"]:checked + label .radio-icon:before {
 	margin: 0 0 27px;
 }
 
+.heading-area.example h2 {
+	font-size: 21px;
+	line-height: 30px;
+	letter-spacing: .16px;
+	margin: 0 0 10px;
+}
+
 .heading-area p {
 	margin: 0;
 }
