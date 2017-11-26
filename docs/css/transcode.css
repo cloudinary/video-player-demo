@@ -969,7 +969,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	font-weight: none;
 	text-shadow: none;
 	text-transform: none;	
-	color: black;
+	color: #0a5dff;
 }
 
 .menu img {
