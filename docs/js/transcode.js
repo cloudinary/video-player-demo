@@ -85,6 +85,11 @@ function processResponse(error, result) {
 function updatePlayers(pid) {
     for(var i = 0; i < players.length; i++) 
         players[i].source(pid);
+    var links = document.getElementsByClassName("manipulation")
+    for(var j = 0; j < links.length; j++) {
+            var ref = links[j].getAttribute("data-href");
+            links[j].setAttribute("href",ref+pid+".mp4");
+    }
 }
 
 function updateProgress() {
