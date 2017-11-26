@@ -67,8 +67,8 @@ function useVideo(vid) {
 }
 
 function updateAutoPlayers() {
-    autoTagPlayer.source(publicId,{ transformation: {crop: 'limit', width: 640 } });
-    transcriptPlayer.source(publicId,{ transformation: {crop: 'limit', width: 640 } });
+    autoTagPlayer.source(publicId);
+    transcriptPlayer.source(publicId);
 }
 
 
