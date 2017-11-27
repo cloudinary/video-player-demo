@@ -37,6 +37,8 @@ function showContentBlocks() {
     for(var i = 0; i < contentBlocks.length; i++) {
         contentBlocks[i].classList.remove("hidden");
     }
+    showProgressBar(true,"transcript"); 
+    showProgressBar(true,"autotag");
 }
 
 function initScreen() {
@@ -75,11 +77,18 @@ function updateAutoPlayers() {
 function processResponse(error, result) {
     console.log(error, result);
     initScreen();
-    publicId = result[0].public_id;
-    transcript = publicId + ".transcript";
-    updatePlayers(publicId);
-    updateAutoPlayers();
-    updateProgress();
+    if(result[0].bytes > 0 && result[0].bytes <= 100000000)
+    {
+        publicId = result[0].public_id;
+        transcript = publicId + ".transcript";
+        updatePlayers(publicId);
+        updateAutoPlayers();
+        updateProgress();
+    }
+    else if(result[0].bytes > 100000000)
+        showError("Uploaded file is too big. This demo file size limit is 100MB");
+    else
+        showError(error);
 }
 
 function updatePlayers(pid) {
@@ -198,10 +207,29 @@ function checkTags(notify) {
         console.log("no autotag");
 }
 
+function showProgressBar(show,id) {
+    var pre = document.getElementById("pre-"+id);
+    var bar = document.getElementById(id+"-bar");
+    if(show) {
+        bar.setAttribute("style","");
+        pre.setAttribute("style","display: none");
+    }
+    else {
+        bar.setAttribute("style","display: none");
+        pre.setAttribute("style","");
+    }
+}
+
+function showError(error) {
+    showJSON("autotag",error);
+    showJSON("transcript",error);
+}
+
 function showJSON(id,notify) {
     var content = document.getElementById(id);
-    var autoTaggingData = JSON.stringify(notify);
-    content.innerText = autoTaggingData; 
+    showProgressBar(false,id);
+    var data = JSON.stringify(notify);
+    content.innerText = data; 
     Prism.highlightElement(content);
 }
  
