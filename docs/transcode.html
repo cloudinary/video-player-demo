@@ -44,7 +44,7 @@
 				<div class="container">
 					<div class="header-holder widget">
 						<strong class="topbar-logo"><a href="https://cloudinary.com" target="_blank"><img src="https://cloudinary-res.cloudinary.com/image/asset/dpr_2.0/logo-e0df892053afd966cc0bfe047ba93ca4.png" alt="Cloudinary"></a></strong>
-						<a href="#" id="upload_widget_opener_small" class="btn widget" onclick="uploadVideo()">Upload your video</a>
+						<a href="" id="upload_widget_opener_small" class="btn widget" onclick="uploadVideo()">Upload your video</a>
 						<a href="https://cloudinary.com/signup?source=demo" target="_blank" class="btn">Sign up for free</a>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 					<div class="banner-holder first">
 						<h1 class="logo">
 							<img src="https://res.cloudinary.com/demo/image/upload/v1511169318/video-big_trans_1x.svg">
-								<video autoplay loop muted >
+								<video autoplay loop muted playsinline>
 									<source src="https://res.cloudinary.com/hadar/video/upload/w_538,h_217,c_crop/717956081.webm" type="video/webm">
 									<source src="https://res.cloudinary.com/hadar/video/upload/w_538,h_217,c_crop/717956081.ogv" type="video/ogg">
 									<source src="https://res.cloudinary.com/hadar/video/upload/w_538,h_217,c_crop/717956081.mp4" type="video/mp4">
@@ -62,7 +62,7 @@
 						</h1>
 						<strong class="m-logo">
 							<img src="https://res.cloudinary.com/demo/image/upload/cs_srgb/justvideo.svg" alt="Video Player">
-							<video autoplay loop muted >
+							<video autoplay loop muted playsinline>
 								<source src="https://res.cloudinary.com/hadar/video/upload/w_234,h_240,c_crop/717956081.webm" type="video/webm">
 								<source src="https://res.cloudinary.com/hadar/video/upload/w_234,h_240,c_crop/717956081.ogv" type="video/ogg">
 								<source src="https://res.cloudinary.com/hadar/video/upload/w_234,h_240,c_crop/717956081.mp4" type="video/mp4">
@@ -71,7 +71,7 @@
 						<p>The developer-friendly video solution that packs everything you need into one easy-to-integrate,<br>comprehensive open-source package.</p>
 						<span class="text"></span>
 						<span class="signup"></span>
-						<a a href="#" id="upload_widget_opener_large" class="btn widget large" onclick="uploadVideo()">Upload your video</a>
+						<a a href="" id="upload_widget_opener_large" class="btn widget large" onclick="uploadVideo()">Upload your video</a>
 					</div>
 					<p class="banner-holder second">Or select one of the videos below</p>
 					<nav id="nav">
@@ -152,7 +152,8 @@
                                                 data-cld-transformation='{"effect": "saturation:-200"}' 
                                                 data-cld-poster-options= '{ "transformation": [{"effect": "grayscale" },{"overlay":"play-demo", "width":"160"}] }'
                                                 controls
-                                                muted 
+                                                muted
+						playsinline
                                                 class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
                                             </video>
                                             <a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_saturation:-200/" target="_blank">Black and White</a>	
@@ -163,7 +164,8 @@
 												data-cld-transformation='{"effect": "vignette:50"}' 
                                                 data-cld-poster-options= '{ "transformation": [{"effect": "vignette:50" } ,{"overlay":"play-demo", "width":"160"}] }'
                                                 controls 
-												muted 
+												muted
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
 											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_vignette:50/" target="_blank">Vignette</a>
@@ -174,7 +176,8 @@
 												data-cld-transformation='{"overlay":"cloudinary_icon","gravity":"south_east","width":"50"}' 
                                                 data-cld-poster-options= '{ "transformation": [{"overlay":"cloudinary_icon","gravity":"south_east","width":"100"} ,{"overlay":"play-demo", "width":"160"}] }'
                                                 controls
-												muted 
+												muted
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
 											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/g_south_east,l_cloudinary_icon,w_50/" target="_blank">Overlay</a>
@@ -185,7 +188,8 @@
                                                 data-cld-transformation='{"overlay":"video:cld_opener_preroll_sd","flags":"splice","start_offset":"0"}'
                                                 data-cld-poster-options='{ "transformation": [{"overlay":"cld_opener_preroll_sd"} ,{"overlay":"play-demo", "width":"160"}] }'
                                                 controls 
-												muted 
+												muted
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
 											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/fl_splice,l_video:cld_opener_preroll_sd,so_0/" target="_blank">Preroll</a>
@@ -196,7 +200,8 @@
                                                 data-cld-transformation='{"radius":"50"}' 
                                                 data-cld-poster-options= '{ "transformation": [{"radius":"50","background":"white"} ,{"overlay":"play-demo", "width":"160"}] }'
 												controls 
-												muted 
+												muted
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
 											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/r_50/" target="_blank">Round Corners</a>
@@ -207,7 +212,8 @@
                                                 data-cld-transformation='{"effect":"accelerate:100"}'
                                                 data-cld-poster-options= '{ "transformation": {"overlay":"play-demo", "width":"160"} }'
 												controls  
-												muted 
+												muted
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
 											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_accelerate:100/" target="_blank">Playback Speed x2</a>
@@ -218,7 +224,8 @@
                                                 data-cld-transformation='{"angle":"180"}' 
                                                 data-cld-poster-options= '{ "transformation": [{"angle":"180" } ,{"overlay":"play-demo", "width":"160"}] }'
 												controls 
-												muted 
+												muted
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
 											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/a_180/" target="_blank">Rotate 180</a>
@@ -229,7 +236,8 @@
                                                 data-cld-transformation='{"effect":"blur:300"}' 
                                                 data-cld-poster-options= '{ "transformation": [{"effect":"blur:300"} ,{"overlay":"play-demo", "width":"160"}] }'
 												controls 
-												muted 
+												muted
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
 											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_blur:300/" target="_blank">Blur</a>
@@ -258,6 +266,7 @@
 									id="demo-autotag-player" 
 									controls 
 									muted 
+								        playsinline
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
                                 </video>
 								<div class="video-info">
@@ -289,7 +298,8 @@
 								<video
 									id="demo-transcript-player" 
 									controls 
-									muted 
+									muted
+								        playsinline
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<div class="video-info">
