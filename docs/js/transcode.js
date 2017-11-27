@@ -173,14 +173,14 @@ function checkTranscript(notify) {
     }
     else if (notify.transcript.status == "complete") {
         transcriptComplete = true;
-        transcriptPlayer.source(publicId,{ transformation: [{crop: 'limit', width: 640}, {overlay: "subtitles:"+transcript}] }).play();
+        transcriptPlayer.source(publicId,{ transformation: {overlay: "subtitles:"+transcript}}).play();
         console.log("transcript ready");
     }
     else
     {
         getTranscriptFile = false;
         transcriptComplete = true;
-        transcriptPlayer.source(publicId,{ transformation: {crop: 'limit', width: 640} }).play();
+        transcriptPlayer.source(publicId).play();
         transcriptProgress = 99;
         showJSON("transcript","There is no transcript for this video");
         console.log("no transcript");
