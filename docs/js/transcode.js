@@ -112,7 +112,7 @@ function updateProgress() {
     if(transcriptProgress < 100)
         updateTranscriptProgress()
     if (autoTagProgress < 100 || transcriptProgress < 100)
-        setTimeout(updateProgress,1000);
+        setTimeout(updateProgress,2000);
 }
 
 function getData() {
