@@ -60,10 +60,10 @@ function useVideo(vid) {
     publicId = vid.title + "_autotag";
     transcript = publicId + ".transcript";
     updatePlayers(vid.title + "_sd");
-    updateAutoPlayers();
     showContentBlocks();
     progress = 20;
     updateProgress();
+    updateAutoPlayers();
 }
 
 function updateAutoPlayers() {
@@ -80,9 +80,9 @@ function processResponse(error, result) {
         publicId = result[0].public_id;
         transcript = publicId + ".transcript";
         updatePlayers(publicId);
-        updateAutoPlayers();
 	showContentBlocks();
         updateProgress();
+	updateAutoPlayers();
     }
     else if(result && result[0].bytes > 100000000) {
 	    showContentBlocks();
