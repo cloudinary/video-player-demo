@@ -22,7 +22,7 @@ pre[class*="language-"] {
 	white-space: -pre-wrap;      /* Opera 4-6 */
 	white-space: -o-pre-wrap;    /* Opera 7 */
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
-	max-height: 360px;
+	max-height: 400px;
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
