@@ -47,9 +47,6 @@ function initScreen() {
     progress = 0;
     autoTagProgress = 0;
     transcriptProgress = 0;
-    showJSON("transcript","Waiting for automatic transcript...");
-    showJSON("autotag","Waiting for automatic tagging...");
-    showContentBlocks();
 }
 
 function uploadVideo(){
@@ -64,6 +61,7 @@ function useVideo(vid) {
     transcript = publicId + ".transcript";
     updatePlayers(vid.title + "_sd");
     updateAutoPlayers();
+    showContentBlocks();
     progress = 20;
     updateProgress();
 }
@@ -83,10 +81,13 @@ function processResponse(error, result) {
         transcript = publicId + ".transcript";
         updatePlayers(publicId);
         updateAutoPlayers();
+	showContentBlocks();
         updateProgress();
     }
-    else if(result && result[0].bytes > 100000000)
-        showError("Uploaded file is too big. This demo file size limit is 100MB");
+    else if(result && result[0].bytes > 100000000) {
+	    showContentBlocks();
+            showError("Uploaded file is too big. This demo file size limit is 100MB");
+    }
     else
         showError(error);
 }
