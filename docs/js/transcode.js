@@ -77,7 +77,7 @@ function updateAutoPlayers() {
 function processResponse(error, result) {
     console.log(error, result);
     initScreen();
-    if(result[0].bytes > 0 && result[0].bytes <= 100000000)
+    if(result && result[0].bytes > 0 && result[0].bytes <= 100000000)
     {
         publicId = result[0].public_id;
         transcript = publicId + ".transcript";
@@ -85,7 +85,7 @@ function processResponse(error, result) {
         updateAutoPlayers();
         updateProgress();
     }
-    else if(result[0].bytes > 100000000)
+    else if(result && result[0].bytes > 100000000)
         showError("Uploaded file is too big. This demo file size limit is 100MB");
     else
         showError(error);
