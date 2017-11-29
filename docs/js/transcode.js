@@ -179,7 +179,7 @@ function checkTranscriptFile(notify) {
 		transcriptPlayer.source(publicId,{ transformation: {overlay: "subtitles:"+transcript}}).play();
 	}
 	else
-		showJSON("this video clip has no detected words",notify); 
+		showJSON("transcript","this video clip has no detected words"); 
     }
 }
 
