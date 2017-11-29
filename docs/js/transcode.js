@@ -61,7 +61,7 @@ function useVideo(vid) {
     transcript = publicId + ".transcript";
     updatePlayers(vid.title + "_sd");
     showContentBlocks();
-    progress = 20;
+    progress = 15;
     updateProgress();
     updateAutoPlayers();
 }
@@ -105,14 +105,14 @@ function updatePlayers(pid) {
 function updateProgress() {
     progress++;
     console.log("updateProgress", progress);
-    if (progress == 30)
+    if (progress == 20)
         checkLambda();
     if(autoTagProgress < 100)
         updateAutoTagProgress()
     if(transcriptProgress < 100)
         updateTranscriptProgress()
     if (autoTagProgress < 100 || transcriptProgress < 100)
-        setTimeout(updateProgress,3000);
+        setTimeout(updateProgress,1500);
 }
 
 function getData() {
