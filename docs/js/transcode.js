@@ -69,7 +69,6 @@ function useVideo(vid) {
 function updateAutoPlayers() {
     autoTagPlayer.source(publicId);
     transcriptPlayer.source(publicId);
-    console.log("updateAutoPlayers",autoTagPlayer.duration(),transcriptPlayer.duration());
 }
 
 
@@ -272,6 +271,16 @@ var players = cld.videoPlayers('.demo-manipulation', {videojs: { bigPlayButton: 
 var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 
 var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
+
+transcriptPlayer.on('sourcechanged', function(event) {
+        console.log("sourcechanged duration",this.duration(););
+      })
+    });
+
+ autoTagPlayer.on('sourcechanged', function(event) {
+        console.log("sourcechanged duration",this.duration(););
+      })
+    });
 
 
 
