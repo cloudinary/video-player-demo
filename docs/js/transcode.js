@@ -73,7 +73,7 @@ function updateAutoPlayers() {
 
 
 function processResponse(error, result) {
-    console.log(error, result);
+    console.log("processResponse",error, result);
     initScreen();
     if(result && result[0].bytes > 0 && result[0].bytes <= 100000000)
     {
@@ -108,11 +108,13 @@ function updateProgress() {
     if (progress == 20)
         checkLambda();
     if(autoTagProgress < 100)
-        updateAutoTagProgress()
+        updateAutoTagProgress();
     if(transcriptProgress < 100)
-        updateTranscriptProgress()
-    if (autoTagProgress < 100 || transcriptProgress < 100)
+        updateTranscriptProgress();
+    if (autoTagProgress < 100 || transcriptProgress < 100) {
+	console.log("calling updateProgress cycle",autoTagProgress,transcriptProgress);
         setTimeout(updateProgress,1500);
+    }
     else
 	console.log("updateProgress complete",autoTagProgress,transcriptProgress);
 }
