@@ -67,8 +67,9 @@ function useVideo(vid) {
 }
 
 function updateAutoPlayers() {
-    autoTagPlayer.source(publicId);
-    transcriptPlayer.source(publicId);
+    var tagP = autoTagPlayer.source(publicId);
+    var transP = transcriptPlayer.source(publicId);
+    console.log("updateAutoPlayers",tagP,transP);
 }
 
 
