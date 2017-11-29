@@ -273,11 +273,11 @@ var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
 
 transcriptPlayer.on('sourcechanged', function(event) {
-        console.log("sourcechanged duration",this.duration());
+        console.log("sourcechanged ",event);
       });
 
  autoTagPlayer.on('sourcechanged', function(event) {
-        console.log("sourcechanged duration",this.duration());
+        console.log("sourcechanged ",event);
       });
 
 
