@@ -195,13 +195,13 @@ function checkTranscript(notify) {
         console.log("transcript pending");
     }
     else if (notify.transcript.status == "complete") {
+	transcriptComplete = true;
 	if(transcriptFileArrivedWithData) {
-		transcriptComplete = true;
         	transcriptPlayer.source(publicId,{ transformation: {overlay: "subtitles:"+transcript}}).play();
         	console.log("transcript ready");
 	}
 	else if(transcriptFileArrivedEmpty) {
-		transcriptComplete = true;
+		console.log("Transcript arrived empty");
 	}
 	else {
 		console.log("Wait for transcript to arrive");
