@@ -179,7 +179,7 @@ function checkTranscriptFile(notify) {
 		transcriptPlayer.source(publicId,{ transformation: {overlay: "subtitles:"+transcript}}).play();
 	}
 	else
-		showJSON("transcript","this video clip has no detected words"); 
+		showJSON("transcript","This video clip has no detected words"); 
     }
 }
 
@@ -195,7 +195,6 @@ function checkTranscript(notify) {
     {
         getTranscriptFile = false;
         transcriptComplete = true;
-        transcriptPlayer.source(publicId).play();
         transcriptProgress = 99;
         showJSON("transcript","There is no transcript for this video");
         console.log("no transcript");
