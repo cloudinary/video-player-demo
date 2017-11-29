@@ -1983,14 +1983,6 @@ input[type="radio"]:checked + label .radio-icon:before {
 	font-size: 15px;
 }
 
-.vjs-poster {
-	background-sizing: 100%;
-	background-color: inherit;
-}
-.vjs-video {
-	background-color: inherit; 
-}
-
 @media (max-width: 1199px) {
 	.container {
 		max-width: 972px;
