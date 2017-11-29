@@ -176,13 +176,16 @@ function checkTranscriptFile(notify) {
     if(transcriptComplete && getTranscriptFile && Array.isArray(notify)) {
         transcriptProgress = 99;
 	getTranscriptFile = false;
+	console.log("transcript arrived");
 	if(notify.length > 0) {
         	showJSON("transcript",notify);
 		transcriptFileArrivedWithData = true;
+		console.log("transcript arrived bigger then 0");
 	}
 	else {
 		showJSON("transcript","There are no detected words for this video");
 		transcriptFileArrivedEmpty = true;
+		console.log("transcript arrived empty");
 	}
     }
 }
