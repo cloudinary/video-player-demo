@@ -119,8 +119,10 @@ function updateProgress() {
 function getData() {
     if(getTranscriptFile && transcriptComplete) 
         getTranscript();
-    else if (autoTagProgress < 100 || transcriptProgress < 100)
+    else if (autoTagProgress < 100 || transcriptProgress < 100) {
+	console.log("getData autoT p",autoTagProgress,transcriptProgress);
         checkLambda();
+    }
     else
         console.log("getData Done");
 }
