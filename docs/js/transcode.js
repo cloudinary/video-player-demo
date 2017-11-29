@@ -47,9 +47,6 @@ function initScreen() {
     progress = 0;
     autoTagProgress = 0;
     transcriptProgress = 0;
-    transcriptFileArrivedWithData = false;
-    transcriptFileArrivedEmpty = false;
-    
 }
 
 function uploadVideo(){
@@ -176,17 +173,13 @@ function checkTranscriptFile(notify) {
     if(transcriptComplete && getTranscriptFile && Array.isArray(notify)) {
         transcriptProgress = 99;
 	getTranscriptFile = false;
-	console.log("transcript arrived");
-	if(notify.length > 0) {
+	if(notify.length > 0)
+	{
         	showJSON("transcript",notify);
-		transcriptFileArrivedWithData = true;
-		console.log("transcript arrived bigger then 0");
+		transcriptPlayer.source(publicId,{ transformation: {overlay: "subtitles:"+transcript}}).play();
 	}
-	else {
-		showJSON("transcript","There are no detected words for this video");
-		transcriptFileArrivedEmpty = true;
-		console.log("transcript arrived empty");
-	}
+	else
+		showJSON("this video clip has no detected words",notify); 
     }
 }
 
@@ -195,17 +188,8 @@ function checkTranscript(notify) {
         console.log("transcript pending");
     }
     else if (notify.transcript.status == "complete") {
-	transcriptComplete = true;
-	if(transcriptFileArrivedWithData) {
-        	transcriptPlayer.source(publicId,{ transformation: {overlay: "subtitles:"+transcript}}).play();
-        	console.log("transcript ready");
-	}
-	else if(transcriptFileArrivedEmpty) {
-		console.log("Transcript arrived empty");
-	}
-	else {
-		console.log("Wait for transcript to arrive");
-	}   	
+        transcriptComplete = true;
+        console.log("transcript ready");
     }
     else
     {
@@ -272,8 +256,6 @@ var publicId = "sample";
 var transcript = "sample.transcript"
 var getTranscriptFile = true;
 var transcriptComplete = false;
-var transcriptFileArrivedWithData = false;
-var transcriptFileArrivedEmpty = false;
 var progress = 0;
 var autoTagProgress = 0;
 var transcriptProgress = 0;
