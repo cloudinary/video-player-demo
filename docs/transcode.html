@@ -98,7 +98,9 @@
                                 </li>
                             </ul>
                         </div>
-                     </nav>
+					 </nav>
+					 <div id="file_size">
+					</div>
 				</div>
 				<div id="theme-area" class="theme-area">
 					<div class="theme-opener" onclick="toggleClass()"><i class="icon"></i></div>
@@ -148,11 +150,11 @@
 										<li>
                                              <video
                                                 id="demo-manipulation1-player" 
-                                                data-cld-transformation='{"effect": "saturation:-200"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"effect": "grayscale" },{"overlay":"play-demo", "width":"160"}] }'
+                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect": "saturation:-200"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad", "effect": "grayscale" },{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
                                                 controls
                                                 muted
-						playsinline
+												playsinline
                                                 class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
                                             </video>
                                             <a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_saturation:-200/" target="_blank">Black and White</a>	
@@ -160,8 +162,8 @@
 										<li>
 											<video
 												id="demo-manipulation2-player" 
-												data-cld-transformation='{"effect": "vignette:70"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"effect":"vignette:100", "background":"black" } ,{"overlay":"play-demo", "width":"160"}] }'
+												data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect": "vignette:70"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"effect":"vignette:100", "background":"black" } ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
                                                 controls 
 												muted
 											        playsinline
@@ -172,8 +174,8 @@
 										<li>
 											<video
 												id="demo-manipulation3-player" 
-												data-cld-transformation='{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"} ,{"overlay":"play-demo", "width":"160"}] }'
+												data-cld-transformation='[{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"}]' 
+                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
                                                 controls
 												muted
 											        playsinline
@@ -184,8 +186,8 @@
 										<li>
 											<video
 												id="demo-manipulation4-player" 
-                                                data-cld-transformation='{"overlay":"video:cld_opener_preroll_sd","flags":"splice","start_offset":"0"}'
-                                                data-cld-poster-options='{ "transformation": [{"overlay":"cld_opener_preroll_sd"} ,{"overlay":"play-demo", "width":"160"}] }'
+                                                data-cld-transformation='[{"width": "640", "height": "360", "crop": "pad"},{"overlay":"video:cld_opener_preroll_sd","flags":"splice","start_offset":"0"}]'
+                                                data-cld-poster-options='{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cld_opener_preroll_sd"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
                                                 controls 
 												muted
 											        playsinline
@@ -196,8 +198,8 @@
 										<li>
 											<video
 												id="demo-manipulation5-player" 
-                                                data-cld-transformation='{"radius":"50","background":"white"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"radius":"50","background":"white"} ,{"overlay":"play-demo", "width":"160"}] }'
+                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "radius":"50","background":"white"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad", "background": "black"},{"radius":"50","background":"white"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
 												controls 
 												muted
 											        playsinline
@@ -208,8 +210,8 @@
 										<li>
 											<video
 												id="demo-manipulation6-player" 
-                                                data-cld-transformation='{"effect":"accelerate:100"}'
-                                                data-cld-poster-options= '{ "transformation": {"overlay":"play-demo", "width":"160"} }'
+                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect":"accelerate:100"}'
+                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
 												controls  
 												muted
 											        playsinline
@@ -220,8 +222,8 @@
 										<li>
 											<video
 												id="demo-manipulation7-player" 
-                                                data-cld-transformation='{"angle":"180"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"angle":"180" } ,{"overlay":"play-demo", "width":"160"}] }'
+                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "angle":"180"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad","angle":"180" } ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
 												controls 
 												muted
 											        playsinline
@@ -232,8 +234,8 @@
 										    <li>
 											<video
 												id="demo-manipulation8-player" 
-                                                data-cld-transformation='{"effect":"blur:300"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"effect":"blur:300"} ,{"overlay":"play-demo", "width":"160"}] }'
+                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect":"blur:300"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad","effect":"blur:300"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
 												controls 
 												muted
 											        playsinline
@@ -256,6 +258,79 @@
 			<section class="content-block hidden style01" id="section02">
 				<div class="container">
 					<header class="heading-area">
+						<h2>Video Transcoding</h2>
+					</header>
+					<div class="block-area adaptive">
+						<div class="video-block adaptive">
+							<ul class="menu videos">
+								<li>
+									<video
+										id="demo-trancdoing1-player" 
+										data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+										controls
+										muted
+										playsinline
+										class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									</video>
+									<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Original</a>
+									<p class="text manipulation" id="comp-original" style="color: black; font-size: 18px"></p>	
+								</li>
+								<li>
+									<video
+										id="demo-transcoding2-player" 
+										data-cld-transformation='{"video_codec":"auto"}' 
+										data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+										controls 
+										muted
+											playsinline
+										class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									</video>
+									<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/vc_auto/" target="_blank">MP4/H.264 - 70% Quality</a>
+									<p class="text manipulation" id="comp-mp4" style="color: black; font-size: 18px"></p>
+								</li>
+								<li>
+									<video
+										id="demo-transcoding3-player" 
+										data-cld-transformation='{"width": "640", "height": "360", "crop": "pad"}' 
+										data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+										controls
+										muted
+											playsinline
+										class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									</video>
+									<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/vc_auto/" target="_blank">WEBM/VP8 - 70% Quality</a>
+									<p class="text manipulation" id="comp-vp8" style="color: black; font-size: 18px"></p>
+								</li>
+								<li>
+									<video
+										id="demo-transcoding4-player" 
+										data-cld-transformation='{"width": "640", "height": "360", "crop": "pad"}' 
+										data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+										controls
+										muted
+											playsinline
+										class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									</video>
+									<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/q_70,vc_vp9/" target="_blank">WEBM/VP9 - 70% Quality</a>
+									<p class="text manipulation" id="comp-vp9"  style="color: orange; font-size: 18px"></p>
+								</li>
+							</ul>
+						</div>
+						<div id="video-area-adaptive" div class="video-area adaptive">
+							<video
+								id="demo-adaptive-player" 
+								controls 
+								muted 
+								playsinline
+								class="cld-video-player vjs-fluid cld-video-player-skin-dark">
+                            </video>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="content-block hidden" id="section03">
+				<div class="container">
+					<header class="heading-area">
 						<h2>Video Auto Tagging</h2>
 					</header>
 					<div class="block-area">
@@ -263,6 +338,7 @@
 							<div class="video-area">
 								<video
 									id="demo-autotag-player" 
+									data-cld-poster-options= '{ "transformation": {"width": "640", "height": "360", "crop": "pad", "background": "black"}}'
 									controls 
 									muted 
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
@@ -285,7 +361,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="content-block hidden" id="section03">
+			<section class="content-block hidden style01" id="section04">
 				<div class="container">
 					<header class="heading-area">
 						<h2>Auto transcript</h2>
@@ -295,6 +371,7 @@
 							<div class="video-area">
 								<video
 									id="demo-transcript-player" 
+									data-cld-poster-options= '{ "transformation": {"width": "640", "height": "360", "crop": "pad", "background": "black"}}'
 									controls 
 									muted 
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">

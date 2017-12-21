@@ -50,7 +50,7 @@ function initScreen() {
 }
 
 function uploadVideo(){
-	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_transcript_sd_lambda', sources: [ 'local', 'url'], multiple: false, max_file_size: 100000000, resource_type: 'video'}, 
+	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_transcript', sources: [ 'local', 'url'], multiple: false, max_file_size: 100000000, resource_type: 'video'}, 
       function(error, result) { processResponse(error, result); }, false);
 }
 
@@ -67,8 +67,11 @@ function useVideo(vid) {
 }
 
 function updateAutoPlayers() {
-    autoTagPlayer.source(publicId);
-    transcriptPlayer.source(publicId);
+    autoTagPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
+    transcriptPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
+    adaptivePlayer.source(publicId,{ sourceTypes: ['hls'], 
+    transformation: {streaming_profile: 'sd' },
+    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
 }
 
 
@@ -78,18 +81,25 @@ function processResponse(error, result) {
     if(result && result[0].bytes > 0 && result[0].bytes <= 100000000)
     {
         publicId = result[0].public_id;
+        originalSize = Math.round(result[0].bytes / 1000);
+        checkFormatSizes();
+        updateFileSizes(originalSize,"original");
         transcript = publicId + ".transcript";
         updatePlayers(publicId);
-	showContentBlocks();
+	    showContentBlocks();
         updateProgress();
-	updateAutoPlayers();
+	    updateAutoPlayers(); 
     }
     else if(result && result[0].bytes > 100000000) {
 	    showContentBlocks();
-            showError("Uploaded file is too big. This demo file size limit is 100MB");
+        showError("Uploaded file is too big. This demo file size limit is 100MB");
     }
     else
         showError(error);
+}
+
+function updateFileSize(bytes) {
+    document.getElementById("file_size").innerText = bytes;
 }
 
 function updatePlayers(pid) {
@@ -130,6 +140,54 @@ function getData() {
         console.log("getData Done");
 }
 
+function advanceState() {
+    if(formatState == GET_VP9) {
+        console.log("initialFormatRequest completed");
+        initialFormatRequest = false;
+        formatState = GET_MP4;
+    }
+    else
+        formatState++;
+}
+
+
+function checkFormatSizes() {
+    if(formatState == GET_MP4) 
+        requestMP4();
+    else if (formatState == GET_VP8) 
+        requestVP8();
+    else if (formatState == GET_VP9)
+        requestVP9();
+    else
+        console.log("checkFormatSizes unexpected state",formatState);
+
+    if(initialFormatRequest)
+        advanceState();
+}
+
+function requestFileFormat(url) {
+    httpTranscode.open('HEAD', url);
+	httpTranscode.send();
+}
+
+function requestVP8() {
+    console.log("requestVP8");
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/vc_auto/" + publicId + ".webm";
+    requestFileFormat(checkUrl);
+}
+
+function requestVP9() {
+    console.log("requestVP9");
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/vc_vp9,q_70/" + publicId + ".webm";
+    requestFileFormat(checkUrl);
+}
+
+function requestMP4() {
+    console.log("requestMP4");
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/vc_auto/" + publicId + ".mp4";
+    requestFileFormat(checkUrl);
+}
+
   function getTranscript() {
 	console.log("getTranscript", transcript);
 	var checkUrl = url + transcript;
@@ -142,6 +200,36 @@ function checkLambda() {
     var checkUrl = "https://4k4smz181f.execute-api.us-east-1.amazonaws.com/Prod/" + publicId;
     httpLambda.open('GET', checkUrl);
 	httpLambda.send();
+}
+
+var httpTranscode = new XMLHttpRequest();
+httpTranscode.onreadystatechange = function() {
+    if (this.readyState == 4) {
+        if(this.status == 200) {
+            var size = httpTranscode.getResponseHeader('Content-Length');
+            console.log("httpTranscode Content-Length ", size);
+            if(size == 0) {
+                if(initialFormatRequest)
+                    checkFormatSizes();
+                else
+                    setTimeout(checkFormatSizes,2000);
+            }
+            else {
+                var format = "mp4";
+                if(formatState == GET_VP8)
+                    format = "vp8";
+                if(formatState == GET_VP9)
+                    format = "vp9";
+                updateFileSizes(Math.round(size/1000),format);
+                if(++gotFomats < 3) {
+                    advanceState();
+                    setTimeout(checkFormatSizes,2000);
+                }
+            }
+        }
+    }
+    else 
+          console.log("httpTranscode onreadystatechange", this.readyState, this.status);
 }
 
 var httpLambda = new XMLHttpRequest();
@@ -181,8 +269,8 @@ function checkTranscriptFile(notify) {
 	getTranscriptFile = false;
 	if(notify.length > 0)
 	{
-        	showJSON("transcript",notify);
-		transcriptPlayer.source(publicId,{ transformation: {overlay: "subtitles:"+transcript}}).play();
+        showJSON("transcript",notify);
+		transcriptPlayer.source(publicId,{ transformation: [{"width": "640", "height": "360", "crop": "pad"},{overlay: "subtitles:"+transcript}]});
 	}
 	else
 		showJSON("transcript","This video clip has no detected words"); 
@@ -216,6 +304,13 @@ function checkTags(notify) {
     }
     else
         console.log("no autotag");
+}
+
+function updateFileSizes(size,format) {
+    var elem = document.getElementById("comp-"+format);
+    elem.innerText = size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB";
+    if (format != "original")
+        elem.innerText += " " + Math.round((1 - (size / originalSize))*100) + "% Saving";
 }
 
 function showProgressBar(show,id) {
@@ -261,9 +356,16 @@ var publicId = "sample";
 var transcript = "sample.transcript"
 var getTranscriptFile = true;
 var transcriptComplete = false;
+var initialFormatRequest = true;
 var progress = 0;
 var autoTagProgress = 0;
 var transcriptProgress = 0;
+var formatState = 0;
+var originalSize = 0;
+var gotFomats = 0;
+const GET_MP4 = 0;
+const GET_VP8 = 1;
+const GET_VP9 = 2;
 
   
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
@@ -273,6 +375,8 @@ var players = cld.videoPlayers('.demo-manipulation', {videojs: { bigPlayButton: 
 var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 
 var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
+
+var adaptivePlayer = cld.videoPlayer('demo-adaptive-player');
 
 transcriptPlayer.on('error', function(event) {
         console.log("sourcechanged ",event);
