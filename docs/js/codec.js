@@ -232,9 +232,10 @@ httpTranscode.onreadystatechange = function() {
                     format = "vp9";
                 updateFileSizes(Math.round(size/1000),format);
                 if(++gotFomats < 3) {
-		    console.log("calling advanceState from httpTranscode", formatState);
-                    advanceState();
-                    setTimeout(checkFormatSizes,2000);
+		    if(!initialFormatRequest) {
+                    	advanceState();
+                    	setTimeout(checkFormatSizes,2000);
+		    }
                 }
             }
         }
