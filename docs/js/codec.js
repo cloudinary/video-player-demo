@@ -218,14 +218,21 @@ var httpTranscode = new XMLHttpRequest();
 httpTranscode.onreadystatechange = function() {
     console.log("httpTranscode onreadystatechange", this.readyState, this.status);
     if (this.readyState == 4) {
+	console.log("httpTranscode inside readyState", this.readyState, this.status);
         if(this.status == 200) {
+	    console.log("httpTranscode inside status", this.readyState, this.status);
             var size = httpTranscode.getResponseHeader('Content-Length');
             console.log("httpTranscode Content-Length ", size);
             if(size == 0) {
-                if(initialFormatRequest && uploadedNew)
+		console.log("httpTranscode inside size 0", this.readyState, this.status);
+                if(initialFormatRequest && uploadedNew) {
+		    console.log("httpTranscode inside size 0 inside initial and new", this.readyState, this.status);
                     checkFormatSizes();
-                else
+		}
+                else {
+		    console.log("httpTranscode inside size 0 outside initial and new", this.readyState, this.status);
                     setTimeout(checkFormatSizes,2000);
+		}
             }
             else {
                 var format = "mp4";
