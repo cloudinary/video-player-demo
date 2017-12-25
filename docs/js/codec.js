@@ -60,6 +60,7 @@ function uploadVideo(){
 
 function useVideo(vid) {
     console.log("useVideo",vid.title);
+    uploadedNew = false;
     initScreen();
     publicId = vid.title + "_autotag";
     originalSize = Math.round(vid.getAttribute("data-size") / 1000);
@@ -84,6 +85,7 @@ function updateAutoPlayers() {
 
 function processResponse(error, result) {
     console.log("processResponse",error, result);
+    uploadedNew = true;
     initScreen();
     if(result && result[0].bytes > 0 && result[0].bytes <= 100000000)
     {
@@ -219,7 +221,7 @@ httpTranscode.onreadystatechange = function() {
             var size = httpTranscode.getResponseHeader('Content-Length');
             console.log("httpTranscode Content-Length ", size);
             if(size == 0) {
-                if(initialFormatRequest)
+                if(initialFormatRequest && uploadedNew)
                     checkFormatSizes();
                 else
                     setTimeout(checkFormatSizes,2000);
@@ -232,10 +234,8 @@ httpTranscode.onreadystatechange = function() {
                     format = "vp9";
                 updateFileSizes(Math.round(size/1000),format);
                 if(++gotFomats < 3) {
-		    if(!initialFormatRequest) 
-                    	advanceState();
+                    advanceState();
                     setTimeout(checkFormatSizes,2000);
-		    
                 }
             }
         }
@@ -376,6 +376,7 @@ var transcript = "sample.transcript"
 var getTranscriptFile = true;
 var transcriptComplete = false;
 var initialFormatRequest = true;
+var uploadedNew = false;
 var progress = 0;
 var autoTagProgress = 0;
 var transcriptProgress = 0;
