@@ -44,9 +44,13 @@ function showContentBlocks() {
 function initScreen() {
     getTranscriptFile = true;
     transcriptComplete = false;
+    initialFormatRequest = true;
     progress = 0;
     autoTagProgress = 0;
     transcriptProgress = 0;
+    formatState = 0;
+    originalSize = 0;
+    gotFomats = 0;
 }
 
 function uploadVideo(){
@@ -58,6 +62,9 @@ function useVideo(vid) {
     console.log("useVideo",vid.title);
     initScreen();
     publicId = vid.title + "_autotag";
+    originalSize = Math.round(vid.getAttribute("data-size") / 1000);
+    checkFormatSizes();
+    updateFileSizes(originalSize,"original");
     transcript = publicId + ".transcript";
     updatePlayers(vid.title + "_sd");
     showContentBlocks();
