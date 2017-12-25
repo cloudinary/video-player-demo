@@ -216,6 +216,7 @@ function checkLambda() {
 
 var httpTranscode = new XMLHttpRequest();
 httpTranscode.onreadystatechange = function() {
+    console.log("httpTranscode onreadystatechange", this.readyState, this.status);
     if (this.readyState == 4) {
         if(this.status == 200) {
             var size = httpTranscode.getResponseHeader('Content-Length');
@@ -234,7 +235,8 @@ httpTranscode.onreadystatechange = function() {
                     format = "vp9";
                 updateFileSizes(Math.round(size/1000),format);
                 if(++gotFomats < 3) {
-                    advanceState();
+		    if(!initialFormatRequest)
+                    	advanceState();
                     setTimeout(checkFormatSizes,2000);
                 }
             }
