@@ -159,6 +159,7 @@ function advanceState() {
 
 
 function checkFormatSizes() {
+    console.log("checkFormatSizes state",formatState);
     if(formatState == GET_MP4) 
         requestMP4();
     else if (formatState == GET_VP8) 
