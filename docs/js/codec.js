@@ -342,16 +342,16 @@ function checkTags(notify) {
 }
 
 function updateFileSizes(size,format) {
-    var elem = document.getElementById("comp-"+format);
     var percentage = Math.round((size / originalSize)*100);
     var saving = 100 - percentage;
-    elem.innerText = size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB";
     if (format == "original")
-        elem.innerText += " " + originalRes;
+        document.getElementById("res-original").innerText = " " + originalRes;
     else
-        elem.innerText += " " + saving + "% Saving";
+        document.getElementById("save-"+format).innerText = saving + "% Saving ";
+    document.getElementById("comp-"+format).innerText += "  " + size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB";
     updateTranscodeFileSize("bar-"+format,percentage);
 }
+
 function updateAllMediaBytes() {
     updateMediaBytes("adaptive",adaptivePlayer);
     if(playingHLS)
@@ -362,7 +362,8 @@ function updateMediaBytes(id,player) {
     var elem = document.getElementById(id+"-bytes");
     var Kbytes = Math.round(player.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
     var percentage = Math.round((Kbytes / originalSize)*100);
-    elem.innerText = Kbytes + "KB " + player.videojs.videoWidth() + "x" + player.videojs.videoHeight();
+    elem.innerText = Kbytes + "KB"; 
+    document.getElementById("res-hls").innerText = " " + player.videojs.videoWidth() + "x" + player.videojs.videoHeight();
     updateTranscodeFileSize(id+"-bar",percentage);
 }
 
@@ -459,3 +460,18 @@ adaptivePlayer.on('pause', function(event) {
   adaptivePlayer.on('ended', function(event) {
     playingHLS = false;
   });
+
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
