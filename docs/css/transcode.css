@@ -1903,23 +1903,6 @@ input[type="radio"]:checked + label .radio-icon:before {
 	height: auto;
 }
 
-.video-block.hls {
-	width: 80%;
-}
-
-.video-block.compare {
-	width: 20%;
-	display: none;
-}
-
-.editing-area.compare {
-	width: 75%;
-}
-
-.results.hidden {
-	display: none;
-}
-
 .container.adaptive {
 	max-width: 1950px;
 }
