@@ -45,12 +45,15 @@ function initScreen() {
     getTranscriptFile = true;
     transcriptComplete = false;
     initialFormatRequest = true;
+    usingPresetVideo = false;
+    videosFormatState = 0;
     progress = 0;
     autoTagProgress = 0;
     transcriptProgress = 0;
     formatState = 0;
     originalSize = 0;
     gotFomats = 0;
+    originalRes = "default";
 }
 
 function uploadVideo(){
@@ -60,10 +63,11 @@ function uploadVideo(){
 
 function useVideo(vid) {
     console.log("useVideo",vid.title);
-    uploadedNew = false;
     initScreen();
+    usingPresetVideo = true;
     publicId = vid.title + "_autotag";
     originalSize = Math.round(vid.getAttribute("data-size") / 1000);
+    originalRes = "640x360";
     checkFormatSizes();
     updateFileSizes(originalSize,"original");
     transcript = publicId + ".transcript";
@@ -78,19 +82,19 @@ function updateAutoPlayers() {
     autoTagPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
     transcriptPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
     adaptivePlayer.source(publicId,{ sourceTypes: ['hls'], 
-    transformation: {streaming_profile: 'sd' },
-    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} });
+    transformation: {streaming_profile: 'hd' },
+    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
 }
 
 
 function processResponse(error, result) {
     console.log("processResponse",error, result);
-    uploadedNew = true;
     initScreen();
     if(result && result[0].bytes > 0 && result[0].bytes <= 100000000)
     {
         publicId = result[0].public_id;
         originalSize = Math.round(result[0].bytes / 1000);
+        originalRes = result[0].width + "x" + result[0].height;
         checkFormatSizes();
         updateFileSizes(originalSize,"original");
         transcript = publicId + ".transcript";
@@ -161,7 +165,6 @@ function advanceState() {
 
 
 function checkFormatSizes() {
-    console.log("checkFormatSizes state",formatState);
     if(formatState == GET_MP4) 
         requestMP4();
     else if (formatState == GET_VP8) 
@@ -171,10 +174,8 @@ function checkFormatSizes() {
     else
         console.log("checkFormatSizes unexpected state",formatState);
 
-    if(initialFormatRequest) {
-	console.log("calling advanceState from checkFormatSizes", formatState);
+    if(initialFormatRequest)
         advanceState();
-    }
 }
 
 function requestFileFormat(url) {
@@ -214,38 +215,36 @@ function checkLambda() {
 	httpLambda.send();
 }
 
+function revealFileSizes() {
+    var bars = document.getElementsByClassName("results hidden");
+    console.log("revealFileSizes",bars.length)
+    for(var i = 0; i < bars.length; i++) {
+        bars[i].classList.remove("hidden");
+    }
+}
+
 var httpTranscode = new XMLHttpRequest();
 httpTranscode.onreadystatechange = function() {
-    console.log("httpTranscode onreadystatechange", this.readyState, this.status);
     if (this.readyState == 4) {
-	console.log("httpTranscode inside readyState", this.readyState, this.status);
+        console.log("httpTranscode.onreadystatechange ", this.readyState, this.status);
         if(this.status == 200) {
-	    console.log("httpTranscode inside status", this.readyState, this.status);
             var size = httpTranscode.getResponseHeader('Content-Length');
             console.log("httpTranscode Content-Length ", size);
             if(size == 0) {
-		console.log("httpTranscode inside size 0", this.readyState, this.status);
-                if(initialFormatRequest && uploadedNew) {
-		    console.log("httpTranscode inside size 0 inside initial and new", this.readyState, this.status);
+                if(initialFormatRequest) 
                     checkFormatSizes();
-		}
-                else {
-		    console.log("httpTranscode inside size 0 outside initial and new", this.readyState, this.status);
+                else
                     setTimeout(checkFormatSizes,2000);
-		}
             }
             else {
-                var format = "mp4";
-                if(formatState == GET_VP8)
-                    format = "vp8";
-                if(formatState == GET_VP9)
-                    format = "vp9";
-                updateFileSizes(Math.round(size/1000),format);
+                updateFileSizes(Math.round(size/1000),getVideoFormat());
                 if(++gotFomats < 3) {
-		    if(!initialFormatRequest)
-                    	advanceState();
+                    if(!initialFormatRequest) 
+                        advanceState();
                     setTimeout(checkFormatSizes,2000);
                 }
+                else
+                    revealFileSizes();
             }
         }
     }
@@ -277,6 +276,21 @@ httpTranscript.onreadystatechange = function() {
     }
     else 
           console.log("onreadystatechange", this.readyState, this.status);
+}
+
+function getVideoFormat() {
+    var state = formatState;
+    if(usingPresetVideo) {
+        state = videosFormatState;
+        videosFormatState++;
+    }
+
+    if(state == GET_VP8)
+        return "vp8";
+    else if(state == GET_VP9)
+        return "vp9";
+    else
+        return "mp4";
 }
 
 function checkLambdaNotification(notify) {
@@ -329,16 +343,27 @@ function checkTags(notify) {
 
 function updateFileSizes(size,format) {
     var elem = document.getElementById("comp-"+format);
+    var percentage = Math.round((size / originalSize)*100);
+    var saving = 100 - percentage;
     elem.innerText = size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB";
-    if (format != "original")
-        elem.innerText += " " + Math.round((1 - (size / originalSize))*100) + "% Saving";
+    if (format == "original")
+        elem.innerText += " " + originalRes;
+    else
+        elem.innerText += " " + saving + "% Saving";
+    updateTranscodeFileSize("bar-"+format,percentage);
+}
+function updateAllMediaBytes() {
+    updateMediaBytes("adaptive",adaptivePlayer);
+    if(playingHLS)
+        setTimeout(updateAllMediaBytes,1000);
 }
 
-function updateMediaBytes() {
-    var elem = document.getElementById("adaptive-bytes");
-    elem.innerText = Math.round(adaptivePlayer.videojs.tech_.hls.stats.mediaBytesTransferred / 1000) + "KB";
-    if(playingHLS)
-        setTimeout(updateMediaBytes,1000);
+function updateMediaBytes(id,player) {
+    var elem = document.getElementById(id+"-bytes");
+    var Kbytes = Math.round(player.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
+    var percentage = Math.round((Kbytes / originalSize)*100);
+    elem.innerText = Kbytes + "KB " + player.videojs.videoWidth() + "x" + player.videojs.videoHeight();
+    updateTranscodeFileSize(id+"-bar",percentage);
 }
 
 function showProgressBar(show,id) {
@@ -379,13 +404,20 @@ function updateTranscriptProgress() {
     transcriptBar.style.width = transcriptProgress + '%'; 
 }
 
+function updateTranscodeFileSize(id,percentage) {
+    var bar = document.getElementById(id);
+    bar.style.width = percentage + '%'; 
+}
+
 var url = "https://res.cloudinary.com/demo/raw/upload/";
 var publicId = "sample";
 var transcript = "sample.transcript"
+var originalRes = "default";
 var getTranscriptFile = true;
 var transcriptComplete = false;
 var initialFormatRequest = true;
-var uploadedNew = false;
+var usingPresetVideo = false;
+var videosFormatState = 0;
 var progress = 0;
 var autoTagProgress = 0;
 var transcriptProgress = 0;
@@ -399,13 +431,13 @@ const GET_VP9 = 2;
   
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
+ var adaptivePlayer = cld.videoPlayer('demo-adaptive-player');
+
 var players = cld.videoPlayers('.demo-manipulation', {videojs: { bigPlayButton: false, controlBar: false } });
 
 var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 
 var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
-
-var adaptivePlayer = cld.videoPlayer('demo-adaptive-player');
 
 transcriptPlayer.on('error', function(event) {
         console.log("error ",event);
@@ -417,7 +449,7 @@ transcriptPlayer.on('error', function(event) {
 
 adaptivePlayer.on('playing', function(event) {
     playingHLS = true;
-    updateMediaBytes();
+    updateAllMediaBytes();
   });
 
 adaptivePlayer.on('pause', function(event) {
@@ -427,16 +459,3 @@ adaptivePlayer.on('pause', function(event) {
   adaptivePlayer.on('ended', function(event) {
     playingHLS = false;
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
