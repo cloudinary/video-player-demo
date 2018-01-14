@@ -54,6 +54,25 @@ function initScreen() {
     originalSize = 0;
     gotFomats = 0;
     originalRes = "default";
+    originalFormat = "default";
+    clearData();
+
+}
+
+function clearData() {
+    var clr = document.getElementsByClassName("init");
+    for (var i=0; i<clr.length; i++)
+        clr[i].innerText = "";
+    var calc = document.getElementsByClassName("calc");
+    for (i=0; i<calc.length; i++)
+        calc[i].innerText = "calculating...";
+    var bars = document.getElementsByClassName("scale-up-hor-left");
+    console.log("clearData found ",bars.length);
+    for (i=0; i<bars.length; i++)
+    {
+        bars[i].classList.remove("scale-up-hor-left");
+        bars[i].style.width = "0"; 
+    }
 }
 
 function uploadVideo(){
@@ -67,11 +86,13 @@ function useVideo(vid) {
     usingPresetVideo = true;
     publicId = vid.title + "_autotag";
     originalSize = Math.round(vid.getAttribute("data-size") / 1000);
-    originalRes = "640x360";
+    originalRes = vid.getAttribute("data-res");
+    originalFormat = vid.getAttribute("data-format");
     checkFormatSizes();
     updateFileSizes(originalSize,"original");
     transcript = publicId + ".transcript";
-    updatePlayers(vid.title + "_sd");
+    updateManipulationPlayers(vid.title + "_sd");
+    updateTranscodingPlayers(vid.title);
     showContentBlocks();
     progress = 15;
     updateProgress();
@@ -93,12 +114,15 @@ function processResponse(error, result) {
     if(result && result[0].bytes > 0 && result[0].bytes <= 100000000)
     {
         publicId = result[0].public_id;
+        pIdForCompression = publicId;
         originalSize = Math.round(result[0].bytes / 1000);
         originalRes = result[0].width + "x" + result[0].height;
+        originalFormat = result[0].format;
         checkFormatSizes();
         updateFileSizes(originalSize,"original");
         transcript = publicId + ".transcript";
-        updatePlayers(publicId);
+        updateManipulationPlayers(publicId);
+        updateTranscodingPlayers(publicId);
 	    showContentBlocks();
         updateProgress();
 	    updateAutoPlayers(); 
@@ -115,13 +139,21 @@ function updateFileSize(bytes) {
     document.getElementById("file_size").innerText = bytes;
 }
 
-function updatePlayers(pid) {
+function updateManipulationPlayers(pid) {
     for(var i = 0; i < players.length; i++) 
         players[i].source(pid);
-    var links = document.getElementsByClassName("manipulation")
+}
+
+function updateTranscodingPlayers(pid) {
+    var links = document.getElementsByClassName("link")
     for(var j = 0; j < links.length; j++) {
             var ref = links[j].getAttribute("data-href");
             links[j].setAttribute("href",ref+pid+".mp4");
+    }
+    var webmLink = document.getElementsByClassName("webm-link")
+    for(var k = 0; k < webmLink.length; k++) {
+            ref = webmLink[k].getAttribute("data-href");
+            webmLink[k].setAttribute("href",ref+pid+".webm");
     }
 }
 
@@ -168,7 +200,7 @@ function checkFormatSizes() {
     if(formatState == GET_MP4) 
         requestMP4();
     else if (formatState == GET_VP8) 
-        requestVP8();
+        requestH265();
     else if (formatState == GET_VP9)
         requestVP9();
     else
@@ -181,6 +213,12 @@ function checkFormatSizes() {
 function requestFileFormat(url) {
     httpTranscode.open('HEAD', url);
 	httpTranscode.send();
+}
+
+function requestH265() {
+    console.log("requestH265");
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/vc_h265,q_70/" + publicId + ".mp4";
+    requestFileFormat(checkUrl);
 }
 
 function requestVP8() {
@@ -197,7 +235,7 @@ function requestVP9() {
 
 function requestMP4() {
     console.log("requestMP4");
-    var checkUrl = "https://res.cloudinary.com/demo/video/upload/vc_auto/" + publicId + ".mp4";
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_70/" + publicId + ".mp4";
     requestFileFormat(checkUrl);
 }
 
@@ -226,10 +264,8 @@ function revealFileSizes() {
 var httpTranscode = new XMLHttpRequest();
 httpTranscode.onreadystatechange = function() {
     if (this.readyState == 4) {
-        console.log("httpTranscode.onreadystatechange ", this.readyState, this.status);
         if(this.status == 200) {
             var size = httpTranscode.getResponseHeader('Content-Length');
-            console.log("httpTranscode Content-Length ", size);
             if(size == 0) {
                 if(initialFormatRequest) 
                     checkFormatSizes();
@@ -342,13 +378,16 @@ function checkTags(notify) {
 }
 
 function updateFileSizes(size,format) {
+    console.log("updateFileSizes", size, format);
     var percentage = Math.round((size / originalSize)*100);
     var saving = 100 - percentage;
     if (format == "original")
-        document.getElementById("res-original").innerText = " " + originalRes;
+        document.getElementById("res-original").innerText = " " + originalFormat.toUpperCase() + " " + originalRes;
+    else if(saving > 0)
+        document.getElementById("save-"+format).innerText = " " + saving + "% Saving ";
     else
-        document.getElementById("save-"+format).innerText = saving + "% Saving ";
-    document.getElementById("comp-"+format).innerText += "  " + size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB";
+        document.getElementById("save-"+format).innerText = " No Saving ";
+    document.getElementById("comp-"+format).innerText = "  " + size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB";
     updateTranscodeFileSize("bar-"+format,percentage);
 }
 
@@ -362,7 +401,7 @@ function updateMediaBytes(id,player) {
     var elem = document.getElementById(id+"-bytes");
     var Kbytes = Math.round(player.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
     var percentage = Math.round((Kbytes / originalSize)*100);
-    elem.innerText = Kbytes + "KB"; 
+    elem.innerText = Kbytes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB"; 
     document.getElementById("res-hls").innerText = " " + player.videojs.videoWidth() + "x" + player.videojs.videoHeight();
     updateTranscodeFileSize(id+"-bar",percentage);
 }
@@ -407,6 +446,7 @@ function updateTranscriptProgress() {
 
 function updateTranscodeFileSize(id,percentage) {
     var bar = document.getElementById(id);
+    bar.classList.add("scale-up-hor-left");
     bar.style.width = percentage + '%'; 
 }
 
@@ -414,6 +454,7 @@ var url = "https://res.cloudinary.com/demo/raw/upload/";
 var publicId = "sample";
 var transcript = "sample.transcript"
 var originalRes = "default";
+var originalFormat = "default";
 var getTranscriptFile = true;
 var transcriptComplete = false;
 var initialFormatRequest = true;
@@ -448,6 +489,18 @@ transcriptPlayer.on('error', function(event) {
         console.log("error ",event);
       });
 
+adaptivePlayer.on('error', function(event) {
+        console.log("HLS error ",event);
+      });
+
+adaptivePlayer.on('canplay', function(event) {
+        document.getElementById("save-hls").innerText = "Press play...";
+      });
+
+adaptivePlayer.on('play', function(event) {
+        document.getElementById("save-hls").innerText = "Downloaded";
+      });
+
 adaptivePlayer.on('playing', function(event) {
     playingHLS = true;
     updateAllMediaBytes();
@@ -459,19 +512,10 @@ adaptivePlayer.on('pause', function(event) {
 
   adaptivePlayer.on('ended', function(event) {
     playingHLS = false;
+    var Kbytes = Math.round(adaptivePlayer.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
+    var percentage = Math.round((Kbytes / originalSize)*100);
+    var saving = 100 - percentage;
+    document.getElementById("save-hls").innerText = " " + saving + "% Saving ";
   });
 
   
- 
-
-
-
-
-
-
-
-
-
-
-
-
