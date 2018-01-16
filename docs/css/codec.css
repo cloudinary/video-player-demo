@@ -991,6 +991,35 @@ input[type="radio"]:checked + label .radio-icon:before {
 	background: url("https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/rafting_short.jpg");
 }
 
+.text.manipulation.calc {
+	border-radius: 0 10px 10px 0; 
+	padding:2px 8px 2px 2px; 	
+	font-size: 12px; 
+	color: blue; 
+	background: white; 
+	line-height: 18px; 	
+	float:right;
+}
+
+.text.manipulation.resolution {
+	font-size: 14px; 
+	opacity: 0.5; 
+	display: inline-block; 
+	margin: 0 8px 0 4px;
+}
+
+.text.manipulation.codec {
+	font-size: 18px; 
+	display: inline-block;
+	margin: 0;
+}
+
+.text.manipulation.kb {
+	font-size: 18px; 
+	float:right; 
+	margin:0;
+}
+
 .theme-area {
 	-webkit-transition: all .4s ease;
 	transition: all .4s ease;
@@ -1574,6 +1603,26 @@ input[type="radio"]:checked + label .radio-icon:before {
 	height: auto;
 }
 
+.codepen-placeholder img.browser-logo {
+	width: 12px; 
+	display: inline-block; 
+	margin: 6px 0 0 2px;
+}
+
+.codepen-placeholder img.cld-logo {
+	border-radius: 10px 0 0 10px; 
+	vertical-align:middle; 
+	background: white; 
+	width: 22px; 
+	padding: 4px; 
+	float:right;
+}
+
+.codepen-placeholder img.icon-link {
+	width: 12px; 
+	margin-left: 4px;
+}
+
 .codepen-info {
 	padding: 30px 3px 10px 0;
 	display: -webkit-box;
@@ -1983,6 +2032,41 @@ input[type="radio"]:checked + label .radio-icon:before {
 	font-size: 15px;
 }
 
+.my-progress {
+	width: 100%;
+	background-color: #ddd;
+	border-radius: 5px;
+  }
+
+.my-progress.hls {
+	 height: 10px; 
+	 margin: 5px 0 20px 0;
+  }
+
+
+  @-webkit-keyframes scale-up-hor-left{0%{-webkit-transform:scaleX(.4);transform:scaleX(.4);-webkit-transform-origin:0 0;transform-origin:0 0}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:0 0;transform-origin:0 0}}
+  @keyframes scale-up-hor-left{0%{-webkit-transform:scaleX(.4);transform:scaleX(.4);-webkit-transform-origin:0 0;transform-origin:0 0}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:0 0;transform-origin:0 0}}
+
+
+.scale-up-hor-left {
+	-webkit-animation: scale-up-hor-left 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: scale-up-hor-left 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.my-bar {
+	width: 0%;
+	height: 30px;
+	background-color: #0071B9;
+	background-image: linear-gradient(-90deg, #50A2FD 0%, #0078FF 100%);
+	border-radius: 5px;
+  }
+
+  .my-bar.hls {
+  	height: 10px; 
+  	background: linear-gradient(90deg, #FF620C 0%, #FD9D2B 100%);
+  }
+
+
 @media (max-width: 1199px) {
 	.container {
 		max-width: 972px;
@@ -2053,30 +2137,6 @@ input[type="radio"]:checked + label .radio-icon:before {
 		font-size: 15px;
 	}
 }
-
-.myProgress {
-	width: 100%;
-	background-color: #ddd;
-	border-radius: 5px;
-  }
-
-
-  @-webkit-keyframes scale-up-hor-left{0%{-webkit-transform:scaleX(.4);transform:scaleX(.4);-webkit-transform-origin:0 0;transform-origin:0 0}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:0 0;transform-origin:0 0}}
-  @keyframes scale-up-hor-left{0%{-webkit-transform:scaleX(.4);transform:scaleX(.4);-webkit-transform-origin:0 0;transform-origin:0 0}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:0 0;transform-origin:0 0}}
-
-
-.scale-up-hor-left {
-	-webkit-animation: scale-up-hor-left 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	        animation: scale-up-hor-left 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-}
-
-.myBar {
-	width: 0%;
-	height: 30px;
-	background-color: #0071B9;
-	background-image: linear-gradient(-90deg, #50A2FD 0%, #0078FF 100%);
-	border-radius: 5px;
-  }
 
 @media (max-width: 991px) {
 	.header-holder {
