@@ -65,7 +65,7 @@ function clearData() {
         clr[i].innerText = "";
     var calc = document.getElementsByClassName("calc");
     for (i=0; i<calc.length; i++)
-        calc[i].innerText = "calculating...";
+        calc[i].innerText = "Calculating...";
     var bars = document.getElementsByClassName("scale-up-hor-left");
     console.log("clearData found ",bars.length);
     for (i=0; i<bars.length; i++)
@@ -120,6 +120,7 @@ function processResponse(error, result) {
         originalFormat = result[0].format;
         checkFormatSizes();
         updateFileSizes(originalSize,"original");
+        updateDuration(result[0].duration);
         transcript = publicId + ".transcript";
         updateManipulationPlayers(publicId);
         updateTranscodingPlayers(publicId);
@@ -133,6 +134,11 @@ function processResponse(error, result) {
     }
     else
         showError(error);
+}
+
+function updateDuration(duration) {
+    if(duration > 60)
+        document.getElementById("res-original").innerText += " - first minute of the video";
 }
 
 function updateFileSize(bytes) {
@@ -381,8 +387,12 @@ function updateFileSizes(size,format) {
     console.log("updateFileSizes", size, format);
     var percentage = Math.round((size / originalSize)*100);
     var saving = 100 - percentage;
-    if (format == "original")
+    if (format == "original") {
         document.getElementById("res-original").innerText = " " + originalFormat.toUpperCase() + " " + originalRes;
+        document.getElementById("res-mp4").innerText = originalRes;
+        document.getElementById("res-h265").innerText = originalRes;
+        document.getElementById("res-vp9").innerText = originalRes;
+    }
     else if(saving > 0)
         document.getElementById("save-"+format).innerText = " " + saving + "% Saving ";
     else
@@ -494,11 +504,12 @@ adaptivePlayer.on('error', function(event) {
       });
 
 adaptivePlayer.on('canplay', function(event) {
-        document.getElementById("save-hls").innerText = "Press play...";
+        document.getElementById("adaptive-bytes").innerText = "Press Play for Adaptive Streaming Usage";
+        document.getElementById("save-hls").innerText = "...";
       });
 
 adaptivePlayer.on('play', function(event) {
-        document.getElementById("save-hls").innerText = "Downloaded";
+        document.getElementById("save-hls").innerText = "Downloading...";
       });
 
 adaptivePlayer.on('playing', function(event) {
@@ -519,3 +530,16 @@ adaptivePlayer.on('pause', function(event) {
   });
 
   
+ 
+
+
+
+
+
+
+
+
+
+
+
+
