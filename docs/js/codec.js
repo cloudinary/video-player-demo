@@ -37,8 +37,15 @@ function showContentBlocks() {
     for(var i = 0; i < contentBlocks.length; i++) {
         contentBlocks[i].classList.remove("hidden");
     }
-    showProgressBar(true,"transcript"); 
-    showProgressBar(true,"autotag");
+    var maxHeight =  "max-height: " + transcriptPlayer.videojs.currentHeight() + "px";
+    showProgressBar(true,"transcript",maxHeight); 
+    showProgressBar(true,"autotag",maxHeight);
+    setPrismHeight(maxHeight);
+}
+
+function setPrismHeight(maxHeight) {
+    document.getElementById("autotag-prism").setAttribute("style",maxHeight);
+    document.getElementById("transcript-prism").setAttribute("style",maxHeight);
 }
 
 function initScreen() {
@@ -416,7 +423,7 @@ function updateMediaBytes(id,player) {
     updateTranscodeFileSize(id+"-bar",percentage);
 }
 
-function showProgressBar(show,id) {
+function showProgressBar(show,id, maxHeight) {
     var pre = document.getElementById("pre-"+id);
     var bar = document.getElementById(id+"-bar");
     if(show) {
@@ -425,7 +432,7 @@ function showProgressBar(show,id) {
     }
     else {
         bar.setAttribute("style","display: none");
-        pre.setAttribute("style","");
+        pre.setAttribute("style",maxHeight);
     }
 }
 
@@ -436,7 +443,8 @@ function showError(error) {
 
 function showJSON(id,notify) {
     var content = document.getElementById(id);
-    showProgressBar(false,id);
+    var maxHeight =  "max-height: " + transcriptPlayer.videojs.currentHeight() + "px";
+    showProgressBar(false,id,maxHeight);
     var data = JSON.stringify(notify);
     content.innerText = data; 
     Prism.highlightElement(content);
@@ -483,13 +491,18 @@ const GET_VP9 = 2;
   
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
- var adaptivePlayer = cld.videoPlayer('demo-adaptive-player');
+ var adaptivePlayer = cld.videoPlayer('demo-adaptive-player', {videojs: { bigPlayButton: false} });
 
 var players = cld.videoPlayers('.demo-manipulation', {videojs: { bigPlayButton: false, controlBar: false } });
 
 var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 
 var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
+
+function playAdaptive() {
+    document.getElementById("play-btn").setAttribute("style","display: none");
+    adaptivePlayer.play();
+}
 
 transcriptPlayer.on('error', function(event) {
         console.log("error ",event);
@@ -504,12 +517,16 @@ adaptivePlayer.on('error', function(event) {
       });
 
 adaptivePlayer.on('canplay', function(event) {
-        document.getElementById("adaptive-bytes").innerText = "Press Play for Adaptive Streaming Usage";
-        document.getElementById("save-hls").innerText = "...";
+        document.getElementById("play-btn").setAttribute("style","");
+        document.getElementById("save-hls").setAttribute("style","display: none");
+        document.getElementById("cld-hls").setAttribute("style","display: none");
       });
 
 adaptivePlayer.on('play', function(event) {
-        document.getElementById("save-hls").innerText = "Downloading...";
+        var hls = document.getElementById("save-hls");
+        hls.setAttribute("style","");
+        hls.innerText = "Downloading...";
+        document.getElementById("cld-hls").setAttribute("style","");
       });
 
 adaptivePlayer.on('playing', function(event) {
@@ -528,6 +545,8 @@ adaptivePlayer.on('pause', function(event) {
     var saving = 100 - percentage;
     document.getElementById("save-hls").innerText = " " + saving + "% Saving ";
   });
+
+ 
 
   
  
