@@ -35,7 +35,7 @@
 	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
 	<link href="css/prism.css" rel="stylesheet" />
-	<link href="css/codec.css" media="all" rel="stylesheet" >
+	<link href="css/transcode.css" media="all" rel="stylesheet" >
 </head>
 <body>
 	<div id="wrapper">
@@ -285,6 +285,7 @@
 								</div>
 								<p class="text manipulation codec">HLS</p>  
 								<p class="text manipulation resolution init" id="res-hls"></p>
+								<button class="adaptive-play" id="play-btn" style="display: none" onclick="playAdaptive()">Press Play for Adaptive Streaming Usage</button>
 								<p class="text manipulation kb init" id="adaptive-bytes"></p>
 								<div>
 									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
@@ -293,7 +294,7 @@
 									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
 									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Safari.svg">
 									<p class="text manipulation calc" id="save-hls">Calculating...</p>
-									<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
+									<img class="cld-logo" id="cld-hls" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
 								</div>
 								<div id="hls-bar" class="my-progress hls">
 									<div id="adaptive-bar" class="my-bar hls">
@@ -372,7 +373,7 @@
 							</div>
 						</div>
 						<div class="editing-area">
-							<div class="codepen-placeholder">
+							<div class="codepen-placeholder" id="autotag-prism">
 <pre class="language-json" id="pre-autotag"  style="display: none"><code id="autotag">Video Autotag</code></pre>
 								<div id="autotag-bar" class="my-progress">
 									<div id="autoTaggingBar" class="my-bar">
@@ -405,7 +406,7 @@
 							</div>
 						</div>
 						<div class="editing-area">
-							<div class="codepen-placeholder">
+							<div class="codepen-placeholder" id="transcript-prism">
 <pre class="language-json" id="pre-transcript" style="display: none"><code id="transcript">Transcript...</code></pre>
 							<div class="my-progress" id="transcript-bar">
 								<div id="transcriptBar" class="my-bar"></div>
@@ -440,7 +441,7 @@
 	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 	<script type="text/javascript" src="js/prism.js"></script>
-	<script type="text/javascript" src="js/codec.js"></script>
+	<script type="text/javascript" src="js/transcode.js"></script>
 	
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
