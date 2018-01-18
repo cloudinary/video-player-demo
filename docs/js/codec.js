@@ -92,7 +92,7 @@ function useVideo(vid) {
     initScreen();
     usingPresetVideo = true;
     publicId = vid.title + "_autotag";
-    originalSize = Math.round(vid.getAttribute("data-size") / 1024);
+    originalSize = Math.round(vid.getAttribute("data-size") / 1000);
     originalRes = vid.getAttribute("data-res");
     originalFormat = vid.getAttribute("data-format");
     checkFormatSizes();
