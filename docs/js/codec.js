@@ -92,7 +92,7 @@ function useVideo(vid) {
     initScreen();
     usingPresetVideo = true;
     publicId = vid.title + "_autotag";
-    originalSize = Math.round(vid.getAttribute("data-size") / 1000);
+    originalSize = Math.round(vid.getAttribute("data-size") / 1024);
     originalRes = vid.getAttribute("data-res");
     originalFormat = vid.getAttribute("data-format");
     checkFormatSizes();
@@ -362,6 +362,7 @@ function checkTranscriptFile(notify) {
 }
 
 function checkTranscript(notify) {
+    console.log("checkTranscript ",notify.transcript.status);
     if (notify.transcript.status == "pending") {
         console.log("transcript pending");
     }
