@@ -77,13 +77,13 @@ function clearData() {
     console.log("clearData found ",bars.length);
     for (i=0; i<bars.length; i++)
     {
-        bars[i].classList.remove("scale-up-hor-left");
         bars[i].style.width = "0"; 
+        bars[i].classList.remove("scale-up-hor-left");
     }
 }
 
 function uploadVideo(){
-	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_transcript', sources: [ 'local', 'url'], multiple: false, max_file_size: 100000000, resource_type: 'video'}, 
+	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_transcript_1min', sources: [ 'local', 'url'], multiple: false, max_file_size: 100000000, resource_type: 'video'}, 
       function(error, result) { processResponse(error, result); }, false);
 }
 
@@ -543,22 +543,8 @@ adaptivePlayer.on('pause', function(event) {
     var Kbytes = Math.round(adaptivePlayer.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
     var percentage = Math.round((Kbytes / originalSize)*100);
     var saving = 100 - percentage;
-    document.getElementById("save-hls").innerText = " " + saving + "% Saving ";
+    if(saving > 0)
+        document.getElementById("save-hls").innerText = " " + saving + "% Saving ";
+    else
+        document.getElementById("save-hls").innerText = "No Saving ";
   });
-
- 
-
-  
- 
-
-
-
-
-
-
-
-
-
-
-
-
