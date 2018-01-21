@@ -485,6 +485,30 @@ function handleAdaptiveError() {
     poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
 }
 
+function showAdaptivePlayMsg() {
+    document.getElementById("play-btn").setAttribute("style","");
+    document.getElementById("save-hls").setAttribute("style","display: none");
+    document.getElementById("cld-hls").setAttribute("style","display: none");
+}
+
+function hideAdaptivePlayMsg() {
+    document.getElementById("play-btn").setAttribute("style","display: none");
+    var hls = document.getElementById("save-hls");
+    hls.setAttribute("style","");
+    hls.innerText = "Downloading...";
+    document.getElementById("cld-hls").setAttribute("style","");
+}
+
+function calcAdaptiveUsage() {
+    var Kbytes = Math.round(adaptivePlayer.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
+    var percentage = Math.round((Kbytes / originalSize)*100);
+    var saving = 100 - percentage;
+    if(saving > 0)
+        document.getElementById("save-hls").innerText = " " + saving + "% Saving ";
+    else
+        document.getElementById("save-hls").innerText = "No Saving ";
+}
+
 var url = "https://res.cloudinary.com/demo/raw/upload/";
 var publicId = "sample";
 var transcript = "sample.transcript"
@@ -518,8 +542,6 @@ var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
 
 function playAdaptive() {
-    document.getElementById("play-btn").setAttribute("style","display: none");
-    document.getElementById("adaptive-bytes").setAttribute("style","");
     adaptivePlayer.play();
 }
 
@@ -536,22 +558,16 @@ adaptivePlayer.on('error', function(event) {
       });
 
 adaptivePlayer.on('canplay', function(event) {
-        document.getElementById("play-btn").setAttribute("style","");
-        document.getElementById("adaptive-bytes").setAttribute("style","display: none");
-        document.getElementById("save-hls").setAttribute("style","display: none");
-        document.getElementById("cld-hls").setAttribute("style","display: none");
+        showAdaptivePlayMsg();
       });
 
 adaptivePlayer.on('play', function(event) {
-        console.log("adaptivePlayer play event");
-        var hls = document.getElementById("save-hls");
-        hls.setAttribute("style","");
-        hls.innerText = "Downloading...";
-        document.getElementById("cld-hls").setAttribute("style","");
+        hideAdaptivePlayMsg();
       });
 
 adaptivePlayer.on('playing', function(event) {
     playingHLS = true;
+    hideAdaptivePlayMsg();
     updateAllMediaBytes();
   });
 
@@ -559,35 +575,7 @@ adaptivePlayer.on('pause', function(event) {
     playingHLS = false;
   });
 
-adaptivePlayer.on('canplaythrough', function(event) {
-    console.log("adaptivePlayer canplaythrough event");
-    document.getElementById("save-hls").innerText = "Downloaded";
-  });
-
   adaptivePlayer.on('ended', function(event) {
     playingHLS = false;
-    var Kbytes = Math.round(adaptivePlayer.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
-    var percentage = Math.round((Kbytes / originalSize)*100);
-    var saving = 100 - percentage;
-    if(saving > 0)
-        document.getElementById("save-hls").innerText = " " + saving + "% Saving ";
-    else
-        document.getElementById("save-hls").innerText = "No Saving ";
+    calcAdaptiveUsage();
   });
-
- 
-
-  
- 
-
-
-
-
-
-
-
-
-
-
-
-
