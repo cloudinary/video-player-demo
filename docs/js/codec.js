@@ -53,6 +53,7 @@ function initScreen() {
     transcriptComplete = false;
     initialFormatRequest = true;
     usingPresetVideo = false;
+    sourceHLS = false;
     videosFormatState = 0;
     progress = 0;
     autoTagProgress = 0;
@@ -60,10 +61,11 @@ function initScreen() {
     formatState = 0;
     originalSize = 0;
     gotFomats = 0;
+    originalDuration = 0;
     originalRes = "default";
     originalFormat = "default";
     clearData();
-
+    adaptivePlayer.controls(false);
 }
 
 function clearData() {
@@ -109,11 +111,33 @@ function useVideo(vid) {
 function updateAutoPlayers() {
     autoTagPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
     transcriptPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
-    adaptivePlayer.source(publicId,{ sourceTypes: ['hls'], 
-    transformation: {streaming_profile: 'hd' },
+    if(usingPresetVideo)
+        HLSRequest();
+    else
+    {
+        OriginalRequest();
+        DelayHLSRequest(Math.round((originalDuration+10)*1000)); 
+    }
+}
+
+function OriginalRequest() {
+    console.log("Original Request");
+    adaptivePlayer.source(publicId ,{
     poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
 }
 
+function HLSRequest() {
+    console.log("HLS Request");
+    adaptivePlayer.source(publicId,{ sourceTypes: ['hls'], 
+    transformation: {streaming_profile: 'hd' },
+    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
+    sourceHLS = true;
+}
+
+function DelayHLSRequest(delay) {
+    console.log("Delay HLS Request ", delay);
+    setTimeout(HLSRequest,delay);
+}
 
 function processResponse(error, result) {
     console.log("processResponse",error, result);
@@ -125,6 +149,7 @@ function processResponse(error, result) {
         originalSize = Math.round(result[0].bytes / 1000);
         originalRes = result[0].width + "x" + result[0].height;
         originalFormat = result[0].format;
+        originalDuration = result[0].duration;
         checkFormatSizes();
         updateFileSizes(originalSize,"original");
         transcript = publicId + ".transcript";
@@ -174,13 +199,14 @@ function updateProgress() {
     if(transcriptProgress < 100)
         updateTranscriptProgress();
     if (autoTagProgress < 100 || transcriptProgress < 100) {
-	console.log("calling updateProgress cycle",autoTagProgress,transcriptProgress);
-        setTimeout(updateProgress,1500);
+    var rate = Math.round(1200+(25*originalDuration));
+	console.log("calling updateProgress cycle",autoTagProgress,transcriptProgress,rate/1000);
+        setTimeout(updateProgress,rate);
     }
     else
-	console.log("updateProgress complete",autoTagProgress,transcriptProgress);
+	    console.log("updateProgress complete",autoTagProgress,transcriptProgress);
 }
-
+    
 function getData() {
     if(getTranscriptFile && transcriptComplete) 
         getTranscript();
@@ -206,7 +232,7 @@ function advanceState() {
 function checkFormatSizes() {
     if(formatState == GET_MP4) 
         requestMP4();
-    else if (formatState == GET_VP8) 
+    else if (formatState == GET_H265) 
         requestH265();
     else if (formatState == GET_VP9)
         requestVP9();
@@ -228,9 +254,9 @@ function requestH265() {
     requestFileFormat(checkUrl);
 }
 
-function requestVP8() {
-    console.log("requestVP8");
-    var checkUrl = "https://res.cloudinary.com/demo/video/upload/vc_auto/" + publicId + ".webm";
+function requestHLS() {
+    console.log("requestHLS");
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/sp_hd/" + publicId + ".m3u8";
     requestFileFormat(checkUrl);
 }
 
@@ -328,8 +354,8 @@ function getVideoFormat() {
         videosFormatState++;
     }
 
-    if(state == GET_VP8)
-        return "vp8";
+    if(state == GET_H265)
+        return "h265";
     else if(state == GET_VP9)
         return "vp9";
     else
@@ -477,18 +503,19 @@ function handleAutotagError() {
     autoTagPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
 }
 
-function handleAdaptiveError() {
+function handleAdaptiveError(delay) {
     console.log("Adaptive player error ",event);
     errorRetry++;
-    adaptivePlayer.source(publicId,{ sourceTypes: ['hls'], 
-    transformation: {streaming_profile: 'hd' },
-    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
+    OriginalRequest();
 }
 
 function showAdaptivePlayMsg() {
-    document.getElementById("play-btn").setAttribute("style","");
-    document.getElementById("save-hls").setAttribute("style","display: none");
-    document.getElementById("cld-hls").setAttribute("style","display: none");
+    if (sourceHLS)
+    {
+        document.getElementById("play-btn").setAttribute("style","");
+        document.getElementById("save-hls").setAttribute("style","display: none");
+        document.getElementById("cld-hls").setAttribute("style","display: none");
+    }
 }
 
 function hideAdaptivePlayMsg() {
@@ -518,16 +545,18 @@ var getTranscriptFile = true;
 var transcriptComplete = false;
 var initialFormatRequest = true;
 var usingPresetVideo = false;
+var sourceHLS = false;
 var videosFormatState = 0;
 var progress = 0;
 var autoTagProgress = 0;
 var transcriptProgress = 0;
 var formatState = 0;
 var originalSize = 0;
+var originalDuration = 0;
 var gotFomats = 0;
 var errorRetry = 1;
 const GET_MP4 = 0;
-const GET_VP8 = 1;
+const GET_H265 = 1;
 const GET_VP9 = 2;
 
   
@@ -542,11 +571,12 @@ var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
 
 function playAdaptive() {
+    adaptivePlayer.controls(true);
     adaptivePlayer.play();
 }
 
 transcriptPlayer.on('error', function(event) {
-        setTimeout(handleTranscriptError,1000*errorRetry);
+    setTimeout(handleTranscriptError,1000*errorRetry);
       });
 
  autoTagPlayer.on('error', function(event) {
@@ -554,7 +584,7 @@ transcriptPlayer.on('error', function(event) {
       });
 
 adaptivePlayer.on('error', function(event) {
-        setTimeout(handleAdaptiveError,1000*errorRetry);
+        handleAdaptiveError(1000*errorRetry);
       });
 
 adaptivePlayer.on('canplay', function(event) {
@@ -579,3 +609,20 @@ adaptivePlayer.on('pause', function(event) {
     playingHLS = false;
     calcAdaptiveUsage();
   });
+
+ 
+
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
