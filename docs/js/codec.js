@@ -75,10 +75,10 @@ function clearData() {
     var calc = document.getElementsByClassName("calc");
     for (i=0; i<calc.length; i++)
         calc[i].innerText = "Calculating...";
-    var bars = document.getElementsByClassName("scale-up-hor-left");
-    console.log("clearData found ",bars.length);
+    var bars = document.getElementsByClassName("my-bar");
     for (i=0; i<bars.length; i++)
     {
+        console.log("clearData ",bars[i].id);
         bars[i].style.width = "0"; 
         bars[i].classList.remove("scale-up-hor-left");
     }
@@ -214,7 +214,7 @@ function getData() {
 	console.log("getData autoT p",autoTagProgress,transcriptProgress);
         checkLambda();
     }
-    else
+    else 
         console.log("getData Done");
 }
 
@@ -369,12 +369,13 @@ function checkLambdaNotification(notify) {
 
 function checkTranscriptFile(notify) {
     if(transcriptComplete && getTranscriptFile && Array.isArray(notify)) {
-        transcriptProgress = 99;
+        if(transcriptProgress < 99) transcriptProgress = 99;
 	getTranscriptFile = false;
 	if(notify.length > 0)
 	{
         showJSON("transcript",notify);
-		transcriptPlayer.source(publicId,{ transformation: [{"width": "640", "height": "360", "crop": "pad"},{overlay: "subtitles:"+transcript}]});
+        transcriptPlayer.source(publicId,{ transformation: [{"width": "640", "height": "360", "crop": "pad"},{overlay: "subtitles:"+transcript}]});
+        console.log("transcript player requested transcript overlay");
 	}
 	else
 		showJSON("transcript","This video clip has no detected words"); 
@@ -394,7 +395,7 @@ function checkTranscript(notify) {
     {
         getTranscriptFile = false;
         transcriptComplete = true;
-        transcriptProgress = 99;
+        if(transcriptProgress < 99) transcriptProgress = 99;
         showJSON("transcript","There is no transcript for this video");
         console.log("no transcript");
     }
@@ -404,7 +405,7 @@ function checkTags(notify) {
     if (notify.tags.status == "pending")
         console.log("autotag pending");
     else if (notify.tags.status == "complete") {
-        autoTagProgress = 99;
+        if (autoTagProgress < 99) autoTagProgress = 99;
         showJSON("autotag",notify.tags.data);
     }
     else
@@ -576,9 +577,49 @@ function playAdaptive() {
 }
 
 transcriptPlayer.on('error', function(event) {
+    console.log("transcript player error");
     setTimeout(handleTranscriptError,1000*errorRetry);
       });
-
+transcriptPlayer.on('loadstart', function(event) {
+    console.log("transcript player loadstart");
+    transcriptPlayer.controls(true);
+//    transcriptPlayer.controls(false);
+          });
+transcriptPlayer.on('loadedmetadata', function(event) {
+    console.log("transcript player loadedmetadata");
+          });
+transcriptPlayer.on('loadeddata', function(event) {
+console.log("transcript player loadeddata");
+        });
+transcriptPlayer.on('progress', function(event) {
+console.log("transcript player progress");
+        });
+transcriptPlayer.on('durationchange', function(event) {
+console.log("transcript player durationchange");
+        });
+transcriptPlayer.on('canplay', function(event) {
+    console.log("transcript player canplay");
+//    transcriptPlayer.controls(true);
+      });
+      autoTagPlayer.on('loadstart', function(event) {
+console.log("autotag player loadstart");
+//    transcriptPlayer.controls(false);
+        });
+        autoTagPlayer.on('loadedmetadata', function(event) {
+console.log("autotag player loadedmetadata");
+        });
+        autoTagPlayer.on('loadeddata', function(event) {
+console.log("autotag player loadeddata");
+    });
+    autoTagPlayer.on('progress', function(event) {
+console.log("autotag player progress");
+    });
+    autoTagPlayer.on('durationchange', function(event) {
+console.log("autotag player durationchange");
+    });
+    autoTagPlayer.on('canplay', function(event) {
+console.log("autotag player canplay");
+          });
  autoTagPlayer.on('error', function(event) {
         setTimeout(handleAutotagError,1000*errorRetry);
       });
