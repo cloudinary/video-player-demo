@@ -437,12 +437,15 @@ function updateAllMediaBytes() {
 }
 
 function updateMediaBytes(id,player) {
-    var elem = document.getElementById(id+"-bytes");
-    var Kbytes = Math.round(player.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
-    var percentage = Math.round((Kbytes / originalSize)*100);
-    elem.innerText = Kbytes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB"; 
-    document.getElementById("res-hls").innerText = " " + player.videojs.videoWidth() + "x" + player.videojs.videoHeight();
-    updateTranscodeFileSize(id+"-bar",percentage);
+    if(!safari)
+    {
+        var elem = document.getElementById(id+"-bytes");
+        var Kbytes = Math.round(player.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
+        var percentage = Math.round((Kbytes / originalSize)*100);
+        elem.innerText = Kbytes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB"; 
+        document.getElementById("res-hls").innerText = " " + player.videojs.videoWidth() + "x" + player.videojs.videoHeight();
+        updateTranscodeFileSize(id+"-bar",percentage);
+    }
 }
 
 function showProgressBar(show,id, maxHeight) {
@@ -521,20 +524,26 @@ function showAdaptivePlayMsg() {
 
 function hideAdaptivePlayMsg() {
     document.getElementById("play-btn").setAttribute("style","display: none");
-    var hls = document.getElementById("save-hls");
-    hls.setAttribute("style","");
-    hls.innerText = "Downloading...";
-    document.getElementById("cld-hls").setAttribute("style","");
+    if(!safari)
+    {
+        var hls = document.getElementById("save-hls");
+        hls.setAttribute("style","");
+        hls.innerText = "Downloading...";
+        document.getElementById("cld-hls").setAttribute("style","");
+    }
 }
 
 function calcAdaptiveUsage() {
-    var Kbytes = Math.round(adaptivePlayer.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
-    var percentage = Math.round((Kbytes / originalSize)*100);
-    var saving = 100 - percentage;
-    if(saving > 0)
-        document.getElementById("save-hls").innerText = " " + saving + "% Saving ";
-    else
-        document.getElementById("save-hls").innerText = "No Saving ";
+    if(!safari)
+    {
+        var Kbytes = Math.round(adaptivePlayer.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
+        var percentage = Math.round((Kbytes / originalSize)*100);
+        var saving = 100 - percentage;
+        if(saving > 0)
+            document.getElementById("save-hls").innerText = " " + saving + "% Saving ";
+        else
+            document.getElementById("save-hls").innerText = "No Saving ";
+    }
 }
 
 var url = "https://res.cloudinary.com/demo/raw/upload/";
@@ -559,8 +568,10 @@ var errorRetry = 1;
 const GET_MP4 = 0;
 const GET_H265 = 1;
 const GET_VP9 = 2;
+var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
+var safari   = navigator.userAgent.indexOf("Safari") > -1;
+if ((chrome) && (safari)) safari = false;
 
-  
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
  var adaptivePlayer = cld.videoPlayer('demo-adaptive-player', { videojs: { bigPlayButton: false} });
