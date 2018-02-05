@@ -569,10 +569,9 @@ var errorRetry = 1;
 const GET_MP4 = 0;
 const GET_H265 = 1;
 const GET_VP9 = 2;
-//var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
-//var safari   = navigator.userAgent.indexOf("Safari") > -1;
-// if ((chrome) && (safari)) safari = false;
-var safari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
+var safari   = navigator.userAgent.indexOf("Safari") > -1;
+if ((chrome) && (safari)) safari = false;
 
 if(safari)
     alert("brwoser safari");
