@@ -132,6 +132,7 @@ function HLSRequest() {
     transformation: {streaming_profile: 'hd' },
     poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
     sourceHLS = true;
+    showAdaptivePlayMsg();
 }
 
 function DelayHLSRequest(delay) {
@@ -640,7 +641,7 @@ adaptivePlayer.on('error', function(event) {
       });
 
 adaptivePlayer.on('canplay', function(event) {
-        showAdaptivePlayMsg();
+ //       showAdaptivePlayMsg();
       });
 
 adaptivePlayer.on('play', function(event) {
