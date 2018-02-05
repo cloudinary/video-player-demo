@@ -572,11 +572,6 @@ const GET_VP9 = 2;
 var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
 var safari   = navigator.userAgent.indexOf("Safari") > -1;
 if ((chrome) && (safari)) safari = false;
-if(navigator.userAgent.match('CriOS')) safari = false; // chrome on IOS
-if(safari)
-    alert("briwser is safari");
-else
-    alert("briwser is not safari");
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
