@@ -375,7 +375,7 @@ function checkTranscriptFile(notify) {
 	if(notify.length > 0)
 	{
         showJSON("transcript",notify);
-        transcriptPlayer.source(publicId,{ transformation: [{"width": "640", "height": "360", "crop": "pad"},{overlay: "subtitles:"+transcript}], sourceTypes: "mp4"});
+        transcriptPlayer.source(publicId,{ transformation: [{"width": "640", "height": "360", "crop": "pad"},{overlay: "subtitles:"+transcript}], sourceTypes: ["mp4"]});
         console.log("transcript player requested transcript overlay");
 	}
 	else
