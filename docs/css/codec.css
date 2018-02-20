@@ -754,9 +754,16 @@ input[type="radio"]:checked + label .radio-icon:before {
 #header {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, .5);
 	padding: 8px 0 14px;
-	position: relative;
+	position: fixed;
+	top: 0;
+	width: 100%;
 	overflow: hidden;
 	z-index: 5;
+	background: white;
+}
+
+#header.fixed-position {
+	background: rgba(255, 255, 255, .95);
 }
 
 .header-holder {
@@ -772,6 +779,20 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 .header-holder.widget  {
 	padding: 0 3px 0 42px;
+}
+
+.header-holder.widget a.pages {
+    float: left;
+    display: block;
+    color: #282828;
+    text-align: center;
+    padding-top: 10px;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	font-family: 'Roboto',Arial,Helvetica,sans-serif;
+	line-height: 28px;
+	margin: 0 -20%;
 }
 
 .topbar-logo {
@@ -809,6 +830,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 .banner-holder.first {
 	padding-top: 40px;
 	padding-bottom: 30px;
+	margin-top: 40px;
 }
 
 .banner-holder.second {
