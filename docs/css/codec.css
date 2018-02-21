@@ -753,7 +753,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 #header {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, .5);
-	padding: 8px 0 14px;
+	padding: 9px 0;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -771,7 +771,6 @@ input[type="radio"]:checked + label .radio-icon:before {
 	position: relative;
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;
 	-webkit-box-pack: justify;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
@@ -782,21 +781,23 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .header-holder.widget a.pages {
-    float: left;
-    display: block;
+	display: inline-block;
+	padding: 10px 10px 0 10px;
     color: #282828;
     text-align: center;
-    padding-top: 10px;
 	text-decoration: none;
-	font-size: 14px;
-	font-weight: 500;
+	font-size: 16px;
+	font-weight: 600;
 	font-family: 'Roboto',Arial,Helvetica,sans-serif;
 	line-height: 28px;
-	margin: 0 -20%;
+}
+
+.header-holder.widget a.pages.active {
+	border-bottom: 1px solid;
 }
 
 .topbar-logo {
-	margin: 14px 0 0;
+	margin: 8px 0 0;
 	display: block;
 	width: 115px;
 }
@@ -828,7 +829,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .banner-holder.first {
-	padding-top: 40px;
+	padding-top: 60px;
 	padding-bottom: 30px;
 	margin-top: 40px;
 }
@@ -1678,7 +1679,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	letter-spacing: .07px;
 	position: relative;
 	color: #000;
-	width: 200px;
+	width: 300px;
 }
 
 .codepen-info .wrap a {
@@ -2113,6 +2114,11 @@ input[type="radio"]:checked + label .radio-icon:before {
 		padding: 0 67px 0 80px;
 	}
 
+	.header-holder.widget a.pages {
+		font-size: 14px;
+		font-weight: 500;
+	}
+
 	.menu {
 		margin: 0 -15px;
 	}
@@ -2179,7 +2185,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	.header-holder {
 		padding: 0 25px;
 	}
-
+	
 	.logo {
 		width: 500px;
 	}
@@ -2214,6 +2220,23 @@ input[type="radio"]:checked + label .radio-icon:before {
 	.btn {
 		font-size: 12px;
 		width: 148px;
+	}
+
+	.signup {
+		display: none;
+	}
+
+	.header-holder.widget a.pages {
+		padding: inherit;
+		display: inline-block;
+	}
+
+	.topbar-logo img {
+		display: none;
+	}
+
+	.topbar-logo {
+		display: none;
 	}
 
 	#header {
@@ -2423,6 +2446,10 @@ input[type="radio"]:checked + label .radio-icon:before {
 @media (max-width: 479px) {
 	#nav {
 		padding: 20px 0 23px;
+	}
+
+	.header-holder.widget a.pages {
+		padding: 10px;
 	}
 
 	.menu {
