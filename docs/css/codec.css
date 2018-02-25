@@ -2223,20 +2223,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	}
 
 	.signup {
-		display: none;
-	}
-
-	.header-holder.widget a.pages {
-		padding: inherit;
-		display: inline-block;
-	}
-
-	.topbar-logo img {
-		display: none;
-	}
-
-	.topbar-logo {
-		display: none;
+		background: white;
 	}
 
 	#header {
@@ -2450,6 +2437,18 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 	.header-holder.widget a.pages {
 		padding: 10px;
+	}
+
+	.topbar-logo img {
+		display: none;
+	}
+
+	.topbar-logo {
+		display: none;
+	}
+
+	.signup {
+		display: none;
 	}
 
 	.menu {
