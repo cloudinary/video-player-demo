@@ -137,8 +137,8 @@ function runTranscodingPage() {
 
 function runAIPage() {
     transcript = publicId + ".transcript";
-    updateProgress();
     updateAutoPlayers();
+    updateProgress();
     showContentBlocks();
     showAIProgressBars();
 }
@@ -156,8 +156,8 @@ function runCodecComparison() {
 }
 
 function updateAutoPlayers() {
-    autoTagPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad", "start_offset":"0", "end_offset":"30"}});
-    transcriptPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad", "start_offset":"0", "end_offset":"30"}});
+    autoTagPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
+    transcriptPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
 }
 
 function runHLS() {
