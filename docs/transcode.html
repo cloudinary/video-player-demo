@@ -7,16 +7,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Accept-CH" content="DPR">
 	<meta content="Cloudinary Video - the developer-friendly video solution that packs everything you need into one easy-to-integrate, comprehensive open-source package." name="description">
-	<meta property="og:url" id="meta-og-url" content="https://demo.cloudinary.com/video">
-	<meta property="og:title" id="meta-og-title" content="Cloudinary Video Demo">
-	<meta property="og:site_name" id="meta-og-site_name" content="Cloudinary Video Demo">
-	<meta property="og:description" id="meta-og-description" content="Cloudinary Video - the developer-friendly video solution that packs everything you need into one easy-to-integrate, comprehensive open-source package.">
+	<meta property="og:url" id="meta-og-url" content="https://demo.cloudinary.com/video_player">
+	<meta property="og:title" id="meta-og-title" content="Cloudinary Video Player Demo">
+	<meta property="og:site_name" id="meta-og-site_name" content="Cloudinary Video Player Demo">
+	<meta property="og:description" id="meta-og-description" content="Cloudinary Video Player - the developer-friendly video player that packs everything you need into one easy-to-integrate, comprehensive open-source package.">
 	<meta property="og:type" id="meta-og-type" content="website">
-	<meta itemprop="name" id="meta-name" content="Cloudinary Video Demo">
-	<meta itemprop="description" id="meta-description" content="Cloudinary Video - the developer-friendly video solution that packs everything you need into one easy-to-integrate, comprehensive open-source package.">
-	<meta property="og:image" id="meta-og-image" content="https://res.cloudinary.com/demo/image/upload/og-images-videodemo-3VID-DEMO-OG_1.jpg">
-	<meta itemprop="image" id="meta-image" content="https://res.cloudinary.com/demo/image/upload/og-images-videodemo-3vid-demo-og-1square.jpg">
-	<meta itemprop="twitter:image" id="meta-image" content="https://res.cloudinary.com/demo/image/upload/og-images-videodemo-3vid-demo-og-1square.jpg">
+	<meta itemprop="name" id="meta-name" content="Cloudinary Video Player Demo">
+	<meta itemprop="description" id="meta-description" content="Cloudinary Video Player - the developer-friendly video player that packs everything you need into one easy-to-integrate, comprehensive open-source package.">
+	<meta property="og:image" id="meta-og-image" content="https://res.cloudinary.com/idemo/image/upload/player_social_2168x1138.jpg">
+	<meta itemprop="image" id="meta-image" content="https://res.cloudinary.com/idemo/image/upload/player_social_813x813.jpg">
+	<meta itemprop="twitter:image" id="meta-image" content="https://res.cloudinary.com/idemo/image/upload/player_social_813x813.jpg">
 	<link href='https://cloudinary-res.cloudinary.com/image/asset/apple-touch-icon-57x57-575a82d41acd15f36c22b17c861726f1.png' rel='apple-touch-icon' sizes='57x57'>
 	<link href='https://cloudinary-res.cloudinary.com/image/asset/apple-touch-icon-114x114-477119f5f706ca1f3586855cd38848b3.png' rel='apple-touch-icon' sizes='114x114'>
 	<link href='https://cloudinary-res.cloudinary.com/image/asset/apple-touch-icon-72x72-7d9b2a17ccfc6b73e1bbc3d15ce802cb.png' rel='apple-touch-icon' sizes='72x72'>
@@ -35,7 +35,7 @@
 	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
 	<link href="css/prism.css" rel="stylesheet" />
-	<link href="css/main.css" media="all" rel="stylesheet" >
+	<link href="css/transcode.css" media="all" rel="stylesheet" >
 </head>
 <body>
 	<div id="wrapper">
@@ -44,11 +44,7 @@
 				<div class="container">
 					<div class="header-holder widget">
 						<strong class="topbar-logo"><a href="https://cloudinary.com" target="_blank"><img src="https://cloudinary-res.cloudinary.com/image/asset/dpr_2.0/logo-e0df892053afd966cc0bfe047ba93ca4.png" alt="Cloudinary"></a></strong>
-						<a href="transcode.html" class="pages active">Transcoding</a>
-						<a href="ai.html" class="pages">AI</a>
-						<a href="index.html" class="pages">Player</a>
-						<a href="https://demo.cloudinary.com/live/" class="pages">Live</a>
-						<a href="https://cloudinary.com/signup?source=demo" target="_blank" class="btn signup">Sign up for free</a>
+						<a href="https://cloudinary.com/signup?source=demo" target="_blank" class="btn">Sign up for free</a>
 					</div>
 				</div>
 			</header>
@@ -81,30 +77,28 @@
                         <div class="container">
                             <ul class="menu">
                                 <li>
-                                    <a href="#section01" title="rafting" data-size="36642373" data-res="1920x1080" data-format="MP4" onclick="useVideo(this)">
+                                    <a href="#section01" title="rafting" onclick="useVideo(this)">
                                         <img src="https://res.cloudinary.com/demo/video/upload/w_260,h_146,dpr_2.0,c_fill,so_0,r_5,b_white,q_auto,f_auto/rafting_short.jpg" alt="rafting">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#section01" title="what_is_cloudinary" data-size="228674364" data-res="1920x1080" data-format="MOV" onclick="useVideo(this)">
+                                    <a href="#section01" title="what_is_cloudinary" onclick="useVideo(this)">
                                         <img src="https://res.cloudinary.com/demo/video/upload/w_260,h_146,dpr_2.0,c_fill,r_5,b_white,q_auto,f_auto/what_is_cloudinary.jpg" alt="forest bike">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#section01" title="imagecon_grigsby_intro" data-size="51642247" data-res="1280x720" data-format="MP4" onclick="useVideo(this)">
-                                        <img src="https://res.cloudinary.com/demo/video/upload/w_260,h_146,dpr_2.0,c_fill,r_5,b_white,q_auto,so_30,f_auto,g_auto/imagecon_grigsby_intro.jpg" alt="snow horses">
+                                    <a href="#section01" title="imagecon_grigsby_intro" onclick="useVideo(this)">
+                                        <img src="https://res.cloudinary.com/demo/video/upload/w_260,h_146,dpr_2.0,c_fill,r_5,b_white,q_auto,f_auto,g_auto/imagecon_grigsby_intro.jpg" alt="snow horses">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#section01" title="marmots" data-size="25496239" data-res="1920x1080" data-format="MP4" onclick="useVideo(this)">
-                                        <img src="https://res.cloudinary.com/demo/video/upload/so_20,w_260,h_146,dpr_2.0,c_fill,r_5,b_white,q_auto,f_auto/marmots.jpg" alt="marmots">
+                                    <a href="#section01" title="snow_deer" onclick="useVideo(this)">
+                                        <img src="https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_146,dpr_2.0,c_fill,r_5,b_white,q_auto,f_auto/snow_deer.jpg" alt="snow deer">
                                     </a>
                                 </li>
                             </ul>
                         </div>
-					 </nav>
-					 <div id="file_size">
-					</div>
+                     </nav>
 				</div>
 				<div id="theme-area" class="theme-area">
 					<div class="theme-opener" onclick="toggleClass()"><i class="icon"></i></div>
@@ -154,106 +148,98 @@
 										<li>
                                              <video
                                                 id="demo-manipulation1-player" 
-                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect": "saturation:-200"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad", "effect": "grayscale" },{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+                                                data-cld-transformation='{"effect": "saturation:-200"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"effect": "grayscale" },{"overlay":"play-demo", "width":"160"}] }'
                                                 controls
                                                 muted
-												playsinline
-												preload="metadata"
+						playsinline
                                                 class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
                                             </video>
-                                            <a class="text manipulation link" data-href="https://res.cloudinary.com/demo/video/upload/c_pad,e_saturation:-200,h_360,w_640/" target="_blank">Black and White</a>	
+                                            <a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_saturation:-200/" target="_blank">Black and White</a>	
                                         </li>
 										<li>
 											<video
 												id="demo-manipulation2-player" 
-												data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect": "vignette:70"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"effect":"vignette:100", "background":"black" } ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+												data-cld-transformation='{"effect": "vignette:70"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"effect":"vignette:100", "background":"black" } ,{"overlay":"play-demo", "width":"160"}] }'
                                                 controls 
 												muted
-												playsinline
-												preload="metadata"
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
-											<a class="text manipulation link" data-href="https://res.cloudinary.com/demo/video/upload/c_pad,e_vignette:70,h_360,w_640/" target="_blank">Vignette</a>
+											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_vignette:70/" target="_blank">Vignette</a>
 										</li>
 										<li>
 											<video
 												id="demo-manipulation3-player" 
-												data-cld-transformation='[{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"}]' 
-                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+												data-cld-transformation='{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"} ,{"overlay":"play-demo", "width":"160"}] }'
                                                 controls
 												muted
-												playsinline
-												preload="metadata"
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
-											<a class="text manipulation link" data-href="https://res.cloudinary.com/demo/video/upload/c_pad,h_360,w_640/g_south_east,l_cloudinary_icon,w_100/" target="_blank">Overlay</a>
+											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/g_south_east,l_cloudinary_icon,w_50/" target="_blank">Overlay</a>
 											</li>
 										<li>
 											<video
 												id="demo-manipulation4-player" 
-                                                data-cld-transformation='[{"width": "640", "height": "360", "crop": "pad"},{"overlay":"video:cld_opener_preroll_sd","flags":"splice","start_offset":"0"}]'
-                                                data-cld-poster-options='{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cld_opener_preroll_sd"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+                                                data-cld-transformation='{"overlay":"video:cld_opener_preroll_sd","flags":"splice","start_offset":"0"}'
+                                                data-cld-poster-options='{ "transformation": [{"overlay":"cld_opener_preroll_sd"} ,{"overlay":"play-demo", "width":"160"}] }'
                                                 controls 
 												muted
-												playsinline
-												preload="metadata"
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
-											<a class="text manipulation link" data-href="https://res.cloudinary.com/demo/video/upload/c_pad,h_360,w_640/fl_splice,l_video:cld_opener_preroll_sd,so_0/" target="_blank">Preroll</a>
+											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/fl_splice,l_video:cld_opener_preroll_sd,so_0/" target="_blank">Preroll</a>
 										</li>
 										<li>
 											<video
 												id="demo-manipulation5-player" 
-                                                data-cld-transformation='[{"width": "640", "height": "360", "crop": "pad"},{"radius":"50", "background":"white"}]' 
-                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"radius":"50", "background": "white"},{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+                                                data-cld-transformation='{"radius":"50","background":"white"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"radius":"50","background":"white"} ,{"overlay":"play-demo", "width":"160"}] }'
 												controls 
 												muted
-												playsinline
-												preload="metadata"
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
-											<a class="text manipulation link" data-href="https://res.cloudinary.com/demo/video/upload/c_pad,h_360,w_640/r_50/" target="_blank">Round Corners</a>
+											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/r_50/" target="_blank">Round Corners</a>
 										</li>
 										<li>
 											<video
 												id="demo-manipulation6-player" 
-                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect":"accelerate:100"}'
-                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+                                                data-cld-transformation='{"effect":"accelerate:100"}'
+                                                data-cld-poster-options= '{ "transformation": {"overlay":"play-demo", "width":"160"} }'
 												controls  
 												muted
-												playsinline
-												preload="metadata"
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
-											<a class="text manipulation link" data-href="https://res.cloudinary.com/demo/video/upload/c_pad,e_accelerate:100,h_360,w_640/" target="_blank">Playback Speed x2</a>
+											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_accelerate:100/" target="_blank">Playback Speed x2</a>
 										</li>
 										<li>
 											<video
 												id="demo-manipulation7-player" 
-                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "angle":"180"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad","angle":"180" } ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+                                                data-cld-transformation='{"angle":"180"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"angle":"180" } ,{"overlay":"play-demo", "width":"160"}] }'
 												controls 
 												muted
-												playsinline
-												preload="metadata"
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
-											<a class="text manipulation link" data-href="https://res.cloudinary.com/demo/video/upload/a_180,c_pad,h_360,w_640/" target="_blank">Rotate 180</a>
+											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/a_180/" target="_blank">Rotate 180</a>
 											</li>
 										    <li>
 											<video
 												id="demo-manipulation8-player" 
-                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect":"blur:300"}' 
-                                                data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad","effect":"blur:300"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
+                                                data-cld-transformation='{"effect":"blur:300"}' 
+                                                data-cld-poster-options= '{ "transformation": [{"effect":"blur:300"} ,{"overlay":"play-demo", "width":"160"}] }'
 												controls 
 												muted
-												playsinline
-												preload="metadata"
+											        playsinline
 												class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 											</video>
-											<a class="text manipulation link" data-href="https://res.cloudinary.com/demo/video/upload/c_pad,e_blur:300,h_360,w_640/" target="_blank">Blur</a>
+											<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_blur:300/" target="_blank">Blur</a>
 										</li>
 										<li>
 									</ul>
@@ -270,110 +256,71 @@
 			<section class="content-block hidden style01" id="section02">
 				<div class="container">
 					<header class="heading-area">
-						<h2>Video Transcoding</h2>
+						<h2>Video Auto Tagging</h2>
 					</header>
 					<div class="block-area">
 						<div class="video-block">
 							<div class="video-area">
 								<video
-									id="demo-adaptive-player" 
-									muted
-									playsinline
-									class="cld-video-player cld-fluid cld-video-player-skin-dark">
-								</video>
+									id="demo-autotag-player" 
+									controls 
+									muted 
+									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
+                                </video>
 							</div>
 						</div>
 						<div class="editing-area">
-							<div class="codepen-placeholder data-bars">
-								<p class="text manipulation codec">Original</p>
-								<a class="text manipulation link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/">
-									<img class="icon-link" src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
-								<p class="text manipulation resolution init" id="res-original"></p>
-								<p class="text manipulation kb init" id="comp-original"></p>
-								<div id="trans1-bar" class="my-progress">
-									<div id="bar-original" style="height: 10px; background: #90A0B3; margin: 5px 0 20px 0" class="my-bar">
+							<div class="codepen-placeholder">
+<pre class="language-json" id="pre-autotag"  style="display: none"><code id="autotag">Video Autotag</code></pre>
+								<div id="autotag-bar" class="myProgress">
+									<div id="autoTaggingBar" class="myBar">
 									</div>
 								</div>
-								<p class="text manipulation codec">HLS</p>  
-								<p class="text manipulation resolution init" id="res-hls"></p>
-								<button class="adaptive-play" id="play-btn" style="display: none" onclick="playAdaptive()">Press Play for Adaptive Streaming</button>
-								<p class="text manipulation kb init" id="adaptive-bytes"></p>
-								<div>
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Firefox.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Safari.svg">
-									<p class="text manipulation calc" id="save-hls">Downloading...</p>
-									<img class="cld-logo" id="cld-hls" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
-								</div>
-								<div id="hls-bar" class="my-progress hls">
-									<div id="adaptive-bar" class="my-bar hls">
-									</div>
-								</div>
-								<p class="text manipulation codec">MP4/H.264</p>
-								<a class="text manipulation link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/vc_auto/">
-									<img class="icon-link"  src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
-								<p class="text manipulation resolution init" id="res-mp4"></p>
-								<p class="text manipulation kb init" id="comp-mp4"></p>
-								<div>
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Firefox.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Safari.svg">
-									<p class="text manipulation calc" id="save-mp4">Calculating...</p>
-									<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
-								</div>
-								<div id="trans2-bar"  class="my-progress">
-									<div id="bar-mp4" style="height: 10px; margin: 5px 0 20px 0" class="my-bar">
-									</div>
-								</div>
-								<p class="text manipulation codec">MP4/H.265</p>
-								<a class="text manipulation link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/vc_h265,q_70/">
-									<img class="icon-link"  src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
-								<p class="text manipulation resolution init" id="res-h265"></p>
-								<p class="text manipulation kb init" id="comp-h265"></p>
-								<div>
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Safari.svg">
-									<p class="text manipulation calc" id="save-h265">Calculating...</p>
-									<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
-								</div>
-								<div id="trans3-bar"  class="my-progress">
-									<div id="bar-h265" style="height: 10px; margin: 5px 0 20px 0" class="my-bar">
-									</div>
-								</div>
-								<p class="text manipulation codec">WEBM/VP9</p>
-								<a class="text manipulation webm-link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/vc_vp9,q_70/">
-									<img class="icon-link" src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
-								<p class="text manipulation resolution init" id="res-vp9"></p>
-								<p class="text manipulation kb init" id="comp-vp9"></p>
-								<div>
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Firefox.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
-									<p class="text manipulation calc" id="save-vp9">Calculating...</p>	
-									<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
-								</div>
-								<div id="trans4-bar" class="my-progress">
-									<div id="bar-vp9" style="height: 10px;  margin: 5px 0 20px 0" class="my-bar">
-									</div>
+							</div>
+							<div class="codepen-info">
+								<div class="wrap">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<div>
-			</div>
+			<section class="content-block hidden" id="section03">
+				<div class="container">
+					<header class="heading-area">
+						<h2>Auto transcript</h2>
+					</header>
+					<div class="block-area">
+						<div class="video-block">
+							<div class="video-area">
+								<video
+									id="demo-transcript-player" 
+									controls 
+									muted 
+									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
+								</video>
+							</div>
+						</div>
+						<div class="editing-area">
+							<div class="codepen-placeholder">
+<pre class="language-json" id="pre-transcript" style="display: none"><code id="transcript">Transcript...</code></pre>
+							<div class="myProgress" id="transcript-bar">
+								<div id="transcriptBar" class="myBar"></div>
+							</div>
+							</div>
+							<div class="codepen-info">
+								<div class="wrap">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</main>
 		<footer id="footer">
 			<div class="container">
 				<div class="footer-holder">
 					<div class="wrap">
-						<span class="copyright">&copy; 2018 <a href="https://cloudinary.com/" target="_blank">Cloudinary</a>. All rights reserved</span>
+						<span class="copyright">&copy; 2017 <a href="https://cloudinary.com/" target="_blank">Cloudinary</a>. All rights reserved</span>
 						<ul class="list">
 							<li><a href="https://cloudinary.com/tos" target="_blank">Terms of use</a></li>
 							<li><a href="https://cloudinary.com/privacy" target="_blank">Privacy Policy</a></li>
@@ -388,7 +335,6 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 	<script type="text/javascript" src="js/prism.js"></script>
 	<script type="text/javascript" src="js/transcode.js"></script>
 	
