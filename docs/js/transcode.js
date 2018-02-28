@@ -73,7 +73,7 @@ function initScreen() {
     originalFormat = "default";
     clearData();
     if(transcodingPage) {
-        hideAdaptivePlayMsg();
+        hideAdaptivePlayMsg("Processing...");
         adaptivePlayer.controls(false);
     }
     readSessionStorage();
@@ -515,13 +515,13 @@ function showAdaptivePlayMsg() {
     }
 }
 
-function hideAdaptivePlayMsg() {
+function hideAdaptivePlayMsg(text) {
     document.getElementById("play-btn").setAttribute("style","display: none");
     if(!safari)
     {
         var hls = document.getElementById("save-hls");
         hls.setAttribute("style","");
-        hls.innerText = "Processing...";
+        hls.innerText = text;
         document.getElementById("cld-hls").setAttribute("style","");
     }
 }
@@ -671,7 +671,6 @@ function constructTranscriptHTTPRequests() {
 }
 
 function playAdaptive() {
-    document.getElementById("save-hls").innerText = "Downloading...";
     adaptivePlayer.controls(true);
     adaptivePlayer.play();
 }
@@ -685,12 +684,12 @@ function adaptiveCanPlayEvent() {
 }
 
 function adaptivePlayEvent() {
-    hideAdaptivePlayMsg();
+    hideAdaptivePlayMsg("Downloading...");
 }
 
 function adaptivePlayingEvent() {
     playingHLS = true;
-    hideAdaptivePlayMsg();
+    hideAdaptivePlayMsg("Downloading...");
     updateAllMediaBytes();
 }
     
