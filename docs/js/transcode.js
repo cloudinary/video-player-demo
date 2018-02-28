@@ -510,6 +510,7 @@ function showAdaptivePlayMsg() {
     if (sourceHLS)
     {
         document.getElementById("play-btn").setAttribute("style","");
+        document.getElementById("adaptive-bytes").setAttribute("style","display: none");
         document.getElementById("save-hls").setAttribute("style","display: none");
         document.getElementById("cld-hls").setAttribute("style","display: none");
     }
@@ -517,6 +518,7 @@ function showAdaptivePlayMsg() {
 
 function hideAdaptivePlayMsg(text) {
     document.getElementById("play-btn").setAttribute("style","display: none");
+    document.getElementById("adaptive-bytes").setAttribute("style","");
     if(!safari)
     {
         var hls = document.getElementById("save-hls");
