@@ -73,7 +73,7 @@ function updateAutoPlayers() {
 
 
 function processResponse(error, result) {
-    console.log("processResponse",error, result);
+    console.log(error, result);
     initScreen();
     if(result && result[0].bytes > 0 && result[0].bytes <= 100000000)
     {
@@ -108,24 +108,18 @@ function updateProgress() {
     if (progress == 20)
         checkLambda();
     if(autoTagProgress < 100)
-        updateAutoTagProgress();
+        updateAutoTagProgress()
     if(transcriptProgress < 100)
-        updateTranscriptProgress();
-    if (autoTagProgress < 100 || transcriptProgress < 100) {
-	console.log("calling updateProgress cycle",autoTagProgress,transcriptProgress);
+        updateTranscriptProgress()
+    if (autoTagProgress < 100 || transcriptProgress < 100)
         setTimeout(updateProgress,1500);
-    }
-    else
-	console.log("updateProgress complete",autoTagProgress,transcriptProgress);
 }
 
 function getData() {
     if(getTranscriptFile && transcriptComplete) 
         getTranscript();
-    else if (autoTagProgress < 100 || transcriptProgress < 100) {
-	console.log("getData autoT p",autoTagProgress,transcriptProgress);
+    else if (autoTagProgress < 100 || transcriptProgress < 100)
         checkLambda();
-    }
     else
         console.log("getData Done");
 }
@@ -274,10 +268,14 @@ var transcriptPlayer = cld.videoPlayer('demo-transcript-player');
 
 var autoTagPlayer = cld.videoPlayer('demo-autotag-player');
 
-transcriptPlayer.on('error', function(event) {
-        console.log("sourcechanged ",event);
-      });
 
- autoTagPlayer.on('error', function(event) {
-        console.log("sourcechanged ",event);
-      });
+
+
+
+
+
+
+
+
+
+
