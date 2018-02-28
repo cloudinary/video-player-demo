@@ -2277,7 +2277,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	}
 
 	.theme-area {
-		top: 30px;
+		top: 50px;
 	}
 
 	.content-block {
