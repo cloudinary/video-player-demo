@@ -154,7 +154,7 @@
 										<li>
                                              <video
                                                 id="demo-manipulation1-player" 
-                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect": "saturation:-200"}' 
+                                                data-cld-transformation='[{"start_offset": "0","end_offset":"60"},{"width": "640", "height": "360", "crop": "pad", "effect": "saturation:-200"}]' 
                                                 data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad", "effect": "grayscale" },{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
                                                 controls
                                                 muted
@@ -167,7 +167,7 @@
 										<li>
 											<video
 												id="demo-manipulation2-player" 
-												data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect": "vignette:70"}' 
+												data-cld-transformation='[{"start_offset": "0","end_offset":"60"},{"width": "640", "height": "360", "crop": "pad", "effect": "vignette:70"}]' 
                                                 data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"effect":"vignette:100", "background":"black" } ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
                                                 controls 
 												muted
@@ -180,7 +180,7 @@
 										<li>
 											<video
 												id="demo-manipulation3-player" 
-												data-cld-transformation='[{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"}]' 
+												data-cld-transformation='[{"start_offset": "0","end_offset":"60"},{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"}]' 
                                                 data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cloudinary_icon","gravity":"south_east","width":"100","x":"5","y":"5"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
                                                 controls
 												muted
@@ -193,7 +193,7 @@
 										<li>
 											<video
 												id="demo-manipulation4-player" 
-                                                data-cld-transformation='[{"width": "640", "height": "360", "crop": "pad"},{"overlay":"video:cld_opener_preroll_sd","flags":"splice","start_offset":"0"}]'
+                                                data-cld-transformation='[{"start_offset": "0","end_offset":"60"},{"width": "640", "height": "360", "crop": "pad"},{"overlay":"video:cld_opener_preroll_sd","flags":"splice","start_offset":"0"}]'
                                                 data-cld-poster-options='{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"overlay":"cld_opener_preroll_sd"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
                                                 controls 
 												muted
@@ -206,7 +206,7 @@
 										<li>
 											<video
 												id="demo-manipulation5-player" 
-                                                data-cld-transformation='[{"width": "640", "height": "360", "crop": "pad"},{"radius":"50", "background":"white"}]' 
+                                                data-cld-transformation='[{"start_offset": "0","end_offset":"60"},{"width": "640", "height": "360", "crop": "pad"},{"radius":"50", "background":"white"}]' 
                                                 data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"},{"radius":"50", "background": "white"},{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
 												controls 
 												muted
@@ -219,7 +219,7 @@
 										<li>
 											<video
 												id="demo-manipulation6-player" 
-                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect":"accelerate:100"}'
+                                                data-cld-transformation='[{"start_offset": "0","end_offset":"60"},{"width": "640", "height": "360", "crop": "pad", "effect":"accelerate:100"}]'
                                                 data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
 												controls  
 												muted
@@ -232,7 +232,7 @@
 										<li>
 											<video
 												id="demo-manipulation7-player" 
-                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "angle":"180"}' 
+                                                data-cld-transformation='[{"start_offset": "0","end_offset":"60"},{"width": "640", "height": "360", "crop": "pad", "angle":"180"}]' 
                                                 data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad","angle":"180" } ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
 												controls 
 												muted
@@ -245,7 +245,7 @@
 										    <li>
 											<video
 												id="demo-manipulation8-player" 
-                                                data-cld-transformation='{"width": "640", "height": "360", "crop": "pad", "effect":"blur:300"}' 
+                                                data-cld-transformation='[{"start_offset": "0","end_offset":"60"},{"width": "640", "height": "360", "crop": "pad", "effect":"blur:300"}]' 
                                                 data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad","effect":"blur:300"} ,{"overlay":"play-demo", "width":"160"},{"quality": "auto", "fetch_format": "auto"}] }'
 												controls 
 												muted
@@ -390,7 +390,7 @@
 	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 	<script type="text/javascript" src="js/prism.js"></script>
-	<script type="text/javascript" src="js/transcoding.js"></script>
+	<script type="text/javascript" src="js/transcode.js"></script>
 	
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
