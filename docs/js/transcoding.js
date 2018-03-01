@@ -703,3 +703,7 @@ function adaptiveEndedEvent() {
     playingHLS = false;
     calcAdaptiveUsage(); 
 }
+
+function manipulationErrorEvent() {
+    console.log("manipulationErrorEvent");
+}
