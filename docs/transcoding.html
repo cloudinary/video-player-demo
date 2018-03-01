@@ -147,6 +147,7 @@
 				<div class="container">
 					<header class="heading-area">
 						<h2>Advanced Manipulation</h2>
+						<p>Adapt your videos to match the graphic design and layout of any device, at any resolution, by dynamically resizing, cropping and enhancing them, by adjusting the contrast level, brightness or saturation, regulating gamma and by applying artistic filters and effect — using powerful URL based manipulations.</p>
 					</header>
 					<div class="block-area adaptive">
 						<div class="video-block adaptive">
@@ -262,7 +263,7 @@
 							<div class="heading-area example">
 								<h2>Video manipulation and delivery URL example</h2>
 							</div>
-						<pre class="language-css">https://res.cloudinary.com/demo/video/upload/<span style="color: orange">fl_splice,l_video:cld_opener_preroll_sd,so_0/</span><span style="color: cornflowerblue">what_is_cloudinary_sd.mp4</code></pre>
+						<pre class="language-css"><span style="font-size:16px;">https://res.cloudinary.com/demo/video/upload/</span><span style="color: orange; font-size:16px;">fl_splice,l_video:cld_opener_preroll_sd,so_0/</span><span style="color: cornflowerblue; font-size:16px;">what_is_cloudinary_sd.mp4</code></pre>
 						</div>
 					</div>
 				</div>
@@ -271,6 +272,7 @@
 				<div class="container">
 					<header class="heading-area">
 						<h2>Video Format Optimization</h2>
+						<p>Dynamically transcode videos from the source format to all relevant formats, optimized for viewing across different platforms and devices. With an easy-to-use API, you can transcode and normalize videos in real time by simply specifying the desired output format in the delivery URL. Users can stream the video even while it is being encoded and delivered via a content delivery network.</p>
 					</header>
 					<div class="block-area">
 						<div class="video-block">
@@ -294,7 +296,11 @@
 									<div id="bar-original" style="height: 10px; background: #90A0B3; margin: 5px 0 20px 0" class="my-bar">
 									</div>
 								</div>
-								<p class="text manipulation codec">HLS</p>  
+								<p class="text manipulation codec">HLS</p>
+								<div class="tooltip">
+									<img class="icon-link" style="display: inline-block" src="https://res.cloudinary.com/demo/image/upload/icon-info.svg">
+									<span class="tooltiptext">HLS: We calculate the actual number of bytes received by the video player, based on the actual play time, connection speed and screen size.</span>
+								</div>
 								<p class="text manipulation resolution init" id="res-hls"></p>
 								<button class="adaptive-play" id="play-btn" style="display: none" onclick="playAdaptive()">Press Here for Adaptive Streaming</button>
 								<p class="text manipulation kb init" id="adaptive-bytes"></p>
@@ -364,6 +370,9 @@
 							</div>
 						</div>
 					</div>
+					<div class="note-area" style="font-size: 12px;">
+					<p>Adaptive Streaming: When you use Adaptive Streaming technologies, such as HLS or MPEG-DASH, as the output format, Cloudinary automatically generates multiple streams of your video - with different resolutions, qualities and bitrates, as well as all other files required to support switching between different variants. During playback, the video player determines and selects the optimal representation in response to the client environment and automatically switches between representations to adapt to changing network connections.</p>
+					</div>
 				</div>
 			</section>
 			<div>
@@ -390,7 +399,7 @@
 	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 	<script type="text/javascript" src="js/prism.js"></script>
-	<script type="text/javascript" src="js/transcoding.js"></script>
+	<script type="text/javascript" src="js/transcode.js"></script>
 	
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
