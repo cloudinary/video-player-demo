@@ -2111,7 +2111,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 300px;
     background:#fbfbfb;
     color:#666;
     text-align: center;
