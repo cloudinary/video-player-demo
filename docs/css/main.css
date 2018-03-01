@@ -2104,6 +2104,29 @@ input[type="radio"]:checked + label .radio-icon:before {
   	background: linear-gradient(90deg, #FF620C 0%, #FD9D2B 100%);
   }
 
+  .tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background:#fbfbfb;
+    color:#666;
+    text-align: center;
+    padding: 5px 0;
+	border-radius: 6px;
+	box-shadow:0 0 5px rgba(0,0,0,.3);
+    position: absolute;
+    z-index: 1;
+}
+
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
 
 @media (max-width: 1199px) {
 	.container {
