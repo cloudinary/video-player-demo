@@ -1242,6 +1242,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 .heading-area p {
 	margin: 0;
+	text-align: justify;
 }
 
 .block-area {
