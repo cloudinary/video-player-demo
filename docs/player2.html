@@ -589,23 +589,19 @@ player.source(source1);</code></pre>
                             </div>
                             <div class="editing-area">
                                 <div class="codepen-placeholder">
-    <pre class="language-javascript"><code>/* Define Video Ads
-    //text
-    //text
-    //text
-    //text
+pre class="language-javascript"><code>/* Define Video Ads
+As shown in the playlist example. */
+//text
+//text
+//text
+// text
+
+var adTagUrl = "https://pubads.g.doubleclick.net/...";
     
-    // text
-    source2.recommendations = new Promise((resolve, _) => {
-            setTimeout(() => {
-              resolve([source1]);
-            }, 3000); })
+// Initialize player
+var player = cld.videoPlayer('example-player', {ads: {adTagUrl: adTagUrl}}); 
     
-    // Initialize player
-    var player = cld.videoPlayer('example-player', 
-    { autoShowRecommendations: true });
-    
-    player.source(source1);</code></pre>
+player.source(source1);</code></pre>
                                 </div>
                                 <div class="codepen-info">
                                     <div class="wrap">
