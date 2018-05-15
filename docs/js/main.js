@@ -255,9 +255,12 @@ function playMe(btn) {
         btn.setAttribute("class", " ");
   }
 }
+var plistplayer = cld.videoPlayer('demo-playlist-player',{
+  playlistWidget: {
+    direction: "horizontal",
+    total: 4
+  }});
 
-var plistplayer = cld.videoPlayer('demo-playlist-player');
-plistplayer.on('sourcechanged', updateOnSrc);
 
 var psource1 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
                poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
