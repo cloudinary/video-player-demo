@@ -237,25 +237,6 @@ manualEventTypes.forEach(function(eventType) {
                                     poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
                                   });
 
-function playMe(btn) {
-    var val = parseInt(btn.value);
-    plistplayer.playlist().playAtIndex(val);
-  }
-
-  function updateOnSrc() {
-    var plist = plistplayer.playlist();
-    var playing = plist.currentIndex();
-    var loop = plist.length();
-    for(var i=0; i<loop; i++) {
-      var label = "plist"+i;
-      var btn = document.getElementById(label);
-      if(i == playing)
-        btn.setAttribute("class", "active");
-      else
-        btn.setAttribute("class", " ");
-  }
-}
-
 var plistplayer = cld.videoPlayer('demo-playlist-player');
 plistplayer.on('sourcechanged', updateOnSrc);
 
