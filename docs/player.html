@@ -8,16 +8,15 @@
   	<meta http-equiv="Accept-CH" content="DPR">
   	<meta content="Cloudinary Video Player - the developer-friendly video player that packs everything you need into one easy-to-integrate, comprehensive open-source package." name="description">
   	<meta property="og:url" id="meta-og-url" content="https://demo.cloudinary.com/video/player.html">
-	<meta property="og:title" id="meta-og-title" content="Cloudinary Video Player Demo">
+	<meta property="og:title" id="meta-og-title" content="Cloudinary HTML 5 Video Player - Developer-Friendly, Fast and Power-Packed">
   	<meta property="og:site_name" id="meta-og-site_name" content="Cloudinary Video Player Demo">
-  	<meta property="og:description" id="meta-og-description" content="Cloudinary Video Player - the developer-friendly video player that packs everything you need into one easy-to-integrate, comprehensive open-source package.">
+  	<meta property="og:description" id="meta-og-description" content="The world's easiest and most advanced HTML5 video player - with adaptive streaming, events and analytics, video playlist, recommended videos and more.">
   	<meta property="og:type" id="meta-og-type" content="website">
   	<meta itemprop="name" id="meta-name" content="Cloudinary Video Player Demo">
-  	<meta itemprop="description" id="meta-description" content="Cloudinary Video Player - the developer-friendly video player that packs everything you need into one easy-to-integrate, comprehensive open-source package.">
+  	<meta itemprop="description" id="meta-description" content="The world's easiest and most advanced HTML5 video player - with adaptive streaming, events and analytics, video playlist, recommended videos and more.">
 	<meta property="og:image" id="meta-og-image" content="https://res.cloudinary.com/demo/image/upload/og-images-player_social_wide.jpg">
--	<meta itemprop="image" id="meta-image" content="https://res.cloudinary.com/demo/image/upload/og-images-player_social_square.jpg">
--	<meta itemprop="twitter:image" id="meta-image" content="https://res.cloudinary.com/demo/image/upload/og-images-player_social_square.jpg">
-	
+	<meta itemprop="image" id="meta-image" content="https://res.cloudinary.com/demo/image/upload/og-images-player_social_square.jpg">
+	<meta itemprop="twitter:image" id="meta-image" content="https://res.cloudinary.com/demo/image/upload/og-images-player_social_square.jpg">
 	<link href='https://cloudinary-res.cloudinary.com/image/asset/apple-touch-icon-57x57-575a82d41acd15f36c22b17c861726f1.png' rel='apple-touch-icon' sizes='57x57'>
 	<link href='https://cloudinary-res.cloudinary.com/image/asset/apple-touch-icon-114x114-477119f5f706ca1f3586855cd38848b3.png' rel='apple-touch-icon' sizes='114x114'>
 	<link href='https://cloudinary-res.cloudinary.com/image/asset/apple-touch-icon-72x72-7d9b2a17ccfc6b73e1bbc3d15ce802cb.png' rel='apple-touch-icon' sizes='72x72'>
@@ -112,7 +111,7 @@
 				<div class="container">
 					<ul class="menu">
 						<li>
-							<a href="#section01" id="sec01" onmouseover="motion(this)" onmouseout="still(this)">
+							<a href="#adaptive_streaming" id="sec01" onmouseover="motion(this)" onmouseout="still(this)">
 								<img src="https://res.cloudinary.com/demo/video/upload/w_260,h_105,c_fill,so_0,r_5,b_white,q_auto,f_auto/rafting_short.jpg" alt="rafting">
 								<strong class="image-text">
 									<span class="text">adaptive<br> streaming</span>
@@ -120,26 +119,26 @@
 							</a>
 						</li>
 						<li>
-							<a href="#section02" id="sec02" onmouseover="motion(this)" onmouseout="still(this)">
+							<a href="#events_analytics" id="sec02" onmouseover="motion(this)" onmouseout="still(this)">
 								<img src="https://res.cloudinary.com/demo/video/upload/w_260,h_105,c_fill,so_0,r_5,b_white,q_auto,f_auto/forest_bike.jpg" alt="forest bike">
 								<strong class="image-text">
-									<span class="text">events &amp; <br> analytics</span>
+									<span class="text">events<br> &amp; analytics</span>
 								</strong>
 							</a>
 						</li>
 						<li>
-							<a href="#section03" id="sec03" onmouseover="motion(this)" onmouseout="still(this)">
+							<a href="#playlist_recommendations" id="sec03" onmouseover="motion(this)" onmouseout="still(this)">
 								<img src="https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/snow_horses.jpg" alt="snow horses">
 								<strong class="image-text">
-									<span class="text">Video Playlist</span>
+									<span class="text">Playlist<br> &amp; recommendations</span>
 								</strong>
 							</a>
 						</li>
 						<li>
-							<a href="#section04" id="sec04" onmouseover="motion(this)" onmouseout="still(this)">
+							<a href="#video_ads" id="sec04" onmouseover="motion(this)" onmouseout="still(this)">
 								<img src="https://res.cloudinary.com/demo/video/upload/so_0,w_260,h_105,c_fill,r_5,b_white,q_auto,f_auto/snow_deer.jpg" alt="snow deer">
 								<strong class="image-text">
-									<span class="text">recommended content</span>
+									<span class="text">Video<br> ads</span>
 								</strong>
 							</a>
 						</li>
@@ -361,7 +360,7 @@ transformation: { streaming_profile: 'full_hd' } }).play();
 							<div class="codepen-info adaptive">
 								<div class="wrap">
 									<span class="text">Further reading:</span>
-									<span class="link"><a href="https://cloudinary.com/documentation/cloudinary_video_player#delivering_videos_with_hls_or_mpeg_dash" target="_blank">Delivering videos with HLS or MPEG-DASH</a></span>
+									<span class="link"><a href="https://cloudinary.com/documentation/video_player_hls_dash" target="_blank">Delivering videos with HLS or MPEG-DASH</a></span>
 									<span class="reference"><a href="https://cloudinary.com/documentation/video_player_api_reference" target="_blank">Full API Reference</a></span>
 								</div>
 							</div>
@@ -416,13 +415,13 @@ player.source('forest_bike').play();
 							<div class="codepen-info">
 								<div class="wrap">
 									<span class="text">Further reading:</span>
-									<span class="link"><a href="https://cloudinary.com/documentation/cloudinary_video_player#using_video_events" target="_blank">Events and Analytics</a></span>
+									<span class="link"><a href="https://cloudinary.com/documentation/video_player_events_analytics" target="_blank">Events and Analytics</a></span>
 									<span class="reference"><a href="https://cloudinary.com/documentation/video_player_api_reference" target="_blank">Full API Reference</a></span>
 								</div>
 							</div>
 						</div>
 					</div>
-				<a name="video_playlist"></a>
+				<a name="playlist_recommendations"></a>
 				</div>
 			</section>
 			<section class="content-block style01" id="section03">
@@ -441,50 +440,6 @@ player.source('forest_bike').play();
 								        playsinline
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
                                 				</video>
-							</div>
-							<div class="video-detail style01">
-								<ul id="video-pagination" class="video-pagination">
-									<li id="plist0" value="0" onclick="playMe(this)">
-										<a>
-											<img src="https://res.cloudinary.com/demo/video/upload/w_318/snow_horses.jpg" alt="snow_horses">
-											<div class="video-caption">
-												<div class="wrap">
-													<span class="text">snow horses</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li id="plist1" value="1" onclick="playMe(this)">
-										<a>
-											<img src="https://res.cloudinary.com/demo/video/upload/w_318,f_auto,q_auto/snow_deer.jpg" alt="snow_deer">
-											<div class="video-caption">
-												<div class="wrap">
-													<span class="text">snow deer</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li id="plist2" class="active" value="2" onclick="playMe(this)">
-										<a>
-											<img src="https://res.cloudinary.com/demo/video/upload/w_318,f_auto,q_auto/sea_turtle.jpg" alt="sea_turtle">
-											<div class="video-caption">
-												<div class="wrap">
-													<span class="text">sea turtle</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li id="plist3" value="3" onclick="playMe(this)">
-										<a>
-											<img src="https://res.cloudinary.com/demo/video/upload/w_318,f_auto,q_auto/elephants.jpg" alt="elephants">
-											<div class="video-caption">
-												<div class="wrap">
-													<span class="text">elephants</span>
-												</div>
-											</div>
-										</a>
-									</li>
-								</ul>
 							</div>
 						</div>
 						<div class="editing-area">
@@ -509,7 +464,7 @@ player.playlist([source1, source2],
 							<div class="codepen-info">
 								<div class="wrap">
 									<span class="text">Further reading:</span>
-									<span class="link"><a href="https://cloudinary.com/documentation/cloudinary_video_player#creating_a_playlist" target="_blank">Creating a playlist</a></span>
+									<span class="link"><a href="https://cloudinary.com/documentation/video_player_playlists_recommendations#creating_a_playlist" target="_blank">Creating a playlist</a></span>
 									<span class="reference"><a href="https://cloudinary.com/documentation/video_player_api_reference" target="_blank">Full API Reference</a></span>
 								</div>
 							</div>
@@ -561,14 +516,61 @@ player.source(source1);</code></pre>
 							<div class="codepen-info">
 								<div class="wrap">
 									<span class="text">Further reading:</span>
-									<span class="link"><a href="https://cloudinary.com/documentation/cloudinary_video_player#showing_video_recommendations" target="_blank">Recommendations</a></span>
+									<span class="link"><a href="https://cloudinary.com/documentation/video_player_playlists_recommendations#showing_video_recommendations" target="_blank">Recommendations</a></span>
 									<span class="reference"><a href="https://cloudinary.com/documentation/video_player_api_reference" target="_blank">Full API Reference</a></span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+            </section>
+            <section class="content-block style01" id="video_ads">
+                    <div class="container">
+                        <header class="heading-area">
+                            <h2>Videos Ads</h2>
+                            <p>Cloudinary video player ad capabilities allow you to monetize your content with ads. Our player is compliant with the leading ad standards: VAST, VPAID and VMAP, as well as ads that are managed with Google’s DoubleClick and AdSense. 
+Use ad tags in your video player definition to activate a comprehensive set of advertising options, including banners and pre-, mid- and post-rolls (with or without skip option).</p>
+                        </header>
+                        <div class="block-area">
+                            <div class="video-block">
+                                <div class="video-area">
+                                    <video
+                                        id="demo-ads-player" 
+                                        controls 
+                                        muted 
+                                        playsinline
+                                        data-cld-autoplay-mode="on-scroll"
+                                        class="cld-video-player vjs-fluid cld-video-player-skin-dark">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="editing-area">
+                                <div class="codepen-placeholder">
+<pre class="language-javascript"><code>/* Define Video Ads
+As shown in the playlist example. */
+//text
+//text
+//text
+// text
+
+var adTagUrl = "https://pubads.g.doubleclick.net/...";
+    
+// Initialize player
+var player = cld.videoPlayer('example-player', {ads: {adTagUrl: adTagUrl}}); 
+    
+player.source(source1);</code></pre>
+                                </div>
+                                <div class="codepen-info">
+                                    <div class="wrap">
+                                        <span class="text">Further reading:</span>
+                                        <span class="link"><a href="https://cloudinary.com/documentation/video_player_ads_monetization" target="_blank"></a></span>
+                                        <span class="reference"><a href="https://cloudinary.com/documentation/video_player_api_reference" target="_blank">Full API Reference</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>    
 		</main>
 		<footer id="footer">
 			<div class="container">
@@ -587,9 +589,11 @@ player.source(source1);</code></pre>
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player@edge/dist/cld-video-player.js"></script>
-	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
+    <script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/5.1.5/videojs.ads.js"></script>
 	<script type="text/javascript" src="js/prism.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/main2.js"></script>
 	
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
