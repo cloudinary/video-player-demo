@@ -237,27 +237,11 @@ manualEventTypes.forEach(function(eventType) {
                                     poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
                                   });
 
-function playMe(btn) {
-    var val = parseInt(btn.value);
-    plistplayer.playlist().playAtIndex(val);
-  }
-
-  function updateOnSrc() {
-    var plist = plistplayer.playlist();
-    var playing = plist.currentIndex();
-    var loop = plist.length();
-    for(var i=0; i<loop; i++) {
-      var label = "plist"+i;
-      var btn = document.getElementById(label);
-      if(i == playing)
-        btn.setAttribute("class", "active");
-      else
-        btn.setAttribute("class", " ");
-  }
-}
-var plistplayer = cld.videoPlayer('demo-playlist-player');
-plistplayer.on('sourcechanged', updateOnSrc);
-
+var plistplayer = cld.videoPlayer('demo-playlist-player',{
+  playlistWidget: {
+    direction: "horizontal",
+    total: 4
+  }});
 
 var psource1 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
                poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
@@ -292,12 +276,20 @@ var source5 = { publicId: 'marmots', sourceTypes: ['hls'], transformation: {stre
                poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
                info: { title: 'Marmots', subtitle: 'Marmots' } };
 
-source1.recommendations = [source2, source3, source4, source5];
+source1.recommendations = [source2];
 source2.recommendations = [source3];
-source3.recommendations = [source4];
+source3.recommendations = [source4, source5, source1, source2];
 source4.recommendations = [source5];
 source5.recommendations = [source2, source3, source4, source1];
 var first = true;
 recplayer.on('sourcechanged', function(event) {if (first) {first = false;} else {recplayer.play();}});
-recplayer.source(source1);
-
+recplayer.source(source3);
+var adTagUrl = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=6";
+var adsplayer = cld.videoPlayer('demo-ads-player', {ads: {adTagUrl: adTagUrl}});
+var adsPlaylistSources = [source1, source2, source3, source4, source5];
+var adsPlaylistOptions = {
+  autoAdvance: true,
+  repeat: true,
+  presentUpcoming: 8
+};
+adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions);
