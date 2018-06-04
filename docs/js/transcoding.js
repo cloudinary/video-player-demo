@@ -61,13 +61,14 @@ function initScreen() {
     usingPresetVideo = false;
     sourceHLS = false;
     playingHLS = false;
-    videosFormatState = 0;
     progress = 0;
     autoTagProgress = 0;
     transcriptProgress = 0;
     formatState = 0;
     originalSize = 0;
-    gotFomats = 0;
+    gotMP4 = false;
+    gotH265 = false;
+    gotVP9 = false;
     originalDuration = 0;
     originalRes = "default";
     originalFormat = "default";
@@ -76,6 +77,8 @@ function initScreen() {
         hideAdaptivePlayMsg("Processing...");
         adaptivePlayer.controls(false);
     }
+    else
+        removeSubtitles();
     readSessionStorage();
 }
 
@@ -95,7 +98,7 @@ function clearData() {
 }
 
 function uploadVideo(){
-	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_transcript', sources: [ 'local', 'url'], multiple: false, max_file_size: 100000000, resource_type: 'video'}, 
+	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_subtitle', sources: [ 'local', 'url'], multiple: false, max_file_size: 100000000, resource_type: 'video'}, 
       function(error, result) { processResponse(error, result); }, false);
 }
 
@@ -276,13 +279,23 @@ function getData() {
 }
 
 function advanceState() {
-    if(formatState == GET_VP9) {
-        console.log("initialFormatRequest completed");
-        initialFormatRequest = false;
-        formatState = GET_MP4;
+    if(initialFormatRequest) {
+        if (formatState == GET_VP9) {
+            console.log("initialFormatRequest completed");
+            initialFormatRequest = false;
+            formatState = GET_MP4;
+        }
+        else
+            formatState++;
     }
-    else
-        formatState++;
+    else {
+        if(!gotMP4) 
+            formatState = GET_MP4;
+        else if (!gotH265)
+            formatState = GET_H265;
+        else 
+            formatState = GET_VP9;
+    }    
 }
 
 
@@ -344,20 +357,21 @@ function revealFileSizes() {
     }
 }
 
-function getVideoFormat() {
-    var state = formatState;
-    if(usingPresetVideo) {
-        state = videosFormatState;
-        videosFormatState++;
-    }
-
-    if(state == GET_H265)
-        return "h265";
-    else if(state == GET_VP9)
-        return "vp9";
-    else
+function getVideoCodec(contentType) {   
+    if(contentType.includes("avc1")) {
+        gotMP4 = true;
         return "mp4";
+    }
+    else if (contentType.includes("hvc1")){
+        gotH265 = true;
+        return "h265";
+    }
+    else {
+        gotVP9 = true;
+        return "vp9";
+    }
 }
+
 
 function checkLambdaNotification(notify) {
         checkTranscript(notify);
@@ -371,12 +385,30 @@ function checkTranscriptFile(notify) {
 	if(notify.length > 0)
 	{
         showJSON("transcript",notify);
-        transcriptPlayer.source(publicId,{ transformation: [{"width": "640", "height": "360", "crop": "pad"},{overlay: "subtitles:"+transcript}]});
+    //    transcriptPlayer.source(publicId,{ transformation: [{"width": "640", "height": "360", "crop": "pad"},{overlay: "subtitles:"+transcript}]});
+        addSubtitles();
         transcriptPlayer.controls(true);
 	}
 	else
 		showJSON("transcript","This video clip has no detected words"); 
     }
+}
+
+function addSubtitles() {
+    var vttURL = url + publicId + ".vtt";
+    var captionOption = {
+        kind: 'subtitles',
+        srclang: 'en',
+        label: 'English',
+        src: vttURL
+      }
+    transcriptPlayer.videojs.addRemoteTextTrack(captionOption); 
+}
+
+function removeSubtitles() {
+    var tracks = transcriptPlayer.videojs.remoteTextTracks();
+    if (typeof tracks !== 'undefined' && tracks.length > 0)  
+        transcriptPlayer.videojs.removeRemoteTextTrack(tracks[0]);
 }
 
 function checkTranscript(notify) {
@@ -409,6 +441,7 @@ function checkTags(notify) {
 }
 
 function updateFileSizes(size,format) {
+    console.log("update File Size ",size,format);
     var percentage = Math.round((size / originalSize)*100);
     var saving = 100 - percentage;
     if (format == "original") {
@@ -552,14 +585,15 @@ var initialFormatRequest = true;
 var usingPresetVideo = false;
 var sourceHLS = false;
 var playingHLS = false;
-var videosFormatState = 0;
 var progress = 0;
 var autoTagProgress = 0;
 var transcriptProgress = 0;
 var formatState = 0;
 var originalSize = 0;
 var originalDuration = 0;
-var gotFomats = 0;
+var gotMP4 = false;
+var gotH265 = false;
+var gotVP9 = false;
 var errorRetry = 1;
 const GET_MP4 = 0;
 const GET_H265 = 1;
@@ -619,6 +653,8 @@ function constructTranscodeHTTPRequests() {
         if (this.readyState == 4) {
             if(this.status == 200) {
                 var size = httpTranscode.getResponseHeader('Content-Length');
+                var contentType = httpTranscode.getResponseHeader('content-type');
+                console.log("Got size ",size,contentType);
                 if(size == 0) {
                     if(initialFormatRequest) 
                         checkFormatSizes();
@@ -626,14 +662,15 @@ function constructTranscodeHTTPRequests() {
                         setTimeout(checkFormatSizes,2000);
                 }
                 else {
-                    updateFileSizes(Math.round(size/1000),getVideoFormat());
-                    if(++gotFomats < 3) {
+                    updateFileSizes(Math.round(size/1000),getVideoCodec(contentType));
+                    if(gotMP4 && gotH265 && gotVP9) {
+                        revealFileSizes();
+                    }
+                    else {
                         if(!initialFormatRequest) 
                             advanceState();
                         setTimeout(checkFormatSizes,2000);
                     }
-                    else
-                        revealFileSizes();
                 }
             }
         }
