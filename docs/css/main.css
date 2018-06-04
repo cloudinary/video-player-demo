@@ -467,8 +467,6 @@ img {
 	max-width: none;
 }
 
-h1,
-.h1,
 h2,
 .h2,
 h3,
@@ -488,7 +486,8 @@ h6,
 
 h1,
 .h1 {
-	font-size: 46px;
+	font-size: 22px;
+	font-weight: normal;	
 }
 
 h2,
@@ -838,6 +837,8 @@ input[type="radio"]:checked + label .radio-icon:before {
 	padding: 10px 0 10px;
 }
 
+h1,
+.h1,
 .banner-holder p {
 	letter-spacing: .11px;
 	margin: 0 0 48px;
@@ -2270,7 +2271,9 @@ input[type="radio"]:checked + label .radio-icon:before {
 		padding: 76px 10px;
 		line-height: 26px;
 	}
-
+	
+	h1,
+	.h1,
 	.banner-holder p {
 		margin: 0 0 45px;
 	}
