@@ -361,10 +361,14 @@ var source1 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {
 var source2 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}};
 // ...   until the last source in the playlist
 
-// Initialize player
-var player = cld.videoPlayer('example-player');
+// Initialize player with playlist widget
+var player = cld.videoPlayer('example-player',{
+  playlistWidget: {
+    direction: "horizontal",
+    total: 4
+  }});
 
-/* Auto advance to next video, 
+/* Define a playlist with auto advance to next video, 
 repeat the playlist when final video ends, 
 and present upcoming video 5 seconds 
 before the current video ends. */
@@ -458,13 +462,19 @@ Use ad tags in your video player definition to activate a comprehensive set of a
                             </div>
                             <div class="editing-area">
                                 <div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* Video Ads
-are added by providing the ad server URL */
+<pre class="language-javascript"><code>/* Video Ads are added by 
+providing the ad server URL.
+It can be used with a single video or with 
+multiple sources in a playlist */
 
 var adTagUrl = "https://pubads.g.doubleclick.net/...";
     
-// Initialize player
+// Initialize player with video ads
 var player = cld.videoPlayer('example-player', {ads: {adTagUrl: adTagUrl}}); 
+
+// Define a single source or a playlist as shown here 
+player.playlist([source1, source2], 
+{ autoAdvance: true, repeat: true, presentUpcoming: 5 });
     
 player.source(source1);</code></pre>
                                 </div>
