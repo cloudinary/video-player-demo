@@ -8,7 +8,7 @@
   	<meta http-equiv="Accept-CH" content="DPR">
   	<meta content="Cloudinary Video Player - the developer-friendly video player that packs everything you need into one easy-to-integrate, comprehensive open-source package." name="description">
   	<meta property="og:url" id="meta-og-url" content="https://demo.cloudinary.com/video/player.html">
-	<meta property="og:title" id="meta-og-title" content="Cloudinary HTML 5 Video Player - Developer-Friendly, Fast and Power-Packed">
+	<meta property="og:title" id="meta-og-title" content="Cloudinary HTML5 Video Player - Developer-Friendly, Fast and Power-Packed">
   	<meta property="og:site_name" id="meta-og-site_name" content="Cloudinary Video Player Demo">
   	<meta property="og:description" id="meta-og-description" content="The world's easiest and most advanced HTML5 video player - with adaptive streaming, events and analytics, video playlist, recommended videos and more.">
   	<meta property="og:type" id="meta-og-type" content="website">
@@ -210,129 +210,41 @@
 											<div id="3840" class="range-info out-of-range" onclick="requestResolution(this)">
 												<span class="text">3840x2160</span>
 												<ul class="bar-list 4k">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li class="long"></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
 												</ul>
 											</div>
 											<div id="2560" class="range-info out-of-range" onclick="requestResolution(this)">
 												<span class="text">2560x1440</span>
 												<ul class="bar-list 4k">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li class="long"></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
 												</ul>
 											</div>
 											<div id="1920" class="range-info" onclick="requestResolution(this)">
 												<span class="text">1920x1080</span>
 												<ul class="bar-list 4k full_hd">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li class="long"></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
 												</ul>
 											</div>
 											<div id="1280" class="range-info" onclick="requestResolution(this)">
 												<span class="text">1280x720</span>
 												<ul class="bar-list 4k full_hd hd">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li class="long"></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
 												</ul>
 											</div>
 											<div id="960" class="range-info" onclick="requestResolution(this)">
 												<span class="text">960x540</span>
 												<ul class="bar-list 4k full_hd hd">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li class="long"></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
 												</ul>
 											</div>
 											<div id="640" class="range-info" onclick="requestResolution(this)">
 												<span class="text">640x360</span>
 												<ul class="bar-list 4k full_hd hd sd">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li class="long"></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
 												</ul>
 											</div>
 											<div id="480" class="range-info" onclick="requestResolution(this)">
 												<span class="text">480x270</span>
 												<ul class="bar-list 4k full_hd hd sd">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li class="long"></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
 												</ul>
 											</div>
 											<div id="320" class="range-info" onclick="requestResolution(this)">
 												<span class="text">320x240</span>
 												<ul class="bar-list 4k full_hd hd sd">
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li class="long"></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
-													<li></li>
 												</ul>
 											</div>
 										</div>
@@ -546,12 +458,8 @@ Use ad tags in your video player definition to activate a comprehensive set of a
                             </div>
                             <div class="editing-area">
                                 <div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* Define Video Ads
-As shown in the playlist example. */
-//text
-//text
-//text
-// text
+<pre class="language-javascript"><code>/* Video Ads
+are added by providing the ad server URL */
 
 var adTagUrl = "https://pubads.g.doubleclick.net/...";
     
