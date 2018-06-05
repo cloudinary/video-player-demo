@@ -319,7 +319,7 @@ function requestFileFormat(url) {
 }
 
 function requestH265() {
-    var checkUrl = "https://res.cloudinary.com/demo/video/upload/vc_h265,q_70/" + publicId + ".mp4";
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_70,vc_h265/" + publicId + ".mp4";
     requestFileFormat(checkUrl);
 }
 
@@ -329,12 +329,12 @@ function requestHLS() {
 }
 
 function requestVP9() {
-    var checkUrl = "https://res.cloudinary.com/demo/video/upload/vc_vp9,q_70/" + publicId + ".webm";
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_70,vc_vp9/" + publicId + ".webm";
     requestFileFormat(checkUrl);
 }
 
 function requestMP4() {
-    var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_70/" + publicId + ".mp4";
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_70,vc_auto/" + publicId + ".mp4";
     requestFileFormat(checkUrl);
 }
 
