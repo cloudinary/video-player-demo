@@ -148,6 +148,8 @@ if(safari)
 
 playerSizeChange(document.getElementById("player-slider"));
 
+addLi();
+
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
 var adaptive = document.getElementById("adaptive");
@@ -194,6 +196,21 @@ function startTime() {
             m = checkTime(today.getMinutes()),
             s = checkTime(today.getSeconds());
         return (h + ":" + m + ":" + s);
+}
+
+function addLi() {
+  var resolutions = ['3840ul', '2560ul', '1920ul', '1280ul', '960ul', '640ul', '480ul', '320ul'];
+  var li = null;
+  for (var i = 0; i < resolutions.length; i++) {
+      var res = resolutions[i];
+      var ul = document.getElementById(res);
+      for (var j = 0; j<11; j++) {
+        li = document.createElement('li');
+        if(j == 5 ) 
+          li.className = "long";
+        ul.appendChild(li);
+      }  
+  }
 }
 
 var eventplayer = cld.videoPlayer('demo-events-player', 
