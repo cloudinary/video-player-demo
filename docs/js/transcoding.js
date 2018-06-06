@@ -400,7 +400,8 @@ function addSubtitles() {
         kind: 'subtitles',
         srclang: 'en',
         label: 'English',
-        src: vttURL
+        src: vttURL,
+	'default': true
       }
     transcriptPlayer.videojs.addRemoteTextTrack(captionOption); 
 }
