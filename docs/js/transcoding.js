@@ -403,7 +403,7 @@ function addSubtitles() {
         src: vttURL,
 	'default': true
       }
-    transcriptPlayer.videojs.addRemoteTextTrack(captionOption); 
+    transcriptPlayer.videojs.addRemoteTextTrack(captionOption,true); 
 }
 
 function removeSubtitles() {
