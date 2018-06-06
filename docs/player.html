@@ -255,8 +255,8 @@
 						</div>
 						<div class="editing-area adaptive">
 							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* To use adaptive streaming formats such as HLS and MPEG-DASH, simply define 'sourceTypes' to 
-the desired format ('dash' or 'hls'). You can  define a desired profile using the 'transformation' param. 
+<pre class="language-javascript"><code>/* To use dynamic adaptive streaming over HTTP formats such as HLS and MPEG-DASH, 
+simply define 'sourceTypes' to the desired format ('dash' or 'hls'). You can  define a desired profile using the 'transformation' param. 
 Sample code: */
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'cloud' })
@@ -264,7 +264,7 @@ var cld = cloudinary.Cloudinary.new({ cloud_name: 'cloud' })
 // Initialize player
 var player = cld.videoPlayer('example-player')
 
-// Modify player source and play.
+// Modify player source and play hls adaptive streaming
 player.source('rafting', { sourceTypes: ['hls'], 
 transformation: { streaming_profile: 'full_hd' } }).play();
 </code></pre>
@@ -361,7 +361,8 @@ var source1 = { publicId: 'snow_horses', sourceTypes: ['hls'], transformation: {
 var source2 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}};
 // ...   until the last source in the playlist
 
-// Initialize Cloudinary HTML5 video player with playlist widget
+// Initialize Cloudinary HTML5 video player
+// with playlist widget
 var player = cld.videoPlayer('example-player',{
   playlistWidget: {
     direction: "horizontal",
