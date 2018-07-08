@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width">
+</head>
+<body>
+    <img style="width: 100%;  height: auto;"
+        srcset="https://res.cloudinary.com/hadar/w_500,dpr_1/l_text:arial_20:DPR1/puma-ad2.jpg 1x,
+        https://res.cloudinary.com/hadar/w_500,dpr_2/l_text:arial_20:DPR2/puma-ad2.jpg 2x,
+        https://res.cloudinary.com/hadar/w_500,dpr_3/l_text:arial_20:DPR3/puma-ad2.jpg 3x"
+        src="https://res.cloudinary.com/hadar/w_500,dpr_1/l_text:arial_20:DPR1-SRC/puma-ad2.jpg">
+    <img style="width: 100%;  height: auto;"
+        sizes="100vw"
+        srcset="https://res.cloudinary.com/hadar/w_100/l_text:arial_20:100/puma-ad2.jpg 100w,
+        https://res.cloudinary.com/hadar/w_200/l_text:arial_20:200/puma-ad2.jpg 200w,
+        https://res.cloudinary.com/hadar/w_300/l_text:arial_20:300/puma-ad2.jpg 300w,
+        https://res.cloudinary.com/hadar/w_400/l_text:arial_20:400/puma-ad2.jpg 400w,
+        https://res.cloudinary.com/hadar/w_500/l_text:arial_20:500/puma-ad2.jpg 500w,
+        https://res.cloudinary.com/hadar/w_600/l_text:arial_20:600/puma-ad2.jpg 600w,
+        https://res.cloudinary.com/hadar/w_700/l_text:arial_20:700/puma-ad2.jpg 700w,
+        https://res.cloudinary.com/hadar/w_800/l_text:arial_20:800/puma-ad2.jpg 800w,
+        https://res.cloudinary.com/hadar/w_900/l_text:arial_20:900/puma-ad2.jpg 900w,
+        https://res.cloudinary.com/hadar/w_1000/l_text:arial_20:1000/puma-ad2.jpg 1000w,
+        https://res.cloudinary.com/hadar/w_1100/l_text:arial_20:1100/puma-ad2.jpg 1100w,
+        https://res.cloudinary.com/hadar/w_1200/l_text:arial_20:1200/puma-ad2.jpg 1200w,
+        https://res.cloudinary.com/hadar/w_1300/l_text:arial_20:1300/puma-ad2.jpg 1300w,
+        https://res.cloudinary.com/hadar/w_1400/l_text:arial_20:1400/puma-ad2.jpg 1400w,
+        https://res.cloudinary.com/hadar/w_1500/l_text:arial_20:1500/puma-ad2.jpg 1500w"
+        src="https://res.cloudinary.com/hadar/w_500,dpr_1/l_text:arial_20:500-SRC/puma-ad2.jpg">
+    <img style="width: 100%;  height: auto;"
+        class="cld-responsive" 
+        data-src="http://res.cloudinary.com/hadar/image/upload/w_auto,dpr_auto,c_limit/co_white,l_text:Arial_18_bold:dpr_auto w_auto/puma-ad2.jpg">
+  
+  </body>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
+      <script type="text/javascript">
+          var cl = cloudinary.Cloudinary.new({cloud_name: "hadar"}); 
+          cl.responsive();
+      </script>
+</body>
+</html>
