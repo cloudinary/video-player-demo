@@ -33,15 +33,12 @@ function toggleClass() {
 function setTheme(btn) {
     var newTheme = "cld-video-player-skin-" + btn.value;
     var oldTheme = "cld-video-player-skin-";
-    var pagination = document.getElementById("video-pagination");
-    if(btn.value == "dark") {
+	
+    if(btn.value == "dark") 
         oldTheme += "light"; 
-        pagination.classList.remove("style01");
-    }
-    else {
+    else 
         oldTheme += "dark";
-        pagination.classList.add("style01");
-    }
+	
     var vplayers = document.getElementsByClassName("cld-video-player");
     for(var i = 0; i < vplayers.length; i++) {
         vplayers[i].classList.remove(oldTheme);
