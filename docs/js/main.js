@@ -33,11 +33,15 @@ function toggleClass() {
 function setTheme(btn) {
     var newTheme = "cld-video-player-skin-" + btn.value;
     var oldTheme = "cld-video-player-skin-";
-    if(btn.value == "dark")
-	    oldTheme += "light";
-    else
-	    oldTheme += "dark";
-	
+    var pagination = document.getElementById("video-pagination");
+    if(btn.value == "dark") {
+        oldTheme += "light"; 
+        pagination.classList.remove("style01");
+    }
+    else {
+        oldTheme += "dark";
+        pagination.classList.add("style01");
+    }
     var vplayers = document.getElementsByClassName("cld-video-player");
     for(var i = 0; i < vplayers.length; i++) {
         vplayers[i].classList.remove(oldTheme);
@@ -297,8 +301,10 @@ source5.recommendations = [source2, source3, source4, source1];
 var first = true;
 recplayer.on('sourcechanged', function(event) {if (first) {first = false;} else {recplayer.play();}});
 recplayer.source(source3);
-var adTagUrl = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=6";
-var adsplayer = cld.videoPlayer('demo-ads-player', {ads: {adTagUrl: adTagUrl}});
+var adTagUrl = ["https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=6",
+"https://googleads.g.doubleclick.net/pagead/ads?ad_type=image_text_flash&client=ca-video-pub-4968145218643279&videoad_start_delay=0&description_url=http%3A%2F%2Fwww.google.com&max_ad_duration=40000&adtest=on",
+"https://res.cloudinary.com/demo/raw/upload/vastdemo_preroll"];
+ var adsplayer = cld.videoPlayer('demo-ads-player', {ads: {adTagUrl: adTagUrl[0]}});
 var adsPlaylistSources = [source1, source2, source3, source4, source5];
 var adsPlaylistOptions = {
   autoAdvance: true,
@@ -306,3 +312,11 @@ var adsPlaylistOptions = {
   presentUpcoming: 8
 };
 adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions);
+
+function setVAST(vastOption) {
+  var option = Number(vastOption.value)
+  if(option < adTagUrl.length)
+  {
+    adsplayer.ima().playAd(adTagUrl[option]);
+  }
+}
