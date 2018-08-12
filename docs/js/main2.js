@@ -303,7 +303,7 @@ recplayer.on('sourcechanged', function(event) {if (first) {first = false;} else 
 recplayer.source(source3);
 var adTagUrl = ["https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=6",
 "https://googleads.g.doubleclick.net/pagead/ads?ad_type=image_text_flash&client=ca-video-pub-4968145218643279&videoad_start_delay=0&description_url=http%3A%2F%2Fwww.google.com&max_ad_duration=40000&adtest=on",
-"https://res.cloudinary.com/hadar/raw/upload/vastdemo_preroll"];
+"https://res.cloudinary.com/demo/raw/upload/vastdemo_preroll"];
  var adsplayer = cld.videoPlayer('demo-ads-player', {ads: {adTagUrl: adTagUrl[0]}});
 var adsPlaylistSources = [source1, source2, source3, source4, source5];
 var adsPlaylistOptions = {
