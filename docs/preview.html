@@ -34,7 +34,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
 	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
-	<link href="css/preview.css" media="all" rel="stylesheet" >
+	<link href="css/prism.css" rel="stylesheet" />
+	<link href="css/main.css" media="all" rel="stylesheet" >
 </head>
 <body>
 	<div id="wrapper">
@@ -90,173 +91,124 @@
 				</header>
 				<div class="block-area adaptive">
 					<div class="video-block adaptive">
-						<ul class="menu videos">
+						<ul class="menu preview videos">
 							<li>
 								<video
 									id="demo-manipulation1-player" 
-									data-cld-public-id="foxsport_full"
+									data-cld-public-id="AirbnbsListing"
 									controls
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_saturation:-200/" target="_blank">Original</a>	
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Original</a>	
 							</li>
 							<li>
 								<video
 									id="demo-manipulation2-player" 
-									data-cld-public-id="foxsport_sum"
+									data-cld-public-id="AirbnbsListing_sum_oct18"
 									controls 
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_vignette:70/" target="_blank">Continuous</a>
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
 							</li>
 							<li>
 								<video
 									id="demo-manipulation3-player" 
-									data-cld-public-id="foxsport_sum_1"
-									controls
-									muted
-									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
-								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/g_south_east,l_cloudinary_icon,w_50/" target="_blank">Multiple Sections</a>
-								</li>
-							<li>
-								<video
-									id="demo-manipulation4-player" 
-									data-cld-public-id="foxnews_full"
-									data-cld-transformation='{"overlay":"foxnews_graph","width":"1280", "height":"360", "effect":"replace_color:orange:20:red"}'
+									data-cld-public-id="The_Big_Bang_Theory"
 									controls 
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/fl_splice,l_video:cld_opener_preroll_sd,so_0/" target="_blank">Original</a>
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Original</a>
+							</li>
+							<li>
+								<video
+									id="demo-manipulation4-player" 
+									data-cld-public-id="The_Big_Bang_Theory_sum_oct18"
+									data-cld-transformation='{ "width": 640, "crop": "limit" }'
+									controls  
+									muted
+									playsinline
+									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+								</video>
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
 							</li>
 							<li>
 								<video
 									id="demo-manipulation5-player" 
-									data-cld-public-id="foxnews_sum"
+									data-cld-public-id="Doritos_orig"
+									data-cld-transformation='{ "width": 640, "crop": "limit" }'
 									controls 
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/r_50/" target="_blank">Continuous</a>
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload" target="_blank">Original</a>
 							</li>
 							<li>
 								<video
 									id="demo-manipulation6-player" 
-									data-cld-public-id="foxnews_sum_1"
-									controls  
+									data-cld-public-id="Doritos_sum_oct18"
+									data-cld-transformation='{ "width": 640, "crop": "limit" }'
+									controls 
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_accelerate:100/" target="_blank">Multiple Sections</a>
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
 							</li>
 							<li>
 								<video
 									id="demo-manipulation7-player" 
-									data-cld-public-id="Liverpool_vs_Roma_full"
-									controls 
-									muted
-									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
-								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/fl_splice,l_video:cld_opener_preroll_sd,so_0/" target="_blank">Original</a>
-							</li>
-							<li>
-								<video
-									id="demo-manipulation8-player" 
-									data-cld-public-id="Liverpool_vs_Roma_sum"
-									controls 
-									muted
-									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
-								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/r_50/" target="_blank">Continuous</a>
-							</li>
-							<li>
-								<video
-									id="demo-manipulation9-player" 
-									data-cld-public-id="Liverpool_vs_Roma_sum_1"
+									data-cld-public-id="LullAd"
+									data-cld-transformation='{ "width": 640, "crop": "limit" }'
 									controls  
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_accelerate:100/" target="_blank">Multiple Sections</a>
-							</li>
-							<li>
-								<video
-									id="demo-manipulation7-player" 
-									data-cld-public-id="Liverpool_vs_Roma_full"
-									controls 
-									muted
-									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
-								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/fl_splice,l_video:cld_opener_preroll_sd,so_0/" target="_blank">Original</a>
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Original</a>
 							</li>
 							<li>
 								<video
 									id="demo-manipulation8-player" 
-									data-cld-public-id="Liverpool_vs_Roma_sum"
+									data-cld-public-id="LullAd_sum_oct18"
+									data-cld-transformation='{ "width": 320, "height": "180", "crop": "crop", "gravity": "south" }'
 									controls 
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/r_50/" target="_blank">Continuous</a>
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
 							</li>
 							<li>
 								<video
 									id="demo-manipulation9-player" 
-									data-cld-public-id="Liverpool_vs_Roma_sum_1"
-									controls  
+									data-cld-public-id="porto"
+									data-cld-transformation='{ "width": 640, "crop": "limit" }'
+									controls 
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_accelerate:100/" target="_blank">Multiple Sections</a>
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Original</a>
 							</li>
 							<li>
 								<video
 									id="demo-manipulation10-player" 
-									data-cld-public-id="TED_elon_musk"
-									controls 
-									muted
-									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
-								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/fl_splice,l_video:cld_opener_preroll_sd,so_0/" target="_blank">Original</a>
-							</li>
-							<li>
-								<video
-									id="demo-manipulation11-player" 
-									data-cld-public-id="TED_elon_musk_sum"
-									controls 
-									muted
-									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
-								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/r_50/" target="_blank">Continuous</a>
-							</li>
-							<li>
-								<video
-									id="demo-manipulation12-player" 
-									data-cld-public-id="TED_elon_musk_sum_1"
+									data-cld-public-id="porto_rztlzw_sum_oct18"
+									data-cld-transformation='{ "width": 640, "height": "360", "crop": "crop", "gravity": "south" }'
 									controls  
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
 								</video>
-								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/e_accelerate:100/" target="_blank">Multiple Sections</a>
-							</li>
+								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
+							</li>	
 						</ul>
 					</div>
 				</div>
@@ -281,6 +233,8 @@
 	<script src="https://widget.cloudinary.com/global/all.js" type="text/javascript"></script> 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
 	<script>
 		var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
