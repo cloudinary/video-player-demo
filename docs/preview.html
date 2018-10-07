@@ -101,7 +101,7 @@
 									controls
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-original vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Original</a>	
 							</li>
@@ -116,7 +116,7 @@
 									loop
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-preview vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
 							</li>
@@ -129,7 +129,7 @@
 									controls 
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-original vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Original</a>
 							</li>
@@ -144,7 +144,7 @@
 									loop
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-preview vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
 							</li>
@@ -157,7 +157,7 @@
 									controls 
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-original vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload" target="_blank">Original</a>
 							</li>
@@ -172,7 +172,7 @@
 									loop
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-preview vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
 							</li>
@@ -185,7 +185,7 @@
 									controls  
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-original vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Original</a>
 							</li>
@@ -200,7 +200,7 @@
 									loop
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-preview vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
 							</li>
@@ -213,7 +213,7 @@
 									controls 
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-original vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Original</a>
 							</li>
@@ -228,7 +228,7 @@
 									loop
 									muted
 									playsinline
-									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
+									class="cld-video-player demo-preview vjs-fluid cld-video-player-skin-dark">
 								</video>
 								<a class="text manipulation" data-href="https://res.cloudinary.com/demo/video/upload/" target="_blank">Preview</a>
 							</li>	
@@ -259,7 +259,8 @@
 
 	<script>
 		var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
-		var players = cld.videoPlayers('.demo-manipulation', {videojs: { bigPlayButton: false, controlBar: false} });
+		var originalPlayers = cld.videoPlayers('.demo-original', {videojs: { bigPlayButton: false} });
+		var previewPlayers = cld.videoPlayers('.demo-preview', {videojs: { bigPlayButton: false, controlBar: false} });
 	</script>
 	
 	<script>
