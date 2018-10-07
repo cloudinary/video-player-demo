@@ -2493,6 +2493,13 @@ h1,
 		padding: 0 15px;
 		margin: 0;
 	}
+	
+	.menu.preview  {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;	
+		margin: 0 -21px;
+	}
 
 	.menu li {
 		padding: 0;
