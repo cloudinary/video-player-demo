@@ -327,7 +327,7 @@ function requestHLS() {
     var checkUrl = "https://res.cloudinary.com/demo/video/upload/sp_hd/" + publicId + ".m3u8";
     requestFileFormat(checkUrl);
 }
-
+// VP9 codec
 function requestVP9() {
     var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_70,vc_vp9/" + publicId + ".webm";
     requestFileFormat(checkUrl);
