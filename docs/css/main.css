@@ -933,6 +933,12 @@ h1,
 	width: 25%;
 }
 
+.menu.preview li {
+	position: relative;
+	padding: 0 21px;
+	width:50%;
+}
+
 .menu.videos li{
 	padding: 10px 10px;
 }
