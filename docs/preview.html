@@ -96,6 +96,8 @@
 								<video
 									id="demo-manipulation1-player" 
 									data-cld-public-id="AirbnbsListing"
+									data-cld-transformation='{ "width": 640, "crop": "limit" }'
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
 									controls
 									muted
 									playsinline
@@ -107,7 +109,11 @@
 								<video
 									id="demo-manipulation2-player" 
 									data-cld-public-id="AirbnbsListing_sum_oct18"
-									controls 
+									data-cld-transformation='{ "width": 640, "crop": "limit" }'
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
+									data-cld-autoplay-mode="on-scroll"
+									controls
+									loop
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
@@ -118,6 +124,8 @@
 								<video
 									id="demo-manipulation3-player" 
 									data-cld-public-id="The_Big_Bang_Theory"
+									data-cld-transformation='{ "width": 640, "crop": "limit" }'
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
 									controls 
 									muted
 									playsinline
@@ -130,7 +138,10 @@
 									id="demo-manipulation4-player" 
 									data-cld-public-id="The_Big_Bang_Theory_sum_oct18"
 									data-cld-transformation='{ "width": 640, "crop": "limit" }'
-									controls  
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
+									data-cld-autoplay-mode="on-scroll"
+									controls
+									loop
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
@@ -142,6 +153,7 @@
 									id="demo-manipulation5-player" 
 									data-cld-public-id="Doritos_orig"
 									data-cld-transformation='{ "width": 640, "crop": "limit" }'
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
 									controls 
 									muted
 									playsinline
@@ -154,7 +166,10 @@
 									id="demo-manipulation6-player" 
 									data-cld-public-id="Doritos_sum_oct18"
 									data-cld-transformation='{ "width": 640, "crop": "limit" }'
-									controls 
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
+									data-cld-autoplay-mode="on-scroll"
+									controls
+									loop
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
@@ -166,6 +181,7 @@
 									id="demo-manipulation7-player" 
 									data-cld-public-id="LullAd"
 									data-cld-transformation='{ "width": 640, "crop": "limit" }'
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
 									controls  
 									muted
 									playsinline
@@ -178,7 +194,10 @@
 									id="demo-manipulation8-player" 
 									data-cld-public-id="LullAd_sum_oct18"
 									data-cld-transformation='{ "width": 320, "height": "180", "crop": "crop", "gravity": "south" }'
-									controls 
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
+									data-cld-autoplay-mode="on-scroll"
+									controls
+									loop
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
@@ -190,6 +209,7 @@
 									id="demo-manipulation9-player" 
 									data-cld-public-id="porto"
 									data-cld-transformation='{ "width": 640, "crop": "limit" }'
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
 									controls 
 									muted
 									playsinline
@@ -202,7 +222,10 @@
 									id="demo-manipulation10-player" 
 									data-cld-public-id="porto_rztlzw_sum_oct18"
 									data-cld-transformation='{ "width": 640, "height": "360", "crop": "crop", "gravity": "south" }'
-									controls  
+									data-cld-poster-options= '{ "transformation": [{"width": "640", "height": "360", "crop": "pad"}, {"overlay":"play-demo", "width":"100"},{"quality": "auto", "fetch_format": "auto"}] }'
+									data-cld-autoplay-mode="on-scroll"
+									controls
+									loop
 									muted
 									playsinline
 									class="cld-video-player demo-manipulation vjs-fluid cld-video-player-skin-dark">
@@ -236,7 +259,7 @@
 
 	<script>
 		var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
-		var players = cld.videoPlayers('.demo-manipulation', {videojs: { bigPlayButton: false} });
+		var players = cld.videoPlayers('.demo-manipulation', {videojs: { bigPlayButton: false, controlBar: false} });
 	</script>
 	
 	<script>
