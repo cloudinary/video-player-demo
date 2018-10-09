@@ -657,14 +657,15 @@ function constructTranscodeHTTPRequests() {
                 var size = httpTranscode.getResponseHeader('Content-Length');
                 var contentType = httpTranscode.getResponseHeader('content-type');
                 console.log("Got size ",size,contentType);
-                if(size == 0) {
+		var roundedSize = Math.round(size/1000);
+                if(roundedSize == 0) {
                     if(initialFormatRequest) 
                         checkFormatSizes();
                     else
                         setTimeout(checkFormatSizes,2000);
                 }
                 else {
-                    updateFileSizes(Math.round(size/1000),getVideoCodec(contentType));
+                    updateFileSizes(roundedSize,getVideoCodec(contentType));
                     if(gotMP4 && gotH265 && gotVP9) {
                         revealFileSizes();
                     }
