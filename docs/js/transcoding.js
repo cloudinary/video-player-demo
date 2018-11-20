@@ -69,6 +69,7 @@ function initScreen() {
     gotMP4 = false;
     gotH265 = false;
     gotVP9 = false;
+    errorRetry = 1;
     originalDuration = 0;
     originalRes = "default";
     originalFormat = "default";
@@ -524,21 +525,21 @@ function updateTranscodeFileSize(id,percentage) {
 }
 
 function handleTranscriptError() {
-    console.log("Transcript player error ",event);
+    console.log("Transcript player error");
     if(getTranscriptFile) {
         errorRetry++;
     }
 }
 
 function handleAutotagError() {
-    console.log("Autotag player error ",event);
+    console.log("Autotag player error");
     errorRetry++;
 }
 
-function handleAdaptiveError(delay) {
-    console.log("Adaptive player error ",event);
-    errorRetry++;
+function handleAdaptiveError() {
+    console.log("Adaptive player error ",errorRetry);
     OriginalRequest();
+    errorRetry++;
 }
 
 function showAdaptivePlayMsg() {
@@ -718,7 +719,10 @@ function playAdaptive() {
 }
 
 function adaptiveErrorEvent() {
-    handleAdaptiveError(1000*errorRetry);
+    if(adaptivePlayer.error)
+    	console.log("Error " + adaptivePlayer.error.code + "; details: " + adaptivePlayer.error.message);
+    if(errorRetry <= 3)
+    	handleAdaptiveError();
 }
 
 function adaptiveCanPlayEvent() {
