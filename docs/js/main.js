@@ -216,12 +216,9 @@ function addLi() {
 }
 
 function closeThemeSlide() {
-  console.log("closeThemeSlide");
   var mobile = window.matchMedia("(max-width: 1199px)");
   if(mobile.matches)
     setInterval(removeActiveClass(),3000);
-  else
-    console.log("no match");
 }
 
 var eventplayer = cld.videoPlayer('demo-events-player', 
