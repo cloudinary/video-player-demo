@@ -26,10 +26,7 @@ function switchImage(elm,id,base,suffix) {
 			console.log("switchImage id=",id);
 		}
 }
-function removeActiveClass() {
-  var theme = document.getElementById("theme-area");
-  theme.classList.remove("active");
-}
+
 function toggleClass() {
     var theme = document.getElementById("theme-area");
     theme.classList.toggle("active");
@@ -140,6 +137,19 @@ function updateResolutionRange(profileVal) {
   document.getElementById("checkboxLabel").classList.remove("disabled");
 }
 
+var mobile = window.matchMedia("(max-width: 1199px)");
+openThemeSlide();
+mobile.addListener(openThemeSlide);
+
+function openThemeSlide() {
+  console.log("openThemeSlide");
+  var theme = document.getElementById("theme-area");
+  if(mobile.matches)
+    theme.classList.remove("active");
+  else
+    theme.classList.add("active");
+}
+
 var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
 var safari   = navigator.userAgent.indexOf("Safari") > -1;
 if ((chrome) && (safari)) safari = false;
@@ -150,7 +160,6 @@ if(safari)
 playerSizeChange(document.getElementById("player-slider"));
 
 addLi();
-closeThemeSlide();
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
@@ -213,12 +222,6 @@ function addLi() {
         ul.appendChild(li);
       }  
   }
-}
-
-function closeThemeSlide() {
-  var mobile = window.matchMedia("(max-width: 1199px)");
-  if(mobile.matches)
-    removeActiveClass();
 }
 
 var eventplayer = cld.videoPlayer('demo-events-player', 
