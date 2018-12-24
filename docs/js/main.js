@@ -26,6 +26,10 @@ function switchImage(elm,id,base,suffix) {
 			console.log("switchImage id=",id);
 		}
 }
+function removeActiveClass() {
+  var theme = document.getElementById("theme-area");
+  theme.classList.remove("active");
+}
 function toggleClass() {
     var theme = document.getElementById("theme-area");
     theme.classList.toggle("active");
@@ -146,6 +150,7 @@ if(safari)
 playerSizeChange(document.getElementById("player-slider"));
 
 addLi();
+closeThemeSlide();
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
@@ -208,6 +213,15 @@ function addLi() {
         ul.appendChild(li);
       }  
   }
+}
+
+function closeThemeSlide() {
+  console.log("closeThemeSlide");
+  var mobile = window.matchMedia("(max-width: 1199px)");
+  if(mobile.matches)
+    setInterval(removeActiveClass(),3000);
+  else
+    console.log("no match");
 }
 
 var eventplayer = cld.videoPlayer('demo-events-player', 
