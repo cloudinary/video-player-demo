@@ -218,7 +218,7 @@ function addLi() {
 function closeThemeSlide() {
   var mobile = window.matchMedia("(max-width: 1199px)");
   if(mobile.matches)
-    setInterval(removeActiveClass(),3000);
+    removeActiveClass();
 }
 
 var eventplayer = cld.videoPlayer('demo-events-player', 
