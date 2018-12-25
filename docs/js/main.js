@@ -142,7 +142,6 @@ openThemeSlide();
 mobile.addListener(openThemeSlide);
 
 function openThemeSlide() {
-  console.log("openThemeSlide");
   var theme = document.getElementById("theme-area");
   if(mobile.matches)
     theme.classList.remove("active");
