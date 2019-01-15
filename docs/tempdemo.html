@@ -1,0 +1,21 @@
+<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
+<script src="https://unpkg.com/cloudinary-core/cloudinary-core-shrinkwrap.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.js" 
+    type="text/javascript"></script>
+<div style="max-width: px">
+<video id="demo-subtitles"  controls  muted  class="cld-video-player cld-fluid"></video>
+</div>
+
+<script>
+
+var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
+var player = cld.videoPlayer('demo-subtitles');
+player.source("what_is_cloudinary");
+
+player.on('durationchange', function() {
+console.log(player.duration() )});
+
+player.on('pause', function() {
+console.log("call webhook")       });
+
+</script>
