@@ -327,10 +327,10 @@ function setVAST(vastOption) {
   var option = Number(vastOption.value)
   if(option < adTagUrl.length)
   {
-    initializePlayer(adTagUrl[option]);
+//    initializePlayer(adTagUrl[option]);
   }
 }
-
+/*
 function initializePlayer(adTag) {
 	if (adsplayer) {
 	  adsplayer.dispose();
@@ -348,7 +348,7 @@ function initializePlayer(adTag) {
 	adsplayer = cld.videoPlayer("demo-ads-player", {ads: {adTagUrl: adTag}});
 	adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions);
 }
-	
+*/	
 	
 	
 	
