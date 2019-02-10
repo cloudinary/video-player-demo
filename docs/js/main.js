@@ -345,8 +345,8 @@ function initializePlayer(adTag) {
 	  vid.setAttribute('data-cld-transformation', '{ "width": 720, "crop": "limit" }');
 	  continer.appendChild(vid);
 	}
-	player = cld.videoPlayer("demo-ads-player", {ads: {adTagUrl: adTag}});
-	player.source("rafting"); 
+	adsplayer = cld.videoPlayer("demo-ads-player", {ads: {adTagUrl: adTag}});
+	adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions);
 }
 	
 	
