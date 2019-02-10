@@ -339,7 +339,6 @@ if (adsplayer) {
       vid.id = 'demo-ads-player',
       vid.controls = true;
       vid.muted = true;
-      vid.autoplay = true;
       vid.classList.add(['cld-video-player', 'cld-video-player-skin-dark', 'vjs-fluid']);
       vid.setAttribute('data-cld-autoplay-mode', 'on-scroll');
       continer.appendChild(vid);
