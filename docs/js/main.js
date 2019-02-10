@@ -330,3 +330,20 @@ function setVAST(vastOption) {
     adsplayer.ima().playAd(adTagUrl[option]);
   }
 }
+
+function initializeAdsPlayer(adTag) {
+if (adsplayer) {
+      adsplayer.dispose();
+      var continer = document.getElementById('video-ads-container');
+      var vid = document.createElement('video');
+      vid.id = 'demo-ads-player',
+      vid.controls = true;
+      vid.muted = true;
+      vid.autoplay = true;
+      vid.classList.add(['cld-video-player', 'cld-video-player-skin-dark', 'cld-fluid']);
+      vid.setAttribute('data-cld-autoplay-mode', 'on-scroll');
+      continer.appendChild(vid);
+  }
+  adsplayer = cld.videoPlayer("demo-ads-player", {ads: {adTagUrl: adTag}});
+  adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions); 
+}
