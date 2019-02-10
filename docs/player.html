@@ -451,33 +451,35 @@ Use ad tags in your video player definition to activate a comprehensive set of a
                         </header>
                         <div class="block-area">
                             <div class="video-block">
-                                <div class="video-area" id="video-ads">
-                                    <video
-                                        id="demo-ads-player" 
-                                        controls 
-                                        muted 
-										playsinline
-										crossorigin="anonymous"
-                                        data-cld-autoplay-mode="on-scroll"
-                                        class="cld-video-player vjs-fluid cld-video-player-skin-dark">
-									</video>
-									<div class="streaming-area">
-										<a style="font-size: 14px; color: black;">VAST Tag:</a>
-										<ul class="streaming-list">
-											<li>
-												<input type="radio" id="vast1" name="radio1" onclick="setVAST(this)" value="0" checked>
-												<label for="vast1" style="vertical-align: baseline;"><i class="radio-icon"></i>dfp preroll</label>
-											</li>
-											<li>
-												<input type="radio" id="vast2" name="radio1" onclick="setVAST(this)" value="1">
-												<label for="vast2" style="vertical-align: baseline;"><i class="radio-icon"></i>dfp banner</label>
-											</li>
-											<li>
-												<input type="radio" id="vast3" name="radio1" onclick="setVAST(this)" value="2">
-												<label for="vast3" style="vertical-align: baseline;"><i class="radio-icon"></i>Generic VAST</label>
-											</li>
-										</ul>
-									</div>
+                                <div class="video-area">
+				    <div id="video-container" id="video-ads">
+                                        <video
+                                            id="demo-ads-player" 
+                                            controls 
+                                            muted 
+					    playsinline
+					    crossorigin="anonymous"
+                                            data-cld-autoplay-mode="on-scroll"
+                                            class="cld-video-player vjs-fluid cld-video-player-skin-dark">
+					</video>
+				    </div>
+				    <div class="streaming-area">
+					<a style="font-size: 14px; color: black;">VAST Tag:</a>
+					<ul class="streaming-list">
+						<li>
+							<input type="radio" id="vast1" name="radio1" onclick="setVAST(this)" value="0" checked>
+							<label for="vast1" style="vertical-align: baseline;"><i class="radio-icon"></i>dfp preroll</label>
+						</li>
+						<li>
+							<input type="radio" id="vast2" name="radio1" onclick="setVAST(this)" value="1">
+							<label for="vast2" style="vertical-align: baseline;"><i class="radio-icon"></i>dfp banner</label>
+						</li>
+						<li>
+							<input type="radio" id="vast3" name="radio1" onclick="setVAST(this)" value="2">
+							<label for="vast3" style="vertical-align: baseline;"><i class="radio-icon"></i>Generic VAST</label>
+						</li>
+					</ul>
+				    </div>
                                 </div>
                             </div>
                             <div class="editing-area">
