@@ -327,6 +327,27 @@ function setVAST(vastOption) {
   var option = Number(vastOption.value)
   if(option < adTagUrl.length)
   {
-    adsplayer.ima().playAd(adTagUrl[option]);
+    initializePlayer(adTagUrl[option]);
   }
 }
+
+function initializePlayer(adTag) {
+	if (adsplayer) {
+	  adsplayer.dispose();
+	  var continer = document.getElementById('video-ads');
+	  var vid = document.createElement('video');
+	  vid.id = 'demo-ads-player',
+	  vid.controls = true;
+	  vid.muted = true;
+	  vid.autoplay = true;
+	  vid.classList.add(['cld-video-player', 'cld-video-player-skin-dark', 'cld-fluid']);
+	  vid.setAttribute('data-cld-transformation', '{ "width": 720, "crop": "limit" }');
+	  continer.appendChild(vid);
+	}
+	player = cld.videoPlayer("demo-ads-player", {ads: {adTagUrl: adTag}});
+	player.source("rafting"); 
+}
+	
+	
+	
+	
