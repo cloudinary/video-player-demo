@@ -337,7 +337,7 @@ if (adsplayer) {
       var continer = document.getElementById('video-ads-container');
       var vid = document.createElement('video');
       vid.id = 'demo-ads-player',
-      vid.className = 'cld-video-player';
+      vid.className = 'cld-video-player, vjs-fluid';
       vid.setAttribute('data-cld-autoplay-mode', 'on-scroll');
       continer.appendChild(vid);
   }
