@@ -332,6 +332,7 @@ function setVAST(vastOption) {
 }
 
 function initializeAdsPlayer(adTag) {
+console.log("initializeAdsPlayer",adTag);
 if (adsplayer) {
       adsplayer.dispose();
       var continer = document.getElementById('video-ads-container');
