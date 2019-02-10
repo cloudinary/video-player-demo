@@ -327,7 +327,7 @@ function setVAST(vastOption) {
   var option = Number(vastOption.value)
   if(option < adTagUrl.length)
   {
-    adsplayer.ima().playAd(adTagUrl[option]);
+    initializeAdsPlayer(adTagUrl[option]);
   }
 }
 
