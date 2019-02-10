@@ -32,7 +32,7 @@
 	<link href='https://cloudinary-res.cloudinary.com/image/asset/favicon-16x16-1976acd4f7b6bd9063e50911c3811043.png' rel='icon' sizes='16x16' type='image/png'>
 	<link href='https://cloudinary-res.cloudinary.com/image/asset/favicon-32x32-2991a47c2caa80211bf2dbf3f29317c8.png' rel='icon' sizes='32x32' type='image/png'>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
-	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
+	<link href="https://unpkg.com/cloudinary-video-player@edge/dist/cld-video-player.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
 	<link href="css/prism.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
@@ -452,34 +452,32 @@ Use ad tags in your video player definition to activate a comprehensive set of a
                         <div class="block-area">
                             <div class="video-block">
                                 <div class="video-area">
-				    <div id="video-container">
-                                        <video
-                                            id="demo-ads-player" 
-                                            controls 
-                                            muted 
-					    playsinline
-					    crossorigin="anonymous"
-                                            data-cld-autoplay-mode="on-scroll"
-                                            class="cld-video-player vjs-fluid cld-video-player-skin-dark">
-					</video>
-				    </div>
-				    <div class="streaming-area">
-					<a style="font-size: 14px; color: black;">VAST Tag:</a>
-					<ul class="streaming-list">
-						<li>
-							<input type="radio" id="vast1" name="radio1" onclick="setVAST(this)" value="0" checked>
-							<label for="vast1" style="vertical-align: baseline;"><i class="radio-icon"></i>dfp preroll</label>
-						</li>
-						<li>
-							<input type="radio" id="vast2" name="radio1" onclick="setVAST(this)" value="1">
-							<label for="vast2" style="vertical-align: baseline;"><i class="radio-icon"></i>dfp banner</label>
-						</li>
-						<li>
-							<input type="radio" id="vast3" name="radio1" onclick="setVAST(this)" value="2">
-							<label for="vast3" style="vertical-align: baseline;"><i class="radio-icon"></i>Generic VAST</label>
-						</li>
-					</ul>
-				    </div>
+                                    <video
+                                        id="demo-ads-player" 
+                                        controls 
+                                        muted 
+										playsinline
+										crossorigin="anonymous"
+                                        data-cld-autoplay-mode="on-scroll"
+                                        class="cld-video-player vjs-fluid cld-video-player-skin-dark">
+									</video>
+									<div class="streaming-area">
+										<a style="font-size: 14px; color: black;">VAST Tag:</a>
+										<ul class="streaming-list">
+											<li>
+												<input type="radio" id="vast1" name="radio1" onclick="setVAST(this)" value="0" checked>
+												<label for="vast1" style="vertical-align: baseline;"><i class="radio-icon"></i>dfp preroll</label>
+											</li>
+											<li>
+												<input type="radio" id="vast2" name="radio1" onclick="setVAST(this)" value="1">
+												<label for="vast2" style="vertical-align: baseline;"><i class="radio-icon"></i>dfp banner</label>
+											</li>
+											<li>
+												<input type="radio" id="vast3" name="radio1" onclick="setVAST(this)" value="2">
+												<label for="vast3" style="vertical-align: baseline;"><i class="radio-icon"></i>Generic VAST</label>
+											</li>
+										</ul>
+									</div>
                                 </div>
                             </div>
                             <div class="editing-area">
@@ -524,8 +522,8 @@ player.source(source1);</code></pre>
 			</div>
 		</footer>
 	</div>
-	<script type="text/javascript" src="https://unpkg.com/cloudinary-core/cloudinary-core-shrinkwrap.min.js"></script>
-	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player@edge/dist/cld-video-player.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
     <script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/5.1.5/videojs.ads.js"></script>
