@@ -331,19 +331,24 @@ function setVAST(vastOption) {
   }
 }
 
+var adsIndex = 0;
+
 function initializeAdsPlayer(adTag) {
-console.log("initializeAdsPlayer",adTag);
+++adsIndex;
+var adsId = 'demo-ads-player-' + adsIndex;
+console.log("initializeAdsPlayer",adTag,adsId);
 if (adsplayer) {
+      
       adsplayer.dispose();
       var continer = document.getElementById('video-ads-container');
       var vid = document.createElement('video');
-      vid.id = 'demo-ads-player';
+      vid.id = adsId;
       vid.controls = true;
       vid.className = 'cld-video-player, vjs-fluid';
       vid.setAttribute('data-cld-autoplay-mode', 'on-scroll');
       continer.appendChild(vid);
   }
-  adsplayer = cld.videoPlayer("demo-ads-player", {ads: {adTagUrl: adTag}});
+  adsplayer = cld.videoPlayer(adsId, {ads: {adTagUrl: adTag}});
   adsplayer.source("elephants");
 //  adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions); 
 }
