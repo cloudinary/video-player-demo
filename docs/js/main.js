@@ -344,5 +344,5 @@ if (adsplayer) {
       continer.appendChild(vid);
   }
   adsplayer = cld.videoPlayer("demo-ads-player", {ads: {adTagUrl: adTag}});
-  adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions); 
+//  adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions); 
 }
