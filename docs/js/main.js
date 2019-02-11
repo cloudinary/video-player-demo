@@ -344,5 +344,6 @@ if (adsplayer) {
       continer.appendChild(vid);
   }
   adsplayer = cld.videoPlayer("demo-ads-player", {ads: {adTagUrl: adTag}});
+  adsplayer.source("elephants");
 //  adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions); 
 }
