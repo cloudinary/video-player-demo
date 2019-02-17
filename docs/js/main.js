@@ -320,8 +320,7 @@ var adsplayer2 = cld.videoPlayer('demo-ads-player-vast', {ads: {adTagUrl: adTagU
 var adsPlaylistSources = [source1, source2, source3, source4, source5];
 var adsPlaylistOptions = {
   autoAdvance: true,
-  repeat: true,
-  presentUpcoming: 8
+  repeat: true
 };
 
   adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions);
