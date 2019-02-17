@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -460,7 +459,25 @@ Use ad tags in your video player definition to activate a comprehensive set of a
 										playsinline
 										crossorigin="anonymous"
                                         data-cld-autoplay-mode="on-scroll"
-                                        class="cld-video-player vjs-fluid cld-video-player-skin-dark">
+                                        class="cld-video-player vjs-fluid cld-video-player-skin-dark video-ads">
+									</video>
+									<video
+										id="demo-ads-player-banner" 
+										controls 
+										muted 
+										playsinline
+										crossorigin="anonymous"
+										data-cld-autoplay-mode="on-scroll"
+										class="cld-video-player vjs-fluid cld-video-player-skin-dark video-ads hidden">
+									</video>
+									<video
+										id="demo-ads-player-vast" 
+										controls 
+										muted 
+										playsinline
+										crossorigin="anonymous"
+										data-cld-autoplay-mode="on-scroll"
+										class="cld-video-player vjs-fluid cld-video-player-skin-dark video-ads hidden">
 									</video>
 									<div class="streaming-area">
 										<a style="font-size: 14px; color: black;">VAST Tag:</a>
@@ -523,11 +540,10 @@ player.source(source1);</code></pre>
 			</div>
 		</footer>
 	</div>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
-	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
-    <script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/5.1.5/videojs.ads.js"></script>
+	<script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/cloudinary-core/cloudinary-core-shrinkwrap.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
 	<script type="text/javascript" src="js/prism.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	
