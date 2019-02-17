@@ -452,7 +452,6 @@ Use ad tags in your video player definition to activate a comprehensive set of a
                         <div class="block-area">
                             <div class="video-block">
                                 <div class="video-area">
-					<div id="video-ads-container">
                                     <video
                                         id="demo-ads-player" 
                                         controls 
@@ -460,9 +459,24 @@ Use ad tags in your video player definition to activate a comprehensive set of a
 										playsinline
 										crossorigin="anonymous"
                                         data-cld-autoplay-mode="on-scroll"
-                                        class="cld-video-player vjs-fluid cld-video-player-skin-dark">
+                                        class="cld-video-player vjs-fluid cld-video-player-skin-dark video-ads">
 									</video>
-									</div>
+									<video
+										id="demo-ads-player-banner" 
+										controls 
+										muted 
+										playsinline
+										crossorigin="anonymous"
+										class="cld-video-player vjs-fluid cld-video-player-skin-dark video-ads hidden">
+									</video>
+									<video
+										id="demo-ads-player-vast" 
+										controls 
+										muted 
+										playsinline
+										crossorigin="anonymous"
+										class="cld-video-player vjs-fluid cld-video-player-skin-dark video-ads hidden">
+									</video>
 									<div class="streaming-area">
 										<a style="font-size: 14px; color: black;">VAST Tag:</a>
 										<ul class="streaming-list">
