@@ -322,7 +322,7 @@ var adsPlaylistOptions = {
   autoAdvance: true,
   repeat: true
 };
-
+  document.getElementById("vast1").checked = true;
   adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions);
   adsplayer1.playlist(adsPlaylistSources, adsPlaylistOptions);
   adsplayer2.playlist(adsPlaylistSources, adsPlaylistOptions);
