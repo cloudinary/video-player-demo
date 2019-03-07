@@ -5,7 +5,6 @@
 
 
 <video
-data-src="videoURL"
  id="videoID"
  controls
  muted 
@@ -17,5 +16,5 @@ data-src="videoURL"
 <script>
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'limeroad-com' });
 var mainScreen = cld.videoPlayer('videoID');
-mainScreen.source(videoURL, { sourceTypes: ['hls'],transformation: {streaming_profile: 'hd' }});
+mainScreen.source("poc-limeroad-videos/uservideos/56c6f5de092d274d8b24bae6/1549882607755_1549882607755-videoFile", { sourceTypes: ['hls'],transformation: {streaming_profile: 'hd' }});
 </script>
