@@ -1,0 +1,22 @@
+
+<script src='https://unpkg.com/cloudinary-core/cloudinary-core-shrinkwrap.min.js'></script>
+<script src='https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.js'></script>
+<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
+
+
+<video
+data-src="videoURL"
+ id="videoID"
+ controls
+ muted 
+ playsinline
+ data-cld-poster-options = '{ "transformation": {"quality": "auto", "fetch_format": "auto"} }'
+ class="cld-video-player cld-fluid cld-video-player-skin-dark">
+ </video>
+
+<script>
+var initVideo = function(videoID, videoURL){ 
+var cld = cloudinary.Cloudinary.new({ cloud_name: 'limeroad-com' });
+var mainScreen = cld.videoPlayer(videoID);
+mainScreen.source(videoURL, { sourceTypes: ['hls'],transformation: {streaming_profile: 'hd' }});
+</script>
