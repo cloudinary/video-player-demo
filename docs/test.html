@@ -23,11 +23,12 @@
 
 <script>
   var timeStamp = Math.floor(Date.now() / 1000);
+  console.log(timeStamp);
   var signedWidget = cloudinary.createUploadWidget({
   cloudName: 'sw-demo', 
   apiKey: '547727452166476',
   uploadSignature: 'signature-here',
-  uploadSignatureTimestamp: timeStamp;
+  uploadSignatureTimestamp: timeStamp,
   uploadPreset: 'auto-tag'}, (error, result) => { console.log(error, result) })
 
 document.getElementById("signed_upload_widget").addEventListener("click", function(){signedWidget.open();}, false);
