@@ -4,32 +4,21 @@
 <html lang="en">
 <head>
   <link href='https://cloudinary-res.cloudinary.com/image/asset/favicon-96x96-844cfef383f46f48884b2daa491ac19b.png' rel='icon' sizes='96x96' type='image/png'>
-  <script src='https://unpkg.com/cloudinary-core/cloudinary-core-shrinkwrap.min.js'></script>
-  <script src='https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.js'></script>
-  <link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
+  <script src='https://widget.cloudinary.com/v2.0/global/all.js'></script>
 </head> 
 <body>
+<button id="upload_widget_opener" class="btn widget large">Upload your video</button>
 
 
-<video
- id="videoID"
- controls
- muted 
- playsinline
- data-cld-poster-options = '{ "transformation": {"quality": "auto", "fetch_format": "auto"} }'
- class="cld-video-player cld-fluid cld-video-player-skin-dark">
- </video>
 
 <script>
-  var videoURL = "poc-limeroad-videos/uservideos/56c6f5de092d274d8b24bae6/1549882607755_1549882607755-videoFile";
-  var videoID = "videoID";
-  var cld = cloudinary.Cloudinary.new({ cloud_name: 'limeroad-com' });
-  var mainScreen = null;
-  initVideo(videoID, videoURL);
-  
-  function initVideo(videoID, videoURL){ 
-  mainScreen = cld.videoPlayer(videoID);
-  mainScreen.source(videoURL, { sourceTypes: ['hls'],transformation: {streaming_profile: 'hd' }});
+  var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'hadar', 
+  uploadPreset: 'my_preset'}, (error, result) => { console.log(error, result) })
+
+document.getElementById("upload_widget_opener").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
 }
 </script>
 
