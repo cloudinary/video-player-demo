@@ -30,7 +30,7 @@
   cloudName: 'sw-demo', 
   apiKey: '547727452166476',
   uploadSignature: 'signature-here',
-  uploadPreset: 'my_signed_preset'}, (error, result) => { console.log(error, result) })
+  uploadPreset: 'auto-tag'}, (error, result) => { console.log(error, result) })
 
 document.getElementById("unsigned_upload_widget").addEventListener("click", function(){unsignedWidget.open();}, false);
 document.getElementById("signed_upload_widget").addEventListener("click", function(){signedWidget.open();}, false);
