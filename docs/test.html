@@ -10,6 +10,7 @@
   background-color: #4CAF50;
   border: none;
   color: white;
+  margin: 20px;
   padding: 15px 25px;
   text-align: center;
   font-size: 16px;
@@ -18,14 +19,21 @@
 </style>
 </head> 
 <body>
-<button id="upload_widget_opener" class="button">Unsigned Upload</button>
+<button id="unsigned_upload_widget" class="button">Unsigned Upload</button>
+<button id="signed_upload_widget" class="button">Signed Upload</button>
 
 <script>
-  var myWidget = cloudinary.createUploadWidget({
-  cloudName: 'hadar', 
-  uploadPreset: 'my_preset'}, (error, result) => { console.log(error, result) })
+  var unsignedWidget = cloudinary.createUploadWidget({
+  cloudName: 'sw-demo', 
+  uploadPreset: 'my_unsigned_preset'}, (error, result) => { console.log(error, result) })
+  var signedWidget = cloudinary.createUploadWidget({
+  cloudName: 'sw-demo', 
+  apiKey: '547727452166476',
+  uploadSignature: 'signature-here',
+  uploadPreset: 'my_signed_preset'}, (error, result) => { console.log(error, result) })
 
-document.getElementById("upload_widget_opener").addEventListener("click", function(){myWidget.open();}, false);
+document.getElementById("unsigned_upload_widget").addEventListener("click", function(){unsignedWidget.open();}, false);
+document.getElementById("signed_upload_widget").addEventListener("click", function(){signedWidget.open();}, false);
 </script>
 
 </body>
