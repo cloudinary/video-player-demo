@@ -99,8 +99,7 @@ function clearData() {
 }
 
 function uploadVideo(){
-	cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_subtitle', sources: [ 'local', 'url'], multiple: false, max_file_size: 100000000, resource_type: 'video'}, 
-      function(error, result) { processResponse(error, result); }, false);
+    widget.open();
 }
 
 function useVideo(vid) {
@@ -222,6 +221,7 @@ function processResponse(error, result) {
         usingPresetVideo = false;
         runPage();
         updateSessionStorage();
+	addURLParams();
     }
     else if(result && result[0].bytes > 100000000) {
 	    showContentBlocks();
@@ -614,6 +614,8 @@ var safari   = navigator.userAgent.indexOf("Safari") > -1;
 if ((chrome) && (safari)) safari = false;
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
+var widget = cloudinary.createUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_subtitle', sources: [ 'local', 'url'], multiple: false, maxFileSize: 100000000, resourceType: 'video'}, 
+(error, result) => { processResponse(error, result); });
 
 constructPage();
 
@@ -628,6 +630,7 @@ function constructPage() {
         constructAIPlayers();
         constructAIHTTPRequests(); 
     }
+    checkURLParams();
     if(sessionStorage.publicId) {
         readSessionStorage();
         runPage();
@@ -711,6 +714,42 @@ function constructTranscriptHTTPRequests() {
             setTimeout(getData,3000);
         }
     }
+}
+
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+function checkURLParams() {
+    var id = getUrlParameter("id");
+    if(id != '')
+    {
+        var json = atob(id);
+        var obj = JSON.parse(json);
+        console.log(obj);
+        sessionStorage.publicId = obj.id;
+        sessionStorage.originalSize = obj.sz;
+        sessionStorage.originalRes = obj.rs;
+        sessionStorage.originalFormat = obj.fr;
+        sessionStorage.originalDuration = obj.du;
+        sessionStorage.usingPresetVideo = "true";
+    }
+    
+}
+
+function addURLParams() {
+    var jsonStr = JSON.stringify({id: sessionStorage.publicId, sz:sessionStorage.originalSize, rs: sessionStorage.originalRes,fr: sessionStorage.originalFormat, du: sessionStorage.originalDuration});
+    var jsonParam = btoa(jsonStr);
+    var urlStr = window.location.href;
+    var idIndex = urlStr.indexOf("?id");
+    var updateStr = urlStr;
+    if(idIndex > 0)
+        updateStr = urlStr.slice(0,idIndex);
+
+    window.location.href = updateStr + "?id=" + jsonParam;
 }
 
 function playAdaptive() {
