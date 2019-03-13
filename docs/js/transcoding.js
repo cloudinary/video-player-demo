@@ -210,25 +210,33 @@ function readSessionStorage() {
 }
 
 function processResponse(error, result) {
-    initScreen();
-    if(result && result[0].bytes > 0 && result[0].bytes <= 100000000)
+    if(result && result.event === "success")
     {
-        publicId = result[0].public_id;
-        originalSize = Math.round(result[0].bytes / 1000);
-        originalRes = result[0].width + "x" + result[0].height;
-        originalFormat = result[0].format;
-        originalDuration = result[0].duration;
-        usingPresetVideo = false;
-        runPage();
-        updateSessionStorage();
-	addURLParams();
+        initScreen();
+        var bytes = result.info.bytes;
+        console.log(bytes);
+        if(bytes > 0 && bytes <= 100000000)
+        {
+            publicId = result.info.public_id;
+            originalSize = Math.round(bytes / 1000);
+            originalRes = result.info.width + "x" + result.info.height;
+            originalFormat = result.info.format;
+            originalDuration = result.info.duration;
+            usingPresetVideo = false;
+            runPage();
+            updateSessionStorage();
+            addURLParams();
+        }
+        else if(bytes > 100000000) {
+	        showContentBlocks();
+            showError("Uploaded file is too big. This demo file size limit is 100MB");
+        }
     }
-    else if(result && result[0].bytes > 100000000) {
-	    showContentBlocks();
-        showError("Uploaded file is too big. This demo file size limit is 100MB");
+    else 
+    {
+	    if (error) 
+		showError(error);
     }
-    else
-        showError(error);
 }
 
 function updateFileSize(bytes) {
