@@ -22,7 +22,7 @@
 <button id="signed_upload_widget" class="button">Signed Upload</button>
 
 <script>
-  var timeStamp = Date.now();
+  var timeStamp = Math.floor(Date.now() / 1000);
   var signedWidget = cloudinary.createUploadWidget({
   cloudName: 'sw-demo', 
   apiKey: '547727452166476',
