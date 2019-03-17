@@ -2139,6 +2139,19 @@ h1,
     visibility: visible;
 }
 
+.share-button {
+	border: none;
+	background: transparent;
+	display: inline-block;
+	vertical-align: text-top;
+  }
+	  
+.share-button svg {
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
+}
+
 
 @media (max-width: 1199px) {
 	.container {
