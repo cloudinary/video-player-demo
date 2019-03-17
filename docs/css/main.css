@@ -692,6 +692,10 @@ ul {
 	padding: 19px 5px;
 }
 
+.btn.signup {
+	display:inline-block;
+}
+
 .radio-icon {
 	width: 16px;
 	height: 16px;
