@@ -27,6 +27,20 @@ function switchImage(elm,id,base,suffix) {
 		}
 }
 
+function copyURL() {
+  var urlStr = window.location.href;
+  copyStringToClipboard(urlStr);
+}
+
+function copyStringToClipboard (str) {
+  const el = document.createElement('textarea');
+  el.value = str;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+}
+
 function toggleClass() {
     var theme = document.getElementById("theme-area");
     theme.classList.toggle("active");
