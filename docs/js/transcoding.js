@@ -781,7 +781,10 @@ function removeURLParams() {
         updateStr = urlStr.slice(0,idIndex);
         var stateObj = { id: urlStr.slice(-1,idIndex)};
         window.history.pushState(stateObj,"Cloudinary Video Demo", updateStr) ;
-        location.href = "#section01";
+        if(transcodingPage)
+            location.href = "#section02";
+        else
+            location.href = "#section03";
     }
 }
 
