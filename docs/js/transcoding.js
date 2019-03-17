@@ -729,7 +729,7 @@ function getUrlParameter(name) {
     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
     var results = regex.exec(location.search);
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-};
+}
 
 function checkURLParams() {
     var id = getUrlParameter("id");
@@ -744,21 +744,56 @@ function checkURLParams() {
         sessionStorage.originalFormat = obj.fr;
         sessionStorage.originalDuration = obj.du;
         sessionStorage.usingPresetVideo = "true";
+        removeURLParams();
     }
     
 }
 
 function addURLParams() {
-    var jsonStr = JSON.stringify({id: sessionStorage.publicId, sz:sessionStorage.originalSize, rs: sessionStorage.originalRes,fr: sessionStorage.originalFormat, du: sessionStorage.originalDuration});
-    var jsonParam = btoa(jsonStr);
+    var urlStr = window.location.href;
+    var idIndex = urlStr.indexOf("#section");
+    if(idIndex > 0)
+        urlStr = urlStr.slice(0,idIndex);
+    if(sessionStorage.publicId)
+    {
+        var jsonStr = JSON.stringify({id: sessionStorage.publicId, sz:sessionStorage.originalSize, rs: sessionStorage.originalRes,fr: sessionStorage.originalFormat, du: sessionStorage.originalDuration});
+        var jsonParam = btoa(jsonStr);
+        urlStr += "?id=" + jsonParam;
+    }
+    copyStringToClipboard(urlStr);
+}
+
+function copyStringToClipboard (str) {
+    const el = document.createElement('textarea');
+    el.value = str;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+}
+
+function removeURLParams() {
     var urlStr = window.location.href;
     var idIndex = urlStr.indexOf("?id");
     var updateStr = urlStr;
     if(idIndex > 0)
+    {
         updateStr = urlStr.slice(0,idIndex);
-
-    window.location.href = updateStr + "?id=" + jsonParam;
+        var stateObj = { id: urlStr.slice(-1,idIndex)};
+        window.history.pushState(stateObj,"Cloudinary Video Demo", updateStr) ;
+        location.href = "#section01";
+    }
 }
+
+function copyStringToClipboard (str) {
+    const el = document.createElement('textarea');
+    el.value = str;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+ }
+
 
 function playAdaptive() {
     adaptivePlayer.controls(true);
