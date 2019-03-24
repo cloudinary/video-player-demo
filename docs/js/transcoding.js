@@ -69,6 +69,7 @@ function initScreen() {
     gotMP4 = false;
     gotH265 = false;
     gotVP9 = false;
+    gotHLS = false;
     errorRetry = 1;
     originalDuration = 0;
     originalRes = "default";
@@ -169,7 +170,7 @@ function runHLS() {
     else
     {
         OriginalRequest();
-        DelayHLSRequest(Math.round(((originalDuration)+10)*1000)); 
+//        DelayHLSRequest(Math.round(((originalDuration)+10)*1000)); 
     }
 }
 
@@ -340,6 +341,8 @@ function requestHLS() {
 function requestVP9() {
     var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_70,vc_vp9/" + publicId + ".webm";
     requestFileFormat(checkUrl);
+    if(!gotHLS && !initialFormatRequest)
+        requestHLS();
 }
 
 function requestMP4() {
@@ -374,6 +377,10 @@ function getVideoCodec(contentType) {
     else if (contentType.includes("hvc1")){
         gotH265 = true;
         return "h265";
+    }
+    else if (contentType.includes("x-mpegURL")){
+        gotHLS = true;
+        return "hls";
     }
     else {
         gotVP9 = true;
@@ -605,6 +612,7 @@ var originalDuration = 0;
 var gotMP4 = false;
 var gotH265 = false;
 var gotVP9 = false;
+var gotHLS = false;
 var errorRetry = 1;
 const GET_MP4 = 0;
 const GET_H265 = 1;
@@ -669,15 +677,20 @@ function constructTranscodeHTTPRequests() {
                 var size = httpTranscode.getResponseHeader('Content-Length');
                 var contentType = httpTranscode.getResponseHeader('content-type');
                 console.log("Got size ",size,contentType);
-		var roundedSize = Math.round(size/1000);
+		        var roundedSize = Math.round(size/1000);
                 if(roundedSize == 0) {
                     if(initialFormatRequest) 
                         checkFormatSizes();
                     else
                         setTimeout(checkFormatSizes,2000);
                 }
-                else {
-                    updateFileSizes(roundedSize,getVideoCodec(contentType));
+                else 
+                {
+                    var codecType = getVideoCodec(contentType);
+                    if(codecType == "hls")
+                        HLSRequest();
+                    else
+                        updateFileSizes(roundedSize,codecType);
                     if(gotMP4 && gotH265 && gotVP9) {
                         revealFileSizes();
                     }
