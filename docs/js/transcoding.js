@@ -315,7 +315,12 @@ function checkFormatSizes() {
     else if (formatState == GET_H265) 
         requestH265();
     else if (formatState == GET_VP9)
-        requestVP9();
+    {
+        if(!gotHLS && !initialFormatRequest)
+            requestHLS();
+        else
+            requestVP9();
+    }
     else
         console.log("checkFormatSizes unexpected state",formatState);
 
@@ -341,8 +346,6 @@ function requestHLS() {
 function requestVP9() {
     var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_70,vc_vp9/" + publicId + ".webm";
     requestFileFormat(checkUrl);
-    if(!gotHLS && !initialFormatRequest)
-        requestHLS();
 }
 
 function requestMP4() {
@@ -669,26 +672,37 @@ function constructAIPlayers() {
     autoTagPlayer = cld.videoPlayer('demo-autotag-player');
 }
 
+function origDurationDelay() {
+    var minute = Math.round(originalDuration/60);
+    console.log("origDurationDelay ",minute);
+    if (minute > 1)
+        return minute*5000;
+    else
+        return 5000;
+}
+
 function constructTranscodeHTTPRequests() {
     httpTranscode = new XMLHttpRequest();
     httpTranscode.onreadystatechange = function() {
         if (this.readyState == 4) {
             if(this.status == 200) {
                 var size = httpTranscode.getResponseHeader('Content-Length');
+                if(size == null) size = 0;
                 var contentType = httpTranscode.getResponseHeader('content-type');
+                if(contentType == null) contentType = "undefined";
                 console.log("Got size ",size,contentType);
 		        var roundedSize = Math.round(size/1000);
                 if(roundedSize == 0) {
                     if(initialFormatRequest) 
                         checkFormatSizes();
                     else
-                        setTimeout(checkFormatSizes,2000);
+                        setTimeout(checkFormatSizes,origDurationDelay());
                 }
                 else 
                 {
                     var codecType = getVideoCodec(contentType);
                     if(codecType == "hls")
-                        HLSRequest();
+                        DelayHLSRequest(1000);
                     else
                         updateFileSizes(roundedSize,codecType);
                     if(gotMP4 && gotH265 && gotVP9) {
@@ -701,6 +715,8 @@ function constructTranscodeHTTPRequests() {
                     }
                 }
             }
+            if(this.status == 420)
+                setTimeout(checkFormatSizes,10000);
         }
     }
 }
