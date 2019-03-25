@@ -2166,6 +2166,14 @@ h1,
 		padding: 0 67px 0 80px;
 	}
 
+	#section01:before{
+		padding-top:50px;display:block;content:"";
+	}
+
+	#section02:before{
+		padding-top:50px;display:block;content:"";
+	}
+
 	.header-holder.widget a.pages {
 		font-size: 14px;
 		font-weight: 500;
@@ -2272,6 +2280,10 @@ h1,
 	.btn {
 		font-size: 12px;
 		width: 148px;
+	}
+
+	.share-button {
+		display: none;
 	}
 
 	.signup {
