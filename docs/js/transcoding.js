@@ -674,7 +674,6 @@ function constructAIPlayers() {
 
 function origDurationDelay() {
     var minute = Math.round(originalDuration/60);
-    console.log("origDurationDelay ",minute);
     if (minute > 1)
         return minute*5000;
     else
@@ -716,7 +715,7 @@ function constructTranscodeHTTPRequests() {
                 }
             }
             if(this.status == 420)
-                setTimeout(checkFormatSizes,10000);
+                setTimeout(checkFormatSizes,origDurationDelay()*2);
         }
     }
 }
