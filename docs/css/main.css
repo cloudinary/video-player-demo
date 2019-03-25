@@ -2156,6 +2156,14 @@ h1,
 	margin-right: 10px;
 }
 
+#section01:before{
+	padding-top:20px;display:block;content:"";
+}
+
+#section02:before{
+	padding-top:20px;display:block;content:"";
+}
+
 
 @media (max-width: 1199px) {
 	.container {
