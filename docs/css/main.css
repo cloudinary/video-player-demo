@@ -2167,11 +2167,11 @@ h1,
 	}
 
 	#section01:before{
-		padding-top:30px;display:block;content:"";
+		padding-top:50px;display:block;content:"";
 	}
 
 	#section02:before{
-		padding-top:30px;display:block;content:"";
+		padding-top:50px;display:block;content:"";
 	}
 
 	.header-holder.widget a.pages {
@@ -2286,7 +2286,7 @@ h1,
 		display: none;
 	}
 
-	.signup {
+	.btn.signup {
 		display: none;
 	}
 
