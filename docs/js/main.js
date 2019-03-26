@@ -198,6 +198,7 @@ else {
                             transformation: {streaming_profile: 'full_hd' },
                             poster: { transformation: { width: 1920, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
                           });
+	document.getElementById('streaming2').checked = true;
 }
 
 function updateOnEvent(eventStr,automatic) {
