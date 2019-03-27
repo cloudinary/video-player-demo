@@ -695,7 +695,7 @@ function constructTranscodeHTTPRequests() {
                 if(contentType == null) contentType = "undefined";
                 console.log("Got size ",size,contentType);
 		        var roundedSize = Math.round(size/1000);
-                if(roundedSize == 0) {
+                if(size == 0) {
                     if(initialFormatRequest) 
                         checkFormatSizes();
                     else
