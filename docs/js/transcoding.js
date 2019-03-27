@@ -696,7 +696,7 @@ function constructTranscodeHTTPRequests() {
 		var roundedSize = Math.round(size/1000);
                 if(size == 0) {
                     if(initialFormatRequest) 
-                        checkFormatSizes();
+                        setTimeout(checkFormatSizes,1000);
                     else
                         setTimeout(checkFormatSizes,origDurationDelay());
                 }
