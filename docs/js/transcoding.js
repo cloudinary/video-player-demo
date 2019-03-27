@@ -769,6 +769,7 @@ function checkURLParams() {
     if(id != '')
     {
         var json = atob(id);
+	var obj = JSON.parse(json);
         sessionStorage.publicId = obj.id;
         sessionStorage.originalSize = obj.sz;
         sessionStorage.originalRes = obj.rs;
