@@ -690,13 +690,14 @@ function constructTranscodeHTTPRequests() {
         if (this.readyState == 4) {
             if(this.status == 200) {
 		var size = 0;
+		var contentType = "undefined";
 		var headers = httpTranscode.getAllResponseHeaders());
-		if(headers.includes("content-length")
+		if(headers.includes("content-length"))
                 	size = httpTranscode.getResponseHeader('content-length');
-                var contentType = httpTranscode.getResponseHeader('content-type');
-                if(contentType == null) contentType = "undefined";
+		if(headers.includes("content-type"))
+                        contentType = httpTranscode.getResponseHeader('content-type');
                 console.log("Got size ",size,contentType);
-		        var roundedSize = Math.round(size/1000);
+		var roundedSize = Math.round(size/1000);
                 if(size == 0) {
                     if(initialFormatRequest) 
                         checkFormatSizes();
