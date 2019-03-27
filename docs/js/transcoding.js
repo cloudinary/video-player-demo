@@ -689,6 +689,7 @@ function constructTranscodeHTTPRequests() {
     httpTranscode.onreadystatechange = function() {
         if (this.readyState == 4) {
             if(this.status == 200) {
+		console.log("constructTranscodeHTTPRequests",httpTranscode.getAllResponseHeaders());
                 var size = httpTranscode.getResponseHeader('Content-Length');
                 if(size == null) size = 0;
                 var contentType = httpTranscode.getResponseHeader('content-type');
@@ -768,8 +769,6 @@ function checkURLParams() {
     if(id != '')
     {
         var json = atob(id);
-        var obj = JSON.parse(json);
-        console.log(obj);
         sessionStorage.publicId = obj.id;
         sessionStorage.originalSize = obj.sz;
         sessionStorage.originalRes = obj.rs;
