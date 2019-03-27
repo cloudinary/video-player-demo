@@ -372,17 +372,21 @@ function revealFileSizes() {
     }
 }
 
-function getVideoCodec(contentType) {   
+function getVideoCodec(contentType) {  
+console.log("getVideoCodec",contentType);
     if(contentType.includes("avc1")) {
         gotMP4 = true;
+	console.log("getVideoCodec - mp4",gotMP4);
         return "mp4";
     }
     else if (contentType.includes("hvc1")){
         gotH265 = true;
+	console.log("getVideoCodec - h265",gotH265);
         return "h265";
     }
     else if (contentType.includes("x-mpegURL")){
         gotHLS = true;
+	console.log("getVideoCodec - hls",gotHLS);
         return "hls";
     }
     else {
