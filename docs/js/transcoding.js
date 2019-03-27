@@ -691,7 +691,7 @@ function constructTranscodeHTTPRequests() {
             if(this.status == 200) {
 		var size = 0;
 		var contentType = "undefined";
-		var headers = httpTranscode.getAllResponseHeaders());
+		var headers = httpTranscode.getAllResponseHeaders();
 		if(headers.includes("content-length"))
                 	size = httpTranscode.getResponseHeader('content-length');
 		if(headers.includes("content-type"))
