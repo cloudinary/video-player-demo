@@ -689,9 +689,10 @@ function constructTranscodeHTTPRequests() {
     httpTranscode.onreadystatechange = function() {
         if (this.readyState == 4) {
             if(this.status == 200) {
-		console.log("constructTranscodeHTTPRequests",httpTranscode.getAllResponseHeaders());
-                var size = httpTranscode.getResponseHeader('Content-Length');
-                if(size == null) size = 0;
+		var size = 0;
+		var headers = httpTranscode.getAllResponseHeaders());
+		if(headers.includes("content-length")
+                	size = httpTranscode.getResponseHeader('content-length');
                 var contentType = httpTranscode.getResponseHeader('content-type');
                 if(contentType == null) contentType = "undefined";
                 console.log("Got size ",size,contentType);
