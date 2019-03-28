@@ -26,7 +26,6 @@ function switchImage(elm,id,base,suffix) {
 			console.log("switchImage id=",id);
 		}
 }
-
 function copyURL() {
   var urlStr = window.location.href;
   copyStringToClipboard(urlStr);
@@ -194,12 +193,11 @@ if(window.innerWidth < 960) {
                           });
 }
 else {
-	console.log("setting streaming2");
-	document.getElementById('streaming2').checked = true;
 	demoplayer.source('kayak',{ sourceTypes: ['hls'], 
                             transformation: {streaming_profile: 'full_hd' },
                             poster: { transformation: { width: 1920, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
                           });
+  document.getElementById('streaming2').checked = true;
 }
 
 function updateOnEvent(eventStr,automatic) {
@@ -330,15 +328,15 @@ recplayer.source(source3);
 var adTagUrl = ["https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=6",
 "https://pubads.g.doubleclick.net/gampad/ads?sz=480x70&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dnonlinear&correlator=",
 "https://res.cloudinary.com/demo/raw/upload/vastdemo_preroll"];
-var adsplayer = cld.videoPlayer('demo-ads-player', {ads: {adTagUrl: adTagUrl[0], adsInPlaylist: 'every-video'}});
-var adsplayer1 = cld.videoPlayer('demo-ads-player-banner', {ads: {adTagUrl: adTagUrl[1], adsInPlaylist: 'every-video'}});
-var adsplayer2 = cld.videoPlayer('demo-ads-player-vast', {ads: {adTagUrl: adTagUrl[2], adsInPlaylist: 'every-video'}});
+var adsplayer = cld.videoPlayer('demo-ads-player', {ads: {adTagUrl: adTagUrl[0], adsInPlaylist: 'every-video', showCountdown: true}});
+var adsplayer1 = cld.videoPlayer('demo-ads-player-banner', {ads: {adTagUrl: adTagUrl[1], adsInPlaylist: 'every-video', showCountdown: true}});
+var adsplayer2 = cld.videoPlayer('demo-ads-player-vast', {ads: {adTagUrl: adTagUrl[2], adsInPlaylist: 'every-video', showCountdown: true}});
 var adsPlaylistSources = [source1, source2, source3, source4, source5];
 var adsPlaylistOptions = {
   autoAdvance: true,
   repeat: true
 };
-  document.getElementById("vast1").checked = true;
+
   adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions);
   adsplayer1.playlist(adsPlaylistSources, adsPlaylistOptions);
   adsplayer2.playlist(adsPlaylistSources, adsPlaylistOptions);
@@ -377,7 +375,7 @@ function setVAST(vastOption) {
         adElement2.classList.remove('hidden');
         break;
       default:
-        console.log("setVAST unexpected case");
+        // code block
     }
   }
 }
