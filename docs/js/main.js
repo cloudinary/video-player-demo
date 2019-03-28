@@ -194,11 +194,12 @@ if(window.innerWidth < 960) {
                           });
 }
 else {
+	console.log("setting streaming2");
+	document.getElementById('streaming2').checked = true;
 	demoplayer.source('kayak',{ sourceTypes: ['hls'], 
                             transformation: {streaming_profile: 'full_hd' },
                             poster: { transformation: { width: 1920, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
                           });
-	document.getElementById('streaming2').checked = true;
 }
 
 function updateOnEvent(eventStr,automatic) {
