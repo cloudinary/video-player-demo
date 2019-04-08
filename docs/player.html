@@ -427,8 +427,8 @@ source1.recommendations = [source2,source3,source4,source5];
 
 // For async fetching of recommendations 
 // (e.g. fetching from database), promises can be used
-source2.recommendations = new Promise((resolve, _) => {
-        setTimeout(() => {
+source2.recommendations = new Promise((resolve, _) =&gt; {
+        setTimeout(() =&gt; {
           resolve([source1]);
         }, 3000); })
 
