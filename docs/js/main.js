@@ -327,7 +327,7 @@ recplayer.on('sourcechanged', function(event) {if (first) {first = false;} else 
 recplayer.source(source3);
 var adTagUrl = ["https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=6",
 "https://pubads.g.doubleclick.net/gampad/ads?sz=480x70&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dnonlinear&correlator=",
-"https://res.cloudinary.com/demo/raw/upload/vastdemo_preroll"];
+"https://www.yuvcom.com/video_demo/vastdemo_preroll"];
 var adsplayer = cld.videoPlayer('demo-ads-player', {ads: {adTagUrl: adTagUrl[0], adsInPlaylist: 'every-video'}});
 var adsplayer1 = cld.videoPlayer('demo-ads-player-banner', {ads: {adTagUrl: adTagUrl[1], adsInPlaylist: 'every-video'}});
 var adsplayer2 = cld.videoPlayer('demo-ads-player-vast', {ads: {adTagUrl: adTagUrl[2], adsInPlaylist: 'every-video'}});
