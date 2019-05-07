@@ -633,7 +633,7 @@ var safari   = navigator.userAgent.indexOf("Safari") > -1;
 if ((chrome) && (safari)) safari = false;
 
 var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
-var widget = cloudinary.createUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_subtitle', sources: [ 'local', 'url'], multiple: false, maxFileSize: 100000000, resourceType: 'video'}, 
+var widget = cloudinary.createUploadWidget({ cloud_name: 'demo', upload_preset: 'video_autotag_and_subtitle', sources: [ 'local', 'url'], multiple: false, maxFileSize: 100000000, resourceType: 'video', autoMinimize: true}, 
 (error, result) => { processResponse(error, result); });
 
 constructPage();
