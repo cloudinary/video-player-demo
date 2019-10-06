@@ -349,7 +349,7 @@ function requestVP9() {
 }
 
 function requestMP4() {
-    var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_70,vc_auto/" + publicId + ".mp4";
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_auto/" + publicId + ".mp4";
     requestFileFormat(checkUrl);
 }
 
