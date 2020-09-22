@@ -40,27 +40,6 @@ function copyStringToClipboard (str) {
   document.body.removeChild(el);
 }
 
-function toggleClass() {
-    var theme = document.getElementById("theme-area");
-    theme.classList.toggle("active");
-}
-function setTheme(btn) {
-    var newTheme = "cld-video-player-skin-" + btn.value;
-    var oldTheme = "cld-video-player-skin-";
-	
-    if(btn.value == "dark") 
-        oldTheme += "light"; 
-    else 
-        oldTheme += "dark";
-	
-    var vplayers = document.getElementsByClassName("cld-video-player");
-    for(var i = 0; i < vplayers.length; i++) {
-        vplayers[i].classList.remove(oldTheme);
-        vplayers[i].classList.add(newTheme);
-    }
-    toggleClass();
-}
-
 window.addEventListener('scroll',checkPosition,false);
 function checkPosition()
 {
