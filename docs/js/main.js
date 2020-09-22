@@ -43,14 +43,11 @@ function copyStringToClipboard (str) {
 window.addEventListener('scroll',checkPosition,false);
 function checkPosition()
 {
-    var themeArea = document.getElementById("theme-area");
     var fixedHeader = document.getElementById("header");
     if(window.scrollY > 50)
     {
-        themeArea.classList.add("scrolling");
         fixedHeader.classList.add("fixed-position");
     } else {
-        themeArea.classList.remove("scrolling");
         fixedHeader.classList.remove("fixed-position");
     }
 }
