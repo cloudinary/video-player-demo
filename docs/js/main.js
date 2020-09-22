@@ -150,18 +150,6 @@ function updateResolutionRange(profileVal) {
   document.getElementById("checkboxLabel").classList.remove("disabled");
 }
 
-var mobile = window.matchMedia("(max-width: 1199px)");
-openThemeSlide();
-mobile.addListener(openThemeSlide);
-
-function openThemeSlide() {
-  var theme = document.getElementById("theme-area");
-  if(mobile.matches)
-    theme.classList.remove("active");
-  else
-    theme.classList.add("active");
-}
-
 var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
 var safari   = navigator.userAgent.indexOf("Safari") > -1;
 if ((chrome) && (safari)) safari = false;
