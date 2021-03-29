@@ -1,5 +1,5 @@
 function motion(element) {
-    var base = "https://res.cloudinary.com/demo/video/upload/so_0,du_3/vs_30,e_loop:10/w_260,h_105,c_fill/q_50,r_5,b_white/fl_lossy.animated/f_auto/";
+    var base = "https://res.cloudinary.com/demo/video/upload/so_0,du_3/vs_30,e_loop:100/w_260,h_105,c_fill/q_50,r_5,b_white/fl_lossy.animated/f_auto/";
     var suffix = ".gif";
     switchImage(element.getElementsByTagName('img')[0],element.id,base,suffix);
 }
