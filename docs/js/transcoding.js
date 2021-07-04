@@ -46,17 +46,13 @@ function initScreen() {
     gotMP4 = false;
     gotH265 = false;
     gotVP9 = false;
-    gotHLS = false;
+    gotAV1 = false;
     errorRetry = 1;
     originalDuration = 0;
     originalRes = "default";
     originalFormat = "default";
     clearData();
-    if(transcodingPage) {
-        hideAdaptivePlayMsg("Processing...");
-        adaptivePlayer.controls(false);
-    }
-    else
+    if(!transcodingPage)
         removeSubtitles();
     readSessionStorage();
 }
@@ -142,18 +138,21 @@ function updateAutoPlayers() {
 }
 
 function runHLS() {
+    console.log("runHLS");
     if(usingPresetVideo)
         HLSRequest();
     else
     {
         OriginalRequest();
-//        DelayHLSRequest(Math.round(((originalDuration)+10)*1000)); 
+        DelayHLSRequest(Math.round(((originalDuration)+10)*1000)); 
     }
 }
 
 function OriginalRequest() {
     adaptivePlayer.source(publicId ,{
     poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
+    adaptivePlayer.controls(true);
+    adaptivePlayer.play();
 }
 
 function HLSRequest() {
@@ -161,7 +160,6 @@ function HLSRequest() {
     transformation: {streaming_profile: 'hd' },
     poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
     sourceHLS = true;
-    showAdaptivePlayMsg();
 }
 
 function DelayHLSRequest(delay) {
@@ -267,7 +265,7 @@ function getData() {
 
 function advanceState() {
     if(initialFormatRequest) {
-        if (formatState == GET_VP9) {
+        if (formatState == GET_AV1) {
             console.log("initialFormatRequest completed");
             initialFormatRequest = false;
             formatState = GET_MP4;
@@ -280,26 +278,26 @@ function advanceState() {
             formatState = GET_MP4;
         else if (!gotH265)
             formatState = GET_H265;
-        else 
+        else if(!gotVP9)
             formatState = GET_VP9;
+        else
+            formatState = GET_AV1;
     }    
 }
 
 
 function checkFormatSizes() {
+    console.log("checkFormatSizes got state ",formatState);
     if(formatState == GET_MP4) 
         requestMP4();
     else if (formatState == GET_H265) 
         requestH265();
     else if (formatState == GET_VP9)
-    {
-        if(!gotHLS && !initialFormatRequest)
-            requestHLS();
-        else
-            requestVP9();
-    }
+        requestVP9();
+    else if (formatState == GET_AV1)
+        requestAV1();
     else
-        console.log("checkFormatSizes unexpected state",formatState);
+        console.log("checkFormatSizes unexpected state ",formatState);
 
     if(initialFormatRequest)
         advanceState();
@@ -322,6 +320,12 @@ function requestHLS() {
 // VP9 codec
 function requestVP9() {
     var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_auto,vc_vp9/" + publicId + ".webm";
+    requestFileFormat(checkUrl);
+}
+
+// AV1 codec
+function requestAV1() {
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/$parallelvideo_1/q_auto,vc_av1/" + publicId + ".webm";
     requestFileFormat(checkUrl);
 }
 
@@ -358,9 +362,9 @@ function getVideoCodec(contentType) {
         gotH265 = true;
         return "h265";
     }
-    else if (contentType.includes("x-mpegURL")){
-        gotHLS = true;
-        return "hls";
+    else if (contentType.includes("av01")){
+        gotAV1 = true;
+        return "av1";
     }
     else {
         gotVP9 = true;
@@ -447,6 +451,7 @@ function updateFileSizes(size,format) {
         document.getElementById("res-mp4").innerText = originalRes;
         document.getElementById("res-h265").innerText = originalRes;
         document.getElementById("res-vp9").innerText = originalRes;
+        document.getElementById("res-av1").innerText = originalRes;
     }
     else if(saving > 0)
         document.getElementById("save-"+format).innerText = " " + saving + "% Saving ";
@@ -592,11 +597,12 @@ var originalDuration = 0;
 var gotMP4 = false;
 var gotH265 = false;
 var gotVP9 = false;
-var gotHLS = false;
+var gotAV1 = false;
 var errorRetry = 1;
 const GET_MP4 = 0;
 const GET_H265 = 1;
 const GET_VP9 = 2;
+const GET_AV1 = 3;
 var adaptivePlayer = null;
 var players = null;
 var transcriptPlayer = null;
@@ -680,11 +686,8 @@ function constructTranscodeHTTPRequests() {
                 else 
                 {
                     var codecType = getVideoCodec(contentType);
-                    if(codecType == "hls")
-                        DelayHLSRequest(1000);
-                    else
-                        updateFileSizes(roundedSize,codecType);
-                    if(gotMP4 && gotH265 && gotVP9) {
+                    updateFileSizes(roundedSize,codecType);
+                    if(gotMP4 && gotH265 && gotVP9 && gotAV1) {
                         revealFileSizes();
                     }
                     else {
@@ -804,12 +807,6 @@ function copyStringToClipboard (str) {
     document.body.removeChild(el);
  }
 
-
-function playAdaptive() {
-    adaptivePlayer.controls(true);
-    adaptivePlayer.play();
-}
-
 function adaptiveErrorEvent() {
     if(adaptivePlayer.error)
     	console.log("Error " + adaptivePlayer.error.code + "; details: " + adaptivePlayer.error.message);
@@ -822,13 +819,13 @@ function adaptiveCanPlayEvent() {
 }
 
 function adaptivePlayEvent() {
-    hideAdaptivePlayMsg("Downloading...");
+//    hideAdaptivePlayMsg("Downloading...");
 }
 
 function adaptivePlayingEvent() {
     playingHLS = true;
-    hideAdaptivePlayMsg("Downloading...");
-    updateAllMediaBytes();
+//    hideAdaptivePlayMsg("Downloading...");
+//    updateAllMediaBytes();
 }
     
 function adaptivePauseEvent() {
@@ -837,7 +834,7 @@ function adaptivePauseEvent() {
 
 function adaptiveEndedEvent() {
     playingHLS = false;
-    calcAdaptiveUsage(); 
+//  calcAdaptiveUsage(); 
 }
 
 function manipulationErrorEvent() {
