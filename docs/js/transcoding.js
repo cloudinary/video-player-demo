@@ -36,8 +36,6 @@ function initScreen() {
     transcriptComplete = false;
     initialFormatRequest = true;
     usingPresetVideo = false;
-    sourceHLS = false;
-    playingHLS = false;
     progress = 0;
     autoTagProgress = 0;
     transcriptProgress = 0;
@@ -88,7 +86,6 @@ function useVideo(vid) {
         runCodecComparison();
         updateManipulationPlayers(vid.title + "_sd");
         updateTranscodingPlayers(vid.title);
-        runHLS();
     }
     else 
         runAIPage();
@@ -108,7 +105,6 @@ function runTranscodingPage() {
     runCodecComparison();
     updateManipulationPlayers(publicId);
     updateTranscodingPlayers(publicId);
-    runHLS();
     showContentBlocks();
 }
 
@@ -133,38 +129,8 @@ function runCodecComparison() {
 }
 
 function updateAutoPlayers() {
-    autoTagPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
-    transcriptPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad"}});
-}
-
-function runHLS() {
-    console.log("runHLS");
-    if(usingPresetVideo)
-        HLSRequest();
-    else
-    {
-        OriginalRequest();
-        DelayHLSRequest(Math.round(((originalDuration)+10)*1000)); 
-    }
-}
-
-function OriginalRequest() {
-    adaptivePlayer.source(publicId ,{
-    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
-    adaptivePlayer.controls(true);
-    adaptivePlayer.play();
-}
-
-function HLSRequest() {
-    adaptivePlayer.source(publicId,{ sourceTypes: ['hls'], 
-    transformation: {streaming_profile: 'hd' },
-    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }} }); 
-    sourceHLS = true;
-}
-
-function DelayHLSRequest(delay) {
-    console.log("Delay HLS Request ", delay);
-    setTimeout(HLSRequest,delay);
+    autoTagPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad", "quality": "auto"}});
+    transcriptPlayer.source(publicId,{ transformation: {"width": "640", "height": "360", "crop": "pad", "quality": "auto"}});
 }
 
 function updateSessionStorage() {
@@ -222,7 +188,7 @@ function updateFileSize(bytes) {
 function updateManipulationPlayers(pid) {
 for(var i = 0; i < players.length; i++) 
         players[i].source(pid);
-//    players[0].source(pid);
+optimizationPlayer.source(pid,{ transformation: {"width": "640", "height": "360", "crop": "pad", "fetch_format":"auto","quality": "auto"}, sourceTypes: ["mp4"]});
 }
 
 function updateTranscodingPlayers(pid) {
@@ -313,10 +279,6 @@ function requestH265() {
     requestFileFormat(checkUrl);
 }
 
-function requestHLS() {
-    var checkUrl = "https://res.cloudinary.com/demo/video/upload/sp_hd/" + publicId + ".m3u8";
-    requestFileFormat(checkUrl);
-}
 // VP9 codec
 function requestVP9() {
     var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_auto,vc_vp9/" + publicId + ".webm";
@@ -325,7 +287,7 @@ function requestVP9() {
 
 // AV1 codec
 function requestAV1() {
-    var checkUrl = "https://res.cloudinary.com/demo/video/upload/$parallelvideo_1/q_auto,vc_av1/" + publicId + ".webm";
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/t_av1/q_auto/" + publicId + ".webm";
     requestFileFormat(checkUrl);
 }
 
@@ -461,24 +423,6 @@ function updateFileSizes(size,format) {
     updateTranscodeFileSize("bar-"+format,percentage);
 }
 
-function updateAllMediaBytes() {
-    updateMediaBytes("adaptive",adaptivePlayer);
-    if(playingHLS)
-        setTimeout(updateAllMediaBytes,1000);
-}
-
-function updateMediaBytes(id,player) {
-    if(!safari)
-    {
-        var elem = document.getElementById(id+"-bytes");
-        var Kbytes = Math.round(player.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
-        var percentage = Math.round((Kbytes / originalSize)*100);
-        elem.innerText = Kbytes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "KB"; 
-        document.getElementById("res-hls").innerText = " " + player.videojs.videoWidth() + "x" + player.videojs.videoHeight();
-        updateTranscodeFileSize(id+"-bar",percentage);
-    }
-}
-
 function showProgressBar(show,id, maxHeight) {
     var pre = document.getElementById("pre-"+id);
     var bar = document.getElementById(id+"-bar");
@@ -536,47 +480,6 @@ function handleAutotagError() {
     errorRetry++;
 }
 
-function handleAdaptiveError() {
-    console.log("Adaptive player error ",errorRetry);
-    OriginalRequest();
-    errorRetry++;
-}
-
-function showAdaptivePlayMsg() {
-    if (sourceHLS)
-    {
-        document.getElementById("play-btn").setAttribute("style","");
-        document.getElementById("adaptive-bytes").setAttribute("style","display: none");
-        document.getElementById("save-hls").setAttribute("style","display: none");
-        document.getElementById("cld-hls").setAttribute("style","display: none");
-    }
-}
-
-function hideAdaptivePlayMsg(text) {
-    document.getElementById("play-btn").setAttribute("style","display: none");
-    document.getElementById("adaptive-bytes").setAttribute("style","");
-    if(!safari)
-    {
-        var hls = document.getElementById("save-hls");
-        hls.setAttribute("style","");
-        hls.innerText = text;
-        document.getElementById("cld-hls").setAttribute("style","");
-    }
-}
-
-function calcAdaptiveUsage() {
-    if(!safari)
-    {
-        var Kbytes = Math.round(adaptivePlayer.videojs.tech_.hls.stats.mediaBytesTransferred / 1000);
-        var percentage = Math.round((Kbytes / originalSize)*100);
-        var saving = 100 - percentage;
-        if(saving > 0)
-            document.getElementById("save-hls").innerText = " " + saving + "% Saving ";
-        else
-            document.getElementById("save-hls").innerText = "No Saving ";
-    }
-}
-
 var url = "https://res.cloudinary.com/demo/raw/upload/";
 var publicId = "sample";
 var transcript = "sample.transcript"
@@ -586,8 +489,6 @@ var getTranscriptFile = true;
 var transcriptComplete = false;
 var initialFormatRequest = true;
 var usingPresetVideo = false;
-var sourceHLS = false;
-var playingHLS = false;
 var progress = 0;
 var autoTagProgress = 0;
 var transcriptProgress = 0;
@@ -603,7 +504,7 @@ const GET_MP4 = 0;
 const GET_H265 = 1;
 const GET_VP9 = 2;
 const GET_AV1 = 3;
-var adaptivePlayer = null;
+var optimizationPlayer = null;
 var players = null;
 var transcriptPlayer = null;
 var autoTagPlayer = null;
@@ -641,13 +542,8 @@ function constructPage() {
 }
 
 function constructTranscodePlayers() {
-    adaptivePlayer = cld.videoPlayer('demo-adaptive-player', { videojs: { bigPlayButton: false} });
+    optimizationPlayer = cld.videoPlayer('demo-adaptive-player', { videojs: { bigPlayButton: false} });
     players = cld.videoPlayers('.demo-manipulation', {videojs: { bigPlayButton: false, controlBar: false } });
-    adaptivePlayer.on("error", adaptiveErrorEvent);
-    adaptivePlayer.on("play", adaptivePlayEvent);
-    adaptivePlayer.on("playing", adaptivePlayingEvent);
-    adaptivePlayer.on("pause", adaptivePauseEvent);
-    adaptivePlayer.on("ended", adaptiveEndedEvent);
 }
 
 function constructAIPlayers() {
@@ -806,37 +702,3 @@ function copyStringToClipboard (str) {
     document.execCommand('copy');
     document.body.removeChild(el);
  }
-
-function adaptiveErrorEvent() {
-    if(adaptivePlayer.error)
-    	console.log("Error " + adaptivePlayer.error.code + "; details: " + adaptivePlayer.error.message);
-    if(errorRetry <= 3)
-    	handleAdaptiveError();
-}
-
-function adaptiveCanPlayEvent() {
- //       showAdaptivePlayMsg();
-}
-
-function adaptivePlayEvent() {
-//    hideAdaptivePlayMsg("Downloading...");
-}
-
-function adaptivePlayingEvent() {
-    playingHLS = true;
-//    hideAdaptivePlayMsg("Downloading...");
-//    updateAllMediaBytes();
-}
-    
-function adaptivePauseEvent() {
-    playingHLS = false;    
-}
-
-function adaptiveEndedEvent() {
-    playingHLS = false;
-//  calcAdaptiveUsage(); 
-}
-
-function manipulationErrorEvent() {
-    console.log("manipulationErrorEvent");
-}
