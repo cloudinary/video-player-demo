@@ -34,7 +34,7 @@
 	<link href="https://cloudinary-res.cloudinary.com/image/asset/favicon-32x32-2991a47c2caa80211bf2dbf3f29317c8.png" rel="icon" sizes="32x32" type="image/png">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
 	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
 	<link href="css/prism.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 </head>
@@ -51,7 +51,7 @@
 						<a href="https://demo.cloudinary.com/video-compare/" class="pages">SmartCrop</a>
 						<a href="https://demo.cloudinary.com/live/" class="pages">Live</a>
 						<div>
-							<button class="share-button" title="Copy URL to share" onclick="copyURL()"> 
+							<button class="share-button" title="Copy URL to share" onclick="copyURL()">
 								<svg class="share-icon" preserveAspectRatio="xMidYMid" viewBox="0 0 24 24">
 									<path d="M3.93167807,19.8049703 C5.61584051,21.4995653 8.3534727,21.4990982 10.0375133,19.8049703 L13.9762125,15.8412907 L15.8472401,17.7237232 L11.9082972,21.6874027 C9.19028368,24.4225775 4.77866397,24.4221104 2.06101605,21.6874027 C-0.657241146,18.9521404 -0.656997435,14.5136414 2.06101605,11.7784666 L5.99971525,7.8147579 L7.87074283,9.69765749 L3.93204363,13.6612786 C2.24788119,15.3553774 2.24788119,18.1104044 3.93167807,19.8049703 Z M8.95394528,16.7328909 L6.98454998,14.7513139 L14.8625272,6.82395479 L16.8320443,8.80605731 L8.95394528,16.7328909 Z M11.9082972,1.86950134 C14.6261888,-0.865264717 19.0375648,-0.865731829 21.755822,1.86950134 C24.4734699,4.60423819 24.4736832,9.04367139 21.755822,11.7784666 L17.8167572,15.7421462 L15.9457296,13.8597137 L19.8847944,9.89603415 C21.5685913,8.20146831 21.5685913,5.44644127 19.8847944,3.75231335 C18.2009671,2.05780589 15.4631216,2.05780589 13.7793248,3.75231335 L9.84025999,7.71602208 L7.9692324,5.83318088 L11.9082972,1.86950134 Z"></path>
 								</svg>
@@ -70,7 +70,7 @@
 									<source src="https://res.cloudinary.com/demo/video/upload/w_538,h_217,c_crop,so_0,eo_13/sea_waves.webm" type="video/webm">
 									<source src="https://res.cloudinary.com/demo/video/upload/w_538,h_217,c_crop,so_0,eo_13/sea_waves.ogv" type="video/ogg">
 									<source src="https://res.cloudinary.com/demo/video/upload/w_538,h_217,c_crop,so_0,eo_13/sea_waves.mp4" type="video/mp4">
-								</video> 
+								</video>
 						</div>
 						<strong class="m-logo">
 							<img src="https://res.cloudinary.com/demo/image/upload/w_235,h_241,c_scale/video-title_player_m.png" alt="Video Player">
@@ -137,9 +137,9 @@
 						<div class="video-block adaptive">
 							<div id="video-area-adaptive" div class="video-area adaptive">
 								<video
-									id="demo-adaptive-player" 
-									controls 
-									muted 
+									id="demo-adaptive-player"
+									controls
+									muted
 								        playsinline
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
                                 				</video>
@@ -234,18 +234,17 @@
 						</div>
 						<div class="editing-area adaptive">
 							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* To use dynamic adaptive streaming over HTTP formats such as HLS and MPEG-DASH, 
-simply define 'sourceTypes' to the desired format ('dash' or 'hls'). 
-You can  define a desired profile using the 'transformation' param. 
+<pre class="language-javascript"><code>/* To use dynamic adaptive streaming over HTTP formats such as HLS and MPEG-DASH,
+simply define 'sourceTypes' to the desired format ('dash' or 'hls').
+You can  define a desired profile using the 'transformation' param.
 Sample code: */
 
-var cld = cloudinary.Cloudinary.new({ cloud_name: 'cloud' })
 
 // Initialize player
-var player = cld.videoPlayer('example-player')
+var player = cloudinary.videoPlayer('example-player', { cloud_name: 'cloud' })
 
 // Modify player source and play hls adaptive streaming
-player.source('rafting', { sourceTypes: ['hls'], 
+player.source('rafting', { sourceTypes: ['hls'],
 transformation: { streaming_profile: 'full_hd' } }).play();
 </code></pre>
 							</div>
@@ -271,8 +270,8 @@ transformation: { streaming_profile: 'full_hd' } }).play();
 						<div class="video-block">
 							<div class="video-area">
 								<video
-									id="demo-events-player" 
-									controls 
+									id="demo-events-player"
+									controls
 									muted
 								        playsinline
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
@@ -288,13 +287,14 @@ transformation: { streaming_profile: 'full_hd' } }).play();
 						<div class="editing-area">
 							<div class="codepen-placeholder">
 <pre class="language-javascript"><code>// Init player with events and analytics
-var player = cld.videoPlayer('demo-events-player',
+var player = cloudinary.videoPlayer('demo-events-player',
+	cloud_name: 'cloud' ,
 // In this section we define the list of events that will be triggered to the page, in addition to a predefined list of events
   { playedEventTimes: [3, 10],
 // In this section we define the (complete) list of events that will be sent to analytics
     analytics: { // Enable player analytics
-    events: [ 
-    'play',   
+    events: [
+    'play',
     'pause',
     'percentsplayed',
     'start',
@@ -326,9 +326,9 @@ player.source('forest_bike').play();
 						<div class="video-block">
 							<div class="video-area">
 								<video
-									id="demo-playlist-player" 
-									controls 
-									muted 
+									id="demo-playlist-player"
+									controls
+									muted
 								        playsinline
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
                                 				</video>
@@ -343,18 +343,19 @@ var source2 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {s
 
 // Initialize Cloudinary HTML5 video player
 // with playlist widget
-var player = cld.videoPlayer('example-player',{
+var player = cloudinary.videoPlayer('example-player',{
+  cloud_name: 'cloud' ,
   playlistWidget: {
     direction: "horizontal",
     total: 4
   }});
 
-/* Define a playlist with auto advance to next video, 
-repeat the playlist when final video ends, 
-and present upcoming video 5 seconds 
+/* Define a playlist with auto advance to next video,
+repeat the playlist when final video ends,
+and present upcoming video 5 seconds
 before the current video ends. */
 
-player.playlist([source1, source2], 
+player.playlist([source1, source2],
 { autoAdvance: true, repeat: true, presentUpcoming: 5 });
 </code></pre>
 							</div>
@@ -380,9 +381,9 @@ player.playlist([source1, source2],
 						<div class="video-block">
 							<div class="video-area">
 								<video
-									id="demo-recommendation-player" 
-									controls 
-									muted 
+									id="demo-recommendation-player"
+									controls
+									muted
 								        playsinline
 								        data-cld-autoplay-mode="on-scroll"
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
@@ -390,26 +391,31 @@ player.playlist([source1, source2],
 							</div>
 						</div>
 						<div class="editing-area">
-							<div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* Define Playlist Sources
-As shown in the playlist example.
-Recommendations can be as simple as an array of other 
-video source objects*/
-source1.recommendations = [source2,source3,source4,source5];
+<div class="codepen-placeholder">
+	<pre class="language-javascript">
+		<code>/* Define Playlist Sources
+	As shown in the playlist example.
+	Recommendations can be as simple as an array of other
+	video source objects*/
+	source1.recommendations = [source2,source3,source4,source5];
 
-// For async fetching of recommendations 
-// (e.g. fetching from database), promises can be used
-source2.recommendations = new Promise((resolve, _) =&gt; {
-        setTimeout(() =&gt; {
-          resolve([source1]);
-        }, 3000); })
+	// For async fetching of recommendations
+	// (e.g. fetching from database), promises can be used
+	source2.recommendations = new Promise((resolve, _) =&gt; {
+			setTimeout(() =&gt; {
+			  resolve([source1]);
+			}, 3000); })
 
-// Initialize player
-var player = cld.videoPlayer('example-player', 
-{ autoShowRecommendations: true });
+	// Initialize player
+	var player = cloudinary.videoPlayer('example-player',{
+		cloud_name: 'cloud' ,
+		autoShowRecommendations: true
+	});
 
-player.source(source1);</code></pre>
-							</div>
+	player.source(source1);
+		</code>
+	</pre>
+</div>
 							<div class="codepen-info">
 								<div class="wrap">
 									<span class="text">Further reading:</span>
@@ -425,34 +431,34 @@ player.source(source1);</code></pre>
                     <div class="container">
                         <header class="heading-area">
                             <h2>Videos Ads</h2>
-                            <p>Cloudinary HTML5 video player ad capabilities allow you to monetize your content with ads. Our player is compliant with the leading ad standards: VAST, VPAID and VMAP, as well as ads that are managed with Google’s DoubleClick and AdSense. 
+                            <p>Cloudinary HTML5 video player ad capabilities allow you to monetize your content with ads. Our player is compliant with the leading ad standards: VAST, VPAID and VMAP, as well as ads that are managed with Google’s DoubleClick and AdSense.
 Use ad tags in your video player definition to activate a comprehensive set of advertising options, including banners and pre-, mid- and post-rolls (with or without skip option).</p>
                         </header>
                         <div class="block-area">
                             <div class="video-block">
                                 <div class="video-area">
                                     <video
-                                        id="demo-ads-player" 
-                                        controls 
-                                        muted 
+                                        id="demo-ads-player"
+                                        controls
+                                        muted
 										playsinline
 										crossorigin="anonymous"
                                         data-cld-autoplay-mode="on-scroll"
                                         class="cld-video-player vjs-fluid cld-video-player-skin-dark video-ads">
 									</video>
 									<video
-										id="demo-ads-player-banner" 
-										controls 
-										muted 
+										id="demo-ads-player-banner"
+										controls
+										muted
 										playsinline
 										crossorigin="anonymous"
 										data-cld-autoplay-mode="on-scroll"
 										class="cld-video-player vjs-fluid cld-video-player-skin-dark video-ads hidden">
 									</video>
 									<video
-										id="demo-ads-player-vast" 
-										controls 
-										muted 
+										id="demo-ads-player-vast"
+										controls
+										muted
 										playsinline
 										crossorigin="anonymous"
 										data-cld-autoplay-mode="on-scroll"
@@ -479,17 +485,17 @@ Use ad tags in your video player definition to activate a comprehensive set of a
                             </div>
                             <div class="editing-area">
                                 <div class="codepen-placeholder">
-<pre class="language-javascript"><code>/* Video Ads are added by 
+<pre class="language-javascript"><code>/* Video Ads are added by
 providing the ad server URL.
-It can be used with a single video or with 
+It can be used with a single video or with
 multiple sources in a playlist */
 
 var adTagUrl = "https://pubads.g.doubleclick.net/...";
-    
-// Initialize player with video ads
-var player = cld.videoPlayer('example-player', {ads: {adTagUrl: adTagUrl}}); 
 
-// Define a single source or a playlist 
+// Initialize player with video ads
+var player = cloudinary.videoPlayer('example-player', { cloud_name: 'cloud' , ads: {adTagUrl: adTagUrl} });
+
+// Define a single source or a playlist
 player.source(source1);</code></pre>
                                 </div>
                                 <div class="codepen-info">
@@ -502,7 +508,7 @@ player.source(source1);</code></pre>
                             </div>
                         </div>
                     </div>
-                </section>    
+                </section>
 		</main>
 		<footer id="footer">
 			<div class="container">
@@ -520,19 +526,18 @@ player.source(source1);</code></pre>
 		</footer>
 	</div>
 	<script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
-	<script type="text/javascript" src="https://unpkg.com/cloudinary-core/cloudinary-core-shrinkwrap.min.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/videojs-contrib-quality-levels@2.0.3/dist/videojs-contrib-quality-levels.min.js"></script>
 	<script type="text/javascript" src="js/prism.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-	
+
 	<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-25966579-4', 'auto');
-	ga('send', 'pageview');
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-25966579-4', 'auto');
+		ga('send', 'pageview');
 	</script>
 
 </body>

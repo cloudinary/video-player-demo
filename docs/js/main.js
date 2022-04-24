@@ -8,7 +8,7 @@ function still(element) {
 	var suffix = ".jpg";
 	switchImage(element.getElementsByTagName('img')[0],element.id,base,suffix);
 }
-function switchImage(elm,id,base,suffix) { 
+function switchImage(elm,id,base,suffix) {
     switch (id) {
 		case "sec01":
 			elm.setAttribute('src', base+"rafting_short"+suffix);
@@ -92,7 +92,7 @@ function requestAuto() {
 }
 
 function reportQuality() {
-	for (var i = 0; i < qualityLevels.length; i++) 
+	for (var i = 0; i < qualityLevels.length; i++)
         	console.log("reportQuality",i,qualityLevels[i].width,qualityLevels[i].enabled);
 }
 
@@ -120,7 +120,7 @@ function updateResolutionRange(profileVal) {
           elements[i].setAttribute("class","range-info");
         else
           elements[i].setAttribute("class","range-info out-of-range");
-          
+
     }
   document.getElementById("checkbox").checked = true;
   document.getElementById("checkboxLabel").classList.remove("disabled");
@@ -141,23 +141,23 @@ var cld = cloudinary.Cloudinary.new({ cloud_name: 'demo' });
 
 var adaptive = document.getElementById("adaptive");
 document.getElementById("demo-adaptive-player").addEventListener('resize',updateOnResize, false);
- 
+
 var demoplayer = cld.videoPlayer('demo-adaptive-player');
- 
+
 var qualityLevels = demoplayer.videojs.qualityLevels();
 qualityLevels.on('change', changeOfResolution);
 // qualityLevels.on('addqualitylevel', function(event) { console.log(event.qualityLevel.width); });
-	
+
 if(window.innerWidth < 960) {
 	document.getElementById('streaming4').checked = true;
 	updateResolutionRange("sd");
-	demoplayer.source("kayak", { sourceTypes: ['hls'], 
+	demoplayer.source("kayak", { sourceTypes: ['hls'],
 				    transformation: {streaming_profile: 'sd' },
 			  poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
                           });
 }
 else {
-	demoplayer.source('kayak',{ sourceTypes: ['hls'], 
+	demoplayer.source('kayak',{ sourceTypes: ['hls'],
                             transformation: {streaming_profile: 'full_hd' },
                             poster: { transformation: { width: 1920, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
                           });
@@ -167,7 +167,7 @@ else {
 function updateOnEvent(eventStr,automatic) {
   var list = document.getElementById('events-list');
   var entry = document.createElement('li');
-  if(automatic) 
+  if(automatic)
       entry.className = "orange";
   entry.appendChild(document.createTextNode(eventStr));
   list.appendChild(entry);
@@ -194,14 +194,14 @@ function addLi() {
       var ul = document.getElementById(res);
       for (var j = 0; j<11; j++) {
         li = document.createElement('li');
-        if(j == 5 ) 
+        if(j == 5 )
           li.className = "long";
         ul.appendChild(li);
-      }  
+      }
   }
 }
 
-var eventplayer = cld.videoPlayer('demo-events-player', 
+var eventplayer = cld.videoPlayer('demo-events-player',
   { playedEventTimes: [3, 10],
     analytics: { // Enable player analytics
     events: [
@@ -218,29 +218,29 @@ var manualEventTypes = ['play', 'pause', 'volumechange', 'mute', 'unmute', 'full
       'seek'];
 
 autoEventTypes.forEach(function(eventType) {
-      eventplayer.on(eventType, function(event) {
-        var eventStr = startTime() + " " + eventType;
-        if (event.eventData) {
-          eventStr = eventStr + ": " + JSON.stringify(event.eventData)
-        }
-        updateOnEvent(eventStr,true);
-      })
-    });
+  eventplayer.on(eventType, function(event) {
+    var eventStr = startTime() + " " + eventType;
+    if (event.eventData) {
+      eventStr = eventStr + ": " + JSON.stringify(event.eventData)
+    }
+    updateOnEvent(eventStr,true);
+  })
+});
 
 manualEventTypes.forEach(function(eventType) {
-      eventplayer.on(eventType, function(event) {
-        var eventStr = startTime() + " " + eventType;
-        if (event.eventData) {
-          eventStr = eventStr + ": " + JSON.stringify(event.eventData)
-        }
-        updateOnEvent(eventStr,false);
-      })
-    });
-  
+  eventplayer.on(eventType, function(event) {
+    var eventStr = startTime() + " " + eventType;
+    if (event.eventData) {
+      eventStr = eventStr + ": " + JSON.stringify(event.eventData)
+    }
+    updateOnEvent(eventStr,false);
+  })
+});
+
  eventplayer.source('forest_bike',{ sourceTypes: ['hls'], 
-                                    transformation: {streaming_profile: 'full_hd' },
-                                    poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
-                                  });
+  transformation: {streaming_profile: 'full_hd' },
+  poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
+});
 
 var plistplayer = cld.videoPlayer('demo-playlist-player',{
   playlistWidget: {
@@ -277,13 +277,14 @@ var source3 = { publicId: 'sea_turtle', sourceTypes: ['hls'], transformation: {s
 var source4 = { publicId: 'elephants', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
 	       poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
                info: { title: 'Elephants', subtitle: 'Elephants' } };
-var source5 = { publicId: 'marmots', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'}, 
+var source5 = { publicId: 'marmots', sourceTypes: ['hls'], transformation: {streaming_profile: 'full_hd'},
                poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }},
                info: { title: 'Marmots', subtitle: 'Marmots' } };
 
+
+source3.recommendations = [Object.assign({}, source4), Object.assign({}, source5), Object.assign({}, source1), Object.assign({}, source2)];
 source1.recommendations = [source2];
 source2.recommendations = [source3];
-source3.recommendations = [source4, source5, source1, source2];
 source4.recommendations = [source5];
 source5.recommendations = [source2, source3, source4, source1];
 var first = true;
@@ -301,11 +302,10 @@ var adsPlaylistOptions = {
   repeat: true
 };
 
-  adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions);
-  adsplayer1.playlist(adsPlaylistSources, adsPlaylistOptions);
-  adsplayer2.playlist(adsPlaylistSources, adsPlaylistOptions);
+adsplayer.playlist(adsPlaylistSources, adsPlaylistOptions);
+adsplayer1.playlist(adsPlaylistSources, adsPlaylistOptions);
+adsplayer2.playlist(adsPlaylistSources, adsPlaylistOptions);
 
-  
 function setVAST(vastOption) {
   var option = Number(vastOption.value)
   if(option < adTagUrl.length)
