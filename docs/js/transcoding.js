@@ -287,7 +287,7 @@ function requestVP9() {
 
 // AV1 codec
 function requestAV1() {
-    var checkUrl = "https://res.cloudinary.com/demo/video/upload/t_av1/q_auto/" + publicId + ".webm";
+    var checkUrl = "https://res.cloudinary.com/demo/video/upload/q_auto,vc_av1/" + publicId + ".webm";
     requestFileFormat(checkUrl);
 }
 
