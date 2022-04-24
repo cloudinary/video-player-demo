@@ -237,7 +237,7 @@ manualEventTypes.forEach(function(eventType) {
   })
 });
 
- eventplayer.source('forest_bike',{ sourceTypes: ['hls'], 
+ eventplayer.source('forest_bike',{ sourceTypes: ['hls'],
   transformation: {streaming_profile: 'full_hd' },
   poster: { transformation: { width: 960, crop: 'limit', quality: 'auto', fetch_format: 'auto' }}
 });
@@ -282,11 +282,26 @@ var source5 = { publicId: 'marmots', sourceTypes: ['hls'], transformation: {stre
                info: { title: 'Marmots', subtitle: 'Marmots' } };
 
 
-source3.recommendations = [Object.assign({}, source4), Object.assign({}, source5), Object.assign({}, source1), Object.assign({}, source2)];
-source1.recommendations = [source2];
-source2.recommendations = [source3];
-source4.recommendations = [source5];
-source5.recommendations = [source2, source3, source4, source1];
+source1.recommendations =  new Promise(function (resolve){
+  resolve([source2]);
+});
+
+source2.recommendations = new Promise(function (resolve){
+  resolve([source3]);
+});
+
+source3.recommendations = new Promise(function (resolve){
+  resolve([source4, source5, source1, source2]);
+});
+
+source4.recommendations = new Promise(function (resolve){
+  resolve([source5]);
+});
+
+source5.recommendations = new Promise(function (resolve){
+  resolve([source2, source3, source4, source1]);
+});
+
 var first = true;
 recplayer.on('sourcechanged', function(event) {if (first) {first = false;} else {recplayer.play();}});
 recplayer.source(source3);
