@@ -54,7 +54,7 @@
 									<path d="M3.93167807,19.8049703 C5.61584051,21.4995653 8.3534727,21.4990982 10.0375133,19.8049703 L13.9762125,15.8412907 L15.8472401,17.7237232 L11.9082972,21.6874027 C9.19028368,24.4225775 4.77866397,24.4221104 2.06101605,21.6874027 C-0.657241146,18.9521404 -0.656997435,14.5136414 2.06101605,11.7784666 L5.99971525,7.8147579 L7.87074283,9.69765749 L3.93204363,13.6612786 C2.24788119,15.3553774 2.24788119,18.1104044 3.93167807,19.8049703 Z M8.95394528,16.7328909 L6.98454998,14.7513139 L14.8625272,6.82395479 L16.8320443,8.80605731 L8.95394528,16.7328909 Z M11.9082972,1.86950134 C14.6261888,-0.865264717 19.0375648,-0.865731829 21.755822,1.86950134 C24.4734699,4.60423819 24.4736832,9.04367139 21.755822,11.7784666 L17.8167572,15.7421462 L15.9457296,13.8597137 L19.8847944,9.89603415 C21.5685913,8.20146831 21.5685913,5.44644127 19.8847944,3.75231335 C18.2009671,2.05780589 15.4631216,2.05780589 13.7793248,3.75231335 L9.84025999,7.71602208 L7.9692324,5.83318088 L11.9082972,1.86950134 Z"></path>
 								</svg>
 							</button>
-							<a href="https://cloudinary.com/signup?source=demo" target="_blank" class="btn signup">Sign up for free</a>
+							<a href="https://cloudinary.com/contact" target="_blank" class="btn signup">Contact Us</a>
 						</div>
 					</div>
 				</div>
@@ -120,6 +120,109 @@
 			</div>
 		</div>
 		<main id="main"></main>
+		<section class="content-block hidden style01" id="section02">
+			<div class="container">
+				<header class="heading-area">
+					<h2>Video Format Optimization</h2>
+					<p>Dynamically transcode videos from the source format to all relevant formats, optimized for viewing across different platforms and devices. Users can stream the video even while it is being encoded and delivered via a content delivery network.</p>
+				</header>
+				<div class="block-area">
+					<div class="video-block">
+						<div class="video-area">
+							<video
+								id="demo-adaptive-player" 
+								data-cld-poster-options= '{ "transformation": {"width": "640", "height": "360", "crop": "pad", "background": "black", "quality": "auto", "fetch_format": "auto"}}'
+								controls
+								muted
+								playsinline
+								class="cld-video-player cld-fluid cld-video-player-skin-dark">
+							</video>
+						</div>
+					</div>
+					<div class="editing-area">
+						<div class="codepen-placeholder data-bars">
+							<p class="text manipulation codec">Original</p>
+							<a class="text manipulation link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/">
+								<img class="icon-link" src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
+							<p class="text manipulation resolution init" id="res-original"></p>
+							<p class="text manipulation kb init" id="comp-original"></p>
+							<div id="trans1-bar" class="my-progress">
+								<div id="bar-original" style="height: 10px; background: #90A0B3; margin: 5px 0 20px 0" class="my-bar">
+								</div>
+							</div>
+							<p class="text manipulation codec">MP4/H.264</p>
+							<a class="text manipulation link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/q_auto/">
+								<img class="icon-link"  src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
+							<p class="text manipulation resolution init" id="res-mp4"></p>
+							<p class="text manipulation kb init" id="comp-mp4"></p>
+							<div>
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Firefox.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Safari.svg">
+								<p class="text manipulation calc" id="save-mp4">Calculating...</p>
+								<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
+							</div>
+							<div id="trans2-bar"  class="my-progress">
+								<div id="bar-mp4" style="height: 10px; margin: 5px 0 20px 0" class="my-bar">
+								</div>
+							</div>
+							<p class="text manipulation codec">MP4/H.265</p>
+							<a class="text manipulation link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/q_auto,vc_h265/">
+								<img class="icon-link"  src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
+							<p class="text manipulation resolution init" id="res-h265"></p>
+							<p class="text manipulation kb init" id="comp-h265"></p>
+							<div>
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Safari.svg">
+								<p class="text manipulation calc" id="save-h265">Calculating...</p>
+								<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
+							</div>
+							<div id="trans3-bar"  class="my-progress">
+								<div id="bar-h265" style="height: 10px; margin: 5px 0 20px 0" class="my-bar">
+								</div>
+							</div>
+							<p class="text manipulation codec">WEBM/VP9</p>
+							<a class="text manipulation webm-link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/q_auto,vc_vp9/">
+								<img class="icon-link" src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
+							<p class="text manipulation resolution init" id="res-vp9"></p>
+							<p class="text manipulation kb init" id="comp-vp9"></p>
+							<div>
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Firefox.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
+								<p class="text manipulation calc" id="save-vp9">Calculating...</p>	
+								<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
+							</div>
+							<div id="trans4-bar" class="my-progress">
+								<div id="bar-vp9" style="height: 10px;  margin: 5px 0 20px 0" class="my-bar">
+								</div>
+							</div>
+							<p class="text manipulation codec">WEBM/AV1</p>
+							<a class="text manipulation webm-link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/q_auto,vc_av1/">
+								<img class="icon-link"  src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
+							<p class="text manipulation resolution init" id="res-av1"></p>
+							<p class="text manipulation kb init" id="comp-av1"></p>
+							<div>
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Firefox.svg">
+								<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
+								<p class="text manipulation calc" id="save-av1">Downloading...</p>
+								<img class="cld-logo" id="cld-hls" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
+							</div>
+							<div id="trans5-bar" class="my-progress">
+								<div id="bar-av1" style="height: 10px; margin: 5px 0 20px 0" class="my-bar">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>
 			<section class="content-block hidden" id="section01">
 				<div class="container">
 					<header class="heading-area">
@@ -242,109 +345,6 @@
 							</div>
 						<pre class="language-css"><span style="font-size:16px;">https://res.cloudinary.com/demo/video/upload/</span><span style="color: orange; font-size:16px;">fl_splice,l_video:cld_opener_preroll_sd,so_0/</span><span style="color: cornflowerblue; font-size:16px;">what_is_cloudinary_sd.mp4</code></pre>
 						</div>
-					</div>
-				</div>
-			</section>
-			<section class="content-block hidden style01" id="section02">
-				<div class="container">
-					<header class="heading-area">
-						<h2>Video Format Optimization</h2>
-						<p>Dynamically transcode videos from the source format to all relevant formats, optimized for viewing across different platforms and devices. Users can stream the video even while it is being encoded and delivered via a content delivery network.</p>
-					</header>
-					<div class="block-area">
-						<div class="video-block">
-							<div class="video-area">
-								<video
-									id="demo-adaptive-player" 
-									data-cld-poster-options= '{ "transformation": {"width": "640", "height": "360", "crop": "pad", "background": "black", "quality": "auto", "fetch_format": "auto"}}'
-									controls
-									muted
-									playsinline
-									class="cld-video-player cld-fluid cld-video-player-skin-dark">
-								</video>
-							</div>
-						</div>
-						<div class="editing-area">
-							<div class="codepen-placeholder data-bars">
-								<p class="text manipulation codec">Original</p>
-								<a class="text manipulation link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/">
-									<img class="icon-link" src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
-								<p class="text manipulation resolution init" id="res-original"></p>
-								<p class="text manipulation kb init" id="comp-original"></p>
-								<div id="trans1-bar" class="my-progress">
-									<div id="bar-original" style="height: 10px; background: #90A0B3; margin: 5px 0 20px 0" class="my-bar">
-									</div>
-								</div>
-								<p class="text manipulation codec">MP4/H.264</p>
-								<a class="text manipulation link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/q_auto/">
-									<img class="icon-link"  src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
-								<p class="text manipulation resolution init" id="res-mp4"></p>
-								<p class="text manipulation kb init" id="comp-mp4"></p>
-								<div>
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Firefox.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Safari.svg">
-									<p class="text manipulation calc" id="save-mp4">Calculating...</p>
-									<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
-								</div>
-								<div id="trans2-bar"  class="my-progress">
-									<div id="bar-mp4" style="height: 10px; margin: 5px 0 20px 0" class="my-bar">
-									</div>
-								</div>
-								<p class="text manipulation codec">MP4/H.265</p>
-								<a class="text manipulation link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/q_auto,vc_h265/">
-									<img class="icon-link"  src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
-								<p class="text manipulation resolution init" id="res-h265"></p>
-								<p class="text manipulation kb init" id="comp-h265"></p>
-								<div>
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Safari.svg">
-									<p class="text manipulation calc" id="save-h265">Calculating...</p>
-									<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
-								</div>
-								<div id="trans3-bar"  class="my-progress">
-									<div id="bar-h265" style="height: 10px; margin: 5px 0 20px 0" class="my-bar">
-									</div>
-								</div>
-								<p class="text manipulation codec">WEBM/VP9</p>
-								<a class="text manipulation webm-link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/q_auto,vc_vp9/">
-									<img class="icon-link" src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
-								<p class="text manipulation resolution init" id="res-vp9"></p>
-								<p class="text manipulation kb init" id="comp-vp9"></p>
-								<div>
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Firefox.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
-									<p class="text manipulation calc" id="save-vp9">Calculating...</p>	
-									<img class="cld-logo" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
-								</div>
-								<div id="trans4-bar" class="my-progress">
-									<div id="bar-vp9" style="height: 10px;  margin: 5px 0 20px 0" class="my-bar">
-									</div>
-								</div>
-								<p class="text manipulation codec">WEBM/AV1</p>
-								<a class="text manipulation webm-link" target="_blank" title="Open video in a new tab" style="display: inline-block" data-href="https://res.cloudinary.com/demo/video/upload/q_auto,vc_av1/">
-									<img class="icon-link"  src="https://res.cloudinary.com/demo/icon-external-grey.svg"></a>
-								<p class="text manipulation resolution init" id="res-av1"></p>
-								<p class="text manipulation kb init" id="comp-av1"></p>
-								<div>
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Google_Chrome.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Microsoft_Edge.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Firefox.svg">
-									<img class="browser-logo" src="https://res.cloudinary.com/demo/browser-Opera.svg">
-									<p class="text manipulation calc" id="save-av1">Downloading...</p>
-									<img class="cld-logo" id="cld-hls" src="https://res.cloudinary.com/demo/cld_icon_white_bg.svg">
-								</div>
-								<div id="trans5-bar" class="my-progress">
-									<div id="bar-av1" style="height: 10px; margin: 5px 0 20px 0" class="my-bar">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 					</div>
 				</div>
 			</section>
