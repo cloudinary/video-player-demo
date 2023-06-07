@@ -33,7 +33,7 @@
 	<link href='https://cloudinary-res.cloudinary.com/f_auto,q_auto/c_scale,w_32/v1597183771/website/cloudinary_web_favicon.png' rel='icon' sizes='32x32' type='image/png'>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
 	<link href="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">  
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7cRoboto:100,300,400,500,700,900" rel="stylesheet">
 	<link href="css/prism.css" rel="stylesheet" />
 	<link href="css/main.css" media="all" rel="stylesheet" >
 </head>
@@ -43,13 +43,13 @@
 			<header id="header">
 				<div class="container">
 					<div class="header-holder widget">
-						<strong class="topbar-logo"><a href="https://cloudinary.com" target="_blank"><img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200,dpr_2/f_auto,q_auto/v1/logo/for_white_bg/cloudinary_logo_for_white_bg.png" alt="Cloudinary"></a></strong>
+						<strong class="topbar-logo"><a href="https://cloudinary.com" target="_blank"><img src="https://res.cloudinary.com/cloudinary/image/upload/fl_attachment/v1/logo/for_white_bg/cloudinary_logo_for_white_bg.svg" alt="Cloudinary"></a></strong>
 						<a href="transcoding.html" class="pages">Transcoding</a>
 						<a href="https://demo.cloudinary.com/video-compare/" class="pages">Smart Crop</a>
 						<a href="ai.html" class="pages active">Smart Management</a>
 						<a href="player.html" class="pages">Video Player</a>
 						<div>
-							<button class="share-button" title="Copy URL to share" onclick="addURLParams()"> 
+							<button class="share-button" title="Copy URL to share" onclick="addURLParams()">
 								<svg class="share-icon" preserveAspectRatio="xMidYMid" viewBox="0 0 24 24">
 									<path d="M3.93167807,19.8049703 C5.61584051,21.4995653 8.3534727,21.4990982 10.0375133,19.8049703 L13.9762125,15.8412907 L15.8472401,17.7237232 L11.9082972,21.6874027 C9.19028368,24.4225775 4.77866397,24.4221104 2.06101605,21.6874027 C-0.657241146,18.9521404 -0.656997435,14.5136414 2.06101605,11.7784666 L5.99971525,7.8147579 L7.87074283,9.69765749 L3.93204363,13.6612786 C2.24788119,15.3553774 2.24788119,18.1104044 3.93167807,19.8049703 Z M8.95394528,16.7328909 L6.98454998,14.7513139 L14.8625272,6.82395479 L16.8320443,8.80605731 L8.95394528,16.7328909 Z M11.9082972,1.86950134 C14.6261888,-0.865264717 19.0375648,-0.865731829 21.755822,1.86950134 C24.4734699,4.60423819 24.4736832,9.04367139 21.755822,11.7784666 L17.8167572,15.7421462 L15.9457296,13.8597137 L19.8847944,9.89603415 C21.5685913,8.20146831 21.5685913,5.44644127 19.8847944,3.75231335 C18.2009671,2.05780589 15.4631216,2.05780589 13.7793248,3.75231335 L9.84025999,7.71602208 L7.9692324,5.83318088 L11.9082972,1.86950134 Z"></path>
 								</svg>
@@ -68,7 +68,7 @@
 									<source src="https://res.cloudinary.com/hadar/video/upload/w_538,h_217,c_crop/717956081.webm" type="video/webm">
 									<source src="https://res.cloudinary.com/hadar/video/upload/w_538,h_217,c_crop/717956081.ogv" type="video/ogg">
 									<source src="https://res.cloudinary.com/hadar/video/upload/w_538,h_217,c_crop/717956081.mp4" type="video/mp4">
-								</video> 
+								</video>
 						</div>
 						<strong class="m-logo">
 							<img src="https://res.cloudinary.com/demo/image/upload/w_235,h_241,c_scale/video-title_ai_m.png" alt="Video Player">
@@ -130,12 +130,12 @@
 						<div class="video-block">
 							<div class="video-area">
 								<video
-									id="demo-autotag-player" 
+									id="demo-autotag-player"
 									data-cld-poster-options= '{ "transformation": {"width": "640", "height": "360", "crop": "pad", "background": "black", "quality": "auto", "fetch_format": "auto"}}'
-									controls 
-									muted 
+									controls
+									muted
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
-                                </video> 
+                                </video>
 							</div>
 						</div>
 						<div class="editing-area">
@@ -164,9 +164,9 @@
 						<div class="video-block">
 							<div class="video-area">
 								<video
-									id="demo-transcript-player" 
+									id="demo-transcript-player"
 									data-cld-poster-options= '{ "transformation": {"width": "640", "height": "360", "crop": "pad", "background": "black", "quality": "auto", "fetch_format": "auto"}}'
-									muted 
+									muted
 									class="cld-video-player vjs-fluid cld-video-player-skin-dark">
 								</video>
 							</div>
@@ -203,10 +203,10 @@
 	</div>
 	<script type="text/javascript" src="https://unpkg.com/cloudinary-core/cloudinary-core-shrinkwrap.min.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.js"></script>
-	<script type="text/javascript" src="https://widget.cloudinary.com/v2.0/global/all.js" ></script> 
+	<script type="text/javascript" src="https://widget.cloudinary.com/v2.0/global/all.js" ></script>
 	<script type="text/javascript" src="js/prism.js"></script>
 	<script type="text/javascript" src="js/transcoding.js"></script>
-	
+
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

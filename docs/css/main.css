@@ -435,7 +435,8 @@ th {
 	overflow: hidden;
 }
 
-html {
+html, body {
+	min-height: 100%;
 	box-sizing: border-box;
 }
 
@@ -454,6 +455,8 @@ body {
 	background: #fff;
 	font: 18px/1.3888 "Roboto", "Arial", "Helvetica", sans-serif;
 	min-width: 320px;
+	display: flex;
+	flex-direction: column;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -487,7 +490,7 @@ h6,
 h1,
 .h1 {
 	font-size: 22px;
-	font-weight: normal;	
+	font-weight: normal;
 }
 
 h2,
@@ -640,6 +643,7 @@ ul {
 }
 
 #wrapper {
+	flex: 1;
 	position: relative;
 	overflow: hidden;
 	width: 100%;
@@ -681,13 +685,13 @@ ul {
 .btn.widget {
 	background: #0071B9;
 }
-.btn.widget.large {	
-	height: 60px;	
+.btn.widget.large {
+	height: 60px;
 	width: 237px;
 	margin: auto;
-	font-size: 18px;	
-	font-weight: bold;	
-	line-height: 22px;	
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 22px;
 	text-align: center;
 	padding: 19px 5px;
 }
@@ -772,11 +776,9 @@ input[type="radio"]:checked + label .radio-icon:before {
 .header-holder {
 	padding: 0 3px 0 21px;
 	position: relative;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
+	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .header-holder.widget  {
@@ -785,14 +787,15 @@ input[type="radio"]:checked + label .radio-icon:before {
 
 .header-holder.widget a.pages {
 	display: inline-block;
-	padding: 10px 10px 0 10px;
-    color: #282828;
-    text-align: center;
+	padding: 0 10px;
+	color: #282828;
+	text-align: center;
 	text-decoration: none;
 	font-size: 16px;
 	font-weight: 600;
 	font-family: 'Roboto',Arial,Helvetica,sans-serif;
 	line-height: 28px;
+	margin: 0;
 }
 
 .header-holder.widget a.pages.active {
@@ -800,9 +803,9 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .topbar-logo {
-	margin: 8px 0 0;
 	display: block;
-	width: 115px;
+	width: 152px;
+	margin-right: auto;
 }
 
 .topbar-logo a {
@@ -813,6 +816,10 @@ input[type="radio"]:checked + label .radio-icon:before {
 	display: block;
 	width: 100%;
 	height: auto;
+}
+
+.header-holder.widget > div:last-child {
+	margin-left: auto;
 }
 
 .banner-area {
@@ -1002,7 +1009,7 @@ h1,
 	background: none;
 	font-weight: none;
 	text-shadow: none;
-	text-transform: none;	
+	text-transform: none;
 	color: #0078FF;
 }
 
@@ -1026,43 +1033,43 @@ h1,
 }
 
 .text.manipulation.calc {
-	border-radius: 0 10px 10px 0; 
-	padding:2px 8px 2px 2px; 	
-	font-size: 12px; 
+	border-radius: 0 10px 10px 0;
+	padding:2px 8px 2px 2px;
+	font-size: 12px;
 	font-weight: bold;
-	color: #0078FF; 
-	background: white; 
-	line-height: 18px; 	
+	color: #0078FF;
+	background: white;
+	line-height: 18px;
 	float:right;
 }
 
 .text.manipulation.resolution {
-	font-size: 14px; 
-	opacity: 0.5; 
-	display: inline-block; 
+	font-size: 14px;
+	opacity: 0.5;
+	display: inline-block;
 	margin: 0 8px 0 4px;
 }
 
 .text.manipulation.codec {
-	font-size: 18px; 
+	font-size: 18px;
 	display: inline-block;
 	margin: 0;
 }
 
 .text.manipulation.kb {
-	font-size: 18px; 
-	float:right; 
+	font-size: 18px;
+	float:right;
 	margin:0;
 }
 
 .adaptive-play {
 	background:none;
 	color:inherit;
-	border:none; 
+	border:none;
 	padding:0;
 	font: inherit;
 	cursor: pointer;
-	border-bottom:1px solid #0078FF; 
+	border-bottom:1px solid #0078FF;
 	color: #0078FF;
 	float:right;
 	font-size: 18px;
@@ -1658,22 +1665,22 @@ h1,
 }
 
 .codepen-placeholder img.browser-logo {
-	width: 12px; 
-	display: inline-block; 
+	width: 12px;
+	display: inline-block;
 	margin: 6px 0 0 2px;
 }
 
 .codepen-placeholder img.cld-logo {
-	border-radius: 10px 0 0 10px; 
-	vertical-align:middle; 
-	background: white; 
-	width: 22px; 
-	padding: 4px; 
+	border-radius: 10px 0 0 10px;
+	vertical-align:middle;
+	background: white;
+	width: 22px;
+	padding: 4px;
 	float:right;
 }
 
 .codepen-placeholder img.icon-link {
-	width: 12px; 
+	width: 12px;
 	margin-left: 4px;
 }
 
@@ -2093,7 +2100,7 @@ h1,
   }
 
 .my-progress.hls {
-	 height: 10px; 
+	 height: 10px;
 	 margin: 5px 0 20px 0;
   }
 
@@ -2116,7 +2123,7 @@ h1,
   }
 
   .my-bar.hls {
-  	height: 10px; 
+  	height: 10px;
   	background: linear-gradient(90deg, #FF620C 0%, #FD9D2B 100%);
   }
 
@@ -2149,7 +2156,7 @@ h1,
 	display: inline-block;
 	vertical-align: text-top;
   }
-	  
+
 .share-button svg {
 	width: 15px;
 	height: 15px;
@@ -2253,7 +2260,7 @@ h1,
 	.header-holder {
 		padding: 0 25px;
 	}
-	
+
 	.logo {
 		width: 500px;
 	}
@@ -2305,7 +2312,7 @@ h1,
 	.header-holder {
 		padding: 0 5px 0 8px;
 	}
-	
+
 	.header-holder.widget  {
 	padding: 0;
 	}
@@ -2318,7 +2325,7 @@ h1,
 		padding: 76px 10px;
 		line-height: 26px;
 	}
-	
+
 	h1,
 	.h1,
 	.banner-holder p {
@@ -2534,11 +2541,11 @@ h1,
 		padding: 0 15px;
 		margin: 0;
 	}
-	
+
 	.menu.preview  {
 		display: -webkit-box;
 		display: -ms-flexbox;
-		display: flex;	
+		display: flex;
 		margin: 0 -21px;
 	}
 
