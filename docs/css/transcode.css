@@ -682,13 +682,13 @@ ul {
 .btn.widget {
 	background: #0071B9;
 }
-.btn.widget.large {	
-	height: 60px;	
+.btn.widget.large {
+	height: 60px;
 	width: 237px;
 	margin: auto;
-	font-size: 18px;	
-	font-weight: bold;	
-	line-height: 22px;	
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 22px;
 	text-align: center;
 	padding: 19px 5px;
 }
@@ -791,7 +791,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .banner-area {
-	background: url("https://res.cloudinary.com/hadar/image/upload/cs_srgb/bg.jpg") no-repeat;
+	background: url("https://res.cloudinary.com/hadar/image/upload/cs_srgb/bg.jpg") no-repeat #172E58;
 	background-size: cover;
 	position: relative;
 	overflow: hidden;
@@ -968,7 +968,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	background: none;
 	font-weight: none;
 	text-shadow: none;
-	text-transform: none;	
+	text-transform: none;
 	color: #0a5dff;
 }
 
@@ -2058,7 +2058,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 	width: 100%;
 	background-color: #ddd;
   }
-  
+
 .myBar {
 	width: 0%;
 	height: 30px;
