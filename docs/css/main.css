@@ -818,7 +818,7 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .banner-area {
-	background: url("https://res.cloudinary.com/hadar/image/upload/cs_srgb/bg.jpg") no-repeat;
+	background: url("https://res.cloudinary.com/hadar/image/upload/cs_srgb/bg.jpg") no-repeat #172E58;
 	background-size: cover;
 	position: relative;
 	overflow: hidden;
