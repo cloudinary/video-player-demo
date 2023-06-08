@@ -774,15 +774,10 @@ input[type="radio"]:checked + label .radio-icon:before {
 }
 
 .header-holder {
-	padding: 0 3px 0 21px;
 	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-}
-
-.header-holder.widget  {
-	padding: 0 3px 0 42px;
 }
 
 .header-holder.widget a.pages {
