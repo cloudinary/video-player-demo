@@ -192,15 +192,12 @@ optimizationPlayer.source(pid,{ transformation: {"width": "640", "height": "360"
 }
 
 function updateTranscodingPlayers(pid) {
-    var links = document.getElementsByClassName("link")
+    var links = document.getElementsByClassName("link");
+    var ref = "", ext = "";
     for(var j = 0; j < links.length; j++) {
-            var ref = links[j].getAttribute("data-href");
-            links[j].setAttribute("href",ref+pid+".mp4");
-    }
-    var webmLink = document.getElementsByClassName("webm-link")
-    for(var k = 0; k < webmLink.length; k++) {
-            ref = webmLink[k].getAttribute("data-href");
-            webmLink[k].setAttribute("href",ref+pid+".webm");
+            ref = links[j].getAttribute("data-href");
+	    ext = links[j].getAttribute("data-ext");
+            links[j].setAttribute("href",ref+pid+ext);
     }
 }
 
