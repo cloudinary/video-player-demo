@@ -188,7 +188,7 @@ function updateFileSize(bytes) {
 function updateManipulationPlayers(pid) {
 for(var i = 0; i < players.length; i++) 
         players[i].source(pid);
-optimizationPlayer.source(pid,{ transformation: {"width": "640", "height": "360", "crop": "pad", "fetch_format":"auto","quality": "auto"}, sourceTypes: ["mp4"]});
+optimizationPlayer.source(pid,{ transformation: {"width": "640", "height": "360", "crop": "pad", "fetch_format":"auto","quality": "auto"}});
 }
 
 function updateTranscodingPlayers(pid) {
